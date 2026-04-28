@@ -18,7 +18,7 @@ export async function GET() {
         (SELECT COUNT(*) FROM command_tasks t WHERE t.property_id = p.id AND t.status = 'completed') as completed_tasks,
         (SELECT COUNT(*) FROM command_tasks t WHERE t.property_id = p.id) as total_tasks
       FROM command_properties p
-      LEFT JOIN command_phases ph ON p.current_phase_id = ph.id
+      LEFT JOIN command_phases ph ON p.current_phase = ph.phase_order AND ph.property_id = p.id
       ORDER BY p.created_at DESC
     `
 
@@ -78,7 +78,7 @@ export async function POST(request: Request) {
         if (taskTemplate.subtasks) {
           for (const subtaskTemplate of taskTemplate.subtasks) {
             await sql`
-              INSERT INTO command_subtasks (task_id, title, subtask_order, is_completed)
+              INSERT INTO command_subtasks (task_id, title, subtask_order, completed)
               VALUES (${task.id}, ${subtaskTemplate.title}, ${subtaskTemplate.subtask_order}, false)
             `
           }
@@ -86,14 +86,12 @@ export async function POST(request: Request) {
       }
     }
 
-    // Update property with first phase
-    if (firstPhaseId) {
-      await sql`
-        UPDATE command_properties 
-        SET current_phase_id = ${firstPhaseId}
-        WHERE id = ${property.id}
-      `
-    }
+    // Update property with first phase (use phase_order = 1 for the first phase)
+    await sql`
+      UPDATE command_properties 
+      SET current_phase = 1
+      WHERE id = ${property.id}
+    `
 
     // Log activity
     await sql`

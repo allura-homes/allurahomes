@@ -19,7 +19,7 @@ async function getProperty(id: string) {
       ph.name as current_phase_name,
       ph.color as current_phase_color
     FROM command_properties p
-    LEFT JOIN command_phases ph ON p.current_phase_id = ph.id
+    LEFT JOIN command_phases ph ON p.current_phase = ph.phase_order AND ph.property_id = p.id
     WHERE p.id = ${parseInt(id)}
   `
   
@@ -41,7 +41,7 @@ async function getProperty(id: string) {
       u.name as assigned_to_name
     FROM command_tasks t
     JOIN command_phases ph ON t.phase_id = ph.id
-    LEFT JOIN command_users u ON t.assigned_to = u.id
+    LEFT JOIN command_users u ON t.assignee_id = u.id
     WHERE t.property_id = ${id}
     ORDER BY ph.phase_order, t.task_order
   `

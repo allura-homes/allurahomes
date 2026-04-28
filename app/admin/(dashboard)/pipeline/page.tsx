@@ -14,19 +14,19 @@ async function getPipelineData() {
       (SELECT COUNT(*) FROM command_tasks t WHERE t.property_id = p.id AND t.status = 'completed') as completed_tasks,
       (SELECT COUNT(*) FROM command_tasks t WHERE t.property_id = p.id) as total_tasks
     FROM command_properties p
-    LEFT JOIN command_phases ph ON p.current_phase_id = ph.id
+    LEFT JOIN command_phases ph ON p.current_phase = ph.phase_order AND ph.property_id = p.id
     WHERE p.status = 'onboarding'
     ORDER BY ph.phase_order, p.created_at DESC
   `
 
-  // Get phase definitions (use first property's phases as template)
+  // Get distinct phase names for column headers (phases are per-property, so get unique names)
   const phases = await sql`
-    SELECT DISTINCT ON (name) name, color, phase_order
+    SELECT DISTINCT name, color, phase_order
     FROM command_phases
-    ORDER BY name, phase_order
+    ORDER BY phase_order
   `
 
-  return { properties, phases: phases.sort((a: any, b: any) => a.phase_order - b.phase_order) }
+  return { properties, phases }
 }
 
 export default async function PipelinePage() {

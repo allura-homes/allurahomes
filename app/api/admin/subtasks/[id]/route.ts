@@ -15,11 +15,11 @@ export async function PATCH(request: Request, { params }: Props) {
 
     const { id } = await params
     const body = await request.json()
-    const { is_completed } = body
+    const { completed } = body
 
     const [subtask] = await sql`
       UPDATE command_subtasks 
-      SET is_completed = ${is_completed}, updated_at = NOW()
+      SET completed = ${completed}
       WHERE id = ${parseInt(id)}
       RETURNING *
     `
@@ -31,17 +31,17 @@ export async function PATCH(request: Request, { params }: Props) {
     // Check if all subtasks in task are complete - auto mark task in progress
     const [incompleteSubtasks] = await sql`
       SELECT COUNT(*) as count FROM command_subtasks 
-      WHERE task_id = ${subtask.task_id} AND is_completed = false
+      WHERE task_id = ${subtask.task_id} AND completed = false
     `
 
     if (Number(incompleteSubtasks.count) === 0) {
       // All subtasks complete - mark task as completed
       await sql`
         UPDATE command_tasks 
-        SET status = 'completed', updated_at = NOW()
+        SET status = 'completed'
         WHERE id = ${subtask.task_id}
       `
-    } else if (is_completed) {
+    } else if (completed) {
       // At least one subtask done - mark task as in_progress
       await sql`
         UPDATE command_tasks 

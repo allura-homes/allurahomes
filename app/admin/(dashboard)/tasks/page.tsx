@@ -16,7 +16,7 @@ async function getMyTasks(userId: number) {
     FROM command_tasks t
     JOIN command_properties p ON t.property_id = p.id
     JOIN command_phases ph ON t.phase_id = ph.id
-    WHERE t.assigned_to = ${userId}
+    WHERE t.assignee_id = ${userId}
     ORDER BY 
       CASE t.status 
         WHEN 'in_progress' THEN 1 
@@ -121,11 +121,11 @@ export default async function TasksPage() {
                       {task.subtasks.map((subtask: any) => (
                         <div key={subtask.id} className="flex items-center gap-2">
                           <Checkbox 
-                            checked={subtask.is_completed} 
+                            checked={subtask.completed} 
                             disabled
                             className="h-4 w-4"
                           />
-                          <span className={`text-sm ${subtask.is_completed ? 'text-slate-400 line-through' : 'text-slate-600'}`}>
+                          <span className={`text-sm ${subtask.completed ? 'text-slate-400 line-through' : 'text-slate-600'}`}>
                             {subtask.title}
                           </span>
                         </div>
