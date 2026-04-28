@@ -80,9 +80,13 @@ export async function getCurrentUser(): Promise<User | null> {
     const cookieStore = await cookies()
     const token = cookieStore.get('command_session')?.value
     
+    console.log('[v0] getCurrentUser - token exists:', !!token)
+    
     if (!token) return null
     
     const payload = await verifyToken(token)
+    console.log('[v0] getCurrentUser - payload:', payload)
+    
     if (!payload) return null
     
     const users = await sql`
@@ -91,10 +95,13 @@ export async function getCurrentUser(): Promise<User | null> {
       WHERE id = ${payload.userId}
     `
     
+    console.log('[v0] getCurrentUser - users found:', users.length)
+    
     if (users.length === 0) return null
     
     return users[0] as User
-  } catch {
+  } catch (error) {
+    console.error('[v0] getCurrentUser error:', error)
     return null
   }
 }
