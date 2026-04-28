@@ -35,6 +35,11 @@ export default function LoginPage() {
         return
       }
 
+      // Store token in localStorage as backup (for environments with cookie issues)
+      if (data.token) {
+        localStorage.setItem('command_session', data.token)
+      }
+
       router.push("/admin")
       router.refresh()
     } catch {

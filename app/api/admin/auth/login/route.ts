@@ -23,8 +23,9 @@ export async function POST(request: Request) {
 
     const token = await createToken(user)
 
-    // Create response with user data
+    // Create response with user data and token
     const response = NextResponse.json({
+      token, // Include token for localStorage fallback
       user: {
         id: user.id,
         email: user.email,
