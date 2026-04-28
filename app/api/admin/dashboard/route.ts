@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { sql } from '@/lib/db'
-import { verifyToken } from '@/lib/command/auth-jwt'
+import { verifyToken } from '@/lib/command/auth'
 import { cookies } from 'next/headers'
 
 export async function GET(request: Request) {

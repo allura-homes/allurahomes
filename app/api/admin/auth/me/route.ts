@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import { verifyJWT } from '@/lib/command/auth-jwt'
+import { verifyToken } from '@/lib/command/auth'
 import { sql } from '@/lib/db'
 
 export async function GET(request: Request) {
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
     }
 
-    const payload = await verifyJWT(token)
+    const payload = await verifyToken(token)
     console.log('[v0] /api/admin/auth/me - payload:', payload)
 
     if (!payload) {
