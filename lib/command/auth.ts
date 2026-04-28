@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers'
-import { compare, hash } from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 import { SignJWT, jwtVerify } from 'jose'
 import { sql } from '@/lib/db'
 
@@ -24,12 +24,12 @@ export interface JWTPayload {
 
 // Hash a password
 export async function hashPassword(password: string): Promise<string> {
-  return hash(password, 12)
+  return bcrypt.hash(password, 12)
 }
 
 // Verify password against hash
 export async function verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
-  return compare(password, hashedPassword)
+  return bcrypt.compare(password, hashedPassword)
 }
 
 // Create a JWT token

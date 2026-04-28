@@ -1,6 +1,6 @@
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
-import { compare, hash } from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 
 const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || 'allura-command-secret-key-change-in-production'
@@ -59,12 +59,12 @@ export async function clearTokenCookie(): Promise<void> {
 
 // Hash password
 export async function hashUserPassword(password: string): Promise<string> {
-  return hash(password, 12)
+  return bcrypt.hash(password, 12)
 }
 
 // Verify password
 export async function verifyUserPassword(password: string, hashedPassword: string): Promise<boolean> {
-  return compare(password, hashedPassword)
+  return bcrypt.compare(password, hashedPassword)
 }
 
 // Get current session payload
