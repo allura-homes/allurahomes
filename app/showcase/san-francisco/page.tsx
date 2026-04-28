@@ -99,6 +99,20 @@ export default function SanFranciscoShowcasePage() {
         </div>
       </section>
 
+      {/* Hero Before/After - Living Room */}
+      <section className="py-8 px-6">
+        <div className="max-w-4xl mx-auto">
+          <BeforeAfterSlider
+            beforeImage="/images/showcase/sf/living1-before.jpg"
+            afterImage="/images/showcase/sf/living1-after.jpg"
+            beforeAlt="Living room before - cluttered with exercise equipment"
+            afterAlt="Living room after Allura staging - elegant Japanese-inspired design"
+            watermarkLogo={watermarkLogo}
+            roomName="Living Room"
+          />
+        </div>
+      </section>
+
       {/* Before/After Sliders */}
       <section className="py-8 px-6">
         <div className="max-w-6xl mx-auto">
