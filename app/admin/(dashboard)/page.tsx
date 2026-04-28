@@ -73,7 +73,7 @@ async function getMyTasks(userId: number) {
     FROM command_tasks t
     JOIN command_properties p ON t.property_id = p.id
     JOIN command_phases ph ON t.phase_id = ph.id
-    WHERE t.assigned_to = ${userId}
+    WHERE t.assignee_id = ${userId}
       AND t.status != 'completed'
     ORDER BY t.due_date ASC NULLS LAST
     LIMIT 5

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 interface Subtask {
   id: number
   title: string
-  is_completed: boolean
+  completed: boolean
   subtask_order: number
 }
 
@@ -64,7 +64,7 @@ export function TaskList({ phases, propertyId }: TaskListProps) {
       await fetch(`/api/admin/subtasks/${subtaskId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ is_completed: isCompleted }),
+        body: JSON.stringify({ completed: isCompleted }),
       })
       // Refresh the page to show updated state
       window.location.reload()
@@ -137,7 +137,7 @@ export function TaskList({ phases, propertyId }: TaskListProps) {
                   {phase.tasks.map((task) => {
                     const isTaskExpanded = expandedTasks.includes(task.id)
                     const hasSubtasks = task.subtasks.length > 0
-                    const completedSubtasks = task.subtasks.filter(s => s.is_completed).length
+                    const completedSubtasks = task.subtasks.filter(s => s.completed).length
 
                     return (
                       <div
@@ -208,7 +208,7 @@ export function TaskList({ phases, propertyId }: TaskListProps) {
                                     className="flex items-center gap-2"
                                   >
                                     <Checkbox
-                                      checked={subtask.is_completed}
+                                      checked={subtask.completed}
                                       onCheckedChange={(checked) =>
                                         handleSubtaskToggle(subtask.id, !!checked)
                                       }
@@ -216,7 +216,7 @@ export function TaskList({ phases, propertyId }: TaskListProps) {
                                     />
                                     <span className={cn(
                                       "text-sm",
-                                      subtask.is_completed && "line-through text-slate-400"
+                                      subtask.completed && "line-through text-slate-400"
                                     )}>
                                       {subtask.title}
                                     </span>

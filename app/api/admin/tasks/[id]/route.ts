@@ -15,7 +15,7 @@ export async function PATCH(request: Request, { params }: Props) {
 
     const { id } = await params
     const body = await request.json()
-    const { status, assigned_to, due_date } = body
+    const { status, assignee_id, due_date } = body
 
     // Get current task for logging
     const [currentTask] = await sql`
@@ -31,7 +31,7 @@ export async function PATCH(request: Request, { params }: Props) {
       UPDATE command_tasks 
       SET 
         status = COALESCE(${status}, status),
-        assigned_to = COALESCE(${assigned_to}, assigned_to),
+        assignee_id = COALESCE(${assignee_id}, assignee_id),
         due_date = COALESCE(${due_date}, due_date),
         updated_at = NOW()
       WHERE id = ${parseInt(id)}
@@ -65,7 +65,7 @@ export async function PATCH(request: Request, { params }: Props) {
         `
         
         const nextPhase = await sql`
-          SELECT id FROM command_phases 
+          SELECT phase_order FROM command_phases 
           WHERE property_id = ${currentTask.property_id} 
             AND phase_order > ${currentPhase[0].phase_order}
           ORDER BY phase_order
@@ -75,7 +75,7 @@ export async function PATCH(request: Request, { params }: Props) {
         if (nextPhase.length > 0) {
           await sql`
             UPDATE command_properties 
-            SET current_phase_id = ${nextPhase[0].id}
+            SET current_phase = ${nextPhase[0].phase_order}
             WHERE id = ${currentTask.property_id}
           `
         } else {

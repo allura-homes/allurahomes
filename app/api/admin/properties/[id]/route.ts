@@ -21,7 +21,7 @@ export async function GET(request: Request, { params }: Props) {
         ph.name as current_phase_name,
         ph.color as current_phase_color
       FROM command_properties p
-      LEFT JOIN command_phases ph ON p.current_phase_id = ph.id
+      LEFT JOIN command_phases ph ON p.current_phase = ph.phase_order AND ph.property_id = p.id
       WHERE p.id = ${parseInt(id)}
     `
 
@@ -90,9 +90,9 @@ export async function PATCH(request: Request, { params }: Props) {
       updates.push('status')
       values.push(body.status)
     }
-    if (body.current_phase_id !== undefined) {
-      updates.push('current_phase_id')
-      values.push(body.current_phase_id)
+    if (body.current_phase !== undefined) {
+      updates.push('current_phase')
+      values.push(body.current_phase)
     }
 
     if (updates.length === 0) {
