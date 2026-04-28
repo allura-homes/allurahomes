@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import { verifyToken } from '@/lib/command/auth-jwt'
+import { verifyJWT } from '@/lib/command/auth-jwt'
 import { sql } from '@/lib/db'
 
 export async function GET(request: Request) {
@@ -21,7 +21,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ user: null }, { status: 401 })
     }
     
-    const payload = await verifyToken(token)
+    const payload = await verifyJWT(token)
     if (!payload) {
       return NextResponse.json({ user: null }, { status: 401 })
     }
