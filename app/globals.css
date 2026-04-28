@@ -1,0 +1,296 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Allura Brand: Navy + Gold + White */
+  --background: #ffffff;
+  --foreground: #012547;
+  --card: #ffffff;
+  --card-foreground: #012547;
+  --popover: #ffffff;
+  --popover-foreground: #012547;
+  --primary: #012547;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f4;
+  --secondary-foreground: #012547;
+  --muted: #f4f4f4;
+  --muted-foreground: #5a6a7a;
+  --accent: #c7ae6a;
+  --accent-foreground: #012547;
+  --destructive: #dc2626;
+  --destructive-foreground: #dc2626;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #c7ae6a;
+  --radius: 0.5rem;
+
+  /* Allura Extended Palette */
+  --navy-deep: #012547;
+  --navy: #013f7a;
+  --navy-light: #0159ad;
+  --gold: #c7ae6a;
+  --gold-light: #d5c28f;
+  --gold-dark: #9f7135;
+  --off-white: #f4f4f4;
+  --cream: #faf8f4;
+}
+
+@theme inline {
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-serif: var(--font-rock-salt), cursive;
+  --font-mono: 'Geist Mono', monospace;
+  --font-display: var(--font-playfair), 'Georgia', serif;
+  --font-headline: var(--font-oswald), 'Arial Narrow', sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Allura Brand Colors for Tailwind */
+  --color-navy-deep: #012547;
+  --color-navy: #013f7a;
+  --color-navy-light: #0159ad;
+  --color-gold: #c7ae6a;
+  --color-gold-light: #d5c28f;
+  --color-gold-dark: #9f7135;
+  --color-offwhite: #f4f4f4;
+  --color-cream: #faf8f4;
+
+  /* Font families */
+  --font-headline: var(--font-oswald), 'Arial Narrow', sans-serif;
+  --font-display: var(--font-playfair), 'Georgia', serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    font-size: 17px;
+  }
+  body {
+    @apply bg-background text-foreground;
+    line-height: 1.7;
+  }
+  h1, h2 {
+    font-family: var(--font-display);
+  }
+  h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+  }
+}
+
+/* Allura Gold Gradient Utility */
+.gold-gradient {
+  background: linear-gradient(135deg, #9f7135, #d4c38e);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(135deg, #9f7135, #c7ae6a, #d5c28f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Metallic Gold Button — mirrors the logo gradient flare */
+.btn-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #2a1a00;
+  background: linear-gradient(
+    160deg,
+    #7a5c1e 0%,
+    #b8892a 22%,
+    #e8d48a 45%,
+    #f5e9a8 52%,
+    #d4ae52 68%,
+    #9f7135 85%,
+    #7a5c1e 100%
+  );
+  background-size: 200% 200%;
+  background-position: 60% 40%;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.25) inset,
+    0 4px 12px rgba(159, 113, 53, 0.45),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: background-position 0.4s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.btn-gold:hover {
+  background-position: 30% 60%;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.3) inset,
+    0 6px 18px rgba(159, 113, 53, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-gold:active {
+  background-position: 50% 50%;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.2) inset,
+    0 2px 6px rgba(159, 113, 53, 0.3);
+  transform: translateY(0);
+}
+
+/* Ken Burns Animation */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 20s ease-in-out infinite alternate;
+}
+
+/* WordPress Article Prose Styles */
+.prose-allura {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--foreground);
+}
+.prose-allura h1,
+.prose-allura h2 {
+  font-family: var(--font-display);
+  color: var(--navy-deep);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.prose-allura h1 {
+  font-size: 2.25rem;
+}
+.prose-allura h2 {
+  font-size: 1.75rem;
+}
+.prose-allura h3,
+.prose-allura h4,
+.prose-allura h5,
+.prose-allura h6 {
+  font-family: var(--font-headline);
+  color: var(--navy-deep);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.prose-allura h3 {
+  font-size: 1.3rem;
+}
+.prose-allura h4 {
+  font-size: 1.1rem;
+}
+.prose-allura p {
+  margin-bottom: 1.25rem;
+}
+.prose-allura a {
+  color: var(--gold-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.prose-allura a:hover {
+  color: var(--gold);
+}
+.prose-allura ul,
+.prose-allura ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.prose-allura ul {
+  list-style-type: disc;
+}
+.prose-allura ol {
+  list-style-type: decimal;
+}
+.prose-allura li {
+  margin-bottom: 0.5rem;
+}
+.prose-allura blockquote {
+  border-left: 4px solid var(--gold);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: var(--cream);
+  font-style: italic;
+  color: var(--muted-foreground);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.prose-allura img {
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  max-width: 100%;
+  height: auto;
+}
+.prose-allura pre {
+  background: var(--navy-deep);
+  color: var(--primary-foreground);
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.prose-allura code {
+  font-size: 0.9em;
+  background: var(--off-white);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+}
+.prose-allura pre code {
+  background: transparent;
+  padding: 0;
+}
+.prose-allura hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+.prose-allura table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+.prose-allura th,
+.prose-allura td {
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+.prose-allura th {
+  background: var(--off-white);
+  font-weight: 600;
+}
