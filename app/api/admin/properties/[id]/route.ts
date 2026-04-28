@@ -1,14 +1,37 @@
 import { NextResponse } from 'next/server'
-import { getCurrentUser } from '@/lib/command/auth'
+import { cookies } from 'next/headers'
 import { sql } from '@/lib/db'
+import { verifyToken } from '@/lib/command/auth'
 
 interface Props {
   params: Promise<{ id: string }>
 }
 
+async function getAuthUser(request: Request) {
+  const cookieStore = await cookies()
+  let token = cookieStore.get('command_session')?.value
+  
+  if (!token) {
+    const authHeader = request.headers.get('Authorization')
+    if (authHeader?.startsWith('Bearer ')) {
+      token = authHeader.substring(7)
+    }
+  }
+
+  if (!token) return null
+  
+  const payload = await verifyToken(token)
+  if (!payload) return null
+  
+  const [user] = await sql`
+    SELECT id, email, name, role FROM command_users WHERE id = ${payload.userId}
+  `
+  return user || null
+}
+
 export async function GET(request: Request, { params }: Props) {
   try {
-    const user = await getCurrentUser()
+    const user = await getAuthUser(request)
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -58,7 +81,32 @@ export async function GET(request: Request, { params }: Props) {
         `
       : []
 
-    return NextResponse.json({ property, phases, tasks, subtasks })
+    // Attach subtasks to tasks
+    const tasksWithSubtasks = tasks.map((task: any) => ({
+      ...task,
+      subtasks: subtasks.filter((s: any) => s.task_id === task.id),
+    }))
+
+    // Group tasks by phase
+    const tasksByPhase = phases.map((phase: any) => ({
+      ...phase,
+      tasks: tasksWithSubtasks.filter((t: any) => t.phase_id === phase.id),
+    }))
+
+    // Calculate progress
+    const completedTasks = tasks.filter((t: any) => t.status === 'completed').length
+    const totalTasks = tasks.length
+    const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
+
+    return NextResponse.json({ 
+      property: {
+        ...property,
+        phases: tasksByPhase,
+        completedTasks,
+        totalTasks,
+        progress,
+      }
+    })
   } catch (error) {
     console.error('Get property error:', error)
     return NextResponse.json({ error: 'Failed to fetch property' }, { status: 500 })
@@ -67,7 +115,7 @@ export async function GET(request: Request, { params }: Props) {
 
 export async function PATCH(request: Request, { params }: Props) {
   try {
-    const user = await getCurrentUser()
+    const user = await getAuthUser(request)
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -122,7 +170,7 @@ export async function PATCH(request: Request, { params }: Props) {
 
 export async function DELETE(request: Request, { params }: Props) {
   try {
-    const user = await getCurrentUser()
+    const user = await getAuthUser(request)
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }

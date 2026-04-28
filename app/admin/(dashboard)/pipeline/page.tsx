@@ -1,42 +1,66 @@
-import { sql } from "@/lib/db"
+"use client"
+
+import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import Link from "next/link"
 
-async function getPipelineData() {
-  const properties = await sql`
-    SELECT 
-      p.*,
-      ph.name as current_phase_name,
-      ph.color as current_phase_color,
-      ph.phase_order as phase_position,
-      (SELECT COUNT(*) FROM command_tasks t WHERE t.property_id = p.id AND t.status = 'completed') as completed_tasks,
-      (SELECT COUNT(*) FROM command_tasks t WHERE t.property_id = p.id) as total_tasks
-    FROM command_properties p
-    LEFT JOIN command_phases ph ON p.current_phase = ph.phase_order AND ph.property_id = p.id
-    WHERE p.status = 'onboarding'
-    ORDER BY ph.phase_order, p.created_at DESC
-  `
-
-  // Get distinct phase names for column headers (phases are per-property, so get unique names)
-  const phases = await sql`
-    SELECT DISTINCT name, color, phase_order
-    FROM command_phases
-    ORDER BY phase_order
-  `
-
-  return { properties, phases }
+interface Phase {
+  name: string
+  color: string
+  phase_order: number
 }
 
-export default async function PipelinePage() {
-  const { properties, phases } = await getPipelineData()
+interface Property {
+  id: number
+  name: string
+  current_phase_name: string | null
+  completed_tasks: number
+  total_tasks: number
+}
+
+export default function PipelinePage() {
+  const [properties, setProperties] = useState<Property[]>([])
+  const [phases, setPhases] = useState<Phase[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    fetchPipeline()
+  }, [])
+
+  const fetchPipeline = async () => {
+    try {
+      const token = localStorage.getItem('command_session')
+      const res = await fetch("/api/admin/pipeline", {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        credentials: "include",
+      })
+      if (res.ok) {
+        const data = await res.json()
+        setProperties(data.properties || [])
+        setPhases(data.phases || [])
+      }
+    } catch (error) {
+      console.error("Failed to fetch pipeline:", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   // Group properties by current phase
-  const propertiesByPhase = phases.map((phase: any) => ({
+  const propertiesByPhase = phases.map((phase) => ({
     ...phase,
-    properties: properties.filter((p: any) => p.current_phase_name === phase.name),
+    properties: properties.filter((p) => p.current_phase_name === phase.name),
   }))
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-pulse text-slate-500">Loading pipeline...</div>
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-6">
@@ -56,7 +80,7 @@ export default async function PipelinePage() {
         </Card>
       ) : (
         <div className="grid gap-6 lg:grid-cols-4">
-          {propertiesByPhase.map((phase: any) => (
+          {propertiesByPhase.map((phase) => (
             <div key={phase.name} className="space-y-4">
               <div className="flex items-center gap-2">
                 <div
@@ -70,7 +94,7 @@ export default async function PipelinePage() {
               </div>
 
               <div className="space-y-3">
-                {phase.properties.map((property: any) => {
+                {phase.properties.map((property) => {
                   const progress = property.total_tasks > 0
                     ? Math.round((property.completed_tasks / property.total_tasks) * 100)
                     : 0
