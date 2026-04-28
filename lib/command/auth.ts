@@ -1,4 +1,3 @@
-import 'server-only'
 import { cookies } from 'next/headers'
 import { compare, hash } from 'bcryptjs'
 import { SignJWT, jwtVerify } from 'jose'
