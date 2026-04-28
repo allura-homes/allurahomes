@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { verifyCredentials, createToken, setSessionCookie } from '@/lib/command/auth'
+import { verifyCredentials, createToken } from '@/lib/command/auth'
 
 export async function POST(request: Request) {
   try {
@@ -22,9 +22,9 @@ export async function POST(request: Request) {
     }
 
     const token = await createToken(user)
-    await setSessionCookie(token)
 
-    return NextResponse.json({
+    // Create response with user data
+    const response = NextResponse.json({
       user: {
         id: user.id,
         email: user.email,
@@ -32,6 +32,17 @@ export async function POST(request: Request) {
         role: user.role,
       },
     })
+
+    // Set cookie on the response object
+    response.cookies.set('command_session', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: '/',
+    })
+
+    return response
   } catch (error) {
     console.error('Login error:', error)
     return NextResponse.json(
