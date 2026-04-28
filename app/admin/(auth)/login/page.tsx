@@ -25,6 +25,7 @@ export default function LoginPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
+        credentials: "include",
       })
 
       const data = await res.json()
@@ -32,6 +33,11 @@ export default function LoginPage() {
       if (!res.ok) {
         setError(data.error || "Login failed")
         return
+      }
+
+      // Store token in localStorage as backup (for environments with cookie issues)
+      if (data.token) {
+        localStorage.setItem('command_session', data.token)
       }
 
       router.push("/admin")

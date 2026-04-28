@@ -1,95 +1,64 @@
-import { sql } from "@/lib/db"
-import { getCurrentUser } from "@/lib/command/auth"
+"use client"
+
+import { useEffect, useState } from "react"
+import { useUser } from "@/components/command/user-context"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Building2, CheckCircle2, Clock, Users } from "lucide-react"
+import { Building2, CheckCircle2, Clock, Users, Loader2 } from "lucide-react"
 import Link from "next/link"
 
-async function getDashboardStats() {
-  const [properties] = await sql`
-    SELECT 
-      COUNT(*) FILTER (WHERE status = 'onboarding') as onboarding,
-      COUNT(*) FILTER (WHERE status = 'active') as active,
-      COUNT(*) as total
-    FROM command_properties
-  `
-  
-  const [tasks] = await sql`
-    SELECT 
-      COUNT(*) FILTER (WHERE status = 'pending') as pending,
-      COUNT(*) FILTER (WHERE status = 'in_progress') as in_progress,
-      COUNT(*) FILTER (WHERE status = 'completed') as completed,
-      COUNT(*) as total
-    FROM command_tasks
-  `
-  
-  const [leads] = await sql`
-    SELECT COUNT(*) as total FROM command_leads WHERE status = 'new'
-  `
-  
-  return {
-    properties: {
-      onboarding: Number(properties.onboarding) || 0,
-      active: Number(properties.active) || 0,
-      total: Number(properties.total) || 0,
-    },
-    tasks: {
-      pending: Number(tasks.pending) || 0,
-      in_progress: Number(tasks.in_progress) || 0,
-      completed: Number(tasks.completed) || 0,
-      total: Number(tasks.total) || 0,
-    },
-    newLeads: Number(leads.total) || 0,
+interface DashboardData {
+  stats: {
+    properties: { onboarding: number; active: number; total: number }
+    tasks: { pending: number; in_progress: number; completed: number; total: number }
+    newLeads: number
   }
+  myTasks: any[]
+  activity: any[]
 }
 
-async function getRecentActivity() {
-  const activity = await sql`
-    SELECT 
-      a.id,
-      a.action,
-      a.details,
-      a.created_at,
-      u.name as user_name,
-      p.name as property_name
-    FROM command_activity a
-    LEFT JOIN command_users u ON a.user_id = u.id
-    LEFT JOIN command_properties p ON a.property_id = p.id
-    ORDER BY a.created_at DESC
-    LIMIT 10
-  `
-  return activity
-}
+export default function DashboardPage() {
+  const user = useUser()
+  const [data, setData] = useState<DashboardData | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
-async function getMyTasks(userId: number) {
-  const tasks = await sql`
-    SELECT 
-      t.id,
-      t.title,
-      t.status,
-      t.due_date,
-      p.name as property_name,
-      ph.name as phase_name,
-      ph.color as phase_color
-    FROM command_tasks t
-    JOIN command_properties p ON t.property_id = p.id
-    JOIN command_phases ph ON t.phase_id = ph.id
-    WHERE t.assignee_id = ${userId}
-      AND t.status != 'completed'
-    ORDER BY t.due_date ASC NULLS LAST
-    LIMIT 5
-  `
-  return tasks
-}
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        const token = localStorage.getItem('command_session')
+        const res = await fetch('/api/admin/dashboard', {
+          credentials: 'include',
+          headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+        })
+        
+        if (res.ok) {
+          const dashboardData = await res.json()
+          setData(dashboardData)
+        }
+      } catch (error) {
+        console.error('Failed to fetch dashboard:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    
+    fetchDashboard()
+  }, [])
 
-export default async function DashboardPage() {
-  const user = await getCurrentUser()
-  if (!user) return null
-  
-  const [stats, activity, myTasks] = await Promise.all([
-    getDashboardStats(),
-    getRecentActivity(),
-    getMyTasks(user.id),
-  ])
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <Loader2 className="h-8 w-8 animate-spin text-slate-400" />
+      </div>
+    )
+  }
+
+  const stats = data?.stats || {
+    properties: { onboarding: 0, active: 0, total: 0 },
+    tasks: { pending: 0, in_progress: 0, completed: 0, total: 0 },
+    newLeads: 0,
+  }
+  const myTasks = data?.myTasks || []
+  const activity = data?.activity || []
 
   return (
     <div className="space-y-6">
@@ -174,7 +143,7 @@ export default async function DashboardPage() {
                     <div className="flex items-center gap-3">
                       <div
                         className="h-2 w-2 rounded-full"
-                        style={{ backgroundColor: task.phase_color }}
+                        style={{ backgroundColor: task.phase_color || '#94a3b8' }}
                       />
                       <div>
                         <p className="font-medium text-slate-900">{task.title}</p>
