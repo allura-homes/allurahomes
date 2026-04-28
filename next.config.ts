@@ -4,9 +4,6 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   async redirects() {
     return [
       // Legacy blog category slugs → new short slugs (308 = permanent)

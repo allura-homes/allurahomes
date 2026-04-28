@@ -3,13 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
-
-interface User {
-  id: number
-  email: string
-  name: string
-  role: string
-}
+import { UserProvider, type User } from "./user-context"
 
 interface ClientAuthGuardProps {
   children: (user: User) => React.ReactNode
@@ -62,5 +56,5 @@ export function ClientAuthGuard({ children }: ClientAuthGuardProps) {
     return null
   }
 
-  return <>{children(user)}</>
+  return <UserProvider user={user}>{children(user)}</UserProvider>
 }
