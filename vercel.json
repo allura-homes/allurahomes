@@ -1,17 +1,35 @@
 {
   "redirects": [
     {
-      "source": "https://allurahomes.com/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "allurahomes.com"
+        }
+      ],
       "destination": "https://www.allurahomes.com/:path*",
       "statusCode": 301
     },
     {
-      "source": "https://blog.allurahomes.com/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "blog.allurahomes.com"
+        }
+      ],
       "destination": "https://www.allurahomes.com/hosting/:path*",
       "statusCode": 301
     },
     {
-      "source": "https://blog.allurahomes.com",
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "blog.allurahomes.com"
+        }
+      ],
       "destination": "https://www.allurahomes.com/hosting",
       "statusCode": 301
     }
