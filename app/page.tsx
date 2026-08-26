@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: 'Allura Homes | Distinguished by Design - Luxury Vacation Rental Management in California',
   description:
     'California\'s premier white-glove, boutique vacation rental management. Superhost-certified, full-service Airbnb & VRBO property management in San Diego, Temecula, Los Angeles & beyond. 13+ years maximizing rental income.',
-  alternates: { canonical: 'https://allurahomes.com' },
+  alternates: { canonical: 'https://www.allurahomes.com' },
   openGraph: {
     title: 'Allura Homes | Distinguished by Design - Luxury Vacation Rental Management',
     description:
       'California\'s premier white-glove, boutique vacation rental management with 13+ years of Superhost-certified experience.',
-    url: 'https://allurahomes.com',
+    url: 'https://www.allurahomes.com',
   },
   twitter: {
     title: 'Allura Homes | Distinguished by Design',
@@ -77,7 +77,7 @@ export default function HomePage() {
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'Allura Homes',
-              url: 'https://allurahomes.com',
+              url: 'https://www.allurahomes.com',
               logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gold%20Bug%20-%20blue%20background-w5gGFhOU00lG43WErprop28jNDADyc.png',
               description:
                 'California\'s premier white-glove, boutique vacation rental management company with 13+ years of Superhost-certified hospitality excellence.',
@@ -115,7 +115,7 @@ export default function HomePage() {
               '@context': 'https://schema.org',
               '@type': 'WebSite',
               name: 'Allura Homes',
-              url: 'https://allurahomes.com',
+              url: 'https://www.allurahomes.com',
               description: 'California\'s premier white-glove vacation rental management company.',
               publisher: {
                 '@type': 'Organization',
@@ -129,7 +129,7 @@ export default function HomePage() {
               image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gold%20Bug%20-%20blue%20background-w5gGFhOU00lG43WErprop28jNDADyc.png',
               telephone: '+1-858-244-9400',
               email: 'support@allurahomes.com',
-              url: 'https://allurahomes.com',
+              url: 'https://www.allurahomes.com',
               priceRange: '$$',
               address: {
                 '@type': 'PostalAddress',

@@ -30,12 +30,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = await getCategoryBySlug(slug)
   if (!cat) return {}
 
+  const categoryUrl = `https://www.allurahomes.com/${slug}`
+
   return {
     title: cat.name,
     description: cat.description || `Browse ${cat.name} articles from Allura Homes.`,
+    alternates: {
+      canonical: categoryUrl,
+    },
     openGraph: {
       title: `${cat.name} | Allura Homes`,
       description: cat.description,
+      url: categoryUrl,
     },
   }
 }

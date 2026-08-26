@@ -3,7 +3,7 @@ import { getCategories, getPostsByCategory } from '@/lib/wordpress/api'
 import { METRO_AREAS } from '@/lib/metro-areas'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://allurahomes.com'
+  const baseUrl = 'https://www.allurahomes.com'
   const now = new Date()
 
   // Static pages
@@ -95,14 +95,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'weekly',
         priority: 0.8,
       })
-      const { posts } = await getPostsByCategory(cat.slug)
-      for (const post of posts) {
-        blogPages.push({
-          url: `${baseUrl}/${cat.slug}/${post.slug}`,
-          lastModified: new Date(post.modified),
-          changeFrequency: 'monthly',
-          priority: 0.7,
-        })
+      
+      // Fetch ALL posts for this category (not just 12)
+      let page = 1
+      let hasMore = true
+      while (hasMore) {
+        const { posts, pages } = await getPostsByCategory(cat.slug, page, 100)
+        for (const post of posts) {
+          blogPages.push({
+            url: `${baseUrl}/${cat.slug}/${post.slug}`,
+            lastModified: new Date(post.modified),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+          })
+        }
+        hasMore = page < pages
+        page++
       }
     }
   } catch {

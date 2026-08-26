@@ -48,7 +48,7 @@ export default async function MetroAreaPage({ params }: Props) {
             provider: {
               '@type': 'Organization',
               name: 'Allura Homes',
-              url: 'https://allurahomes.com',
+              url: 'https://www.allurahomes.com',
             },
             areaServed: metro.cities.map((c) => ({
               '@type': 'City',

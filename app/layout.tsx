@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   description:
     'California\'s premier white-glove, boutique vacation rental management company. Superhost-certified, full-service property management in San Diego, Temecula, Los Angeles & beyond. 13+ years maximizing rental income for property owners.',
-  metadataBase: new URL('https://allurahomes.com'),
+  metadataBase: new URL('https://www.allurahomes.com'),
   keywords: [
     'vacation rental management',
     'Airbnb management',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     'boutique property management',
     'Allura Homes',
   ],
-  authors: [{ name: 'Allura Homes', url: 'https://allurahomes.com' }],
+  authors: [{ name: 'Allura Homes', url: 'https://www.allurahomes.com' }],
   creator: 'Allura Homes',
   publisher: 'Allura Homes',
   robots: {
@@ -74,16 +74,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: 'https://allurahomes.com',
-  },
   verification: {
     google: 'b8NtDhn1jK2lxxMbNYVuh6aGID9Jt-rIKwqvYGGR2QQ',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://allurahomes.com',
     siteName: 'Allura Homes',
     title: 'Allura Homes | Distinguished by Design - Luxury Vacation Rental Management',
     description:
