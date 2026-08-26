@@ -123,7 +123,7 @@ export const METRO_AREAS: MetroArea[] = [
         'Temecula wine country rentals',
         'San Diego STR management',
       ],
-      canonical: 'https://allurahomes.com/property-management/san-diego-temecula',
+      canonical: 'https://www.allurahomes.com/property-management/san-diego-temecula',
     },
   },
   {
@@ -196,7 +196,7 @@ export const METRO_AREAS: MetroArea[] = [
         'Palm Springs STR management',
         'desert vacation rental manager',
       ],
-      canonical: 'https://allurahomes.com/property-management/coachella-valley',
+      canonical: 'https://www.allurahomes.com/property-management/coachella-valley',
     },
   },
   {
@@ -269,7 +269,7 @@ export const METRO_AREAS: MetroArea[] = [
         'LA short-term rental manager',
         'Hollywood vacation rental management',
       ],
-      canonical: 'https://allurahomes.com/property-management/los-angeles',
+      canonical: 'https://www.allurahomes.com/property-management/los-angeles',
     },
   },
   {
@@ -342,7 +342,7 @@ export const METRO_AREAS: MetroArea[] = [
         'wine country property management',
         'SF short-term rental manager',
       ],
-      canonical: 'https://allurahomes.com/property-management/sf-bay-area',
+      canonical: 'https://www.allurahomes.com/property-management/sf-bay-area',
     },
   },
 ]

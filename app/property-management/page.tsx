@@ -12,12 +12,12 @@ export const metadata: Metadata = {
   title: 'Full-Service Vacation Rental Property Management in California',
   description:
     'Professional Airbnb & VRBO property management in San Diego, Temecula, Los Angeles & across California. Superhost-certified, full-service management that maximizes your short-term rental income. Dynamic pricing, 24/7 guest support, and transparent reporting.',
-  alternates: { canonical: 'https://allurahomes.com/property-management' },
+  alternates: { canonical: 'https://www.allurahomes.com/property-management' },
   keywords: ['property management San Diego', 'Airbnb management Temecula', 'vacation rental manager California', 'VRBO property management', 'short-term rental management'],
   openGraph: {
     title: 'Full-Service Vacation Rental Property Management | Allura Homes',
     description: 'Professional Airbnb & VRBO management in California. Superhost-certified with dynamic pricing and 24/7 guest support.',
-    url: 'https://allurahomes.com/property-management',
+    url: 'https://www.allurahomes.com/property-management',
   },
 }
 

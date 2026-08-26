@@ -6,26 +6,30 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Legacy blog category slugs → new short slugs (308 = permanent)
+      // Legacy blog category slugs → new short slugs (301 = permanent moved)
       {
         source: '/hosting-resources',
         destination: '/hosting',
-        permanent: true,
+        permanent: false,
+        statusCode: 301,
       },
       {
         source: '/hosting-resources/:slug*',
         destination: '/hosting/:slug*',
-        permanent: true,
+        permanent: false,
+        statusCode: 301,
       },
       {
         source: '/shortterm-rental-regulations',
         destination: '/regulations',
-        permanent: true,
+        permanent: false,
+        statusCode: 301,
       },
       {
         source: '/shortterm-rental-regulations/:slug*',
         destination: '/regulations/:slug*',
-        permanent: true,
+        permanent: false,
+        statusCode: 301,
       },
     ]
   },

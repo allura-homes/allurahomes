@@ -29,17 +29,23 @@ export async function generateStaticParams() {
 type Props = { params: Promise<{ category: string; slug: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const { category, slug } = await params
   const post = await getPostBySlug(slug)
   if (!post) return {}
+
+  const postUrl = `https://www.allurahomes.com/${category}/${slug}`
 
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: postUrl,
+    },
     openGraph: {
       title: `${post.title} | Allura Homes`,
       description: post.excerpt,
       type: 'article',
+      url: postUrl,
       publishedTime: post.date,
       modifiedTime: post.modified,
       authors: [post.author.name],
