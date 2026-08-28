@@ -31,6 +31,19 @@ const nextConfig: NextConfig = {
         permanent: false,
         statusCode: 301,
       },
+      // /home redirects to homepage
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+        statusCode: 301,
+      },
+      {
+        source: '/home/',
+        destination: '/',
+        permanent: true,
+        statusCode: 301,
+      },
     ]
   },
   images: {

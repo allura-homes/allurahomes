@@ -4,12 +4,12 @@ import { AboutContent } from './content'
 export const metadata: Metadata = {
   title: 'About Allura Homes - Our Story & Mission',
   description:
-    'Founded in 2013, Allura Homes is California\'s boutique vacation rental management company. Learn about founder Mike Corrales and our 13+ years of Superhost-certified experience managing luxury properties across San Diego, Temecula, and beyond.',
+    'Founded in 2013 in San Diego. Boutique vacation-rental and furnished-monthly management. About 19 homes. 4.9 guest rating in 2025.',
   alternates: { canonical: 'https://www.allurahomes.com/about' },
   keywords: ['Allura Homes about', 'Mike Corrales', 'vacation rental management company', 'San Diego property manager', 'Superhost certified'],
   openGraph: {
     title: 'About Allura Homes | Our Story & Mission',
-    description: 'Founded in 2013 with 13+ years of Superhost-certified experience. Meet the team behind California\'s most trusted boutique rental management company.',
+    description: 'Founded in 2013 in San Diego. Boutique vacation-rental and furnished-monthly management. About 19 homes. 4.9 guest rating in 2025.',
     url: 'https://www.allurahomes.com/about',
   },
 }
