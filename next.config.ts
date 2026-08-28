@@ -6,6 +6,32 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Fix typo redirects (specific paths must come before wildcards)
+      {
+        source: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-sshort-term-rental-in-oceanside-california',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-oceanside-california',
+        permanent: true,
+      },
+      {
+        source: '/shortterm-rental-regulations/comprehensive-guide-to-operating-an-airbnb-or-sshort-term-rental-in-oceanside-california',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-oceanside-california',
+        permanent: true,
+      },
+      {
+        source: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-caliornia',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-california',
+        permanent: true,
+      },
+      {
+        source: '/shortterm-rental-regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-caliornia',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-california',
+        permanent: true,
+      },
+      {
+        source: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-encinitas-california-gwybz',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-encinitas-california',
+        permanent: true,
+      },
       // Legacy blog category slugs → new short slugs (301 = permanent moved)
       {
         source: '/hosting-resources',
