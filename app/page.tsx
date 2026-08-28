@@ -10,19 +10,19 @@ import { FeaturedProperties } from '@/components/sections/featured-properties'
 import { CTABand } from '@/components/sections/cta-band'
 
 export const metadata: Metadata = {
-  title: 'Allura Homes | Distinguished by Design - Luxury Vacation Rental Management in California',
+  title: 'Boutique California Vacation Rentals | Allura Homes',
   description:
-    'California\'s premier white-glove, boutique vacation rental management. Superhost-certified, full-service Airbnb & VRBO property management in San Diego, Temecula, Los Angeles & beyond. 13+ years maximizing rental income.',
+    'Allura Homes is boutique California vacation-rental and furnished-monthly management, San Diego, since 2013. About 19 homes. 4.9 guest rating in 2025.',
   alternates: { canonical: 'https://www.allurahomes.com' },
   openGraph: {
-    title: 'Allura Homes | Distinguished by Design - Luxury Vacation Rental Management',
+    title: 'Boutique California Vacation Rentals | Allura Homes',
     description:
-      'California\'s premier white-glove, boutique vacation rental management with 13+ years of Superhost-certified experience.',
+      'Allura Homes is boutique California vacation-rental and furnished-monthly management, San Diego, since 2013. About 19 homes. 4.9 guest rating in 2025.',
     url: 'https://www.allurahomes.com',
   },
   twitter: {
-    title: 'Allura Homes | Distinguished by Design',
-    description: 'California\'s premier white-glove vacation rental management. Superhost-certified with 13+ years of experience.',
+    title: 'Boutique California Vacation Rentals | Allura Homes',
+    description: 'Allura Homes is boutique California vacation-rental and furnished-monthly management, San Diego, since 2013. About 19 homes. 4.9 guest rating in 2025.',
   },
 }
 
@@ -34,8 +34,8 @@ export default function HomePage() {
         video="/videos/hero-home.mp4"
         image="/images/hero-home.jpg"
         accent="Distinguished by Design"
-        title="Experience Worry-Free 5-Star Rental Management"
-        subtitle="Choose California's premier white-glove, boutique property management partner. The Allura partnership experience is built for owners who care about revenue, protection, and peace of mind."
+        title="Distinguished by Design"
+        subtitle="Choose California's boutique property management partner. The Allura partnership experience is built for owners who care about revenue, protection, and peace of mind."
         primaryCta={{ label: 'Book a Call', href: BRAND.calendarUrl }}
         secondaryCta={{ label: 'Browse Homes', href: BRAND.bookingUrl }}
         fullHeight

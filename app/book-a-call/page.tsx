@@ -4,12 +4,12 @@ import { BookACallContent } from './content'
 export const metadata: Metadata = {
   title: 'Book a Free Consultation Call - Schedule with Allura Homes',
   description:
-    'Schedule a free, no-obligation consultation with Allura Homes. Discuss your vacation rental property goals and learn how our boutique management services can maximize your revenue in San Diego, Temecula, and across California.',
+    'Talk with Allura about a California vacation rental or 30-night home. Boutique management, San Diego, since 2013.',
   alternates: { canonical: 'https://www.allurahomes.com/book-a-call' },
   keywords: ['book a call Allura Homes', 'free property management consultation', 'vacation rental consultation', 'schedule rental management meeting'],
   openGraph: {
     title: 'Book a Free Consultation | Allura Homes',
-    description: 'Schedule a free, no-obligation call to discuss your vacation rental property.',
+    description: 'Talk with Allura about a California vacation rental or 30-night home. Boutique management, San Diego, since 2013.',
     url: 'https://www.allurahomes.com/book-a-call',
   },
 }

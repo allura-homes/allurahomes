@@ -112,7 +112,7 @@ export const METRO_AREAS: MetroArea[] = [
     seo: {
       title: 'San Diego & Temecula Vacation Rental Property Management',
       description:
-        'Professional Airbnb & VRBO property management in San Diego, La Jolla, Del Mar, Encinitas, Temecula, and across Southern California. Superhost-certified with 13+ years of local expertise. Maximize your rental income with Allura Homes.',
+        'Boutique STR and 30-night management in San Diego and Temecula Wine Country. About 19 homes. 4.9 guest rating in 2025.',
       keywords: [
         'San Diego property management',
         'Temecula vacation rental management',
@@ -186,7 +186,7 @@ export const METRO_AREAS: MetroArea[] = [
     seo: {
       title: 'Coachella Valley Vacation Rental Property Management - Palm Springs, Palm Desert',
       description:
-        'Professional Airbnb & VRBO management in Palm Springs, Palm Desert, Cathedral City, and the Coachella Valley. Festival revenue optimization, snowbird season strategy, and full-service property management by Allura Homes.',
+        'Furnished-monthly and 30-night context for Coachella Valley. Allura\'s listed STR homes are not a Palm Springs roster.',
       keywords: [
         'Palm Springs property management',
         'Coachella Valley rental management',
@@ -259,7 +259,7 @@ export const METRO_AREAS: MetroArea[] = [
     seo: {
       title: 'Los Angeles Vacation Rental Property Management - Hollywood Hills, Woodland Hills',
       description:
-        'Professional Airbnb & VRBO property management in Los Angeles, Hollywood Hills, and Woodland Hills. Expert navigation of LA\'s Home Sharing Ordinance, premium guest experiences, and revenue optimization by Allura Homes.',
+        'Los Angeles is not a listed Allura STR market. Furnished-monthly / 30-night only where that is the honest fit.',
       keywords: [
         'Los Angeles property management',
         'Hollywood Hills rental management',
@@ -332,7 +332,7 @@ export const METRO_AREAS: MetroArea[] = [
     seo: {
       title: 'SF Bay Area & Wine Country Vacation Rental Property Management - Napa, Oakland',
       description:
-        'Professional Airbnb & VRBO property management in San Francisco, Oakland, Napa, and Sonoma. Tech-driven revenue optimization, wine country expertise, and full-service management by Allura Homes.',
+        'Oakland and Napa (30-night / furnished monthly) with Allura Homes. Boutique California management since 2013.',
       keywords: [
         'San Francisco property management',
         'Oakland Airbnb management',

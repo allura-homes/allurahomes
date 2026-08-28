@@ -207,7 +207,7 @@ export function ArticleContent({
         headline="Need Help Managing Your Rental?"
         subtitle="Our team has 13+ years of experience maximizing revenue for California vacation rental owners."
         primaryCta={{ label: 'Book a Call', href: BRAND.calendarUrl }}
-        secondaryCta={{ label: 'Learn More', href: '/property-management' }}
+        secondaryCta={{ label: 'See vacation-rental management', href: '/property-management' }}
         variant="gold"
       />
     </>
