@@ -6,7 +6,7 @@ export const BRAND = {
   phone: '(619) 333-4553',
   email: 'support@allurahomes.com',
   address: 'San Diego, CA',
-  bookingUrl: '/stays',
+  bookingUrl: 'https://book.allurahomes.com',
   calendarUrl: '/book-a-call',
   social: {
     instagram: 'https://www.instagram.com/allurahomes',
@@ -51,7 +51,7 @@ export const NAV_ITEMS = [
   { label: 'Contact', href: '/contact' },
   {
     label: 'Browse Homes',
-    href: '/stays',
+    href: 'https://book.allurahomes.com',
   },
 ] as const
 

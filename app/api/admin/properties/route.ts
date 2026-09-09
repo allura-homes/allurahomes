@@ -1,11 +1,34 @@
 import { NextResponse } from 'next/server'
-import { getCurrentUser } from '@/lib/command/auth'
+import { cookies } from 'next/headers'
 import { sql } from '@/lib/db'
+import { verifyToken } from '@/lib/command/auth'
 import { getDefaultPhases } from '@/lib/command/onboarding-template'
 
-export async function GET() {
+async function getAuthUser(request: Request) {
+  const cookieStore = await cookies()
+  let token = cookieStore.get('command_session')?.value
+  
+  if (!token) {
+    const authHeader = request.headers.get('Authorization')
+    if (authHeader?.startsWith('Bearer ')) {
+      token = authHeader.substring(7)
+    }
+  }
+
+  if (!token) return null
+  
+  const payload = await verifyToken(token)
+  if (!payload) return null
+  
+  const [user] = await sql`
+    SELECT id, email, name, role FROM command_users WHERE id = ${payload.userId}
+  `
+  return user || null
+}
+
+export async function GET(request: Request) {
   try {
-    const user = await getCurrentUser()
+    const user = await getAuthUser(request)
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -31,7 +54,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const user = await getCurrentUser()
+    const user = await getAuthUser(request)
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -55,7 +78,6 @@ export async function POST(request: Request) {
 
     // Create default phases and tasks from template
     const template = getDefaultPhases()
-    let firstPhaseId: number | null = null
 
     for (const phaseTemplate of template) {
       const [phase] = await sql`
@@ -63,10 +85,6 @@ export async function POST(request: Request) {
         VALUES (${property.id}, ${phaseTemplate.name}, ${phaseTemplate.color}, ${phaseTemplate.phase_order})
         RETURNING id
       `
-
-      if (firstPhaseId === null) {
-        firstPhaseId = phase.id
-      }
 
       for (const taskTemplate of phaseTemplate.tasks) {
         const [task] = await sql`

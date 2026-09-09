@@ -1,5 +1,7 @@
-import { sql } from "@/lib/db"
-import { notFound } from "next/navigation"
+"use client"
+
+import { useEffect, useState } from "react"
+import { useParams, notFound } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
@@ -8,86 +10,58 @@ import { ArrowLeft, MapPin, Bed, Bath, User, Mail, Phone } from "lucide-react"
 import Link from "next/link"
 import { TaskList } from "@/components/command/task-list"
 
-interface Props {
-  params: Promise<{ id: string }>
+interface Property {
+  id: number
+  name: string
+  address: string
+  status: string
+  bedrooms: number | null
+  bathrooms: number | null
+  owner_name: string | null
+  owner_email: string | null
+  owner_phone: string | null
+  current_phase_name: string | null
+  current_phase_color: string | null
+  created_at: string
+  phases: any[]
+  completedTasks: number
+  totalTasks: number
+  progress: number
 }
 
-async function getProperty(id: string) {
-  const [property] = await sql`
-    SELECT 
-      p.*,
-      ph.name as current_phase_name,
-      ph.color as current_phase_color
-    FROM command_properties p
-    LEFT JOIN command_phases ph ON p.current_phase = ph.phase_order AND ph.property_id = p.id
-    WHERE p.id = ${parseInt(id)}
-  `
-  
-  if (!property) return null
+export default function PropertyDetailPage() {
+  const params = useParams()
+  const id = params.id as string
+  const [property, setProperty] = useState<Property | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [notFoundError, setNotFoundError] = useState(false)
 
-  // Get phases
-  const phases = await sql`
-    SELECT * FROM command_phases 
-    WHERE property_id = ${id}
-    ORDER BY phase_order
-  `
+  useEffect(() => {
+    if (id) {
+      fetchProperty()
+    }
+  }, [id])
 
-  // Get tasks with subtasks
-  const tasks = await sql`
-    SELECT 
-      t.*,
-      ph.name as phase_name,
-      ph.color as phase_color,
-      u.name as assigned_to_name
-    FROM command_tasks t
-    JOIN command_phases ph ON t.phase_id = ph.id
-    LEFT JOIN command_users u ON t.assignee_id = u.id
-    WHERE t.property_id = ${id}
-    ORDER BY ph.phase_order, t.task_order
-  `
-
-  // Get subtasks for all tasks
-  const taskIds = tasks.map((t: any) => t.id)
-  const subtasks = taskIds.length > 0 
-    ? await sql`
-        SELECT * FROM command_subtasks 
-        WHERE task_id = ANY(${taskIds})
-        ORDER BY subtask_order
-      `
-    : []
-
-  // Attach subtasks to tasks
-  const tasksWithSubtasks = tasks.map((task: any) => ({
-    ...task,
-    subtasks: subtasks.filter((s: any) => s.task_id === task.id),
-  }))
-
-  // Group tasks by phase
-  const tasksByPhase = phases.map((phase: any) => ({
-    ...phase,
-    tasks: tasksWithSubtasks.filter((t: any) => t.phase_id === phase.id),
-  }))
-
-  // Calculate progress
-  const completedTasks = tasks.filter((t: any) => t.status === 'completed').length
-  const totalTasks = tasks.length
-  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
-
-  return {
-    ...property,
-    phases: tasksByPhase,
-    completedTasks,
-    totalTasks,
-    progress,
-  }
-}
-
-export default async function PropertyDetailPage({ params }: Props) {
-  const { id } = await params
-  const property = await getProperty(id)
-
-  if (!property) {
-    notFound()
+  const fetchProperty = async () => {
+    try {
+      const token = localStorage.getItem('command_session')
+      const res = await fetch(`/api/admin/properties/${id}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        credentials: "include",
+      })
+      if (res.status === 404) {
+        setNotFoundError(true)
+        return
+      }
+      if (res.ok) {
+        const data = await res.json()
+        setProperty(data.property)
+      }
+    } catch (error) {
+      console.error("Failed to fetch property:", error)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const getStatusBadge = (status: string) => {
@@ -101,6 +75,26 @@ export default async function PropertyDetailPage({ params }: Props) {
       default:
         return <Badge variant="secondary">{status}</Badge>
     }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-pulse text-slate-500">Loading property...</div>
+      </div>
+    )
+  }
+
+  if (notFoundError || !property) {
+    return (
+      <div className="flex flex-col items-center justify-center py-12">
+        <h1 className="text-2xl font-bold text-slate-900">Property Not Found</h1>
+        <p className="mt-2 text-slate-600">The property you&apos;re looking for doesn&apos;t exist.</p>
+        <Link href="/admin/properties" className="mt-4">
+          <Button>Back to Properties</Button>
+        </Link>
+      </div>
+    )
   }
 
   return (

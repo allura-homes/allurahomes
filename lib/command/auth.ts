@@ -108,16 +108,20 @@ export async function getCurrentUser(): Promise<User | null> {
 // Verify credentials and return user
 export async function verifyCredentials(email: string, password: string): Promise<User | null> {
   try {
+    console.log('[v0] verifyCredentials - querying database for:', email)
     const users = await sql`
       SELECT id, email, name, role, password_hash 
       FROM command_users 
       WHERE email = ${email}
     `
+    console.log('[v0] verifyCredentials - users found:', users.length)
     
     if (users.length === 0) return null
     
     const user = users[0]
+    console.log('[v0] verifyCredentials - checking password...')
     const isValid = await verifyPassword(password, user.password_hash)
+    console.log('[v0] verifyCredentials - password valid:', isValid)
     
     if (!isValid) return null
     
@@ -127,7 +131,8 @@ export async function verifyCredentials(email: string, password: string): Promis
       name: user.name,
       role: user.role,
     }
-  } catch {
+  } catch (error) {
+    console.error('[v0] verifyCredentials error:', error)
     return null
   }
 }

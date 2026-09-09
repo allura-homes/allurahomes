@@ -1,45 +1,29 @@
-import { sql } from "@/lib/db"
-import { getCurrentUser } from "@/lib/command/auth"
+"use client"
+
+import { useEffect, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import Link from "next/link"
 
-async function getMyTasks(userId: number) {
-  const tasks = await sql`
-    SELECT 
-      t.*,
-      p.name as property_name,
-      p.address as property_address,
-      ph.name as phase_name,
-      ph.color as phase_color
-    FROM command_tasks t
-    JOIN command_properties p ON t.property_id = p.id
-    JOIN command_phases ph ON t.phase_id = ph.id
-    WHERE t.assignee_id = ${userId}
-    ORDER BY 
-      CASE t.status 
-        WHEN 'in_progress' THEN 1 
-        WHEN 'pending' THEN 2 
-        WHEN 'completed' THEN 3 
-      END,
-      t.due_date ASC NULLS LAST
-  `
+interface Subtask {
+  id: number
+  title: string
+  completed: boolean
+}
 
-  // Get subtasks
-  const taskIds = tasks.map((t: any) => t.id)
-  const subtasks = taskIds.length > 0 
-    ? await sql`
-        SELECT * FROM command_subtasks 
-        WHERE task_id = ANY(${taskIds})
-        ORDER BY subtask_order
-      `
-    : []
-
-  return tasks.map((task: any) => ({
-    ...task,
-    subtasks: subtasks.filter((s: any) => s.task_id === task.id),
-  }))
+interface Task {
+  id: number
+  title: string
+  description: string | null
+  status: string
+  due_date: string | null
+  property_id: number
+  property_name: string
+  property_address: string
+  phase_name: string
+  phase_color: string
+  subtasks: Subtask[]
 }
 
 function getStatusBadge(status: string) {
@@ -55,14 +39,42 @@ function getStatusBadge(status: string) {
   }
 }
 
-export default async function TasksPage() {
-  const user = await getCurrentUser()
-  if (!user) return null
+export default function TasksPage() {
+  const [tasks, setTasks] = useState<Task[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  const tasks = await getMyTasks(user.id)
-  
-  const pendingTasks = tasks.filter((t: any) => t.status !== 'completed')
-  const completedTasks = tasks.filter((t: any) => t.status === 'completed')
+  useEffect(() => {
+    fetchTasks()
+  }, [])
+
+  const fetchTasks = async () => {
+    try {
+      const token = localStorage.getItem('command_session')
+      const res = await fetch("/api/admin/tasks", {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        credentials: "include",
+      })
+      if (res.ok) {
+        const data = await res.json()
+        setTasks(data.tasks || [])
+      }
+    } catch (error) {
+      console.error("Failed to fetch tasks:", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const pendingTasks = tasks.filter((t) => t.status !== 'completed')
+  const completedTasks = tasks.filter((t) => t.status === 'completed')
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-pulse text-slate-500">Loading tasks...</div>
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-6">
@@ -82,7 +94,7 @@ export default async function TasksPage() {
             <p className="text-sm text-slate-500">No active tasks. Great job!</p>
           ) : (
             <div className="space-y-4">
-              {pendingTasks.map((task: any) => (
+              {pendingTasks.map((task) => (
                 <div key={task.id} className="rounded-lg border p-4">
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-3">
@@ -118,7 +130,7 @@ export default async function TasksPage() {
                   {/* Subtasks */}
                   {task.subtasks.length > 0 && (
                     <div className="mt-3 ml-6 space-y-2">
-                      {task.subtasks.map((subtask: any) => (
+                      {task.subtasks.map((subtask) => (
                         <div key={subtask.id} className="flex items-center gap-2">
                           <Checkbox 
                             checked={subtask.completed} 
@@ -148,7 +160,7 @@ export default async function TasksPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {completedTasks.slice(0, 10).map((task: any) => (
+              {completedTasks.slice(0, 10).map((task) => (
                 <div key={task.id} className="flex items-center justify-between py-2">
                   <div className="flex items-center gap-3">
                     <div
