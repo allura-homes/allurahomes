@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { SectionHeading } from '@/components/section-heading'
 import { PropertyCard } from '@/components/sections/property-card'
-import { FEATURED_PROPERTIES } from '@/lib/constants'
+import { BRAND, FEATURED_PROPERTIES } from '@/lib/constants'
 
 export function FeaturedProperties() {
   return (
@@ -30,7 +30,9 @@ export function FeaturedProperties() {
         <AnimateOnScroll delay={0.4}>
           <div className="mt-12 text-center">
             <Link
-              href="/stays"
+              href={BRAND.bookingUrl}
+              target="_blank"
+              rel="noreferrer"
               className="group inline-flex items-center gap-2 font-headline text-sm font-semibold uppercase tracking-widest text-navy-deep transition-colors hover:text-gold-dark"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
