@@ -17,10 +17,10 @@ export function SiteWrapper({ children }: { children: React.ReactNode }) {
   
   return (
     <>
-      <Navbar />
+      <Navbar primaryCta={pathname === '/property-management/switch-property-managers-san-diego' ? { label: 'Get My Free Switch Analysis', href: '#analysis' } : undefined} />
       <main>{children}</main>
-      <Footer />
-      <MobileCTABar />
+      <Footer minimal={pathname === '/property-management/switch-property-managers-san-diego'} />
+      {pathname !== '/property-management/switch-property-managers-san-diego' && <MobileCTABar />}
     </>
   )
 }

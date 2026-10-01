@@ -129,7 +129,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${oswald.variable} ${montserrat.variable} ${rockSalt.variable} ${playfair.variable}`}>
+    <html lang="en" className={`bg-background ${oswald.variable} ${montserrat.variable} ${rockSalt.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}

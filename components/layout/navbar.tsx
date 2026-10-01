@@ -9,7 +9,7 @@ import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
 import { BRAND, NAV_ITEMS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
-export function Navbar() {
+export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: string } }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
@@ -54,7 +54,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden items-center gap-1 lg:flex">
+          <div className={cn('hidden items-center gap-1', primaryCta ? 'xl:flex' : 'lg:flex')}>
             {NAV_ITEMS.map((item) => {
               const hasChildren = 'children' in item && item.children
               const isExternal = 'external' in item && item.external
@@ -127,20 +127,20 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex">
+          <div className={cn('hidden shrink-0', primaryCta ? 'xl:flex' : 'lg:flex')}>
             <Link
-              href={BRAND.calendarUrl}
+              href={primaryCta?.href ?? BRAND.calendarUrl}
               className="btn-gold inline-flex h-10 items-center rounded-md px-6 font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02]"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Book a Call
+              {primaryCta?.label ?? 'Book a Call'}
             </Link>
           </div>
 
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex size-10 items-center justify-center rounded-md text-primary-foreground lg:hidden"
+            className={cn('flex size-10 items-center justify-center rounded-md text-primary-foreground', primaryCta ? 'xl:hidden' : 'lg:hidden')}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileOpen ? <X className="size-6" /> : <Menu className="size-6" />}
@@ -156,7 +156,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-navy-deep/98 pt-20 lg:hidden"
+            className={cn('fixed inset-0 z-40 bg-navy-deep/98 pt-20', primaryCta ? 'xl:hidden' : 'lg:hidden')}
           >
             <nav className="flex flex-col gap-2 px-6 py-8">
               {NAV_ITEMS.map((item, i) => {
@@ -235,12 +235,18 @@ export function Navbar() {
                 className="mt-6 border-t border-gold/20 pt-6"
               >
                 <Link
-                  href={BRAND.calendarUrl}
+                  href={primaryCta?.href ?? BRAND.calendarUrl}
                   className="btn-gold flex h-12 w-full items-center justify-center rounded-md font-headline text-sm font-semibold uppercase tracking-widest transition-all"
                   style={{ fontFamily: 'var(--font-headline)' }}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(event) => {
+                    if (primaryCta?.href.startsWith('#')) {
+                      event.preventDefault()
+                      document.getElementById(primaryCta.href.slice(1))?.scrollIntoView()
+                    }
+                    setMobileOpen(false)
+                  }}
                 >
-                  Book a Call
+                  {primaryCta?.label ?? 'Book a Call'}
                 </Link>
               </motion.div>
             </nav>

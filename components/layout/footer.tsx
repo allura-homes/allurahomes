@@ -57,7 +57,18 @@ const footerColumns = [
 
 const CURRENT_YEAR = new Date().getFullYear()
 
-export function Footer() {
+export function Footer({ minimal = false }: { minimal?: boolean }) {
+  if (minimal) {
+    return (
+      <footer className="border-t border-gold/20 bg-navy-deep px-6 py-10 text-primary-foreground">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 text-center">
+          <p className="font-display text-xl tracking-widest text-gold">ALLURA HOMES</p>
+          <p className="text-sm text-primary-foreground/70">© {CURRENT_YEAR} Allura Homes</p>
+        </div>
+      </footer>
+    )
+  }
+
   return (
     <footer className="bg-navy-deep text-primary-foreground">
       {/* Main Footer */}
