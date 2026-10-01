@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE } from '@/lib/seo'
 import { BookACallContent } from './content'
 
 export const metadata: Metadata = {
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.allurahomes.com/book-a-call' },
   keywords: ['book a call Allura Homes', 'free property management consultation', 'vacation rental consultation', 'schedule rental management meeting'],
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Book a Free Consultation | Allura Homes',
     description: 'Talk with Allura about a California vacation rental or 30-night home. Boutique management, San Diego, since 2013.',
     url: 'https://www.allurahomes.com/book-a-call',

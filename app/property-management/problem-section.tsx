@@ -27,7 +27,7 @@ const painPoints = [
     icon: ShieldAlert,
     title: 'Compliance Confusion',
     description:
-      'STR permits, TOT taxes, HOA rules -- your manager does not track any of it, putting your investment at risk.',
+      'STR permits, TOT taxes, HOA rules, your manager does not track any of it, putting your investment at risk.',
   },
   {
     icon: Users,

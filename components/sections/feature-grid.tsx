@@ -22,7 +22,7 @@ export function FeatureGrid() {
           <SectionHeading
             accent="The Allura Advantage"
             title="Why Owners Choose Us"
-            subtitle="A small team, under 20 homes, and a real-time owner portal. Every home gets the attention we give our own."
+            subtitle="Less than 20 homes managed like they are our own. A small team and a real-time owner portal keep you connected to your home."
           />
         </AnimateOnScroll>
 

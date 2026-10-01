@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE, metaDescription } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import { getMetroArea, getAllMetroSlugs } from '@/lib/metro-areas'
 import { MetroAreaContent } from './content'
@@ -16,17 +17,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: metro.seo.title,
-    description: metro.seo.description,
+    description: metaDescription(metro.seo.description),
     keywords: metro.seo.keywords,
     alternates: { canonical: metro.seo.canonical },
     openGraph: {
+      images: [SHARE_IMAGE],
       title: `${metro.seo.title} | Allura Homes`,
-      description: metro.seo.description,
+      description: metaDescription(metro.seo.description),
       url: metro.seo.canonical,
     },
     twitter: {
       title: `${metro.name} Property Management | Allura Homes`,
-      description: metro.seo.description,
+      description: metaDescription(metro.seo.description),
     },
   }
 }
@@ -54,7 +56,7 @@ export default async function MetroAreaPage({ params }: Props) {
               '@type': 'City',
               name: c.name,
             })),
-            description: metro.seo.description,
+            description: metaDescription(metro.seo.description),
             url: metro.seo.canonical,
           }),
         }}

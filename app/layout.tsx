@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: '%s | Allura Homes',
   },
   description:
-    'California\'s premier white-glove, boutique vacation rental management company. Superhost-certified, full-service property management in San Diego, Temecula, Los Angeles & beyond. 13+ years improving rental income for property owners.',
+    'Boutique California vacation rental management since 2013. Full-service care for owners in San Diego, Temecula, Los Angeles and beyond.',
   metadataBase: new URL('https://www.allurahomes.com'),
   keywords: [
     'vacation rental management',

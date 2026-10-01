@@ -31,7 +31,7 @@ const values = [
     icon: Wrench,
     title: 'Operationally Deep',
     description:
-      'From professional photography to preventative maintenance, guest experience to deep cleaning -- we manage the full operation with precision.',
+      'From professional photography to preventative maintenance, guest experience to deep cleaning, we manage the full operation with precision.',
   },
 ]
 
@@ -60,7 +60,7 @@ export function AboutContent() {
               </p>
               <p className="mt-4 text-lg leading-relaxed text-primary-foreground/70">
                 We built Allura to be the management company we wished existed when we were property
-                owners ourselves -- one that treats every home as if it were our own.
+                owners ourselves, one that treats every home as if it were our own.
               </p>
             </AnimateOnScroll>
 
@@ -90,7 +90,7 @@ export function AboutContent() {
               Our Mission
             </span>
             <blockquote className="text-2xl leading-relaxed text-navy-deep md:text-3xl">
-              &ldquo;To set the standard for what boutique vacation rental management looks like --
+              &ldquo;To set the standard for what boutique vacation rental management looks like,
               where every homeowner feels valued, every guest feels welcomed, and every property
               performs at its peak.&rdquo;
             </blockquote>

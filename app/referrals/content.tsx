@@ -22,7 +22,7 @@ const whyAllura = [
     icon: Globe,
     title: "We're Hyper-Local",
     description:
-      'We live and work in your neighborhoods -- on-the-ground 24/7.',
+      'We live and work in your neighborhoods, on-the-ground 24/7.',
   },
   {
     icon: TrendingUp,
@@ -34,7 +34,7 @@ const whyAllura = [
     icon: Users,
     title: "We're Boutique, Not Bulky",
     description:
-      "You'll get the personal service national companies can't match. Every home, every owner -- never just a number.",
+      "You'll get the personal service national companies can't match. Every home, every owner, never just a number.",
   },
   {
     icon: Globe,
@@ -46,7 +46,7 @@ const whyAllura = [
     icon: Shield,
     title: 'We Deliver Peace of Mind',
     description:
-      'From guest support to owner care, every detail is handled with precision -- 24/7.',
+      'From guest support to owner care, every detail is handled with precision, 24/7.',
   },
 ]
 
@@ -125,7 +125,7 @@ export function ReferralsContent() {
             className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/70"
           >
             Turn your connections into commissions. When you introduce a homeowner who
-            joins Allura Homes, everyone wins -- they get white-glove management and higher
+            joins Allura Homes, everyone wins, they get white-glove management and higher
             returns, and you earn up to $3,000 in referral rewards.
           </motion.p>
 

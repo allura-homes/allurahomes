@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE, metaDescription } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getPostsByCategory, getCategories } from '@/lib/wordpress/api'
 import { ArticleContent } from './content'
@@ -37,28 +38,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: post.title,
-    description: post.excerpt,
+    description: metaDescription(post.excerpt),
     alternates: {
       canonical: postUrl,
     },
     openGraph: {
       title: `${post.title} | Allura Homes`,
-      description: post.excerpt,
+      description: metaDescription(post.excerpt),
       type: 'article',
       url: postUrl,
       publishedTime: post.date,
       modifiedTime: post.modified,
       authors: [post.author.name],
-      images: post.featuredImage
-        ? [
-            {
-              url: post.featuredImage.url,
-              width: post.featuredImage.width,
-              height: post.featuredImage.height,
-              alt: post.featuredImage.alt,
-            },
-          ]
-        : undefined,
+      images: [SHARE_IMAGE],
     },
   }
 }

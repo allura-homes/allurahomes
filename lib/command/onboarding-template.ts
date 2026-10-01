@@ -114,7 +114,7 @@ export const onboardingTemplate: PhaseTemplate[] = [
         task_order: 1,
         subtasks: [
           { title: 'Publish to Airbnb', subtask_order: 0 },
-          { title: 'Publish to VRBO', subtask_order: 1 },
+          { title: 'Publish to Vrbo', subtask_order: 1 },
           { title: 'Sync calendars', subtask_order: 2 },
         ],
       },

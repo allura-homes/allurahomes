@@ -52,7 +52,7 @@ export const METRO_AREAS: MetroArea[] = [
       heading: 'Why San Diego & Temecula?',
       paragraphs: [
         'San Diego County is one of the strongest short-term rental markets in the nation, driven by year-round tourism, world-class beaches, a thriving culinary scene, and major events from Comic-Con to the US Open. Temecula Wine Country adds a unique dimension with its boutique wineries, hot-air balloon festivals, and growing popularity as a high-end getaway destination.',
-        'Allura Homes was born in San Diego. With 13+ years operating in these markets, we understand the hyper-local dynamics that drive revenue -- from seasonal pricing swings to neighborhood-level regulation nuances. Our relationships with local cleaners, maintenance crews, and hospitality vendors are unmatched.',
+        'Allura Homes was born in San Diego. With 13+ years operating in these markets, we understand the hyper-local dynamics that drive revenue, from seasonal pricing swings to neighborhood-level regulation nuances. Our relationships with local cleaners, maintenance crews, and hospitality vendors are unmatched.',
       ],
     },
     cities: [
@@ -77,7 +77,7 @@ export const METRO_AREAS: MetroArea[] = [
       {
         title: 'Year-Round Demand',
         description:
-          'San Diego enjoys 266 sunny days per year, meaning consistent booking demand across all four seasons -- no dead months.',
+          'San Diego enjoys 266 sunny days per year, meaning consistent booking demand across all four seasons, no dead months.',
         icon: 'Sun',
       },
       {
@@ -105,14 +105,14 @@ export const METRO_AREAS: MetroArea[] = [
         'City of San Diego requires a Short-Term Residential Occupancy (STRO) license for all rentals under 30 days.',
         'San Diego caps non-owner-occupied whole-home STR licenses, making existing permits increasingly valuable.',
         'Transient Occupancy Tax (TOT) of 10.5% applies in San Diego; rates vary by jurisdiction in Riverside County.',
-        'Temecula and surrounding Riverside County cities have evolving STR ordinances -- Allura monitors all updates proactively.',
+        'Temecula and surrounding Riverside County cities have evolving STR ordinances, Allura monitors all updates proactively.',
         'HOA restrictions vary widely; we review CC&Rs as part of our onboarding compliance check.',
       ],
     },
     seo: {
       title: 'San Diego & Temecula Vacation Rental Property Management',
       description:
-        'Boutique STR and 30-night management in San Diego and Temecula Wine Country. About 19 homes. 4.9 guest rating in 2025.',
+        'Boutique STR and 30-night management in San Diego and Temecula Wine Country. Less than 20 homes under management. 4.9 star rating in 2025.',
       keywords: [
         'San Diego property management',
         'Temecula vacation rental management',
@@ -138,7 +138,7 @@ export const METRO_AREAS: MetroArea[] = [
       heading: 'Why the Coachella Valley?',
       paragraphs: [
         'The Coachella Valley is a powerhouse vacation rental market, fueled by Coachella and Stagecoach festival season, the BNP Paribas Open, PGA golf tournaments, and a snowbird season that runs from October through April. Properties here can generate a significant portion of annual revenue in just a few peak weekends.',
-        'Allura understands the unique rhythm of desert markets -- dramatic seasonal swings, extreme heat management protocols, pool and spa maintenance requirements, and the city-by-city regulatory patchwork. Our dynamic pricing captures every dollar during peak events while maintaining strong occupancy in shoulder seasons.',
+        'Allura understands the unique rhythm of desert markets, dramatic seasonal swings, extreme heat management protocols, pool and spa maintenance requirements, and the city-by-city regulatory patchwork. Our dynamic pricing captures every dollar during peak events while maintaining strong occupancy in shoulder seasons.',
       ],
     },
     cities: [

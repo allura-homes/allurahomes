@@ -13,11 +13,11 @@ export function StatsBar() {
         {TRUST_STATS.map((stat, i) => {
           const Icon = icons[i]
           return (
-            <AnimateOnScroll key={stat.label} delay={i * 0.1} direction="up">
+            <AnimateOnScroll key={stat.value} delay={i * 0.1} direction="up">
               <div className="flex items-center gap-3 text-center md:text-left">
                 <Icon className="size-8 shrink-0 text-gold" strokeWidth={1.5} />
                 <div>
-                  <div className="font-headline text-2xl font-bold uppercase tracking-wider text-gold" style={{ fontFamily: 'var(--font-headline)' }}>
+                  <div className={stat.label ? 'font-headline text-2xl font-bold uppercase tracking-wider text-gold' : 'max-w-48 font-headline text-sm font-bold leading-relaxed text-gold'} style={{ fontFamily: 'var(--font-headline)' }}>
                     {stat.value}
                   </div>
                   <div className="text-sm text-primary-foreground/70">

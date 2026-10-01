@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE } from '@/lib/seo'
 import { ReferralsContent } from './content'
 
 export const metadata: Metadata = {
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.allurahomes.com/referrals' },
   keywords: ['Allura Homes referral program', 'vacation rental referral', 'property management referral fee', 'earn referral commission', 'refer a homeowner'],
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Referral Program | Earn Up to $3,000 | Allura Homes',
     description: 'Refer a homeowner to Allura Homes. $500 at sign-up plus $250 per bedroom after six months. Boutique California management since 2013.',
     url: 'https://www.allurahomes.com/referrals',

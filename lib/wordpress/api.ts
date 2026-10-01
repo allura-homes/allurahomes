@@ -1,3 +1,5 @@
+import { normalizeMarketingCopy, normalizeMarketingHTML } from '@/lib/marketing-copy'
+
 import type {
   WPPost,
   WPCategory,
@@ -214,24 +216,24 @@ function normalizePost(post: WPPost, categories: WPCategory[]): BlogPost {
   return {
     id: post.id,
     slug: post.slug,
-    title: decodeHTML(post.title.rendered),
-    excerpt: decodeHTML(stripHTML(post.excerpt.rendered)),
-    content: post.content.rendered,
+    title: normalizeMarketingCopy(decodeHTML(post.title.rendered)),
+    excerpt: normalizeMarketingCopy(decodeHTML(stripHTML(post.excerpt.rendered))),
+    content: normalizeMarketingHTML(post.content.rendered),
     date: post.date,
     modified: post.modified,
     featuredImage: media
       ? {
           url: media.source_url,
-          alt: media.alt_text || '',
+          alt: normalizeMarketingCopy(media.alt_text || ''),
           width: media.media_details?.width ?? 800,
           height: media.media_details?.height ?? 533,
         }
       : null,
     category: cat
-      ? { name: cat.name, slug: cat.slug }
+      ? { name: normalizeMarketingCopy(decodeHTML(cat.name)), slug: cat.slug }
       : { name: 'Uncategorized', slug: 'uncategorized' },
     tags: tagTerms.map((t: { name: string; slug: string }) => ({
-      name: t.name,
+      name: normalizeMarketingCopy(decodeHTML(t.name)),
       slug: t.slug,
     })),
     author: {
@@ -360,7 +362,7 @@ export async function getCategories(): Promise<BlogCategory[]> {
     .map((c) => ({
       name: decodeHTML(c.name),
       slug: c.slug,
-      description: decodeHTML(c.description),
+      description: normalizeMarketingCopy(decodeHTML(c.description)),
       count: c.count,
     }))
 }
