@@ -20,7 +20,7 @@ export function StaysContent({ properties, total, cities }: StaysContentProps) {
         <div className="container relative mx-auto max-w-7xl px-4">
           <p className="mb-4 font-serif text-lg text-accent">Book Your Stay</p>
           <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-            Luxury Vacation Rentals
+            Boutique Vacation Rentals
           </h1>
           <p className="max-w-2xl text-lg text-white/80">
             Discover handpicked properties across California, each designed for

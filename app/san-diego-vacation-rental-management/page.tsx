@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { boutiqueContent as c, boutiqueStructuredData } from './content'
 import { BoutiqueHero, BoutiqueProof, BoutiqueHousing, BoutiqueServices, BoutiqueFeesAndPromise, BoutiqueFAQ, BoutiqueClosing } from './sections'
-import './boutique-page.css'
 
 export const metadata: Metadata = {
   title: { absolute: c.seo.title },
@@ -18,8 +17,8 @@ export const metadata: Metadata = {
 }
 
 export default function BoutiqueManagementPage() {
-  return <div className="boutique-page font-sans">
-    <a href="#top" className="b-skip-link">Skip to content</a>
+  return <div className="font-sans text-foreground">
+    <a href="#top" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-card focus:px-6 focus:py-3 focus:text-card-foreground">Skip to content</a>
     <div>
       <BoutiqueHero />
       <BoutiqueProof />

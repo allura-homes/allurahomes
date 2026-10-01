@@ -1,4 +1,4 @@
-import { AIRBNB_PROFILE_HREF, SHOW_FEES, SHOW_TRIAL, SWITCH_PAGE_HREF } from '@/lib/site-config'
+import { AIRBNB_PROFILE_HREF, MARKETS, PRIMARY_PHONE_E164, SHOW_FEES, SHOW_TRIAL, SWITCH_PAGE_HREF } from '@/lib/site-config'
 
 export type ContentItem = { title: string; body: string }
 export type FAQ = { question: string; paragraphs: string[]; link?: { text: string; href: string } }
@@ -23,14 +23,14 @@ export const boutiqueContent = {
     badge: '<20 homes', badgeLabel: 'Like our own',
   },
   trust: ['13+ Years Hosting', 'Airbnb Superhost', 'Vrbo Premier Host', '4.9 star rating in 2025', 'Less than 20 homes managed like they are our own'],
-  answer: 'Allura Homes is a boutique vacation rental manager in San Diego, founded in 2013. We manage under 20 homes like they are our own, so no owner is a number in a queue. We run short-term stays and furnished stays of 30+ nights, with statements and payouts by the 10th. Airbnb Superhost. Vrbo Premier Host.',
+  answer: 'Allura Homes is a boutique vacation rental manager in San Diego, founded in 2013. We manage under 20 homes like they are our own, so no owner is a number in a queue. We run short-term stays and furnished stays of 30+ nights, with statements by the 10th. Airbnb Superhost. Vrbo Premier Host.',
   boutique: {
     eyebrow: 'Boutique, in practice', title: 'What "boutique" actually means',
     items: [
       { title: 'A small portfolio', body: 'Less than 20 homes managed like they are our own. Your home is never a number in a queue.' },
       { title: 'One accountable team', body: 'A team that knows your home, your guests and your goals. A manager who picks up the phone. Under 5 minute average response time.' },
       { title: 'Revenue managed by a person', body: 'A full-time human revenue manager plus dynamic pricing updated daily. Distribution across Airbnb, Vrbo, Booking.com, Google Vacation Rentals, and direct booking.' },
-      { title: 'Reporting you can read', body: 'Real-time owner portal, statements and payouts by the 10th, monthly check-ins, and quarterly reviews.' },
+      { title: 'Reporting you can read', body: 'Real-time owner portal, statements by the 10th, monthly check-ins, and quarterly reviews.' },
       { title: 'Compliance handled', body: 'Permit and license management, TOT collection and remittance. We can free you from being the local contact.' },
       { title: 'Slow seasons covered', body: 'Furnished stays of 30+ nights can help fill the gaps between nightly bookings.' },
     ] satisfies ContentItem[],
@@ -79,7 +79,6 @@ export const boutiqueContent = {
     rows: [
       ['Short-term stays', '20% of the accommodation fare the guest pays'],
       ['Furnished stays of 30+ nights', 'From 15%'],
-      ['Onboarding', '$500, withheld from your first payout. Nothing billed upfront.'],
       ['Supplies', 'At cost. No markup. Receipts with your monthly statement.'],
     ],
   },
@@ -103,10 +102,10 @@ export const boutiqueContent = {
 
 export const boutiqueFAQs: FAQ[] = [
   { question: 'What does "boutique" mean for a vacation rental manager?', paragraphs: ['A boutique manager keeps the portfolio small, so your home gets real attention. Allura manages under 20 homes like they are our own. You get a manager who picks up the phone, a full-time human revenue manager, dynamic pricing updated daily, and statements by the 10th. Fewer homes, finer results.'] },
-  { question: 'How does switching to Allura work?', paragraphs: ["Your current contract's notice period sets the start date, commonly 30 to 90 days. We onboard in parallel: market analysis, pricing, photography, listing optimization and smart-lock setup, so you are launch-ready in weeks, not months."], link: { text: 'Leaving a big management company? See the full switch checklist', href: SWITCH_PAGE_HREF } },
+  { question: 'How does switching to Allura work?', paragraphs: ["Your current contract's notice period sets the start date, commonly 30 to 90 days. We prepare your home in parallel: market analysis, pricing, photography, listing optimization and smart-lock setup, so you are launch-ready in weeks, not months."], link: { text: 'Leaving a big management company? See the full switch checklist', href: SWITCH_PAGE_HREF } },
   { question: 'What happens to my existing bookings and reviews when I switch?', paragraphs: ['Confirmed guests should keep their stays, and the outgoing manager usually services arrivals inside the notice period. Settle in writing how each reservation is handled and paid. Reviews depend on whose account owns the listing: if you own it and your manager is a co-host, Airbnb says removing them leaves the listing with you.'] },
   // REMOVABLE: public use of fees needs Mike sign-off.
-  ...(SHOW_FEES ? [{ question: 'What does Allura cost?', paragraphs: ['Allura charges 20% of the accommodation fare guests pay for short-term stays, and from 15% for furnished stays of 30+ nights. A $500 onboarding fee is withheld from your first payout, not billed upfront. Supplies pass through at cost, with receipts.'] }] : []),
+  ...(SHOW_FEES ? [{ question: 'What does Allura cost?', paragraphs: ['Allura charges 20% of the accommodation fare guests pay for short-term stays, and from 15% for furnished stays of 30+ nights. Supplies pass through at cost, with receipts.'] }] : []),
   // REMOVABLE: public use of the trial needs Mike sign-off.
   ...(SHOW_TRIAL ? [{ question: "What if I'm not happy?", paragraphs: ['Our promise is simple: 90 days to outperform. Or walk away. We walk you through the details on a call, so you know exactly how it works before you start.'] }] : []),
   { question: 'Do you manage furnished 30+ night stays for insurance, corporate and travel-nurse guests?', paragraphs: ["Yes. Allura manages furnished stays of 30+ nights for insurance-displaced households, corporate guests and travel nurses. These are furnished stays, not 1-year leases. " + (SHOW_FEES ? 'Fees start at 15%. ' : '') + "We evaluate every home individually, so tell us about yours and we'll show you what it can earn. In the City of San Diego, STRO and TOT apply to stays of less than one month. Not legal advice."] },
@@ -119,10 +118,10 @@ const c = boutiqueContent
 export const boutiqueStructuredData = {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': ['Organization', 'LocalBusiness'], '@id': organizationId, name: 'Allura Homes', url: 'https://www.allurahomes.com', description: 'Boutique vacation rental management in San Diego. Fewer than 20 homes managed like they are our own.', foundingDate: '2013', areaServed: { '@type': 'City', name: 'San Diego', containedInPlace: { '@type': 'AdministrativeArea', name: 'California' } }, sameAs: ['https://www.instagram.com/allurahomes', 'https://www.facebook.com/allurahomes.us', 'https://www.linkedin.com/company/allurahomes', AIRBNB_PROFILE_HREF] },
+    { '@type': ['Organization', 'LocalBusiness'], '@id': organizationId, name: 'Allura Homes', url: 'https://www.allurahomes.com', description: 'Boutique vacation rental management in San Diego. Fewer than 20 homes managed like they are our own.', foundingDate: '2013', telephone: PRIMARY_PHONE_E164, areaServed: MARKETS.map(name => ({ '@type': 'City', name })), sameAs: ['https://www.instagram.com/allurahomes', 'https://www.facebook.com/allurahomes.us', 'https://www.linkedin.com/company/allurahomes', AIRBNB_PROFILE_HREF] },
     { '@type': 'WebPage', '@id': `${c.seo.url}#webpage`, url: c.seo.url, name: c.seo.title, description: c.seo.description, about: { '@id': organizationId }, primaryImageOfPage: { '@type': 'ImageObject', url: 'https://www.allurahomes.com/images/boutique/hero.jpg' }, speakable: { '@type': 'SpeakableSpecification', cssSelector: ["[data-speakable='answer-card']", 'h1'] } },
     { '@type': 'FAQPage', '@id': `${c.seo.url}#faq`, mainEntity: boutiqueFAQs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.paragraphs.join(' ') + (faq.link ? ` ${faq.link.text}.` : '') } })) },
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: c.header.home, item: 'https://www.allurahomes.com/' }, { '@type': 'ListItem', position: 2, name: c.header.breadcrumb, item: c.seo.url }] },
-    ...['Vacation rental property management', 'Furnished 30+ night stay management'].map(serviceType => ({ '@type': 'Service', serviceType, areaServed: { '@type': 'City', name: 'San Diego, CA' }, provider: { '@id': organizationId } })),
+    ...['Vacation rental property management', 'Furnished 30+ night stay management'].map(serviceType => ({ '@type': 'Service', serviceType, areaServed: MARKETS.map(name => ({ '@type': 'City', name })), provider: { '@id': organizationId } })),
   ],
 }

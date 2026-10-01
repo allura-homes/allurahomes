@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 
 type SectionHeadingProps = {
   title: string
-  subtitle?: string
+  subtitle?: React.ReactNode
   accent?: string
   alignment?: 'left' | 'center'
   dark?: boolean

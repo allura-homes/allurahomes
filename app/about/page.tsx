@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'About Allura Homes | Our Story & Mission',
     description: 'Founded in 2013 in San Diego. Boutique vacation-rental and furnished-monthly management. About 19 homes. 4.9 guest rating in 2025.',
     url: 'https://www.allurahomes.com/about',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Allura Homes boutique vacation rental management' }],
   },
 }
 

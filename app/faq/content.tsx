@@ -68,7 +68,7 @@ const faqs = [
         </p>
         <p className="mb-4">
           We ensure optimal care for your home by providing our team with the technology and tools
-          to maximize performance and efficiency.
+          to improve performance and efficiency.
         </p>
         <p className="mb-4">
           We can and will schedule mid-stay deliveries to go above and beyond should any supplies
@@ -93,7 +93,7 @@ const faqs = [
         <p>
           At the same time, we have partnered with a company, HostGenius, with an international
           footprint that rivals some of the biggest short-term rental management companies on earth
-          to do US-based guest support 24/7 by Airbnb Superhost support agents, maximize booking
+          to do US-based guest support 24/7 by Airbnb Superhost support agents, improve booking
           revenue with full-time revenue management by former Airbnb Revenue Managers, and marketing
           your property to optimize for direct bookings but also get you front and center on the
           Online Travel Agent websites (OTAs) like Airbnb, VRBO, Booking.com, Google Vacation
@@ -277,7 +277,7 @@ export function FAQContent() {
       {/* Bottom CTA */}
       <CTABand
         headline="Still Got Questions?"
-        subtitle="Schedule a chat with us. We're here to help you understand how we can maximize your property's potential."
+        subtitle="Schedule a chat with us. We're here to help you understand how we can improve your property's potential."
         primaryCta={{ label: 'Book a Call', href: BRAND.calendarUrl }}
         secondaryCta={{ label: 'Contact Us', href: '/contact' }}
         variant="gold"

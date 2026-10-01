@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { SectionHeading } from '@/components/section-heading'
+import { SiteButton } from '@/components/site-button'
+import { FeatureCard } from '@/components/sections/content-section'
 import { switchContent as c } from './content'
 import { FREE_INCOME_REPORT_HREF } from '@/lib/site-config'
 
@@ -12,42 +14,20 @@ const bodyLinks = [
 ]
 
 export function SwitchBody({ text }: { text: string }) {
-  const match = bodyLinks.find((link) => text.includes(link.text))
+  const match = bodyLinks.find(link => text.includes(link.text))
   if (!match) return <>{text}</>
   const index = text.indexOf(match.text)
   return <>{text.slice(0, index)}<Link href={match.href} className="underline decoration-gold underline-offset-4 hover:text-gold-dark">{match.text}</Link>{text.slice(index + match.text.length)}</>
 }
 
 export function SwitchHeading({ eyebrow, title, subtitle, dark = false, left = false }: { eyebrow: string; title: string; subtitle?: React.ReactNode; dark?: boolean; left?: boolean }) {
-  return (
-    <div className={cn('flex max-w-3xl flex-col gap-5', !left && 'mx-auto items-center text-center')}>
-      <p className={cn('text-sm font-semibold uppercase tracking-widest', dark ? 'text-gold' : 'text-gold-dark')}>{eyebrow}</p>
-      <h2 className={cn('font-display text-3xl font-semibold leading-tight text-balance md:text-4xl lg:text-5xl', dark ? 'text-primary-foreground' : 'text-navy-deep')}>{title}</h2>
-      <span aria-hidden="true" className="h-0.5 w-16 bg-gold" />
-      {subtitle && <p className={cn('text-lg leading-relaxed text-pretty', dark ? 'text-primary-foreground/80' : 'text-muted-foreground')}>{subtitle}</p>}
-    </div>
-  )
+  return <SectionHeading accent={eyebrow} title={title} subtitle={subtitle} dark={dark} alignment={left ? 'left' : 'center'} />
 }
 
 export function SwitchActions({ dark = false, vertical = false }: { dark?: boolean; vertical?: boolean }) {
-  return (
-    <div className={cn('flex flex-col gap-3', !vertical && 'sm:flex-row sm:flex-wrap')}>
-      <a href="#analysis" className="btn-gold inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-md px-6 py-4 text-center font-headline text-sm font-semibold uppercase tracking-widest sm:w-auto">
-        {c.cta.primary}<ArrowRight aria-hidden="true" className="size-4 shrink-0" />
-      </a>
-      <Link href={c.cta.callHref} target="_blank" rel="noopener noreferrer" className={cn('inline-flex min-h-14 w-full items-center justify-center rounded-md border-2 px-6 py-4 text-center font-headline text-sm font-semibold uppercase tracking-widest transition-colors sm:w-auto', dark ? 'border-primary-foreground/40 text-primary-foreground hover:border-gold hover:text-gold' : 'border-navy-deep text-navy-deep hover:bg-navy-deep hover:text-primary-foreground')}>
-        {c.cta.secondary}
-      </Link>
-    </div>
-  )
+  return <div className={cn('flex flex-col gap-4', !vertical && 'sm:flex-row sm:flex-wrap')}><SiteButton href="#analysis">{c.cta.primary}</SiteButton><SiteButton href={c.cta.callHref} target="_blank" variant="secondary" dark={dark}>{c.cta.secondary}</SiteButton></div>
 }
 
 export function SwitchCard({ title, body }: { title: string; body: string }) {
-  return (
-    <article className="flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-7 text-card-foreground">
-      <span aria-hidden="true" className="h-0.5 w-8 bg-gold" />
-      <h3 className="font-headline text-xl font-semibold uppercase tracking-wider leading-snug text-navy-deep">{title}</h3>
-      <p className="text-sm leading-relaxed text-muted-foreground"><SwitchBody text={body} /></p>
-    </article>
-  )
+  return <FeatureCard title={title}><SwitchBody text={body} /></FeatureCard>
 }

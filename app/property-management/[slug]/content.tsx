@@ -175,7 +175,7 @@ export function MetroAreaContent({ metro }: { metro: MetroArea }) {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { name: 'San Diego & Temecula', slug: 'san-diego-temecula', tagline: 'Coastal bluffs to wine country' },
-              { name: 'Coachella Valley', slug: 'coachella-valley', tagline: 'Palm Springs & desert luxury' },
+              { name: 'Coachella Valley', slug: 'coachella-valley', tagline: 'Palm Springs & desert getaways' },
               { name: 'Los Angeles', slug: 'los-angeles', tagline: 'Hollywood Hills & beyond' },
               { name: 'SF/Oakland Bay Area', slug: 'sf-bay-area', tagline: 'Bay Area & wine country' },
             ]
@@ -205,7 +205,7 @@ export function MetroAreaContent({ metro }: { metro: MetroArea }) {
 
       {/* CTA */}
       <CTABand
-        headline={`Ready to Maximize Your ${metro.name} Rental Income?`}
+        headline={`Ready to Improve Your ${metro.name} Rental Income?`}
         subtitle={`Join property owners across ${metro.name} who trust Allura Homes to deliver exceptional returns and peace of mind.`}
         primaryCta={{ label: 'Book a Call', href: BRAND.calendarUrl }}
         secondaryCta={{ label: 'Free Income Report', href: '/free-income-report' }}

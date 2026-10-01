@@ -4,13 +4,13 @@ import type { PropertyFilters } from '@/lib/guesty/types'
 import { StaysContent } from './content'
 
 export const metadata: Metadata = {
-  title: 'Luxury Vacation Rentals | Book Your Stay | Allura Homes',
+  title: 'Boutique Vacation Rentals | Book Your Stay | Allura Homes',
   description:
-    'Browse and book handpicked luxury vacation rentals across California. Professionally managed properties with 5-star hospitality and premium amenities.',
+    'Browse and book handpicked boutique vacation rentals across California. Professionally managed properties with 5-star hospitality and premium amenities.',
   openGraph: {
-    title: 'Luxury Vacation Rentals | Allura Homes',
+    title: 'Boutique Vacation Rentals | Allura Homes',
     description:
-      'Discover handpicked luxury vacation homes across California. Book your perfect getaway today.',
+      'Discover handpicked boutique vacation homes across California. Book your perfect getaway today.',
   },
 }
 

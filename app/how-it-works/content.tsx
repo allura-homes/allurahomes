@@ -58,7 +58,7 @@ const steps = [
     details: [
       '24/7 guest support and issue resolution',
       'Monthly owner statements and performance reports',
-      'Ongoing optimization and revenue maximization',
+      'Ongoing optimization and revenue improvement',
     ],
     image: '/images/step-management.jpg',
   },

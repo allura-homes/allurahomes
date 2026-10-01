@@ -3,7 +3,7 @@
 import { useRef, useState, type FormEvent } from 'react'
 import { BOOK_A_CALL_HREF } from '@/lib/site-config'
 import { switchAnalysisSchema } from '@/lib/switch-analysis'
-import Link from 'next/link'
+import { SiteButton } from '@/components/site-button'
 import { switchContent as c } from './content'
 
 const controlClass = 'min-h-12 w-full rounded-md border border-input bg-muted px-3 py-3 text-sm text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold'
@@ -57,7 +57,7 @@ export function AnalysisForm() {
   }
 
   return (
-    <div className="flex flex-col gap-6 rounded-2xl border-t-4 border-gold bg-card p-6 text-card-foreground shadow-xl md:p-10">
+    <div className="flex flex-col gap-6 rounded-xl bg-card p-8 text-card-foreground shadow-sm">
       <div className="flex flex-col gap-3">
         <h3 className="font-headline text-2xl font-semibold uppercase tracking-wider text-navy-deep">{c.form.title}</h3>
         <p className="text-sm leading-relaxed text-muted-foreground">{c.form.hint}</p>
@@ -65,7 +65,7 @@ export function AnalysisForm() {
       {success ? (
         <div role="status" className="flex flex-col gap-3 rounded-lg border border-gold p-6">
           <p className="font-display text-2xl text-navy-deep">{c.form.success}</p>
-          <Link href={BOOK_A_CALL_HREF} className="btn-gold flex min-h-12 items-center justify-center rounded-md px-4 py-3 font-headline text-sm font-semibold uppercase tracking-widest">Book a Call</Link>
+          <SiteButton href={BOOK_A_CALL_HREF}>Book a Call</SiteButton>
         </div>
       ) : (
         <form noValidate onSubmit={handleSubmit} onChange={() => { if (!pending) requestId.current = '' }} aria-busy={pending} className="flex flex-col gap-5">
@@ -96,11 +96,11 @@ export function AnalysisForm() {
             <label htmlFor="switch-listing" className="flex flex-col gap-2 text-sm font-medium">{c.form.labels.listing}<select id="switch-listing" name="listing" defaultValue="" className={controlClass}><option value="">{c.form.optionalPlaceholder}</option>{c.form.ownershipOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
             <label htmlFor="switch-license" className="flex flex-col gap-2 text-sm font-medium">{c.form.labels.license}<select id="switch-license" name="license" defaultValue="" className={controlClass}><option value="">{c.form.optionalPlaceholder}</option>{c.form.licenseOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
           </div>
-          <button type="submit" disabled={pending} className="btn-gold min-h-14 w-full rounded-md px-4 py-4 font-headline text-sm font-semibold uppercase tracking-widest disabled:opacity-60">{pending ? 'Sending…' : c.cta.primary}</button>
+          <SiteButton type="submit" disabled={pending}>{pending ? 'Sending…' : c.cta.primary}</SiteButton>
           </fieldset>
         </form>
       )}
-      <Link href={c.cta.callHref} target="_blank" rel="noopener noreferrer" className="flex min-h-14 items-center justify-center rounded-md border-2 border-navy-deep px-4 py-4 text-center font-headline text-sm font-semibold uppercase tracking-widest text-navy-deep transition-colors hover:bg-navy-deep hover:text-primary-foreground">{c.cta.secondary}</Link>
+      <SiteButton href={c.cta.callHref} target="_blank" variant="secondary" dark={false}>{c.cta.secondary}</SiteButton>
     </div>
   )
 }

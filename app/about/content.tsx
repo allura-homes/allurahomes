@@ -56,7 +56,7 @@ export function AboutContent() {
               <p className="mt-6 text-lg leading-relaxed text-primary-foreground/70">
                 Founded in 2013, Allura Homes was born from a simple belief: vacation rental
                 management should feel personal, not transactional. What started as a single property
-                in San Diego has grown into a curated portfolio of luxury homes across Southern California.
+                in San Diego has grown into a curated portfolio of high-end homes across Southern California.
               </p>
               <p className="mt-4 text-lg leading-relaxed text-primary-foreground/70">
                 We built Allura to be the management company we wished existed when we were property
@@ -68,7 +68,7 @@ export function AboutContent() {
               <div className="relative overflow-hidden rounded-2xl">
                 <Image
                   src="/images/hero-about.jpg"
-                  alt="San Diego coastal luxury homes"
+                  alt="San Diego coastal high-end homes"
                   width={600}
                   height={400}
                   className="aspect-[3/2] w-full object-cover"
@@ -191,7 +191,7 @@ export function AboutContent() {
 
       <CTABand
         headline="Ready to Experience the Allura Difference?"
-        subtitle="Join our portfolio of luxury properties and see what true boutique management feels like."
+        subtitle="Join our portfolio of high-end properties and see what true boutique management feels like."
         primaryCta={{ label: 'Book a Call', href: BRAND.calendarUrl }}
         secondaryCta={{ label: 'Contact Us', href: '/contact' }}
         variant="navy"

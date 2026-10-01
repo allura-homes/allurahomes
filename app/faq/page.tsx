@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'FAQ | Allura Homes Property Management',
     description: 'Answers to common questions about our vacation rental management services.',
     url: 'https://www.allurahomes.com/faq',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Allura Homes boutique vacation rental management' }],
   },
 }
 

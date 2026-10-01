@@ -205,7 +205,7 @@ export function ArticleContent({
       {/* CTA */}
       <CTABand
         headline="Need Help Managing Your Rental?"
-        subtitle="Our team has 13+ years of experience maximizing revenue for California vacation rental owners."
+        subtitle="Our team has 13+ years of experience improving revenue for California vacation rental owners."
         primaryCta={{ label: 'Book a Call', href: BRAND.calendarUrl }}
         secondaryCta={{ label: 'See vacation-rental management', href: '/property-management' }}
         variant="gold"

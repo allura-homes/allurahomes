@@ -83,6 +83,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
+  staticPages.push({
+    url: `${baseUrl}/hosting/san-diego-str-permit-guide`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  })
+
   // Metro area pages
   const metroPages: MetadataRoute.Sitemap = METRO_AREAS.map((metro) => ({
     url: `${baseUrl}/property-management/${metro.slug}`,
