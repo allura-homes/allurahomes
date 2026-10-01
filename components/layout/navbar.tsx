@@ -54,7 +54,7 @@ export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: str
           </Link>
 
           {/* Desktop Nav */}
-          <div className={cn('hidden items-center gap-1', primaryCta ? 'xl:flex' : 'lg:flex')}>
+          <div className={cn('hidden items-center gap-1', primaryCta ? 'xl:flex' : 'min-[1100px]:flex')}>
             {NAV_ITEMS.map((item) => {
               const hasChildren = 'children' in item && item.children
               const isExternal = 'external' in item && item.external === true
@@ -127,7 +127,7 @@ export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: str
           </div>
 
           {/* Desktop CTA */}
-          <div className={cn('hidden shrink-0', primaryCta ? 'xl:flex' : 'lg:flex')}>
+          <div className={cn('hidden shrink-0', primaryCta ? 'xl:flex' : 'min-[1100px]:flex')}>
             <Link
               href={primaryCta?.href ?? BRAND.calendarUrl}
               className="btn-gold inline-flex h-10 items-center rounded-md px-6 font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02]"
@@ -140,7 +140,7 @@ export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: str
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={cn('flex size-10 items-center justify-center rounded-md text-primary-foreground', primaryCta ? 'xl:hidden' : 'lg:hidden')}
+            className={cn('flex size-10 items-center justify-center rounded-md text-primary-foreground', primaryCta ? 'xl:hidden' : 'min-[1100px]:hidden')}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileOpen ? <X className="size-6" /> : <Menu className="size-6" />}
@@ -156,7 +156,7 @@ export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: str
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className={cn('fixed inset-0 z-40 bg-navy-deep/98 pt-20', primaryCta ? 'xl:hidden' : 'lg:hidden')}
+            className={cn('fixed inset-0 z-40 bg-navy-deep/98 pt-20', primaryCta ? 'xl:hidden' : 'min-[1100px]:hidden')}
           >
             <nav className="flex flex-col gap-2 px-6 py-8">
               {NAV_ITEMS.map((item, i) => {

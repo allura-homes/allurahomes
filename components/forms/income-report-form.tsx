@@ -131,7 +131,7 @@ export function IncomeReportForm() {
           <input
             id="phone"
             type="tel"
-            placeholder="(619) 555-0123"
+            placeholder="Your phone number"
             className={cn(inputClasses, errors.phone && 'border-destructive')}
             {...register('phone')}
           />
@@ -167,7 +167,7 @@ export function IncomeReportForm() {
             <option value="single-family">Single Family Home</option>
             <option value="condo">Condo / Townhouse</option>
             <option value="multi-unit">Multi-Unit</option>
-            <option value="luxury-estate">Luxury Estate</option>
+            <option value="boutique-estate">Boutique estate</option>
             <option value="cabin">Cabin / Mountain Home</option>
             <option value="other">Other</option>
           </select>
@@ -206,7 +206,7 @@ export function IncomeReportForm() {
           <option value="google">Google Search</option>
           <option value="referral">Referral / Word of Mouth</option>
           <option value="social">Social Media</option>
-          <option value="airbnb">Airbnb / VRBO</option>
+          <option value="airbnb">Airbnb / Vrbo</option>
           <option value="other">Other</option>
         </select>
       </div>

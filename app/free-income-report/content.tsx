@@ -21,13 +21,13 @@ const benefits = [
     icon: BarChart3,
     title: 'Market Comparisons',
     description:
-      'See how comparable properties in your area are performing -- occupancy rates, nightly rates, and annual revenue.',
+      'See how comparable properties in your area are performing — occupancy rates, nightly rates, and annual revenue.',
   },
   {
     icon: Target,
     title: 'Recommended Strategy',
     description:
-      'A tailored pricing and positioning strategy designed to maximize your property\'s earning potential.',
+      'A pricing and positioning strategy tailored to your home and local market.',
   },
 ]
 
@@ -50,7 +50,7 @@ const faqs = [
   {
     question: 'Do I need to sign a contract to get started?',
     answer:
-      'Not at all. The income report is the first step. If you decide to move forward, we will walk you through our flexible management agreement -- but there is zero pressure or commitment required to receive your report.',
+      'Not at all. The income report is the first step. If you decide to move forward, we will walk you through our flexible management agreement — but there is zero pressure or commitment required to receive your report.',
   },
 ]
 

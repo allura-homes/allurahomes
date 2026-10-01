@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 import { BRAND } from '@/lib/constants'
 import {
-  FREE_INCOME_REPORT_HREF,
-  BOOK_A_CALL_HREF,
-  GUEST_BOOKING_HREF,
-  PRIMARY_PHONE_CONFIRMED,
-  PRIMARY_PHONE_E164,
+  FORM_URL,
+  BOOK_CALL_URL,
+  PHONE_TEL,
+  MARKETS,
 } from '@/lib/site-config'
 import { Hero } from '@/components/sections/hero'
 import { StatsBar } from '@/components/sections/stats-bar'
@@ -58,8 +57,8 @@ export default function HomePage() {
         accent="Distinguished by Design"
         title="Boutique Management. Higher Standards. Better Returns."
         subtitle="Under 20 homes, each managed like our own. Airbnb Superhost. Vrbo Premier Host. Rated above 4.9 stars in 2025. Built for owners who want revenue, protection, and peace of mind."
-        primaryCta={{ label: 'Get Your Free Income Report', href: FREE_INCOME_REPORT_HREF }}
-        secondaryCta={{ label: 'Book a Call', href: BOOK_A_CALL_HREF }}
+        primaryCta={{ label: 'Get Your Free Income Report', href: FORM_URL }}
+        secondaryCta={{ label: 'Book a Call', href: BOOK_CALL_URL }}
         fullHeight
       />
 
@@ -85,8 +84,8 @@ export default function HomePage() {
       <CTABand
         headline="Ready to See What Your Property Could Earn?"
         subtitle="Get a free, no-obligation consultation to discuss your property. No pressure. Just a conversation."
-        primaryCta={{ label: 'Get Your Free Income Report', href: FREE_INCOME_REPORT_HREF }}
-        secondaryCta={{ label: 'Book a Call', href: BOOK_A_CALL_HREF }}
+        primaryCta={{ label: 'Get Your Free Income Report', href: FORM_URL }}
+        secondaryCta={{ label: 'Book a Call', href: BOOK_CALL_URL }}
         variant="gold"
       />
 
@@ -103,7 +102,7 @@ export default function HomePage() {
               logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gold%20Bug%20-%20blue%20background-w5gGFhOU00lG43WErprop28jNDADyc.png',
               description:
                 'Boutique vacation rental management in California since 2013. Under 20 homes managed like our own. Airbnb Superhost. Vrbo Premier Host.',
-              ...(PRIMARY_PHONE_CONFIRMED ? { telephone: PRIMARY_PHONE_E164 } : {}),
+              telephone: PHONE_TEL,
               email: 'support@allurahomes.com',
               address: {
                 '@type': 'PostalAddress',
@@ -111,16 +110,7 @@ export default function HomePage() {
                 addressRegion: 'CA',
                 addressCountry: 'US',
               },
-              // TODO(Mike): confirm served markets, price range and hours
-              areaServed: [
-                { '@type': 'State', name: 'California' },
-                { '@type': 'City', name: 'San Diego' },
-                { '@type': 'City', name: 'Temecula' },
-                { '@type': 'City', name: 'Los Angeles' },
-                { '@type': 'City', name: 'Palm Springs' },
-                { '@type': 'City', name: 'Napa' },
-                { '@type': 'City', name: 'San Francisco' },
-              ],
+              areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),
               sameAs: [
                 'https://www.instagram.com/allurahomes',
                 'https://www.facebook.com/allurahomes.us',
@@ -148,10 +138,11 @@ export default function HomePage() {
               '@type': 'LocalBusiness',
               name: 'Allura Homes',
               image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gold%20Bug%20-%20blue%20background-w5gGFhOU00lG43WErprop28jNDADyc.png',
-              ...(PRIMARY_PHONE_CONFIRMED ? { telephone: PRIMARY_PHONE_E164 } : {}),
+              telephone: PHONE_TEL,
               email: 'support@allurahomes.com',
               url: 'https://www.allurahomes.com',
-              // TODO(Mike): confirm served markets, price range and hours
+              areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),
+              // TODO(Mike): confirm price range and hours
               priceRange: '$$',
               address: {
                 '@type': 'PostalAddress',

@@ -2,22 +2,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { BRAND } from '@/lib/constants'
 import {
-  FREE_INCOME_REPORT_HREF,
-  BOOK_A_CALL_HREF,
+  FORM_URL,
+  BOOK_CALL_URL,
   GUEST_BOOKING_HREF,
-  PRIMARY_PHONE_DISPLAY,
-  FOOTER_MARKETS,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  MARKETS,
 } from '@/lib/site-config'
 import { Instagram, Facebook, Linkedin, Phone, Mail, MapPin } from 'lucide-react'
-
-function cityBookingUrl(city: string) {
-  return `https://reservations.allurahomes.com/en/properties?city=${encodeURIComponent(city)}&country=United+States&minOccupancy=1`
-}
-
-// Service area list sourced from FOOTER_MARKETS (lib/site-config.ts), which
-// is flagged NEEDS CONFIRMATION -- several markets below may not actually be
-// served. See the TODO on that constant before launch.
-const serviceAreas = FOOTER_MARKETS
 
 const footerColumns = [
   {
@@ -25,8 +17,8 @@ const footerColumns = [
     links: [
       { label: 'Property Management', href: '/property-management' },
       { label: 'How It Works', href: '/how-it-works' },
-      { label: 'Free Income Report', href: FREE_INCOME_REPORT_HREF },
-      { label: 'Book a Call', href: BOOK_A_CALL_HREF },
+      { label: 'Free Income Report', href: FORM_URL },
+      { label: 'Book a Call', href: BOOK_CALL_URL },
     ],
   },
   {
@@ -47,10 +39,10 @@ const footerColumns = [
     title: 'Contact Us',
     links: [
       { label: 'General Inquiries', href: '/contact' },
-      { label: 'Free Income Report', href: FREE_INCOME_REPORT_HREF },
+      { label: 'Free Income Report', href: FORM_URL },
       { label: 'Apply to Work with Us', href: '/contact' },
       { label: 'Referral Program', href: '/referrals' },
-      { label: 'Book a Free Consultation', href: BOOK_A_CALL_HREF },
+      { label: 'Book a Free Consultation', href: BOOK_CALL_URL },
     ],
   },
 ]
@@ -73,7 +65,7 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
     <footer className="bg-navy-deep text-primary-foreground">
       {/* Main Footer */}
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-7">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="relative h-32 w-[142px]">
@@ -138,37 +130,13 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
               className="font-headline text-sm font-semibold uppercase tracking-widest text-gold"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Property Management
+              Markets we serve and are expanding into.
             </h3>
-            <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1">
-              {Object.entries(serviceAreas).map(([region, cities]) => (
-                <div key={region}>
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground/40">
-                    {region}
-                  </p>
-                  <ul className="flex flex-col gap-1.5">
-                    {cities.map((city) => (
-                      <li key={city.name}>
-                        {city.bookable ? (
-                          <a
-                            href={cityBookingUrl(city.name)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-primary-foreground/60 transition-colors hover:text-gold"
-                          >
-                            {city.name}
-                          </a>
-                        ) : (
-                          <span className="text-sm text-primary-foreground/40">
-                            {city.name}
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-primary-foreground/60">
+              {MARKETS.map((market) => (
+                <li key={market}>{market}</li>
               ))}
-            </div>
+            </ul>
           </div>
 
           {/* Link Columns */}
@@ -227,17 +195,17 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
       <div className="border-t border-primary-foreground/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-6 text-xs text-primary-foreground/40 md:flex-row md:justify-between">
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            <span className="flex items-center gap-1.5">
+            <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-1.5 hover:text-gold">
               <Phone className="size-3" />
-              {PRIMARY_PHONE_DISPLAY}
-            </span>
+              {PHONE_DISPLAY}
+            </a>
             <span className="flex items-center gap-1.5">
               <Mail className="size-3" />
               {BRAND.email}
             </span>
             <span className="flex items-center gap-1.5">
               <MapPin className="size-3" />
-              San Diego | Coachella Valley | Los Angeles | SF Bay Area
+              California
             </span>
           </div>
           <div className="flex items-center gap-4">
