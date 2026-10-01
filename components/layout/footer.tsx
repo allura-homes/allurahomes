@@ -130,11 +130,20 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
               className="font-headline text-sm font-semibold uppercase tracking-widest text-gold"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Markets we serve and are expanding into.
+              Markets We Serve
             </h3>
             <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-primary-foreground/60">
               {MARKETS.map((market) => (
-                <li key={market}>{market}</li>
+                <li key={market}>
+                  <a
+                    href={`${GUEST_BOOKING_HREF}/s?${new URLSearchParams({ city: market, state: 'California', country: 'US' })}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                  >
+                    {market}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>

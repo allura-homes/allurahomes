@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import { Navbar } from '@/components/layout/navbar'
 import { Footer } from '@/components/layout/footer'
 import { MobileCTABar } from '@/components/layout/mobile-cta-bar'
-import { BOOK_A_CALL_HREF, BOUTIQUE_PAGE_PATH, SWITCH_PAGE_PATH } from '@/lib/site-config'
+import { BOOK_A_CALL_HREF, SWITCH_PAGE_PATH } from '@/lib/site-config'
 
 export function SiteWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -12,7 +12,7 @@ export function SiteWrapper({ children }: { children: React.ReactNode }) {
   // Don't show main site chrome on admin or command routes
   const isAdminRoute = pathname?.startsWith('/admin') || pathname?.startsWith('/command')
   
-  if (isAdminRoute || pathname === BOUTIQUE_PAGE_PATH) {
+  if (isAdminRoute) {
     return <>{children}</>
   }
   

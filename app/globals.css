@@ -84,19 +84,17 @@
 }
 
 .boutique-page {
-  --b-navy: #012547;
-  --b-navy-2: #0a3560;
-  --b-navy-3: #001a33;
-  --b-highlight: #0d3a6b;
-  --b-gold: #c7ae6a;
-  --b-gold-dark: #a68f4c;
-  --b-gold-hover: #d6c084;
-  --b-white: #fff;
-  --b-warm: #f8f4ec;
-  --b-border: #efe8d8;
-  --b-ink: #1b2a3a;
-  --b-muted: #5b6876;
-  --font-serif: var(--font-playfair), Georgia, serif;
+  --b-navy: var(--navy-deep);
+  --b-navy-2: var(--navy);
+  --b-navy-3: var(--navy-deep);
+  --b-highlight: var(--navy);
+  --b-gold: var(--gold);
+  --b-gold-dark: var(--gold-dark);
+  --b-white: var(--background);
+  --b-warm: var(--off-white);
+  --b-border: var(--border);
+  --b-ink: var(--foreground);
+  --b-muted: var(--muted-foreground);
 }
 
 @layer base {
