@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'motion/react'
 import { Phone } from 'lucide-react'
 import { BRAND } from '@/lib/constants'
+import { PHONE_TEL } from '@/lib/site-config'
 
 export function MobileCTABar() {
   const [visible, setVisible] = useState(false)
@@ -42,7 +43,7 @@ export function MobileCTABar() {
               Book a Call
             </Link>
             <a
-              href={`tel:${BRAND.phone.replace(/[^0-9+]/g, '')}`}
+              href={`tel:${PHONE_TEL}`}
               className="flex size-11 items-center justify-center rounded-md border border-gold/40 text-gold transition-colors hover:bg-gold hover:text-navy-deep"
               aria-label="Call Allura Homes"
             >

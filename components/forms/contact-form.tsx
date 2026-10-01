@@ -107,7 +107,7 @@ export function ContactForm() {
           <input
             id="contact-phone"
             type="tel"
-            placeholder="(619) 555-0123"
+            placeholder="Your phone number"
             className={inputClasses}
             {...register('phone')}
           />

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Home, Plane, ArrowRight } from 'lucide-react'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { BRAND } from '@/lib/constants'
-import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, GUEST_BOOKING_HREF } from '@/lib/site-config'
+import { FORM_URL, BOOK_CALL_URL, GUEST_BOOKING_HREF } from '@/lib/site-config'
 
 export function AudienceSplit() {
   return (
@@ -39,7 +39,7 @@ export function AudienceSplit() {
                 See what your home could earn with Allura. Start with a free income report, or talk it through on a call.
               </p>
               <Link
-                href={FREE_INCOME_REPORT_HREF}
+                href={FORM_URL}
                 className="relative z-10 mt-6 inline-flex items-center gap-2 font-headline text-sm font-semibold uppercase tracking-widest text-gold-dark transition-colors hover:text-gold"
                 style={{ fontFamily: 'var(--font-headline)' }}
               >
@@ -47,7 +47,7 @@ export function AudienceSplit() {
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href={BOOK_A_CALL_HREF}
+                href={BOOK_CALL_URL}
                 className="relative z-10 mt-2 text-sm text-muted-foreground underline underline-offset-4 transition-colors hover:text-gold-dark"
               >
                 Book a Call

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 import { TESTIMONIALS } from '@/lib/constants'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { cn } from '@/lib/utils'
@@ -64,15 +64,7 @@ export function TestimonialCarousel() {
                       <blockquote className="text-lg leading-relaxed text-primary-foreground/90 md:text-xl lg:text-2xl">
                         &ldquo;{t.quote}&rdquo;
                       </blockquote>
-                      <div className="mt-6 flex gap-1">
-                        {Array.from({ length: t.rating }).map((_, j) => (
-                          <Star
-                            key={j}
-                            className="size-4 fill-gold text-gold"
-                          />
-                        ))}
-                      </div>
-                      <div className="mt-3">
+                      <div className="mt-6">
                         <p className="font-headline text-sm font-semibold uppercase tracking-wider text-gold" style={{ fontFamily: 'var(--font-headline)' }}>
                           {t.author}
                         </p>

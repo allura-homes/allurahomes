@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { SectionHeading } from '@/components/section-heading'
 import { HOW_IT_WORKS_STEPS } from '@/lib/constants'
-import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF } from '@/lib/site-config'
+import { FORM_URL, BOOK_CALL_URL } from '@/lib/site-config'
 
 export function Stepper() {
   return (
@@ -46,14 +46,14 @@ export function Stepper() {
                       <>
                         Fill out{' '}
                         <Link
-                          href={FREE_INCOME_REPORT_HREF}
+                          href={FORM_URL}
                           className="text-gold-dark underline underline-offset-4 hover:text-gold"
                         >
                           our quick form
                         </Link>{' '}
                         or{' '}
                         <Link
-                          href={BOOK_A_CALL_HREF}
+                          href={BOOK_CALL_URL}
                           className="text-gold-dark underline underline-offset-4 hover:text-gold"
                         >
                           book a call

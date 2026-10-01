@@ -1,9 +1,11 @@
+import { PHONE_DISPLAY } from './site-config'
+
 // ─── Brand ────────────────────────────────────────────────────
 export const BRAND = {
   name: 'Allura Homes',
   tagline: 'Distinguished by Design',
   tm: '\u2122',
-  phone: '(619) 333-4553',
+  phone: PHONE_DISPLAY,
   email: 'support@allurahomes.com',
   address: 'San Diego, CA',
   bookingUrl: 'https://book.allurahomes.com',
@@ -69,7 +71,7 @@ export const SERVICE_PILLARS = [
   {
     title: 'Revenue Intelligence',
     description:
-      'Dynamic pricing algorithms, market analysis, and demand forecasting to maximize every booking window.',
+      'Pricing, market analysis, and demand forecasting, tuned to your home and reviewed by people who know your market.',
     icon: 'TrendingUp',
   },
   {

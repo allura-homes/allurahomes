@@ -4,20 +4,21 @@ import Link from 'next/link'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { ContactForm } from '@/components/forms/contact-form'
 import { BRAND } from '@/lib/constants'
+import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/site-config'
 import { Phone, Mail, MapPin, Clock, Calendar } from 'lucide-react'
 
 const contactDetails = [
   {
     icon: Phone,
     label: '24-Hour Support',
-    value: '+1 (858) 244-9400',
-    href: 'tel:+18582449400',
+    value: PHONE_DISPLAY,
+    href: `tel:${PHONE_TEL}`,
   },
   {
     icon: Phone,
     label: 'Office',
-    value: '+1 (858) 244-9750',
-    href: 'tel:+18582449750',
+    value: PHONE_DISPLAY,
+    href: `tel:${PHONE_TEL}`,
   },
   {
     icon: Mail,

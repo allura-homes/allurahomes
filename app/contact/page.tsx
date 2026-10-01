@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
 import { ContactContent } from './content'
+import { PHONE_DISPLAY } from '@/lib/site-config'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Get in Touch with Allura Homes',
   description:
-    'Contact Allura Homes for vacation rental management inquiries. Call +1 (858) 244-9400 for 24-hour support, email support@allurahomes.com, or fill out our form. Serving San Diego, Temecula, Los Angeles & all of California.',
+    `Contact Allura Homes for vacation rental management inquiries. Call ${PHONE_DISPLAY} for 24-hour support, email support@allurahomes.com, or fill out our form. Serving San Diego, Temecula, Los Angeles & all of California.`,
   alternates: { canonical: 'https://www.allurahomes.com/contact' },
   keywords: ['contact Allura Homes', 'vacation rental management contact', 'property management inquiry', 'San Diego rental manager phone'],
   openGraph: {
     title: 'Contact Allura Homes | Get in Touch',
-    description: 'Reach out to our team for property management inquiries. 24-hour support at +1 (858) 244-9400.',
+    description: `Reach out to our team for property management inquiries. 24-hour support at ${PHONE_DISPLAY}.`,
     url: 'https://www.allurahomes.com/contact',
   },
 }
