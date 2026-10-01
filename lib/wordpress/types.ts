@@ -19,6 +19,13 @@ export type WPPost = {
   }
 }
 
+export type WPTerm = {
+  id: number
+  name: string
+  slug: string
+  taxonomy: string
+}
+
 export type WPCategory = {
   id: number
   name: string

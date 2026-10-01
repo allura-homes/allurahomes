@@ -250,7 +250,7 @@ export function FAQContent() {
                 accent="Everything You Need to Know"
                 title="Frequently Asked Questions"
                 subtitle="Find answers to common questions about our services, pricing, and processes. Can't find what you're looking for? Book a call with us."
-                centered
+                alignment="center"
               />
             </AnimateOnScroll>
 

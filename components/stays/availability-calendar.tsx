@@ -191,7 +191,7 @@ export function AvailabilityCalendar({
       const isDisabled =
         isPast ||
         isBooked ||
-        (selectingCheckOut && selectedCheckIn && (
+        (selectingCheckOut && !!selectedCheckIn && (
           date <= new Date(selectedCheckIn) ||
           !isValidCheckoutDate(date)
         ))

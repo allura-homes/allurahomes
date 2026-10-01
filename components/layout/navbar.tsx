@@ -57,7 +57,7 @@ export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: str
           <div className={cn('hidden items-center gap-1', primaryCta ? 'xl:flex' : 'lg:flex')}>
             {NAV_ITEMS.map((item) => {
               const hasChildren = 'children' in item && item.children
-              const isExternal = 'external' in item && item.external
+              const isExternal = 'external' in item && item.external === true
 
               if (hasChildren) {
                 return (
@@ -161,7 +161,7 @@ export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: str
             <nav className="flex flex-col gap-2 px-6 py-8">
               {NAV_ITEMS.map((item, i) => {
                 const hasChildren = 'children' in item && item.children
-                const isExternal = 'external' in item && item.external
+                const isExternal = 'external' in item && item.external === true
 
                 return (
                   <motion.div
