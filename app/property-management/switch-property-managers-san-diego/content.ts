@@ -1,3 +1,6 @@
+import { BRAND } from '@/lib/constants'
+import { BOOK_A_CALL_HREF, MARKETS, PRIMARY_PHONE_E164, SWITCH_PAGE_PATH } from '@/lib/site-config'
+
 type ContentItem = { title: string; body: string }
 type FAQ = { question: string; paragraphs: readonly string[] }
 
@@ -5,9 +8,9 @@ export const switchContent = {
   seo: {
     title: 'Leaving a Big Manager? Switch in San Diego | Allura Homes',
     description: "Leaving a big management company? Switch to Allura's boutique San Diego team. 90 days to outperform, or walk away. Get a free switch analysis.",
-    url: 'https://www.allurahomes.com/property-management/switch-property-managers-san-diego',
+    url: `https://www.allurahomes.com${SWITCH_PAGE_PATH}`,
   },
-  cta: { primary: 'Get My Free Switch Analysis', secondary: 'Book a 30-Minute Call', callHref: 'https://www.allurahomes.com/book-a-call' },
+  cta: { primary: 'Get My Free Switch Analysis', secondary: 'Book a 30-Minute Call', callHref: BOOK_A_CALL_HREF },
   hero: {
     eyebrow: 'Leaving a big management company?',
     title: 'Switch Your San Diego Vacation Rental Manager.',
@@ -39,7 +42,7 @@ export const switchContent = {
       { title: 'Agree in writing how booked stays are handled', body: 'Say who services them and who is paid for them.' },
       { title: 'Onboard in parallel', body: 'Pricing strategy, photography, listing optimization, smart-lock and tech install, deep clean. Launch-ready in weeks, not months.' },
       { title: 'Handover day', body: 'Access codes, co-host permissions, local-contact update with the city, and guest-messaging cutover.' },
-      { title: 'Your first statement', body: 'Statements and payouts by the 10th of each month, with a real-time owner portal.' },
+      { title: 'Your first statement', body: 'Statements by the 10th of each month, with a real-time owner portal.' },
     ] satisfies ContentItem[],
   },
   services: {
@@ -62,11 +65,10 @@ export const switchContent = {
     rows: [
       ['Short-term stays', '20% of the accommodation fare the guest pays'],
       ['Furnished stays of 30+ nights', 'From 15%'],
-      ['Onboarding', '$500, withheld from your first payout. Nothing billed upfront.'],
       ['Supplies', 'At cost. No markup. Receipts with your monthly statement.'],
     ],
   },
-  promise: { eyebrow: 'Risk reversal', title: 'The 90-day promise', line: '90 days to outperform. Or walk away.', body: "Give us your home for 90 days. If we don't outperform, you can leave." },
+  promise: { eyebrow: 'Risk reversal', title: 'The 90-day promise', line: '90 days to outperform. Or walk away.', callNote: 'We walk you through the details on a call.', body: "Give us your home for 90 days. If we don't outperform, you can leave." },
   proof: {
     quote: 'After trying two other management companies, Allura was a breath of fresh air. They actually care about our property as if it were their own.',
     author: 'David & Jen R., Temecula, CA', rating: '4.9 star rating in 2025',
@@ -84,8 +86,8 @@ export const switchContent = {
     disclaimer: 'This is not legal advice.', jurisdiction: 'Rules described apply to the City of San Diego only.',
     items: [
       { question: 'How do I switch vacation rental managers in San Diego?', paragraphs: ['Start with your contract: find the notice period, any termination fee, and who owns the listing. Confirm your STRO license and TOT certificate are in your name. Send written notice, agree in writing how booked stays are handled, then hand access, pricing and guest messaging to your new manager on a set date.'] },
-      { question: 'What does it cost to switch to Allura Homes?', paragraphs: ['Allura charges 20% of the accommodation fare guests pay for short-term stays, and from 15% for furnished stays of 30+ nights. A $500 onboarding fee is withheld from your first payout, not billed upfront. Supplies pass through at cost, with receipts. Any exit costs with your current manager are set by that contract.'] },
-      { question: 'How long does it take to switch property managers?', paragraphs: ["Your current contract's notice period sets the pace, commonly 30 to 90 days. Onboarding runs in parallel during that window: market analysis, pricing strategy, photography, listing optimization and smart-lock setup. The goal is simple. Your home is ready to earn the day the handover takes effect, with no gap in guest coverage."] },
+      { question: 'What does it cost to switch to Allura Homes?', paragraphs: ['Allura charges 20% of the accommodation fare the guest pays for short-term stays, and from 15% for furnished stays of 30+ nights. Supplies pass through at cost, with receipts.'] },
+      { question: 'How long does it take to switch property managers?', paragraphs: ["Your current contract's notice period sets the pace, commonly 30 to 90 days. Preparation runs in parallel during that window: market analysis, pricing strategy, photography, listing optimization and smart-lock setup. The goal is simple. Your home is ready to earn the day the handover takes effect, with no gap in guest coverage."] },
       { question: 'What happens to my existing bookings when I switch?', paragraphs: ['Confirmed guests should keep their stays. Usually the outgoing manager services arrivals inside the notice period and the new manager takes stays after the cutoff. Many agreements still owe the old manager commission on stays booked during their term, so settle how each reservation is handled, and paid, in writing before you give notice.'] },
       { question: 'Will I keep my Airbnb reviews and listing?', paragraphs: ["It depends on whose account owns the listing. If the listing is yours and your manager is a co-host, Airbnb says removing them leaves your listing and future reservations with you. If it sits on the manager's account, reviews generally don't move. Vrbo can transfer reviews to a new listing for the same address."] },
       { question: 'Do I need a new STRO license if I change managers in San Diego?', paragraphs: ["Usually not. In the City of San Diego, the STRO license belongs to the Host, a natural person such as the owner, and it cannot be transferred. A property manager can serve as the local contact, updated through the city's form. If a manager is named as Host, a new license application is required.", "We are your home's local contact."] },
@@ -125,12 +127,34 @@ export const switchStructuredData = {
       '@type': ['Organization', 'LocalBusiness'], '@id': 'https://www.allurahomes.com/#organization',
       name: 'Allura Homes', url: 'https://www.allurahomes.com', foundingDate: '2013',
       description: 'Boutique vacation rental management in San Diego. Fewer than 20 homes managed like they are our own.',
-      areaServed: { '@type': 'City', name: 'San Diego', containedInPlace: { '@type': 'AdministrativeArea', name: 'California' } },
-      sameAs: ['https://www.instagram.com/allurahomes', 'https://www.facebook.com/allurahomes.us', 'https://www.linkedin.com/company/allurahomes'],
+      telephone: PRIMARY_PHONE_E164, logo: BRAND.logos.bug,
+      areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),
+      sameAs: Object.values(BRAND.social),
+    },
+    {
+      '@type': 'WebSite', '@id': 'https://www.allurahomes.com/#website',
+      name: 'Allura Homes', url: 'https://www.allurahomes.com',
+      publisher: { '@id': 'https://www.allurahomes.com/#organization' },
+    },
+    {
+      '@type': 'BreadcrumbList', '@id': `${switchContent.seo.url}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.allurahomes.com' },
+        { '@type': 'ListItem', position: 2, name: 'Property Management', item: 'https://www.allurahomes.com/property-management' },
+        { '@type': 'ListItem', position: 3, name: 'Switch Managers in San Diego', item: switchContent.seo.url },
+      ],
+    },
+    {
+      '@type': 'Service', '@id': `${switchContent.seo.url}#service`,
+      name: 'Vacation rental management switch and handover, San Diego', url: switchContent.seo.url,
+      provider: { '@id': 'https://www.allurahomes.com/#organization' },
+      areaServed: { '@type': 'City', name: 'San Diego' },
     },
     {
       '@type': 'WebPage', '@id': `${switchContent.seo.url}#webpage`, url: switchContent.seo.url,
       name: switchContent.seo.title, description: switchContent.seo.description,
+      breadcrumb: { '@id': `${switchContent.seo.url}#breadcrumb` },
+      mainEntity: { '@id': `${switchContent.seo.url}#service` },
       isPartOf: { '@id': 'https://www.allurahomes.com/#website' }, about: { '@id': 'https://www.allurahomes.com/#organization' },
       primaryImageOfPage: { '@type': 'ImageObject', url: 'https://www.allurahomes.com/images/switch-managers/hero.jpg' },
       speakable: { '@type': 'SpeakableSpecification', cssSelector: ["[data-speakable='answer-card']", 'h1'] },

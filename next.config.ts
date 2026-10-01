@@ -1,8 +1,11 @@
 import type { NextConfig } from 'next'
+import { SWITCH_PAGE_PATH } from './lib/site-config'
 
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      { source: '/switch-managers', destination: SWITCH_PAGE_PATH, statusCode: 301 },
+      { source: '/switch-managers/', destination: SWITCH_PAGE_PATH, statusCode: 301 },
       // Legacy blog category slugs → new short slugs (301 = permanent moved)
       {
         source: '/hosting-resources',

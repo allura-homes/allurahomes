@@ -2,8 +2,23 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { switchContent as c } from './content'
+import { FREE_INCOME_REPORT_HREF } from '@/lib/site-config'
 
-export function SwitchHeading({ eyebrow, title, subtitle, dark = false, left = false }: { eyebrow: string; title: string; subtitle?: string; dark?: boolean; left?: boolean }) {
+const bodyLinks = [
+  { text: 'STRO license', href: '/hosting/san-diego-str-permit-guide' },
+  { text: 'STRO, TOT', href: '/regulations/san-diego-california' },
+  { text: 'free switch analysis', href: FREE_INCOME_REPORT_HREF },
+  { text: 'end-to-end', href: '/how-it-works' },
+]
+
+export function SwitchBody({ text }: { text: string }) {
+  const match = bodyLinks.find((link) => text.includes(link.text))
+  if (!match) return <>{text}</>
+  const index = text.indexOf(match.text)
+  return <>{text.slice(0, index)}<Link href={match.href} className="underline decoration-gold underline-offset-4 hover:text-gold-dark">{match.text}</Link>{text.slice(index + match.text.length)}</>
+}
+
+export function SwitchHeading({ eyebrow, title, subtitle, dark = false, left = false }: { eyebrow: string; title: string; subtitle?: React.ReactNode; dark?: boolean; left?: boolean }) {
   return (
     <div className={cn('flex max-w-3xl flex-col gap-5', !left && 'mx-auto items-center text-center')}>
       <p className={cn('text-sm font-semibold uppercase tracking-widest', dark ? 'text-gold' : 'text-gold-dark')}>{eyebrow}</p>
@@ -32,7 +47,7 @@ export function SwitchCard({ title, body }: { title: string; body: string }) {
     <article className="flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-7 text-card-foreground">
       <span aria-hidden="true" className="h-0.5 w-8 bg-gold" />
       <h3 className="font-display text-xl font-semibold leading-snug text-navy-deep">{title}</h3>
-      <p className="text-sm leading-relaxed text-muted-foreground">{body}</p>
+      <p className="text-sm leading-relaxed text-muted-foreground"><SwitchBody text={body} /></p>
     </article>
   )
 }

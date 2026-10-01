@@ -7,8 +7,7 @@ export const metadata: Metadata = {
   title: { absolute: c.seo.title },
   description: c.seo.description,
   alternates: { canonical: c.seo.url },
-  // TODO: switch to index/follow ONLY after Mike approves launch
-  robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   openGraph: {
     type: 'website', url: c.seo.url, siteName: 'Allura Homes', title: c.seo.title, description: c.seo.description,
     images: [{ url: '/images/switch-managers/og-image.jpg', width: 1200, height: 630, alt: c.hero.imageAlt }],

@@ -9,7 +9,9 @@ import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
 import { BRAND, NAV_ITEMS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
-export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: string } }) {
+type NavCta = { label: string; href: string }
+
+export function Navbar({ primaryCta, secondaryCta }: { primaryCta?: NavCta; secondaryCta?: NavCta }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
@@ -127,7 +129,12 @@ export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: str
           </div>
 
           {/* Desktop CTA */}
-          <div className={cn('hidden shrink-0', primaryCta ? 'xl:flex' : 'min-[1100px]:flex')}>
+          <div className={cn('hidden shrink-0 items-center gap-4', primaryCta ? 'md:flex' : 'min-[1100px]:flex')}>
+            {secondaryCta && (
+              <Link href={secondaryCta.href} className="rounded-md border border-primary-foreground/40 px-4 py-2 text-sm font-semibold text-primary-foreground hover:border-gold hover:text-gold">
+                {secondaryCta.label}
+              </Link>
+            )}
             <Link
               href={primaryCta?.href ?? BRAND.calendarUrl}
               className="btn-gold inline-flex h-10 items-center rounded-md px-6 font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02]"
@@ -248,6 +255,11 @@ export function Navbar({ primaryCta }: { primaryCta?: { label: string; href: str
                 >
                   {primaryCta?.label ?? 'Book a Call'}
                 </Link>
+                {secondaryCta && (
+                  <Link href={secondaryCta.href} onClick={() => setMobileOpen(false)} className="mt-3 flex min-h-12 items-center justify-center rounded-md border border-primary-foreground/40 text-sm font-semibold text-primary-foreground hover:border-gold hover:text-gold">
+                    {secondaryCta.label}
+                  </Link>
+                )}
               </motion.div>
             </nav>
           </motion.div>
