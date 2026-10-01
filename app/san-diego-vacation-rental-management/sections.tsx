@@ -1,67 +1,49 @@
-import { getImageProps } from 'next/image'
+import { Hero } from '@/components/sections/hero'
+import { SectionHeading } from '@/components/section-heading'
+import { SiteButton } from '@/components/site-button'
+import { ContentSection, FeatureCard } from '@/components/sections/content-section'
 import { AIRBNB_PROFILE_HREF, BOOK_A_CALL_HREF, FREE_INCOME_REPORT_HREF, SHOW_FEES, SHOW_TRIAL, SWITCH_PAGE_HREF } from '@/lib/site-config'
 import { boutiqueContent as c, boutiqueFAQs, type ContentItem } from './content'
 
-function SectionHeading({ eyebrow, title, centered = false }: { eyebrow: string; title: string; centered?: boolean }) {
-  return <div className={centered ? 'b-section-head b-center' : 'b-section-head'}><p className="b-eyebrow">{eyebrow}</p><div className="b-rule" aria-hidden="true" /><h2 className="font-display text-balance">{title}</h2></div>
+function CTAButtons({ dark = false }: { dark?: boolean }) {
+  return <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap"><SiteButton href={FREE_INCOME_REPORT_HREF}>{c.cta.primary}</SiteButton><SiteButton href={BOOK_A_CALL_HREF} variant="secondary" dark={dark} target="_blank">{c.cta.secondary}</SiteButton></div>
 }
 
-function CTAButtons() {
-  return <div className="b-cta-row"><a className="b-button btn-gold" href={FREE_INCOME_REPORT_HREF}>{c.cta.primary}</a><a className="b-button b-secondary" href={BOOK_A_CALL_HREF} target="_blank" rel="noopener noreferrer">{c.cta.secondary}</a></div>
-}
-
-function Cards({ items, className }: { items: ContentItem[]; className: string }) {
-  return <div className={className}>{items.map(item => <article className="b-card" key={item.title}><div className="b-card-rule" aria-hidden="true" /><h3 className="font-display">{item.title}</h3><p>{item.body}</p></article>)}</div>
+function Cards({ items }: { items: ContentItem[] }) {
+  return <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{items.map(item => <FeatureCard key={item.title} title={item.title}>{item.body}</FeatureCard>)}</div>
 }
 
 export function BoutiqueHero() {
-  const common = { alt: c.hero.imageAlt, sizes: '(max-width: 960px) 100vw, 45vw', priority: true, fetchPriority: 'high' as const }
-  const desktop = getImageProps({ ...common, src: '/images/boutique/hero.jpg', width: 1536, height: 1024 }).props
-  const mobile = getImageProps({ ...common, src: '/images/boutique/hero-mobile.jpg', width: 1200, height: 750 }).props
-  return <>
-    <section id="top" className="b-hero b-dark" tabIndex={-1}><div className="b-wrap b-hero-grid">
-      <div><p className="b-eyebrow">{c.hero.eyebrow}</p><h1 className="font-display">{c.hero.title}{' '}<em>{c.hero.emphasis}</em></h1><p className="b-lede">{c.hero.lede}</p><p className="b-hero-body">{c.hero.body}</p><CTAButtons />{SHOW_TRIAL && <p className="b-micro b-trial" data-removable="trial">{c.promise.line}</p>}</div>
-      <div className="b-photo-wrap"><div className="b-photo"><picture><source media="(max-width: 960px)" srcSet={mobile.srcSet} sizes={mobile.sizes} width={1200} height={750} /><img {...desktop} alt={c.hero.imageAlt} /></picture><div className="b-photo-inset" aria-hidden="true" /></div><div className="b-hero-badge"><strong className="font-display">{c.hero.badge}</strong><span>{c.hero.badgeLabel}</span></div></div>
-    </div></section>
-    <div className="b-trust"><ul className="b-wrap">{c.trust.map((item, index) => <li key={item}><span className="b-diamond" aria-hidden="true" />{index === 1 ? <a href={AIRBNB_PROFILE_HREF} target="_blank" rel="noopener noreferrer">{item}</a> : <span className={index === 2 ? 'b-vrbo' : undefined}>{item}</span>}</li>)}</ul></div>
-    <section className="b-answer"><div className="b-wrap"><div className="b-answer-card" data-speakable="answer-card"><p className="font-display">{c.answer}</p></div></div></section>
-  </>
+  return <><div id="top" tabIndex={-1}><Hero image="/images/boutique/hero.jpg" accent={c.hero.eyebrow} title={`${c.hero.title} ${c.hero.emphasis}`} subtitle={c.hero.lede} primaryCta={{ label: c.cta.primary, href: FREE_INCOME_REPORT_HREF }} secondaryCta={{ label: c.cta.secondary, href: BOOK_A_CALL_HREF }} /></div><div className="bg-navy-deep py-8 text-primary-foreground"><ul className="mx-auto flex max-w-7xl flex-wrap justify-center gap-6 px-6 text-sm">{c.trust.map((item, index) => <li key={item}>{index === 1 ? <a href={AIRBNB_PROFILE_HREF} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{item}</a> : item}</li>)}</ul></div><ContentSection muted><div className="mx-auto flex max-w-3xl flex-col gap-6"><p data-speakable="answer-card" className="text-lg leading-relaxed text-navy-deep">{c.answer}</p><p className="leading-relaxed text-muted-foreground">{c.hero.body}</p>{SHOW_TRIAL && <p className="font-semibold text-navy-deep">{c.promise.line}</p>}</div></ContentSection></>
 }
 
 export function BoutiqueProof() {
-  return <section><div className="b-wrap"><SectionHeading {...c.boutique} /><Cards items={c.boutique.items} className="b-boutique-grid" /><div className="b-proof-grid">
-    <figure className="b-quote"><span className="b-quote-mark font-display" aria-hidden="true">{'“'}</span><blockquote className="font-display">{c.proof.quote}</blockquote><figcaption><cite>{c.proof.author}</cite><p className="b-rating"><span aria-hidden="true">★★★★★</span> {c.proof.rating}</p><p className="b-case-note">{c.proof.note}</p></figcaption></figure>
-    <div className="b-proof-copy"><p className="b-eyebrow">{c.proof.eyebrow}</p><div className="b-rule" aria-hidden="true" /><p className="b-contrast font-display">{c.proof.title} <em>{c.proof.emphasis}</em></p><p className="b-muted">{c.proof.body}</p></div>
-  </div><div className="b-after-grid"><CTAButtons /></div></div></section>
+  return <ContentSection><SectionHeading accent={c.boutique.eyebrow} title={c.boutique.title} /><Cards items={c.boutique.items} /><div className="mt-12 grid items-center gap-12 lg:grid-cols-2"><figure className="rounded-xl bg-offwhite p-8 text-foreground"><blockquote className="text-xl leading-relaxed text-navy-deep">{c.proof.quote}</blockquote><figcaption className="mt-6 flex flex-col gap-3 text-sm"><cite className="not-italic font-semibold">{c.proof.author}</cite><p>{c.proof.rating}</p><p className="text-muted-foreground">{c.proof.note}</p></figcaption></figure><div><SectionHeading accent={c.proof.eyebrow} title={`${c.proof.title} ${c.proof.emphasis}`} alignment="left" /><p className="leading-relaxed text-muted-foreground">{c.proof.body}</p></div></div><div className="mt-12 flex justify-center"><CTAButtons /></div></ContentSection>
 }
 
 export function BoutiqueHousing() {
   // NEEDS-DATA: insurer direct billing, adjuster relationships, corporate contracts, typical stay lengths,
   // what a furnished stay includes, pet policy, and a confirmed "No 1-year leases" policy statement.
-  return <section id="housing" className="b-dark"><div className="b-wrap"><div className="b-housing-grid"><div className="b-housing-copy"><SectionHeading {...c.housing} />{c.housing.paragraphs.map(p => <p key={p}>{p}</p>)}<p className="b-evaluation font-display">{c.housing.evaluation}</p>{SHOW_FEES && <p data-removable="fees">{c.housing.feeLine}</p>}<p className="b-legal-line">{c.housing.legal} Source: <a href={c.sources[1].href} target="_blank" rel="noopener noreferrer">{c.housing.sourceLabel}</a>. {c.housing.disclaimer}</p></div><Cards items={c.housing.items} className="b-housing-cards" /></div><div className="b-housing-cta"><CTAButtons /></div></div></section>
+  return <ContentSection id="housing" dark><SectionHeading accent={c.housing.eyebrow} title={c.housing.title} dark /><div className="mx-auto mb-12 flex max-w-3xl flex-col gap-6 leading-relaxed text-primary-foreground/80">{c.housing.paragraphs.map(p => <p key={p}>{p}</p>)}<p>{c.housing.evaluation}</p>{SHOW_FEES && <p>{c.housing.feeLine}</p>}<p className="text-sm">{c.housing.legal} Source: <a href={c.sources[1].href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{c.housing.sourceLabel}</a>. {c.housing.disclaimer}</p></div><Cards items={c.housing.items} /><div className="mt-12 flex justify-center"><CTAButtons dark /></div></ContentSection>
 }
 
 export function BoutiqueServices() {
-  return <section><div className="b-wrap"><SectionHeading {...c.services} /><p className="b-service-lede">{c.services.lede}</p><Cards items={c.services.items} className="b-service-grid" /><p className="b-more">Learn more about <a href="/property-management">{c.services.linkText}</a>.</p></div></section>
+  return <ContentSection><SectionHeading accent={c.services.eyebrow} title={c.services.title} subtitle={c.services.lede} /><Cards items={c.services.items} /><p className="mt-8 text-center leading-relaxed text-muted-foreground">Learn more about <a href="/property-management" className="underline underline-offset-4">{c.services.linkText}</a>.</p></ContentSection>
 }
 
 export function BoutiqueFeesAndPromise() {
   return <>
     {/* REMOVABLE: public use of fees needs Mike sign-off. */}
-    {SHOW_FEES && <section className="b-warm" data-removable="fees"><div className="b-wrap b-fee-grid"><div><SectionHeading {...c.fees} /><p className="b-fee-line font-display">{c.fees.lede}</p><p className="b-muted">{c.housing.evaluation}</p></div><table><caption className="sr-only">{c.fees.title}</caption><thead><tr>{c.fees.headers.map(header => <th key={header} scope="col">{header}</th>)}</tr></thead><tbody>{c.fees.rows.map(([label, value]) => <tr key={label}><th scope="row" className="font-display">{label}</th><td>{value}</td></tr>)}</tbody></table></div></section>}
+    {SHOW_FEES && <ContentSection muted><SectionHeading accent={c.fees.eyebrow} title={c.fees.title} subtitle={c.fees.lede} /><div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-border bg-card text-card-foreground"><table className="w-full text-left text-sm"><caption className="sr-only">{c.fees.title}</caption><thead className="bg-navy-deep text-primary-foreground"><tr>{c.fees.headers.map(header => <th key={header} scope="col" className="p-6">{header}</th>)}</tr></thead><tbody>{c.fees.rows.map(([label, value]) => <tr key={label} className="border-t border-border"><th scope="row" className="p-6 font-medium">{label}</th><td className="p-6 leading-relaxed text-muted-foreground">{value}</td></tr>)}</tbody></table></div></ContentSection>}
     {/* REMOVABLE: public use of the trial needs Mike sign-off. */}
-    {SHOW_TRIAL && <section className="b-promise b-dark" data-removable="trial"><span className="b-promise-number font-display" aria-hidden="true">90</span><div className="b-wrap"><SectionHeading {...c.promise} centered /><p className="b-promise-line font-display">{c.promise.lines[0]}<br />{c.promise.lines[1]}</p><p>{c.promise.body}</p></div></section>}
+    {SHOW_TRIAL && <ContentSection dark><SectionHeading accent={c.promise.eyebrow} title={c.promise.title} dark /><div className="flex flex-col items-center gap-6 text-center"><p className="font-headline text-3xl font-semibold text-gold-light md:text-4xl">{c.promise.line}</p><p className="leading-relaxed text-primary-foreground/80">{c.promise.body}</p></div></ContentSection>}
   </>
 }
 
 export function BoutiqueFAQ() {
-  // TODO(Mike): active markets beyond San Diego are unconfirmed. Do NOT list any other city or region until confirmed.
-  return <>
-    <section className="b-where"><div className="b-wrap b-where-grid"><SectionHeading {...c.where} /><p className="b-muted">{c.where.body}</p></div></section>
-    <section className="b-warm" id="faq"><div className="b-wrap"><SectionHeading {...c.faq} centered /><div className="b-faq">{boutiqueFAQs.map((faq, index) => <details key={faq.question} open={index === 0}><summary><h3 className="font-display">{faq.question}</h3><span className="b-faq-toggle" aria-hidden="true" /></summary><div className="b-faq-answer">{faq.paragraphs.map((p, pIndex) => <p key={p}>{p}{faq.link && pIndex === faq.paragraphs.length - 1 && <> <a href={faq.link.href}>{faq.link.text}</a>.</>}</p>)}</div></details>)}</div><div className="b-legal"><p><strong>{c.faq.disclaimer}</strong> {c.faq.legal}</p><ul>{c.sources.map(source => <li key={source.href}><a href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a></li>)}</ul></div></div></section>
-  </>
+  return <><ContentSection><SectionHeading accent={c.where.eyebrow} title={c.where.title} subtitle={c.where.body} /></ContentSection><ContentSection muted id="faq"><SectionHeading accent={c.faq.eyebrow} title={c.faq.title} /><div className="mx-auto flex max-w-4xl flex-col gap-4">{boutiqueFAQs.map((faq, index) => <details key={faq.question} open={index === 0} className="rounded-xl border border-border bg-card text-card-foreground"><summary className="cursor-pointer p-6 font-headline text-lg font-semibold text-navy-deep">{faq.question}</summary><div className="flex flex-col gap-4 px-6 pb-6">{faq.paragraphs.map((p, pIndex) => <p key={p} className="leading-relaxed text-muted-foreground">{p}{faq.link && pIndex === faq.paragraphs.length - 1 && <> <a href={faq.link.href} className="underline underline-offset-4">{faq.link.text}</a>.</>}</p>)}</div></details>)}<p className="text-sm leading-relaxed text-muted-foreground"><strong>{c.faq.disclaimer}</strong> {c.faq.legal}</p><ul className="flex flex-wrap gap-6 text-sm">{c.sources.map(source => <li key={source.href}><a href={source.href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{source.label}</a></li>)}</ul></div></ContentSection></>
 }
 
 export function BoutiqueClosing() {
-  return <section id="start" className="b-closing b-dark"><div className="b-wrap b-closing-grid"><div><SectionHeading {...c.closing} /><p className="b-closing-body">{c.closing.body}</p>{SHOW_TRIAL && <div data-removable="trial"><p className="b-closing-promise font-display">{c.promise.line}</p><p className="b-closing-body">{c.closing.trialBody}</p></div>}</div><div className="b-start-card"><h3 className="font-display">{c.closing.cardTitle}</h3><p className="b-hint">{c.closing.hint}</p><p className="b-step-label">{c.closing.labels[0]}</p><a className="b-button btn-gold" href={FREE_INCOME_REPORT_HREF}>{c.cta.primary}</a><p className="b-step-label b-step-two">{c.closing.labels[1]}</p><a className="b-button b-secondary" href={BOOK_A_CALL_HREF} target="_blank" rel="noopener noreferrer">{c.cta.secondary}</a><p className="b-switch-link">{c.closing.switchIntro} <a href={SWITCH_PAGE_HREF}>{c.closing.switchLink}</a>.</p></div></div></section>
+  return <ContentSection id="start" dark><SectionHeading accent={c.closing.eyebrow} title={c.closing.title} subtitle={c.closing.body} dark /><div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">{SHOW_TRIAL && <><p>{c.promise.line}</p><p className="leading-relaxed text-primary-foreground/80">{c.closing.trialBody}</p></>}<h3 className="font-headline text-xl font-semibold uppercase tracking-wider">{c.closing.cardTitle}</h3><p className="text-sm text-primary-foreground/80">{c.closing.hint}</p><CTAButtons dark /><p className="text-sm leading-relaxed">{c.closing.switchIntro} <a href={SWITCH_PAGE_HREF} className="underline underline-offset-4">{c.closing.switchLink}</a>.</p></div></ContentSection>
 }

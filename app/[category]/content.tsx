@@ -64,7 +64,7 @@ export function CategoryContent({
 
       {/* CTA */}
       <CTABand
-        headline="Ready to Maximize Your Rental Income?"
+        headline="Ready to Improve Your Rental Income?"
         subtitle="Book a free consultation to see what your property could earn with professional management."
         primaryCta={{ label: 'Book a Call', href: BRAND.calendarUrl }}
         secondaryCta={{ label: 'Browse Homes', href: BRAND.bookingUrl }}

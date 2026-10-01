@@ -35,11 +35,11 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Allura Homes | Distinguished by Design - Luxury Vacation Rental Management in California',
+    default: 'Allura Homes | Distinguished by Design - Boutique Vacation Rental Management in California',
     template: '%s | Allura Homes',
   },
   description:
-    'California\'s premier white-glove, boutique vacation rental management company. Superhost-certified, full-service property management in San Diego, Temecula, Los Angeles & beyond. 13+ years maximizing rental income for property owners.',
+    'California\'s premier white-glove, boutique vacation rental management company. Superhost-certified, full-service property management in San Diego, Temecula, Los Angeles & beyond. 13+ years improving rental income for property owners.',
   metadataBase: new URL('https://www.allurahomes.com'),
   keywords: [
     'vacation rental management',
@@ -77,15 +77,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'Allura Homes',
-    title: 'Allura Homes | Distinguished by Design - Luxury Vacation Rental Management',
+    title: 'Allura Homes | Distinguished by Design - Boutique Vacation Rental Management',
     description:
-      'California\'s premier white-glove, boutique vacation rental management. Superhost-certified with 13+ years of experience maximizing rental income.',
+      'California\'s premier white-glove, boutique vacation rental management. Superhost-certified with 13+ years of experience improving rental income.',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Allura Homes - Distinguished by Design - Luxury Vacation Rental Management in California',
+        alt: 'Allura Homes - Distinguished by Design - Boutique Vacation Rental Management in California',
       },
     ],
   },

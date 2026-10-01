@@ -51,7 +51,7 @@ export const METRO_AREAS: MetroArea[] = [
     intro: {
       heading: 'Why San Diego & Temecula?',
       paragraphs: [
-        'San Diego County is one of the strongest short-term rental markets in the nation, driven by year-round tourism, world-class beaches, a thriving culinary scene, and major events from Comic-Con to the US Open. Temecula Wine Country adds a unique dimension with its boutique wineries, hot-air balloon festivals, and growing popularity as a luxury getaway destination.',
+        'San Diego County is one of the strongest short-term rental markets in the nation, driven by year-round tourism, world-class beaches, a thriving culinary scene, and major events from Comic-Con to the US Open. Temecula Wine Country adds a unique dimension with its boutique wineries, hot-air balloon festivals, and growing popularity as a high-end getaway destination.',
         'Allura Homes was born in San Diego. With 13+ years operating in these markets, we understand the hyper-local dynamics that drive revenue -- from seasonal pricing swings to neighborhood-level regulation nuances. Our relationships with local cleaners, maintenance crews, and hospitality vendors are unmatched.',
       ],
     },
@@ -130,7 +130,7 @@ export const METRO_AREAS: MetroArea[] = [
     slug: 'coachella-valley',
     name: 'Coachella Valley',
     region: 'Desert & Central Coast',
-    heroAccent: 'Desert Luxury Markets',
+    heroAccent: 'Desert Getaway Markets',
     heroTitle: 'Coachella Valley\nProperty Management',
     heroSubtitle:
       'From the mid-century glamour of Palm Springs to the sprawling desert estates of Palm Desert, Allura brings white-glove management to the Coachella Valley.',

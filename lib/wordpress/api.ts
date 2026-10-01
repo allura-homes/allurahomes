@@ -23,7 +23,7 @@ const DEMO_CATEGORIES: BlogCategory[] = [
     name: 'Hosting Resources',
     slug: 'hosting',
     description:
-      'Expert tips, strategies, and guides to maximize your vacation rental performance.',
+      'Expert tips, strategies, and guides to improve your vacation rental performance.',
     count: 5,
   },
   {
@@ -54,7 +54,7 @@ const DEMO_POSTS: BlogPost[] = [
     modified: '2025-11-15T10:00:00',
     featuredImage: {
       url: '/images/property-sunset-estate.jpg',
-      alt: 'Luxury San Diego vacation rental',
+      alt: 'Boutique San Diego vacation rental',
       width: 800,
       height: 533,
     },
@@ -70,7 +70,7 @@ const DEMO_POSTS: BlogPost[] = [
     slug: 'dynamic-pricing-strategies-vacation-rentals',
     title: 'Dynamic Pricing Strategies That Actually Work for Vacation Rentals',
     excerpt:
-      'Stop leaving money on the table. Here\'s how to implement dynamic pricing that maximizes revenue without sacrificing occupancy.',
+      'Stop leaving money on the table. Here\'s how to implement dynamic pricing that improves revenue without sacrificing occupancy.',
     content: '',
     date: '2025-10-28T10:00:00',
     modified: '2025-10-28T10:00:00',

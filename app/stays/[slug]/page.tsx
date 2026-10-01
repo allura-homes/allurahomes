@@ -35,12 +35,12 @@ export async function generateMetadata({
     title: `${property.title} | Allura Homes`,
     description:
       property.description.summary?.slice(0, 160) ||
-      `${property.bedrooms} bedroom vacation rental in ${property.location.city}, ${property.location.state}. Sleeps ${property.guests}. Book your luxury getaway today.`,
+      `${property.bedrooms} bedroom vacation rental in ${property.location.city}, ${property.location.state}. Sleeps ${property.guests}. Book your high-end getaway today.`,
     openGraph: {
       title: property.title,
       description:
         property.description.summary?.slice(0, 160) ||
-        `Luxury vacation rental in ${property.location.city}`,
+        `Boutique vacation rental in ${property.location.city}`,
       images: property.images[0]
         ? [{ url: property.images[0].url, width: 1200, height: 630 }]
         : undefined,

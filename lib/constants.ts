@@ -162,8 +162,8 @@ export const TESTIMONIALS = [
 // ─── Featured Properties ────────────────────────────────────
 export const FEATURED_PROPERTIES = [
   {
-    title: 'Allura South Park',
-    location: 'South Park, San Diego',
+    title: 'Walkable Tranquil Treetop Escape | Near Everything',
+    location: 'San Diego, California',
     image: '/images/property-south-park.webp',
     beds: 3,
     baths: 2.5,
@@ -171,8 +171,8 @@ export const FEATURED_PROPERTIES = [
     href: 'https://book.allurahomes.com/property/710907395953394820',
   },
   {
-    title: 'Allura Champagne',
-    location: 'Menifee, Temecula Wine Country',
+    title: 'Wine Country | Pool. Spa. Game Room. Fire Pit. BBQ',
+    location: 'Menifee, California',
     image: '/images/property-champagne.webp',
     beds: 5,
     baths: 4,
@@ -180,8 +180,8 @@ export const FEATURED_PROPERTIES = [
     href: 'https://book.allurahomes.com/property/710286979736011811',
   },
   {
-    title: 'Desert Princess Villa',
-    location: 'Cathedral City, Palm Springs Area',
+    title: 'Desert Princess: Dual Masters, Private Pool & Spa',
+    location: 'Palm Springs, California',
     image: '/images/property-desert-princess.webp',
     beds: 2,
     baths: 2.5,

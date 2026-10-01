@@ -24,7 +24,7 @@ export function BookACallContent() {
                 Book Your Free Consultation
               </h1>
               <p className="mt-6 text-lg text-primary-foreground/80 md:text-xl">
-                Schedule a 30-minute call with our team to discuss your property, goals, and how Allura Homes can help maximize your rental revenue.
+                Schedule a 30-minute call with our team to discuss your property, goals, and how Allura Homes can help improve your rental revenue.
               </p>
             </div>
           </AnimateOnScroll>

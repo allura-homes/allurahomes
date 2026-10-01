@@ -18,7 +18,7 @@ const differentiators = [
   {
     title: 'Revenue-Obsessed Strategy',
     description:
-      'We do not just list your property and hope for bookings. We actively manage pricing, demand signals, and channel distribution to maximize every night.',
+      'We do not just list your property and hope for bookings. We actively manage pricing, demand signals, and channel distribution to improve each night’s earning potential.',
     points: [
       'Dynamic pricing updated daily',
       'Multi-channel distribution optimization',

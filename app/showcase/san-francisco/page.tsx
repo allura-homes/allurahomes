@@ -14,7 +14,7 @@ const transformations = [
     beforeImage: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bedroom2-before-HY0P1oOtMr1fwx2I98gAlsnDuVVtBO.jpg',
     afterImage: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bedroom2.png-QBuSkPvx07zlPMbmbdaBToW22fT43X.jpeg',
     beforeAlt: 'Guest bedroom before renovation - dated decor',
-    afterAlt: 'Guest bedroom after Allura staging - Japanese-inspired luxury',
+    afterAlt: 'Guest bedroom after Allura staging - Japanese-inspired elegance',
   },
   {
     roomName: 'Primary Bedroom',
@@ -94,7 +94,7 @@ export default function SanFranciscoShowcasePage() {
             Below is the vision for minimal effort with big results. This San Francisco property 
             can achieve dramatic transformation under Allura&apos;s expert staging and design guidance. 
             Drawing inspiration from Japanese aesthetics, we create spaces that blend tranquility 
-            with modern luxury. Drag the slider to see the remarkable before and after of each room.
+            with modern elegance. Drag the slider to see the remarkable before and after of each room.
           </p>
         </div>
       </section>

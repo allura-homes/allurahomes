@@ -1,9 +1,8 @@
 'use client'
 
-import Link from 'next/link'
+import { SiteButton } from '@/components/site-button'
 import Image from 'next/image'
 import { motion } from 'motion/react'
-import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 type HeroProps = {
@@ -111,25 +110,8 @@ export function Hero({
               transition={{ duration: 0.6, delay: 0.7 }}
               className="mt-10 flex flex-col gap-4 sm:flex-row"
             >
-              {primaryCta && (
-                <Link
-                  href={primaryCta.href}
-                  className="btn-gold group inline-flex w-full min-h-13 items-center justify-center gap-2 rounded-md px-8 py-3 text-center font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02] sm:w-auto"
-                  style={{ fontFamily: 'var(--font-headline)' }}
-                >
-                  {primaryCta.label}
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-                </Link>
-              )}
-              {secondaryCta && (
-                <Link
-                  href={secondaryCta.href}
-                  className="inline-flex w-full min-h-13 items-center justify-center rounded-md border-2 border-primary-foreground/40 px-8 py-3 text-center font-headline text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-all hover:scale-[1.02] hover:border-gold hover:text-gold sm:w-auto"
-                  style={{ fontFamily: 'var(--font-headline)' }}
-                >
-                  {secondaryCta.label}
-                </Link>
-              )}
+              {primaryCta && <SiteButton href={primaryCta.href}>{primaryCta.label}</SiteButton>}
+              {secondaryCta && <SiteButton href={secondaryCta.href} variant="secondary">{secondaryCta.label}</SiteButton>}
             </motion.div>
           )}
         </div>

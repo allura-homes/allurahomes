@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     title: 'Full-Service Vacation Rental Property Management | Allura Homes',
     description: 'Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. About 19 homes, including 30-night stays.',
     url: 'https://www.allurahomes.com/property-management',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Allura Homes boutique vacation rental management' }],
   },
 }
 
@@ -60,7 +61,7 @@ export default function PropertyManagementPage() {
             '@type': 'Service',
             name: 'Allura Homes Property Management',
             description:
-              'Full-service luxury vacation rental management in San Diego and Temecula, CA.',
+              'Full-service boutique vacation rental management in San Diego and Temecula, CA.',
             provider: {
               '@type': 'Organization',
               name: 'Allura Homes',
