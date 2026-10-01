@@ -15,7 +15,7 @@ export function FeaturedProperties() {
           <SectionHeading
             accent="Our Portfolio"
             title="Featured Properties"
-            subtitle="A selection of our curated luxury vacation rentals across Southern California."
+            subtitle="A selection of our boutique vacation rentals."
           />
         </AnimateOnScroll>
 

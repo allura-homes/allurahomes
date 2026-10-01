@@ -2,9 +2,9 @@
 
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { TRUST_STATS } from '@/lib/constants'
-import { Award, Star, BadgeCheck, Trophy } from 'lucide-react'
+import { Award, Home, Star, BadgeCheck, Trophy } from 'lucide-react'
 
-const icons = [Award, Star, BadgeCheck, Trophy]
+const icons = [Award, Home, Star, BadgeCheck, Trophy]
 
 export function StatsBar() {
   return (

@@ -1,45 +1,23 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { BRAND } from '@/lib/constants'
+import {
+  FREE_INCOME_REPORT_HREF,
+  BOOK_A_CALL_HREF,
+  GUEST_BOOKING_HREF,
+  PRIMARY_PHONE_DISPLAY,
+  FOOTER_MARKETS,
+} from '@/lib/site-config'
 import { Instagram, Facebook, Linkedin, Phone, Mail, MapPin } from 'lucide-react'
 
 function cityBookingUrl(city: string) {
   return `https://reservations.allurahomes.com/en/properties?city=${encodeURIComponent(city)}&country=United+States&minOccupancy=1`
 }
 
-const serviceAreas = {
-  'Southern California': [
-    { name: 'Carlsbad', bookable: false },
-    { name: 'Cathedral City', bookable: true },
-    { name: 'Chula Vista', bookable: false },
-    { name: 'Del Mar', bookable: false },
-    { name: 'Encinitas', bookable: false },
-    { name: 'Fallbrook', bookable: false },
-    { name: 'Hollywood Hills', bookable: false },
-    { name: 'La Jolla', bookable: false },
-    { name: 'Little Italy', bookable: false },
-    { name: 'Los Angeles', bookable: true },
-    { name: 'Menifee', bookable: true },
-    { name: 'Murrieta', bookable: true },
-    { name: 'Oceanside', bookable: false },
-    { name: 'Ojai', bookable: true },
-    { name: 'Palm Desert', bookable: true },
-    { name: 'Palm Springs', bookable: true },
-    { name: 'San Diego', bookable: true },
-    { name: 'San Marcos', bookable: false },
-    { name: 'Solana Beach', bookable: false },
-    { name: 'Temecula', bookable: false },
-    { name: 'Vista', bookable: false },
-    { name: 'Winchester', bookable: false },
-    { name: 'Woodland Hills', bookable: false },
-  ],
-  'Northern California': [
-    { name: 'Napa', bookable: true },
-    { name: 'Oakland', bookable: true },
-    { name: 'San Francisco', bookable: false },
-    { name: 'Sonoma', bookable: false },
-  ],
-}
+// Service area list sourced from FOOTER_MARKETS (lib/site-config.ts), which
+// is flagged NEEDS CONFIRMATION -- several markets below may not actually be
+// served. See the TODO on that constant before launch.
+const serviceAreas = FOOTER_MARKETS
 
 const footerColumns = [
   {
@@ -47,16 +25,13 @@ const footerColumns = [
     links: [
       { label: 'Property Management', href: '/property-management' },
       { label: 'How It Works', href: '/how-it-works' },
-      { label: 'Free Income Report', href: '/free-income-report' },
-      { label: 'Book a Call', href: BRAND.calendarUrl },
+      { label: 'Free Income Report', href: FREE_INCOME_REPORT_HREF },
+      { label: 'Book a Call', href: BOOK_A_CALL_HREF },
     ],
   },
   {
     title: 'For Guests',
-    links: [
-      { label: 'Browse Homes', href: BRAND.bookingUrl, external: true },
-      { label: 'Reviews', href: '#', disabled: true },
-    ],
+    links: [{ label: 'Browse Homes', href: GUEST_BOOKING_HREF, external: true }],
   },
   {
     title: 'Resources',
@@ -72,10 +47,10 @@ const footerColumns = [
     title: 'Contact Us',
     links: [
       { label: 'General Inquiries', href: '/contact' },
-      { label: 'Free Income Report', href: '/free-income-report' },
+      { label: 'Free Income Report', href: FREE_INCOME_REPORT_HREF },
       { label: 'Apply to Work with Us', href: '/contact' },
       { label: 'Referral Program', href: '/referrals' },
-      { label: 'Book a Free Consultation', href: BRAND.calendarUrl },
+      { label: 'Book a Free Consultation', href: BOOK_A_CALL_HREF },
     ],
   },
 ]
@@ -100,8 +75,7 @@ export function Footer() {
               />
             </div>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-primary-foreground/60">
-              California&apos;s premier boutique vacation rental management company.
-              13+ years of Superhost-certified hospitality excellence.
+              A boutique vacation rental management company serving California property owners with Superhost-certified hospitality.
             </p>
 
             {/* Social Icons */}
@@ -244,7 +218,7 @@ export function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
             <span className="flex items-center gap-1.5">
               <Phone className="size-3" />
-              {BRAND.phone}
+              {PRIMARY_PHONE_DISPLAY}
             </span>
             <span className="flex items-center gap-1.5">
               <Mail className="size-3" />

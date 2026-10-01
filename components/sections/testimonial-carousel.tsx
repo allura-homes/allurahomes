@@ -7,9 +7,15 @@ import { TESTIMONIALS } from '@/lib/constants'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { cn } from '@/lib/utils'
 
+// Only testimonials with written (or public-source) permission to publish
+// are shown. See TESTIMONIALS in lib/constants.ts.
+const VERIFIED_TESTIMONIALS = TESTIMONIALS.filter((t) => t.verified)
+
 export function TestimonialCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' })
   const [selectedIndex, setSelectedIndex] = useState(0)
+
+  if (VERIFIED_TESTIMONIALS.length === 0) return null
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
@@ -51,7 +57,7 @@ export function TestimonialCarousel() {
           <div className="relative">
             <div ref={emblaRef} className="overflow-hidden">
               <div className="flex">
-                {TESTIMONIALS.map((t, i) => (
+                {VERIFIED_TESTIMONIALS.map((t, i) => (
                   <div key={i} className="min-w-0 shrink-0 grow-0 basis-full px-4 md:basis-[80%] lg:basis-[60%]">
                     <div className="flex flex-col items-center px-4 py-8 text-center md:px-12">
                       <Quote className="mb-6 size-10 text-gold/40" />
@@ -81,37 +87,39 @@ export function TestimonialCarousel() {
             </div>
 
             {/* Controls */}
-            <div className="mt-8 flex items-center justify-center gap-4">
-              <button
-                onClick={scrollPrev}
-                className="flex size-10 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors hover:bg-gold hover:text-navy-deep"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="size-5" />
-              </button>
-              <div className="flex gap-2">
-                {TESTIMONIALS.map((_, i) => (
-                  <button
-                    key={i}
-                    className={cn(
-                      'h-2 rounded-full transition-all',
-                      selectedIndex === i
-                        ? 'w-8 bg-gold'
-                        : 'w-2 bg-primary-foreground/20'
-                    )}
-                    aria-label={`Go to testimonial ${i + 1}`}
-                    onClick={() => emblaApi?.scrollTo(i)}
-                  />
-                ))}
+            {VERIFIED_TESTIMONIALS.length > 1 && (
+              <div className="mt-8 flex items-center justify-center gap-4">
+                <button
+                  onClick={scrollPrev}
+                  className="flex size-10 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors hover:bg-gold hover:text-navy-deep"
+                  aria-label="Previous testimonial"
+                >
+                  <ChevronLeft className="size-5" />
+                </button>
+                <div className="flex gap-2">
+                  {VERIFIED_TESTIMONIALS.map((_, i) => (
+                    <button
+                      key={i}
+                      className={cn(
+                        'h-2 rounded-full transition-all',
+                        selectedIndex === i
+                          ? 'w-8 bg-gold'
+                          : 'w-2 bg-primary-foreground/20'
+                      )}
+                      aria-label={`Go to testimonial ${i + 1}`}
+                      onClick={() => emblaApi?.scrollTo(i)}
+                    />
+                  ))}
+                </div>
+                <button
+                  onClick={scrollNext}
+                  className="flex size-10 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors hover:bg-gold hover:text-navy-deep"
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRight className="size-5" />
+                </button>
               </div>
-              <button
-                onClick={scrollNext}
-                className="flex size-10 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors hover:bg-gold hover:text-navy-deep"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="size-5" />
-              </button>
-            </div>
+            )}
           </div>
         </AnimateOnScroll>
       </div>

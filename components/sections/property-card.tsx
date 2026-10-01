@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Star, Bed, Bath, Users } from 'lucide-react'
+import { Bed, Bath, Users } from 'lucide-react'
 
 type PropertyCardProps = {
   title: string
@@ -10,7 +10,9 @@ type PropertyCardProps = {
   beds: number
   baths: number
   guests: number
-  rating: number
+  // Not rendered until this reflects real, current reviews. See
+  // FEATURED_PROPERTIES in lib/constants.ts.
+  rating?: number
   href: string
   priority?: boolean
 }
@@ -22,7 +24,6 @@ export function PropertyCard({
   beds,
   baths,
   guests,
-  rating,
   href,
   priority = false,
 }: PropertyCardProps) {
@@ -43,13 +44,6 @@ export function PropertyCard({
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           priority={priority}
         />
-        {/* Rating badge */}
-        <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-navy-deep/80 px-3 py-1 backdrop-blur-sm">
-          <Star className="size-3 fill-gold text-gold" />
-          <span className="text-xs font-medium text-primary-foreground">
-            {rating}
-          </span>
-        </div>
       </div>
 
       {/* Content */}

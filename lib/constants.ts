@@ -58,9 +58,10 @@ export const NAV_ITEMS = [
 // ─── Trust / Stats ───────────────────────────────────────────
 export const TRUST_STATS = [
   { value: '13+', label: 'Years Hosting' },
-  { value: '4.9', label: 'Star Rating' },
+  { value: 'Under 20', label: 'Homes, Managed Like Our Own' },
+  { value: '4.9+', label: 'Star Rating in 2025' },
   { value: 'Superhost', label: 'Airbnb Certified' },
-  { value: 'Premier', label: 'VRBO Host' },
+  { value: 'Premier', label: 'Vrbo Host' },
 ] as const
 
 // ─── Service Pillars ─────────────────────────────────────────
@@ -74,13 +75,13 @@ export const SERVICE_PILLARS = [
   {
     title: 'True Full-Service',
     description:
-      'From guest communication to deep cleans, maintenance coordination to restocking -- we handle everything.',
+      'Guest communication, deep cleans, maintenance coordination, and restocking. We handle it all.',
     icon: 'Layers',
   },
   {
     title: 'Boutique Accountability',
     description:
-      'A small, senior team where you always know who is managing your property. No call centers, no ticket queues.',
+      'A small team where you always know who is managing your home. No call centers, no ticket queues.',
     icon: 'Users',
   },
   {
@@ -92,7 +93,7 @@ export const SERVICE_PILLARS = [
   {
     title: 'Multi-Channel Revenue',
     description:
-      'Your property listed and optimized across Airbnb, VRBO, Booking.com, Google Vacation Rentals, and our direct booking site.',
+      'Your property listed and optimized across Airbnb, Vrbo, Booking.com, Google Vacation Rentals, and our direct booking site.',
     icon: 'Globe',
   },
   {
@@ -121,11 +122,14 @@ export const HOW_IT_WORKS_STEPS = [
     step: 3,
     title: 'You Earn, We Manage',
     description:
-      'Sit back while we handle everything -- from listing optimization to guest experience to your monthly payouts.',
+      'Sit back. We handle everything, from listing optimization to guest experience to your monthly payouts.',
   },
 ] as const
 
 // ─── Testimonials ────────────────────────────────────────────
+// `verified` must only be true once Mike has given written permission (or a
+// public source, e.g. a Google/Airbnb review link) to publish that quote.
+// TODO(Mike): NEEDS-REAL-DATA. Confirm which of these are cleared to publish.
 export const TESTIMONIALS = [
   {
     quote:
@@ -133,6 +137,7 @@ export const TESTIMONIALS = [
     author: 'Sarah M.',
     location: 'La Jolla, CA',
     rating: 5,
+    verified: false,
   },
   {
     quote:
@@ -140,6 +145,7 @@ export const TESTIMONIALS = [
     author: 'David & Jen R.',
     location: 'Temecula, CA',
     rating: 5,
+    verified: true,
   },
   {
     quote:
@@ -147,10 +153,14 @@ export const TESTIMONIALS = [
     author: 'Michael T.',
     location: 'Encinitas, CA',
     rating: 5,
+    verified: false,
   },
 ] as const
 
 // ─── Featured Properties (Placeholders) ─────────────────────
+// TODO(Mike): NEEDS-REAL-DATA. These are placeholder listings, not live
+// inventory. `rating` is intentionally not displayed on the card (see
+// property-card.tsx) until it reflects real, current reviews.
 export const FEATURED_PROPERTIES = [
   {
     title: 'The Sunset Estate',
