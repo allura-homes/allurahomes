@@ -106,8 +106,7 @@ export const switchContent = {
   },
   form: {
     title: 'Get your free switch analysis', hint: 'Report in 24–48 hours, up to 72 for complex homes.',
-    demo: 'Preview form only. Nothing is sent or saved. Please use sample details.',
-    success: "Thanks. We'll be in touch.", successNote: 'Demo complete. No request was sent or saved.',
+    success: 'Thanks. Now book a call so we can walk you through it',
     labels: { name: 'Name', email: 'Email', phone: 'Phone', address: 'Property address', managed: 'Currently managed?', fee: 'Current management fee % (optional)', notice: 'Notice period (optional)', listing: 'Who owns your Airbnb listing? (optional)', license: 'Whose name is on your STRO license? (optional)' },
     placeholders: { name: 'Full name', email: 'you@email.com', address: 'Street, San Diego', fee: 'e.g. 25', notice: 'e.g. 60 days' },
     managedOptions: ['Self-managed', 'Another management company', 'Not yet rented'],
