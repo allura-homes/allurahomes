@@ -4,7 +4,7 @@ import { PrivacyContent } from './content'
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
-    'Learn how Allura Homes collects, uses, and protects your personal information. Read our full privacy policy covering data collection, cookies, third-party services, and your rights.',
+    'Learn how Allura Homes collects, uses and protects personal information. Read about data collection, cookies, third-party services and your rights.',
   alternates: { canonical: 'https://www.allurahomes.com/privacy' },
   robots: { index: true, follow: true },
 }

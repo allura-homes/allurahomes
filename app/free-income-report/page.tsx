@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE } from '@/lib/seo'
 import { IncomeReportForm } from '@/components/forms/income-report-form'
 import { IncomeReportContent } from './content'
 
 export const metadata: Metadata = {
   title: 'Free Vacation Rental Income Report - See What Your Property Could Earn',
   description:
-    'Get a free, no-obligation income projection for your vacation rental property in California. Discover what your home could earn with professional Airbnb & Vrbo management. Custom market analysis delivered within 48 hours.',
+    'Get a free income projection for your California vacation rental. Discover what your home could earn with professional Airbnb and Vrbo management.',
   alternates: { canonical: 'https://www.allurahomes.com/free-income-report' },
   keywords: ['free rental income report', 'vacation rental income estimate', 'Airbnb earnings calculator', 'property income projection California'],
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Free Vacation Rental Income Report | Allura Homes',
     description: 'Discover what your property could earn with professional Allura Homes management. Free, no-obligation.',
     url: 'https://www.allurahomes.com/free-income-report',

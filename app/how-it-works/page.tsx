@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE } from '@/lib/seo'
 import { HowItWorksContent } from './content'
 
 export const metadata: Metadata = {
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.allurahomes.com/how-it-works' },
   keywords: ['how Allura Homes works', 'vacation rental onboarding', 'property management process', 'get started rental management'],
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'How It Works | Allura Homes Property Management',
     description: 'How Allura onboards a California home: we learn the house, set pricing and channels, and stay on the guest standard. Since 2013.',
     url: 'https://www.allurahomes.com/how-it-works',

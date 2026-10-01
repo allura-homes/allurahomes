@@ -16,7 +16,7 @@ export function Navbar({ primaryCta, secondaryCta }: { primaryCta?: NavCta; seco
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const pathname = usePathname()
-  const isHome = pathname === '/'
+  const hasTransparentHero = ['/', '/san-diego-vacation-rental-management', '/property-management/switch-property-managers-san-diego'].includes(pathname)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -30,7 +30,7 @@ export function Navbar({ primaryCta, secondaryCta }: { primaryCta?: NavCta; seco
     setOpenDropdown(null)
   }, [pathname])
 
-  const showSolid = scrolled || !isHome
+  const showSolid = scrolled || !hasTransparentHero
 
   return (
     <>

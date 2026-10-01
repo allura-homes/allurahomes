@@ -41,7 +41,7 @@ const steps = [
     icon: KeyRound,
     title: 'Seamless Onboarding',
     description:
-      'We handle the entire transition. From listing migration to lock installation, interior prep to first booking -- your property is launch-ready in weeks, not months.',
+      'We handle the entire transition. From listing migration to lock installation, interior prep to first booking, your property is launch-ready in weeks, not months.',
     details: [
       'Listing transfer and optimization across all channels',
       'Smart lock and property tech installation',
@@ -54,7 +54,7 @@ const steps = [
     icon: Headphones,
     title: 'Ongoing Management',
     description:
-      'Sit back and earn. We handle everything day-to-day -- guest communication, cleaning coordination, maintenance, pricing updates, and your monthly payouts.',
+      'Sit back and earn. We handle everything day-to-day, guest communication, cleaning coordination, maintenance, pricing updates, and your monthly payouts.',
     details: [
       '24/7 guest support and issue resolution',
       'Monthly owner statements and performance reports',

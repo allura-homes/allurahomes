@@ -15,13 +15,13 @@ import { Stepper } from '@/components/sections/stepper'
 import { FeaturedProperties } from '@/components/sections/featured-properties'
 import { CTABand } from '@/components/sections/cta-band'
 
-const HOME_TITLE = 'Vacation Rental Property Management in California | Allura Homes'
+const HOME_TITLE = 'California Vacation Rental Management | Allura Homes'
 const HOME_DESCRIPTION =
-  'Boutique vacation rental management since 2013. Under 20 homes, Airbnb Superhost, Vrbo Premier Host, rated above 4.9 stars in 2025. Get your free income report.'
+  'Boutique management since 2013. Less than 20 homes under management. Airbnb Superhost. Vrbo Premier Host. 4.9 star rating in 2025. Free income report.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.allurahomes.com'),
-  title: HOME_TITLE,
+  title: { absolute: HOME_TITLE },
   description: HOME_DESCRIPTION,
   alternates: { canonical: 'https://www.allurahomes.com' },
   openGraph: {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: HOME_DESCRIPTION,
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Modern hillside home with a pool at sunset',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: HOME_TITLE,
     description: HOME_DESCRIPTION,
-    images: ['/og-image.jpg'],
+    images: ['/images/og-image.jpg'],
   },
 }
 
@@ -56,7 +56,7 @@ export default function HomePage() {
         image="/images/hero-home.jpg"
         accent="Distinguished by Design"
         title="Boutique Management. Higher Standards. Better Returns."
-        subtitle="Under 20 homes, each managed like our own. Airbnb Superhost. Vrbo Premier Host. Rated above 4.9 stars in 2025. Built for owners who want revenue, protection, and peace of mind."
+        subtitle="Less than 20 homes managed like they are our own. Airbnb Superhost. Vrbo Premier Host. 4.9 star rating in 2025. Built for owners who want revenue, protection, and peace of mind."
         primaryCta={{ label: 'Get Your Free Income Report', href: FORM_URL }}
         secondaryCta={{ label: 'Book a Call', href: BOOK_CALL_URL }}
         fullHeight
@@ -102,7 +102,7 @@ export default function HomePage() {
               url: 'https://www.allurahomes.com',
               logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gold%20Bug%20-%20blue%20background-w5gGFhOU00lG43WErprop28jNDADyc.png',
               description:
-                'Boutique vacation rental management in California since 2013. Under 20 homes managed like our own. Airbnb Superhost. Vrbo Premier Host.',
+                'Boutique vacation rental management in California since 2013. Less than 20 homes managed like they are our own. Airbnb Superhost. Vrbo Premier Host.',
               telephone: PHONE_TEL,
               email: 'support@allurahomes.com',
               areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),

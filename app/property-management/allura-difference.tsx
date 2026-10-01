@@ -28,7 +28,7 @@ const differentiators = [
   {
     title: 'Operationally Deep',
     description:
-      'From professional photography to interior design consulting, deep cleaning protocols to preventative maintenance -- we manage the full operation.',
+      'From professional photography to interior design consulting, deep cleaning protocols to preventative maintenance, we manage the full operation.',
     points: [
       'Professional staging and photography',
       'Rigorous cleaning standards',
@@ -38,7 +38,7 @@ const differentiators = [
   {
     title: 'Compliance & Risk Fluency',
     description:
-      'We stay ahead of every regulatory change. STR permits, TOT registration, insurance requirements, HOA coordination -- all handled.',
+      'We stay ahead of every regulatory change. STR permits, TOT registration, insurance requirements, HOA coordination, all handled.',
     points: [
       'Permit and license management',
       'Tax collection and remittance',

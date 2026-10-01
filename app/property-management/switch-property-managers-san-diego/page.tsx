@@ -1,18 +1,19 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE, metaDescription } from '@/lib/seo'
 import { switchContent as c, switchStructuredData } from './content'
 import { SwitchHero, SwitchProcess, SwitchFeesAndProof, SwitchFAQAndAnalysis } from './sections'
 import './switch-page.css'
 
 export const metadata: Metadata = {
   title: { absolute: c.seo.title },
-  description: c.seo.description,
+  description: metaDescription(c.seo.description),
   alternates: { canonical: c.seo.url },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   openGraph: {
-    type: 'website', url: c.seo.url, siteName: 'Allura Homes', title: c.seo.title, description: c.seo.description,
-    images: [{ url: '/images/switch-managers/og-image.jpg', width: 1200, height: 630, alt: c.hero.imageAlt }],
+    type: 'website', url: c.seo.url, siteName: 'Allura Homes', title: c.seo.title, description: metaDescription(c.seo.description),
+    images: [SHARE_IMAGE],
   },
-  twitter: { card: 'summary_large_image', title: c.seo.title, description: c.seo.description, images: ['/images/switch-managers/og-image.jpg'] },
+  twitter: { card: 'summary_large_image', title: c.seo.title, description: metaDescription(c.seo.description), images: [SHARE_IMAGE.url] },
 }
 
 export default function SwitchManagersPage() {

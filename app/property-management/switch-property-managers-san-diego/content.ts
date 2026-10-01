@@ -16,11 +16,11 @@ export const switchContent = {
     title: 'Switch Your San Diego Vacation Rental Manager.',
     emphasis: 'Keep Your Bookings. Raise the Bar.',
     lede: 'A boutique San Diego team. A clean handover. A manager who picks up the phone.',
-    body: "Big-box managers can run 200+ properties. The biggest have thousands of doors, and we don't want you to feel like a number. That's what makes us different. Allura manages fewer than 20 homes like they are our own. We handle the switch with you: contract, bookings, license paperwork, listings, and a set handover date.",
+    body: "Big-box managers can run 200+ properties. The biggest have thousands of doors, and we don't want you to feel like a number. That's what makes us different. Less than 20 homes managed like they are our own. We handle the switch with you: contract, bookings, license paperwork, listings, and a set handover date.",
     imageAlt: 'A modern single-story home on a hillside at golden hour, with a pool, palm trees and warm light glowing from the windows',
-    badge: '<20 homes', badgeLabel: 'Like our own',
+    badge: 'Less than 20 homes under management', badgeLabel: 'Like our own',
   },
-  trust: ['13+ Years Hosting', 'Airbnb Superhost', 'Vrbo Premier Host', '4.9 star rating in 2025', 'Less than 20 homes managed like they are our own'],
+  trust: ['13+ Years Hosting', 'Airbnb Superhost', 'Vrbo Premier Host', '4.9 star rating in 2025', 'Less than 20 homes managed like they are our own.'],
   superhostHref: 'https://www.airbnb.com/users/profile/1462510352178210196',
   answer: "Switching vacation rental managers in San Diego takes a set order. Check your contract's notice period and who owns the listing. Confirm your STRO license is in your name. Give written notice. Agree in writing how booked stays are handled. Then hand over access, pricing and guest messaging on a fixed date.",
   pain: {
@@ -125,7 +125,7 @@ export const switchStructuredData = {
     {
       '@type': ['Organization', 'LocalBusiness'], '@id': 'https://www.allurahomes.com/#organization',
       name: 'Allura Homes', url: 'https://www.allurahomes.com', foundingDate: '2013',
-      description: 'Boutique vacation rental management in San Diego. Fewer than 20 homes managed like they are our own.',
+      description: 'Boutique vacation rental management in San Diego. Less than 20 homes managed like they are our own.',
       telephone: PRIMARY_PHONE_E164, logo: BRAND.logos.bug,
       areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),
       sameAs: Object.values(BRAND.social),

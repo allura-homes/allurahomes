@@ -46,7 +46,7 @@ const faqs = [
         </p>
         <p className="mb-4">
           We distribute your property on dozens of <strong>Online Travel Agency websites</strong>{' '}
-          (OTAs) like Airbnb, VRBO, Booking.com, Google Vacation Rentals, Hopper, Expedia, and
+          (OTAs) like Airbnb, Vrbo, Booking.com, Google Vacation Rentals, Hopper, Expedia, and
           more.
         </p>
         <p>
@@ -96,7 +96,7 @@ const faqs = [
           to do US-based guest support 24/7 by Airbnb Superhost support agents, improve booking
           revenue with full-time revenue management by former Airbnb Revenue Managers, and marketing
           your property to optimize for direct bookings but also get you front and center on the
-          Online Travel Agent websites (OTAs) like Airbnb, VRBO, Booking.com, Google Vacation
+          Online Travel Agent websites (OTAs) like Airbnb, Vrbo, Booking.com, Google Vacation
           Rentals, Hopper, Expedia, and dozens of others where your potential guests are searching.
         </p>
       </>

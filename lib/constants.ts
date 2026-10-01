@@ -60,8 +60,8 @@ export const NAV_ITEMS = [
 // ─── Trust / Stats ───────────────────────────────────────────
 export const TRUST_STATS = [
   { value: '13+', label: 'Years Hosting' },
-  { value: 'Under 20', label: 'Homes, Managed Like Our Own' },
-  { value: '4.9+', label: 'Star Rating in 2025' },
+  { value: 'Less than 20 homes under management', label: '' },
+  { value: '4.9 star rating in 2025', label: '' },
   { value: 'Superhost', label: 'Airbnb Certified' },
   { value: 'Premier', label: 'Vrbo Host' },
 ] as const

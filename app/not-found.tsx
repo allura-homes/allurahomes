@@ -115,7 +115,7 @@ export default function NotFound() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mt-2 text-primary-foreground/50"
           >
-            {"Don't worry -- here are some places you might want to visit instead."}
+            {"Don't worry, here are some places you might want to visit instead."}
           </motion.p>
         </div>
 

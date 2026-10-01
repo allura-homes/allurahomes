@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE, metaDescription } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import { getCategoryBySlug, getPostsByCategory, getCategories } from '@/lib/wordpress/api'
 import { CategoryContent } from './content'
@@ -41,6 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         canonical: categoryUrl,
       },
       openGraph: {
+        images: [SHARE_IMAGE],
         title: 'California Hosting Guides | Allura Homes',
         description: 'Owner guides on California vacation-rental management, permits, pricing, and 30-night stays. From Allura Homes, boutique since 2013.',
         url: categoryUrl,
@@ -56,6 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         canonical: categoryUrl,
       },
       openGraph: {
+        images: [SHARE_IMAGE],
         title: 'California STR Regulations | Allura Homes',
         description: 'California short-term rental and 30-night permit notes by city, written for owners. Allura Homes, San Diego, since 2013.',
         url: categoryUrl,
@@ -65,13 +68,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: cat.name,
-    description: cat.description || `Browse ${cat.name} articles from Allura Homes.`,
+    description: metaDescription(cat.description || `Browse ${cat.name} articles from Allura Homes.`),
     alternates: {
       canonical: categoryUrl,
     },
     openGraph: {
+      images: [SHARE_IMAGE],
       title: `${cat.name} | Allura Homes`,
-      description: cat.description,
+      description: metaDescription(cat.description),
       url: categoryUrl,
     },
   }

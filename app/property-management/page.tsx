@@ -11,12 +11,12 @@ import { AlluraDifference } from './allura-difference'
 export const metadata: Metadata = {
   title: 'Full-Service Vacation Rental Property Management in California',
   description:
-    'Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. About 19 homes, including 30-night stays.',
+    'Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. Less than 20 homes under management.',
   alternates: { canonical: 'https://www.allurahomes.com/property-management' },
-  keywords: ['property management San Diego', 'Airbnb management Temecula', 'vacation rental manager California', 'VRBO property management', 'short-term rental management'],
+  keywords: ['property management San Diego', 'Airbnb management Temecula', 'vacation rental manager California', 'Vrbo property management', 'short-term rental management'],
   openGraph: {
     title: 'Full-Service Vacation Rental Property Management | Allura Homes',
-    description: 'Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. About 19 homes, including 30-night stays.',
+    description: 'Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. Less than 20 homes under management.',
     url: 'https://www.allurahomes.com/property-management',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Allura Homes boutique vacation rental management' }],
   },
@@ -30,7 +30,7 @@ export default function PropertyManagementPage() {
         image="/images/hero-pm.jpg"
         accent="Full-Service Property Management"
         title="Your Property Deserves a Manager Who Actually Manages"
-        subtitle="Most property managers promise full-service. We actually deliver it. From revenue optimization to midnight guest calls -- Allura handles everything."
+        subtitle="Most property managers promise full-service. We actually deliver it. From revenue optimization to midnight guest calls, Allura handles everything."
         primaryCta={{ label: 'Book a Call', href: BRAND.calendarUrl }}
         secondaryCta={{ label: 'How It Works', href: '/how-it-works' }}
       />

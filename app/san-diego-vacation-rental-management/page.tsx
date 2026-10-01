@@ -1,19 +1,20 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE, metaDescription } from '@/lib/seo'
 import { boutiqueContent as c, boutiqueStructuredData } from './content'
 import { BoutiqueHero, BoutiqueProof, BoutiqueHousing, BoutiqueServices, BoutiqueFeesAndPromise, BoutiqueFAQ, BoutiqueClosing } from './sections'
 
 export const metadata: Metadata = {
   title: { absolute: c.seo.title },
-  description: c.seo.description,
+  description: metaDescription(c.seo.description),
   keywords: [c.hero.eyebrow, 'boutique vacation rental manager San Diego', c.housing.eyebrow],
   alternates: { canonical: c.seo.url },
   // TODO: switch to index/follow ONLY after Mike approves launch.
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   openGraph: {
-    type: 'website', url: c.seo.url, siteName: 'Allura Homes', title: c.seo.title, description: c.seo.description,
-    images: [{ url: '/images/boutique/og-image.jpg', width: 1200, height: 630, alt: 'A modern single-story home on a hillside at golden hour, with a pool and palm trees' }],
+    type: 'website', url: c.seo.url, siteName: 'Allura Homes', title: c.seo.title, description: metaDescription(c.seo.description),
+    images: [SHARE_IMAGE],
   },
-  twitter: { card: 'summary_large_image', title: c.seo.title, description: c.seo.description, images: ['/images/boutique/og-image.jpg'] },
+  twitter: { card: 'summary_large_image', title: c.seo.title, description: metaDescription(c.seo.description), images: [SHARE_IMAGE.url] },
 }
 
 export default function BoutiqueManagementPage() {

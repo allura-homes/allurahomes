@@ -4,7 +4,7 @@ import { FAQContent } from './content'
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions About Allura Homes Property Management',
   description:
-    'Answers to common questions about Allura Homes vacation rental management. Learn about our commission structure, marketing strategy, technology, guest damage protection, onboarding process, and more.',
+    'Answers to Allura Homes vacation rental management questions, including fees, marketing, guest damage protection, technology and onboarding.',
   alternates: { canonical: 'https://www.allurahomes.com/faq' },
   keywords: ['Allura Homes FAQ', 'vacation rental management questions', 'property management fees', 'Airbnb management questions'],
   openGraph: {
