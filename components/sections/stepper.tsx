@@ -1,8 +1,10 @@
 'use client'
 
+import Link from 'next/link'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { SectionHeading } from '@/components/section-heading'
 import { HOW_IT_WORKS_STEPS } from '@/lib/constants'
+import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF } from '@/lib/site-config'
 
 export function Stepper() {
   return (
@@ -12,7 +14,7 @@ export function Stepper() {
           <SectionHeading
             accent="Simple & Seamless"
             title="How It Works"
-            subtitle="Getting started with Allura Homes is easy. Here is what to expect."
+            subtitle="Three steps from first conversation to monthly payouts."
           />
         </AnimateOnScroll>
 
@@ -40,7 +42,27 @@ export function Stepper() {
                     {step.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {step.description}
+                    {step.step === 1 ? (
+                      <>
+                        Fill out{' '}
+                        <Link
+                          href={FREE_INCOME_REPORT_HREF}
+                          className="text-gold-dark underline underline-offset-4 hover:text-gold"
+                        >
+                          our quick form
+                        </Link>{' '}
+                        or{' '}
+                        <Link
+                          href={BOOK_A_CALL_HREF}
+                          className="text-gold-dark underline underline-offset-4 hover:text-gold"
+                        >
+                          book a call
+                        </Link>
+                        . We will ask about your property, goals, and current situation.
+                      </>
+                    ) : (
+                      step.description
+                    )}
                   </p>
                 </div>
               </AnimateOnScroll>

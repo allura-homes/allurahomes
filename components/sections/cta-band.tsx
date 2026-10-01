@@ -53,7 +53,7 @@ export function CTABand({
             <Link
               href={primaryCta.href}
               className={cn(
-                'inline-flex h-12 items-center rounded-md px-8 font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02]',
+                'inline-flex h-12 w-full items-center justify-center rounded-md px-8 font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02] sm:w-auto',
                 isGold
                   ? 'bg-navy-deep text-primary-foreground hover:bg-navy'
                   : 'btn-gold'
@@ -66,7 +66,7 @@ export function CTABand({
               <Link
                 href={secondaryCta.href}
                 className={cn(
-                  'inline-flex h-12 items-center rounded-md border-2 px-8 font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02]',
+                  'inline-flex h-12 w-full items-center justify-center rounded-md border-2 px-8 font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02] sm:w-auto',
                   isGold
                     ? 'border-navy-deep text-navy-deep hover:bg-navy-deep hover:text-primary-foreground'
                     : 'border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-navy-deep'

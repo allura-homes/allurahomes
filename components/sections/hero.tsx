@@ -50,6 +50,8 @@ export function Hero({
             loop
             muted
             playsInline
+            poster={image}
+            preload="metadata"
             className="size-full object-cover"
           >
             <source src={video} type="video/mp4" />
@@ -70,7 +72,7 @@ export function Hero({
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-32">
         <div className="max-w-3xl">
-          {accent && (
+          {accent && accent.trim() !== title.trim() && (
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -112,7 +114,7 @@ export function Hero({
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
-                  className="btn-gold group inline-flex h-13 items-center gap-2 rounded-md px-8 font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02]"
+                  className="btn-gold group inline-flex w-full min-h-13 items-center justify-center gap-2 rounded-md px-8 py-3 text-center font-headline text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02] sm:w-auto"
                   style={{ fontFamily: 'var(--font-headline)' }}
                 >
                   {primaryCta.label}
@@ -122,7 +124,7 @@ export function Hero({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="inline-flex h-13 items-center rounded-md border-2 border-primary-foreground/40 px-8 font-headline text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-all hover:scale-[1.02] hover:border-gold hover:text-gold"
+                  className="inline-flex w-full min-h-13 items-center justify-center rounded-md border-2 border-primary-foreground/40 px-8 py-3 text-center font-headline text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-all hover:scale-[1.02] hover:border-gold hover:text-gold sm:w-auto"
                   style={{ fontFamily: 'var(--font-headline)' }}
                 >
                   {secondaryCta.label}
