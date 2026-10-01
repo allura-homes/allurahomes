@@ -147,13 +147,15 @@ export async function PATCH(request: Request, { params }: Props) {
       return NextResponse.json({ error: 'No updates provided' }, { status: 400 })
     }
 
-    // Build dynamic update query
-    const [property] = await sql`
-      UPDATE command_properties 
-      SET ${sql(updates.reduce((acc, field, i) => ({ ...acc, [field]: values[i] }), {}))}
-      WHERE id = ${parseInt(id)}
-      RETURNING *
-    `
+    // Column names come only from the allowlist above; values remain parameterized.
+    const assignments = updates.map((field, index) => `${field} = $${index + 1}`)
+    const [property] = await sql.query(
+      `UPDATE command_properties
+       SET ${assignments.join(', ')}
+       WHERE id = $${values.length + 1}
+       RETURNING *`,
+      [...values, parseInt(id)]
+    )
 
     // Log activity
     await sql`

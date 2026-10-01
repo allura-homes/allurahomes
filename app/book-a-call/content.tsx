@@ -42,7 +42,7 @@ export function BookACallContent() {
               <SectionHeading
                 title="Choose a Time That Works for You"
                 subtitle="No pressure, no commitment — just a conversation about your property and goals."
-                align="center"
+                alignment="center"
               />
 
               {/* Google Calendar Embed */}

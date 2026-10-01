@@ -209,8 +209,7 @@ function normalizePost(post: WPPost, categories: WPCategory[]): BlogPost {
   const author = embedded?.author?.[0]
 
   const postCatId = post.categories?.[0]
-  const cat = categories.find((c) => c.id === postCatId) ??
-    (terms[0] as WPCategory | undefined)
+  const cat = categories.find((c) => c.id === postCatId) ?? terms[0]
 
   return {
     id: post.id,

@@ -1,0 +1,19 @@
+.switch-page h3 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.switch-page :is(a, button, input, select, summary):focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.switch-page summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch-page *, .switch-page *::before, .switch-page *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
