@@ -1,6 +1,7 @@
 'use client'
 
 import { BRAND } from '@/lib/constants'
+import { ManagementPageLinks } from '@/components/sections/management-page-links'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { SectionHeading } from '@/components/section-heading'
 import { CTABand } from '@/components/sections/cta-band'
@@ -273,6 +274,8 @@ export function FAQContent() {
           </div>
         </div>
       </section>
+
+      <ManagementPageLinks />
 
       {/* Bottom CTA */}
       <CTABand

@@ -10,6 +10,8 @@ export function normalizeMarketingCopy(text: string): string {
 }
 
 export function normalizeMarketingHTML(html: string): string {
-  // Only change text nodes; keep article links, attributes, embeds, and comments intact.
-  return html.split(/(<!--[\s\S]*?-->|<[^>]*>)/g).map(part => part.startsWith('<') ? part : normalizeMarketingCopy(part)).join('')
+  const normalized = html
+    .replace(/maximizing-multi-channel-yield(?:-with-allura-homes)?/gi, 'improving-multi-channel-yield')
+    .replace(/luxury-rentals/gi, 'high-end-rentals')
+  return normalized.split(/(<!--[\s\S]*?-->|<[^>]*>)/g).map(part => part.startsWith('<') ? part : normalizeMarketingCopy(part)).join('')
 }

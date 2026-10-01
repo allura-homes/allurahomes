@@ -1,135 +1,119 @@
 import type { MetadataRoute } from 'next'
-import { getCategories, getPostsByCategory } from '@/lib/wordpress/api'
+import { getPublishedPostsForSitemap } from '@/lib/wordpress/api'
 import { METRO_AREAS } from '@/lib/metro-areas'
 import { SWITCH_PAGE_PATH } from '@/lib/site-config'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.allurahomes.com'
-  const now = new Date()
+  // Content revision dates from Git history, not deployment or request time.
+  const contentRevision = '2026-10-01'
+  const termsRevision = '2026-08-26'
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
       url: `${baseUrl}/property-management`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}${SWITCH_PAGE_PATH}`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/free-income-report`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/how-it-works`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/faq`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/book-a-call`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/referrals`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: now,
+      lastModified: contentRevision,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/terms-of-use`,
-      lastModified: now,
+      lastModified: termsRevision,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
   ]
 
-  staticPages.push({
-    url: `${baseUrl}/hosting/san-diego-str-permit-guide`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  })
+  staticPages.push(
+    { url: `${baseUrl}/san-diego-vacation-rental-management`, lastModified: contentRevision, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/stays`, lastModified: contentRevision, changeFrequency: 'weekly', priority: 0.8 },
+  )
 
   // Metro area pages
   const metroPages: MetadataRoute.Sitemap = METRO_AREAS.map((metro) => ({
     url: `${baseUrl}/property-management/${metro.slug}`,
-    lastModified: now,
+    lastModified: contentRevision,
     changeFrequency: 'monthly' as const,
     priority: 0.85,
   }))
 
-  // Dynamic blog pages
-  const blogPages: MetadataRoute.Sitemap = []
-  try {
-    const categories = await getCategories()
-    for (const cat of categories) {
-      blogPages.push({
-        url: `${baseUrl}/${cat.slug}`,
-        lastModified: now,
-        changeFrequency: 'weekly',
-        priority: 0.8,
-      })
-      
-      // Fetch ALL posts for this category (not just 12)
-      let page = 1
-      let hasMore = true
-      while (hasMore) {
-        const { posts, pages } = await getPostsByCategory(cat.slug, page, 100)
-        for (const post of posts) {
-          blogPages.push({
-            url: `${baseUrl}/${cat.slug}/${post.slug}`,
-            lastModified: new Date(post.modified),
-            changeFrequency: 'monthly',
-            priority: 0.7,
-          })
-        }
-        hasMore = page < pages
-        page++
-      }
-    }
-  } catch {
-    // WordPress not connected yet -- skip blog pages
+  const posts = await getPublishedPostsForSitemap()
+  const blogPages: MetadataRoute.Sitemap = posts.map(post => ({
+    url: `${baseUrl}/${post.category}/${post.slug}`,
+    lastModified: post.modified.slice(0, 10),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+  for (const category of ['hosting', 'regulations', 'ai']) {
+    const dates = posts.filter(post => post.category === category).map(post => post.modified).sort()
+    blogPages.push({
+      url: `${baseUrl}/${category}`,
+      lastModified: dates.at(-1)?.slice(0, 10) ?? contentRevision,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    })
   }
 
-  return [...staticPages, ...metroPages, ...blogPages]
+  return [...new Map([...staticPages, ...metroPages, ...blogPages].map(page => [page.url, page])).values()]
 }

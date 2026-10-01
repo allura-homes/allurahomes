@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ManagementPageLinks } from '@/components/sections/management-page-links'
 import { SHARE_IMAGE, metaDescription } from '@/lib/seo'
 import { switchContent as c, switchStructuredData } from './content'
 import { SwitchHero, SwitchProcess, SwitchFeesAndProof, SwitchFAQAndAnalysis } from './sections'
@@ -24,6 +25,7 @@ export default function SwitchManagersPage() {
       <SwitchProcess />
       <SwitchFeesAndProof />
       <SwitchFAQAndAnalysis />
+      <ManagementPageLinks current="switch" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(switchStructuredData).replace(/</g, '\\u003c') }} />
     </div>
   )

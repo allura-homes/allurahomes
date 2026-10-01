@@ -234,7 +234,7 @@ function normalizePost(post: WPPost, categories: WPCategory[]): BlogPost {
       : { name: 'Uncategorized', slug: 'uncategorized' },
     tags: tagTerms.map((t: { name: string; slug: string }) => ({
       name: normalizeMarketingCopy(decodeHTML(t.name)),
-      slug: t.slug,
+      slug: t.slug === 'luxury-rentals' ? 'high-end-rentals' : t.slug,
     })),
     author: {
       name: author?.name ?? 'Allura Homes',
@@ -280,7 +280,7 @@ async function wpFetch<T>(endpoint: string, params?: Record<string, string>): Pr
     })
     clearTimeout(timeout)
     if (!res.ok) return null
-    return res.json()
+    return await res.json()
   } catch {
     // If HTTPS failed, retry with HTTP fallback
     if (WP_API_URL_HTTP_FALLBACK && url.toString().startsWith('https://')) {
@@ -295,7 +295,7 @@ async function wpFetch<T>(endpoint: string, params?: Record<string, string>): Pr
         })
         clearTimeout(timeout)
         if (!res.ok) return null
-        return res.json()
+        return await res.json()
       } catch {
         return null
       }
@@ -435,6 +435,29 @@ export async function getAllPosts(page = 1, perPage = 20): Promise<BlogPost[]> {
 
   if (!wpPosts) return DEMO_POSTS
   return wpPosts.map((p) => normalizePost(p, allCats))
+}
+
+export async function getPublishedPostsForSitemap(): Promise<{ slug: string; modified: string; category: string }[]> {
+  const categories = await wpFetch<WPCategory[]>('/categories', { per_page: '100', _fields: 'id,slug' })
+  if (!categories) throw new Error('WordPress sitemap categories unavailable')
+
+  const allowed = new Set(['hosting', 'regulations', 'ai'])
+  const result: { slug: string; modified: string; category: string }[] = []
+  let page = 1
+  let pageCount = 1
+  do {
+    const { data, pages } = await wpFetchWithHeaders<Pick<WPPost, 'slug' | 'modified' | 'categories'>[]>('/posts', {
+      status: 'publish', per_page: '100', page: String(page), _fields: 'slug,modified,categories',
+    })
+    if (!data) throw new Error(`WordPress sitemap posts unavailable on page ${page}`)
+    for (const post of data) {
+      const category = categories.find(cat => post.categories.includes(cat.id) && allowed.has(cat.slug))
+      if (category) result.push({ slug: post.slug, modified: post.modified, category: category.slug })
+    }
+    pageCount = pages
+    page++
+  } while (page <= pageCount)
+  return result
 }
 
 export async function getCategoryBySlug(slug: string): Promise<BlogCategory | null> {

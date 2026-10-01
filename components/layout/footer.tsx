@@ -16,6 +16,8 @@ const footerColumns = [
     title: 'For Owners',
     links: [
       { label: 'Property Management', href: '/property-management' },
+      { label: 'San Diego Vacation Rental Management', href: '/san-diego-vacation-rental-management' },
+      { label: 'Switching Managers', href: '/property-management/switch-property-managers-san-diego' },
       { label: 'How It Works', href: '/how-it-works' },
       { label: 'Free Income Report', href: FORM_URL },
       { label: 'Book a Call', href: BOOK_CALL_URL },

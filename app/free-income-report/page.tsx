@@ -4,7 +4,7 @@ import { IncomeReportForm } from '@/components/forms/income-report-form'
 import { IncomeReportContent } from './content'
 
 export const metadata: Metadata = {
-  title: 'Free Vacation Rental Income Report - See What Your Property Could Earn',
+  title: { absolute: 'Free Vacation Rental Income Report | Allura Homes' },
   description:
     'Get a free income projection for your California vacation rental. Discover what your home could earn with professional Airbnb and Vrbo management.',
   alternates: { canonical: 'https://www.allurahomes.com/free-income-report' },

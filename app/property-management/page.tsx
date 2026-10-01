@@ -7,15 +7,16 @@ import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { CTABand } from '@/components/sections/cta-band'
 import { ProblemSection } from './problem-section'
 import { AlluraDifference } from './allura-difference'
+import { ManagementPageLinks } from '@/components/sections/management-page-links'
 
 export const metadata: Metadata = {
-  title: 'Full-Service Vacation Rental Property Management in California',
+  title: { absolute: 'California Vacation Rental Management | Allura Homes' },
   description:
     'Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. Less than 20 homes under management.',
   alternates: { canonical: 'https://www.allurahomes.com/property-management' },
   keywords: ['property management San Diego', 'Airbnb management Temecula', 'vacation rental manager California', 'Vrbo property management', 'short-term rental management'],
   openGraph: {
-    title: 'Full-Service Vacation Rental Property Management | Allura Homes',
+    title: 'California Vacation Rental Management | Allura Homes',
     description: 'Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. Less than 20 homes under management.',
     url: 'https://www.allurahomes.com/property-management',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Allura Homes boutique vacation rental management' }],
@@ -36,6 +37,8 @@ export default function PropertyManagementPage() {
       />
 
       <StatsBar />
+
+      <ManagementPageLinks />
 
       <ProblemSection />
 

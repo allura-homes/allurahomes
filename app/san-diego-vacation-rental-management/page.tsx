@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ManagementPageLinks } from '@/components/sections/management-page-links'
 import { SHARE_IMAGE, metaDescription } from '@/lib/seo'
 import { boutiqueContent as c, boutiqueStructuredData } from './content'
 import { BoutiqueHero, BoutiqueProof, BoutiqueHousing, BoutiqueServices, BoutiqueFeesAndPromise, BoutiqueFAQ, BoutiqueClosing } from './sections'
@@ -8,8 +9,7 @@ export const metadata: Metadata = {
   description: metaDescription(c.seo.description),
   keywords: [c.hero.eyebrow, 'boutique vacation rental manager San Diego', c.housing.eyebrow],
   alternates: { canonical: c.seo.url },
-  // TODO: switch to index/follow ONLY after Mike approves launch.
-  robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   openGraph: {
     type: 'website', url: c.seo.url, siteName: 'Allura Homes', title: c.seo.title, description: metaDescription(c.seo.description),
     images: [SHARE_IMAGE],
@@ -28,6 +28,7 @@ export default function BoutiqueManagementPage() {
       <BoutiqueFeesAndPromise />
       <BoutiqueFAQ />
       <BoutiqueClosing />
+      <ManagementPageLinks current="boutique" />
     </div>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(boutiqueStructuredData).replace(/</g, '\\u003c') }} />
   </div>

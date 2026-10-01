@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SHARE_IMAGE, metaDescription } from '@/lib/seo'
+import { SHARE_IMAGE, metaDescription, metaTitle } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getPostsByCategory, getCategories } from '@/lib/wordpress/api'
 import { ArticleContent } from './content'
@@ -35,15 +35,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
 
   const postUrl = `https://www.allurahomes.com/${category}/${slug}`
+  const location = post.title.match(/^Comprehensive Guide to Operating an? Airbnb or Short-Term Rental in (.*?)(?:, California)?\.?$/i)?.[1]
+  const permitLocation = post.title.match(/^Get Started Registering Your Airbnb for a Short-Term Rental Permit in (.*?), California$/i)?.[1]
+  const shortTitle = category === 'regulations'
+    ? location ? `${location} STR Regulations` : permitLocation ? `${permitLocation} Airbnb Permit Registration` : post.title.replace(/^What Should You Know About (.*?)\?$/i, '$1')
+    : post.title
+  const title = metaTitle(shortTitle)
 
   return {
-    title: post.title,
+    title: { absolute: title },
     description: metaDescription(post.excerpt),
     alternates: {
       canonical: postUrl,
     },
     openGraph: {
-      title: `${post.title} | Allura Homes`,
+      title,
       description: metaDescription(post.excerpt),
       type: 'article',
       url: postUrl,
