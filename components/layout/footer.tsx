@@ -136,7 +136,9 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
               {MARKETS.map((market) => (
                 <li key={market}>
                   <a
-                    href={`${GUEST_BOOKING_HREF}/s?${new URLSearchParams({ city: market, state: 'California', country: 'US' })}`}
+                    href={['French Valley', 'Los Angeles', 'Palm Springs'].includes(market)
+                      ? `${GUEST_BOOKING_HREF}/s`
+                      : `${GUEST_BOOKING_HREF}/s?${new URLSearchParams({ city: market, state: 'California', country: 'US' })}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
