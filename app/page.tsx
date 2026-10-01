@@ -97,6 +97,7 @@ export default function HomePage() {
             {
               '@context': 'https://schema.org',
               '@type': 'Organization',
+              '@id': 'https://www.allurahomes.com/#organization',
               name: 'Allura Homes',
               url: 'https://www.allurahomes.com',
               logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gold%20Bug%20-%20blue%20background-w5gGFhOU00lG43WErprop28jNDADyc.png',
@@ -104,19 +105,8 @@ export default function HomePage() {
                 'Boutique vacation rental management in California since 2013. Under 20 homes managed like our own. Airbnb Superhost. Vrbo Premier Host.',
               telephone: PHONE_TEL,
               email: 'support@allurahomes.com',
-              address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'San Diego',
-                addressRegion: 'CA',
-                addressCountry: 'US',
-              },
               areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),
-              sameAs: [
-                'https://www.instagram.com/allurahomes',
-                'https://www.facebook.com/allurahomes.us',
-                'https://x.com/AlluraHomes',
-                'https://www.linkedin.com/company/allurahomes/',
-              ],
+              sameAs: Object.values(BRAND.social),
               // NEEDS-REAL-DATA: aggregateRating requires a real, verifiable
               // ratingCount (e.g. from Airbnb/Google). Do not publish an
               // estimated count — Google can penalize unverifiable review
@@ -125,17 +115,16 @@ export default function HomePage() {
             {
               '@context': 'https://schema.org',
               '@type': 'WebSite',
+              '@id': 'https://www.allurahomes.com/#website',
               name: 'Allura Homes',
               url: 'https://www.allurahomes.com',
               description: 'Boutique vacation rental management in California.',
-              publisher: {
-                '@type': 'Organization',
-                name: 'Allura Homes',
-              },
+              publisher: { '@id': 'https://www.allurahomes.com/#organization' },
             },
             {
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
+              '@id': 'https://www.allurahomes.com/#organization',
               name: 'Allura Homes',
               image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gold%20Bug%20-%20blue%20background-w5gGFhOU00lG43WErprop28jNDADyc.png',
               telephone: PHONE_TEL,
@@ -144,12 +133,6 @@ export default function HomePage() {
               areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),
               // TODO(Mike): confirm price range and hours
               priceRange: '$$',
-              address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'San Diego',
-                addressRegion: 'CA',
-                addressCountry: 'US',
-              },
               openingHoursSpecification: {
                 '@type': 'OpeningHoursSpecification',
                 dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],

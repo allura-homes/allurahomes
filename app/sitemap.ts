@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getCategories, getPostsByCategory } from '@/lib/wordpress/api'
 import { METRO_AREAS } from '@/lib/metro-areas'
+import { SWITCH_PAGE_PATH } from '@/lib/site-config'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.allurahomes.com'
@@ -16,6 +17,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/property-management`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}${SWITCH_PAGE_PATH}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9,

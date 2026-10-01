@@ -2,7 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Star, ChevronDown } from 'lucide-react'
 import { switchContent as c } from './content'
-import { SwitchActions, SwitchCard, SwitchHeading } from './page-elements'
+import { SwitchActions, SwitchBody, SwitchCard, SwitchHeading } from './page-elements'
+import { FREE_INCOME_REPORT_HREF } from '@/lib/site-config'
 import { AnalysisForm } from './analysis-form'
 
 const container = 'mx-auto max-w-7xl px-6'
@@ -23,7 +24,7 @@ export function SwitchHero() {
               <p className="text-lg font-medium leading-relaxed text-pretty md:text-xl">{c.hero.lede}</p>
               <p className="text-sm leading-relaxed text-primary-foreground/80 md:text-base">{c.hero.body}</p>
               <SwitchActions dark />
-              <p className="text-sm font-semibold text-gold-light">{c.promise.line}</p>
+              <div className="flex flex-col gap-2"><p className="text-sm font-semibold text-gold-light">{c.promise.line}</p><p className="text-sm text-primary-foreground/80">{c.promise.callNote}</p></div>
             </div>
             <div className="flex min-w-0 flex-col">
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-gold/40 lg:aspect-[4/5]">
@@ -59,11 +60,11 @@ export function SwitchProcess() {
       </div></section>
       <section className={`${section} bg-muted`}><div className={`${container} flex flex-col gap-12`}>
         <SwitchHeading eyebrow={c.steps.eyebrow} title={c.steps.title} />
-        <ol className="grid gap-5 lg:grid-cols-2">{c.steps.items.map((item, i) => <li key={item.title} className="flex flex-col gap-5 rounded-xl border border-border bg-card p-7 text-card-foreground sm:flex-row"><span aria-hidden="true" className="font-display text-4xl text-gold-dark">{String(i + 1).padStart(2, '0')}</span><div className="flex flex-col gap-3"><h3 className="font-display text-xl font-semibold leading-snug">{item.title}</h3><p className="text-sm leading-relaxed text-muted-foreground">{item.body}</p></div></li>)}</ol>
+        <ol className="grid gap-5 lg:grid-cols-2">{c.steps.items.map((item, i) => <li key={item.title} className="flex flex-col gap-5 rounded-xl border border-border bg-card p-7 text-card-foreground sm:flex-row"><span aria-hidden="true" className="font-display text-4xl text-gold-dark">{String(i + 1).padStart(2, '0')}</span><div className="flex flex-col gap-3"><h3 className="font-display text-xl font-semibold leading-snug">{i === 2 ? <Link href={FREE_INCOME_REPORT_HREF} className="underline decoration-gold underline-offset-4">{item.title}</Link> : item.title}</h3><p className="text-sm leading-relaxed text-muted-foreground"><SwitchBody text={item.body} /></p></div></li>)}</ol>
         <div className="flex justify-center"><SwitchActions /></div>
       </div></section>
       <section className={`${section} bg-background`}><div className={`${container} flex flex-col gap-12`}>
-        <SwitchHeading eyebrow={c.services.eyebrow} title={c.services.title} subtitle={c.services.lede} />
+        <SwitchHeading eyebrow={c.services.eyebrow} title={c.services.title} subtitle={<SwitchBody text={c.services.lede} />} />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{c.services.items.map((item) => <SwitchCard key={item.title} {...item} />)}</div>
         <div className="flex justify-center"><SwitchActions /></div>
       </div></section>
@@ -81,6 +82,7 @@ export function SwitchFeesAndProof() {
       <section className={`${section} bg-navy-deep text-primary-foreground`}><div className={`${container} flex max-w-4xl flex-col items-center gap-8 text-center`}>
         <SwitchHeading eyebrow={c.promise.eyebrow} title={c.promise.title} dark />
         <p className="font-display text-4xl leading-tight text-gold-light md:text-6xl">{c.promise.line.split('. ')[0] + '.'}<br />{c.promise.line.split('. ')[1]}</p>
+        <p className="text-sm leading-relaxed text-primary-foreground/80">{c.promise.callNote}</p>
         <p className="max-w-xl text-lg leading-relaxed text-primary-foreground/80">{c.promise.body}</p>
       </div></section>
       <section className={`${section} bg-background`}><div className={`${container} flex flex-col gap-12`}>
@@ -105,12 +107,12 @@ export function SwitchFAQAndAnalysis() {
     <>
       <section id="faq" className={`${section} bg-muted`}><div className={`${container} flex flex-col gap-12`}>
         <SwitchHeading eyebrow={c.faq.eyebrow} title={c.faq.title} />
-        <div className="mx-auto flex w-full max-w-4xl flex-col gap-4">{c.faq.items.map((faq, i) => <details key={faq.question} open={i === 0} className="group rounded-xl border border-border bg-card text-card-foreground"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 p-6 font-display text-lg font-semibold leading-snug md:text-xl"><span>{faq.question}</span><ChevronDown aria-hidden="true" className="size-5 shrink-0 text-gold-dark transition-transform group-open:rotate-180 motion-reduce:transition-none" /></summary><div className="flex flex-col gap-4 px-6 pb-6">{faq.paragraphs.map((p) => <p key={p} className="text-sm leading-relaxed text-muted-foreground md:text-base">{p}</p>)}</div></details>)}
-          <div className="flex flex-col gap-4 pt-4 text-sm leading-relaxed text-muted-foreground"><p><strong>{c.faq.disclaimer}</strong> {c.faq.jurisdiction}</p><div className="flex flex-wrap gap-x-6 gap-y-3">{c.faq.sources.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer" className="text-navy-deep underline decoration-gold underline-offset-4">{source.label}</a>)}</div></div>
+        <div className="mx-auto flex w-full max-w-4xl flex-col gap-4">{c.faq.items.map((faq, i) => <details key={faq.question} open={i === 0} className="group rounded-xl border border-border bg-card text-card-foreground"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 p-6 font-display text-lg font-semibold leading-snug md:text-xl"><span>{faq.question}</span><ChevronDown aria-hidden="true" className="size-5 shrink-0 text-gold-dark transition-transform group-open:rotate-180 motion-reduce:transition-none" /></summary><div className="flex flex-col gap-4 px-6 pb-6">{faq.paragraphs.map((p) => <p key={p} className="text-sm leading-relaxed text-muted-foreground md:text-base"><SwitchBody text={p} /></p>)}</div></details>)}
+          <div className="flex flex-col gap-4 pt-4 text-sm leading-relaxed text-muted-foreground"><p><strong>{c.faq.disclaimer}</strong> {c.faq.jurisdiction} More answers in our <Link href="/faq" className="text-navy-deep underline decoration-gold underline-offset-4">FAQ</Link>.</p><div className="flex flex-wrap gap-x-6 gap-y-3">{c.faq.sources.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer" className="text-navy-deep underline decoration-gold underline-offset-4">{source.label}</a>)}</div></div>
         </div>
       </div></section>
       <section id="analysis" className={`${section} scroll-mt-24 bg-navy-deep text-primary-foreground`}><div className={`${container} grid items-start gap-12 lg:grid-cols-2 lg:gap-16`}>
-        <div className="flex flex-col gap-8 lg:sticky lg:top-32"><SwitchHeading eyebrow={c.closing.eyebrow} title={c.closing.title} dark left /><p className="text-lg leading-relaxed text-primary-foreground/80">{c.closing.body}</p><p className="font-display text-2xl text-gold-light">{c.promise.line}</p></div>
+        <div className="flex flex-col gap-8 lg:sticky lg:top-32"><SwitchHeading eyebrow={c.closing.eyebrow} title={c.closing.title} dark left /><p className="text-lg leading-relaxed text-primary-foreground/80">{c.closing.body}</p><div className="flex flex-col gap-2"><p className="font-display text-2xl text-gold-light">{c.promise.line}</p><p className="text-sm text-primary-foreground/80">{c.promise.callNote}</p></div></div>
         <AnalysisForm />
       </div></section>
     </>

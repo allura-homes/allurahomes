@@ -5,8 +5,8 @@ import {
   FORM_URL,
   BOOK_CALL_URL,
   GUEST_BOOKING_HREF,
-  PHONE_DISPLAY,
-  PHONE_TEL,
+  PRIMARY_PHONE_DISPLAY,
+  PRIMARY_PHONE_E164,
   MARKETS,
 } from '@/lib/site-config'
 import { Instagram, Facebook, Linkedin, Phone, Mail, MapPin } from 'lucide-react'
@@ -195,9 +195,9 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
       <div className="border-t border-primary-foreground/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-6 text-xs text-primary-foreground/40 md:flex-row md:justify-between">
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-1.5 hover:text-gold">
+            <a href={`tel:${PRIMARY_PHONE_E164}`} className="flex items-center gap-1.5 hover:text-gold">
               <Phone className="size-3" />
-              {PHONE_DISPLAY}
+              {PRIMARY_PHONE_DISPLAY}
             </a>
             <span className="flex items-center gap-1.5">
               <Mail className="size-3" />

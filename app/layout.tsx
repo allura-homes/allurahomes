@@ -1,11 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Oswald, Montserrat, Rock_Salt, Playfair_Display } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react'
-import Script from 'next/script'
+import { SiteAnalytics } from '@/components/layout/site-analytics'
 import { SiteWrapper } from '@/components/layout/site-wrapper'
 import './globals.css'
-
-const GA_ID = 'G-WHT06K3ZFQ'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -131,20 +128,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`bg-background ${oswald.variable} ${montserrat.variable} ${rockSalt.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased" suppressHydrationWarning>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}', { page_path: window.location.pathname });
-          `}
-        </Script>
+        <SiteAnalytics />
         <SiteWrapper>{children}</SiteWrapper>
-        <Analytics />
       </body>
     </html>
   )
