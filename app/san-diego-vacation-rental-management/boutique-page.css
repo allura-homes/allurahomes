@@ -1,10 +1,11 @@
-.boutique-page { color:var(--b-ink); background:var(--b-white); font-size:16px; line-height:1.65; }
-.boutique-page .font-serif { font-family:var(--font-serif); }
-.boutique-page h1,.boutique-page h2,.boutique-page h3 { color:var(--b-navy); font-weight:600; line-height:1.15; }
+.boutique-page { color:var(--foreground); background:var(--background); line-height:1.7; }
+.boutique-page h1,.boutique-page h2,.boutique-page h3 { color:var(--navy-deep); font-weight:600; line-height:1.15; }
+.boutique-page h1 { font-weight:700; }
+.boutique-page h3 { font-family:var(--font-headline); text-transform:uppercase; letter-spacing:.03em; }
 .boutique-page h2 { font-size:clamp(28px,3.4vw,42px); letter-spacing:-.01em; }
 .boutique-page h3 { font-size:22px; }
 .boutique-page section { padding:96px 0; }
-.boutique-page a { color:inherit; }
+.boutique-page :where(a:not(.btn-gold):not(.b-secondary)) { color:inherit; }
 .boutique-page a:focus-visible,.boutique-page summary:focus-visible { outline:3px solid var(--b-gold); outline-offset:5px; }
 .boutique-page .b-wrap { width:100%; max-width:1160px; margin-inline:auto; padding-inline:32px; }
 .boutique-page .b-eyebrow { font-size:12px; letter-spacing:.22em; text-transform:uppercase; font-weight:600; color:var(--b-gold-dark); }
@@ -15,9 +16,8 @@
 .boutique-page .b-dark { background:var(--b-navy); color:var(--b-white); }
 .boutique-page .b-dark h1,.boutique-page .b-dark h2,.boutique-page .b-dark h3 { color:var(--b-white); }
 .boutique-page .b-dark .b-eyebrow { color:var(--b-gold); }
-.boutique-page .b-button { display:inline-flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; letter-spacing:.03em; text-decoration:none; padding:17px 30px; border-radius:2px; border:1.5px solid transparent; transition:background-color .2s,color .2s; text-align:center; line-height:1.2; }
-.boutique-page .b-primary { background:var(--b-gold); color:var(--b-navy); border-color:var(--b-gold); }
-.boutique-page .b-primary:hover { background:var(--b-gold-hover); border-color:var(--b-gold-hover); }
+.boutique-page .b-button { display:inline-flex; align-items:center; justify-content:center; min-height:3.25rem; font-family:var(--font-headline); font-weight:600; font-size:.875rem; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; padding:12px 32px; border-radius:var(--radius-md); border:2px solid transparent; text-align:center; line-height:1.4; }
+.boutique-page .b-secondary { transition:background-color .2s,color .2s; }
 .boutique-page .b-secondary { background:transparent; color:var(--b-navy); border-color:var(--b-navy); }
 .boutique-page .b-secondary:hover { background:var(--b-navy); color:var(--b-white); }
 .boutique-page .b-dark .b-secondary { color:var(--b-white); border-color:color-mix(in srgb,var(--b-white) 70%,transparent); }
@@ -27,14 +27,7 @@
 .boutique-page .b-trial { color:var(--b-gold); font-weight:600; }
 .boutique-page .b-skip-link { position:fixed; top:12px; left:12px; z-index:100; padding:12px 20px; background:var(--b-gold); color:var(--b-navy); transform:translateY(-200%); }
 .boutique-page .b-skip-link:focus { transform:translateY(0); }
-.boutique-page .b-nav { background:var(--b-navy); border-bottom:1px solid color-mix(in srgb,var(--b-gold) 35%,transparent); }
-.boutique-page .b-nav .b-wrap { display:flex; align-items:center; justify-content:space-between; height:76px; }
-.boutique-page .b-logo { color:var(--b-white); font-size:26px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; font-weight:500; flex-shrink:0; }
-.boutique-page .b-logo span { color:var(--b-gold); }
-.boutique-page .b-breadcrumb { font-size:12px; color:color-mix(in srgb,var(--b-white) 65%,transparent); letter-spacing:.04em; }
-.boutique-page .b-breadcrumb [aria-current] { color:var(--b-gold); }
-.boutique-page .b-nav .b-button { padding:11px 20px; font-size:13px; }
-.boutique-page .b-hero { background:radial-gradient(1200px 500px at 85% 0%,var(--b-highlight) 0%,transparent 60%),var(--b-navy); padding:84px 0 0; overflow:hidden; }
+.boutique-page .b-hero { background:radial-gradient(1200px 500px at 85% 0%,var(--b-highlight) 0%,transparent 60%),var(--b-navy); padding:160px 0 0; overflow:hidden; scroll-margin-top:80px; }
 .boutique-page .b-hero-grid { display:grid; grid-template-columns:1.12fr .88fr; gap:64px; align-items:center; padding-bottom:84px; }
 .boutique-page .b-hero h1 { font-size:clamp(34px,4.3vw,58px); letter-spacing:-.015em; margin:18px 0 26px; }
 .boutique-page .b-hero h1 em { color:var(--b-gold); font-weight:500; }
@@ -136,27 +129,19 @@
 .boutique-page .b-step-label { font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--b-gold-dark); margin-bottom:8px; }
 .boutique-page .b-step-two { margin-top:24px; }
 .boutique-page .b-switch-link { margin-top:22px; font-size:13px; color:var(--b-muted); text-align:center; }
-.boutique-page .b-footer { background:var(--b-navy-3); color:color-mix(in srgb,var(--b-white) 60%,transparent); padding:34px 0; font-size:12.5px; text-align:center; }
-.boutique-page .b-footer strong { color:var(--b-gold); font-weight:600; letter-spacing:.2em; }
-.boutique-page .b-footer p { margin-top:8px; }
 @media (max-width:960px) {
   .boutique-page section { padding:72px 0; }
-  .boutique-page .b-hero { padding-top:84px; padding-bottom:0; }
+  .boutique-page .b-hero { padding-top:144px; padding-bottom:0; }
   .boutique-page .b-hero-grid,.boutique-page .b-fee-grid,.boutique-page .b-proof-grid,.boutique-page .b-closing-grid,.boutique-page .b-housing-grid,.boutique-page .b-where-grid { grid-template-columns:minmax(0,1fr); gap:44px; }
   .boutique-page .b-service-grid,.boutique-page .b-boutique-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .boutique-page .b-photo { aspect-ratio:16/10; }
   .boutique-page .b-hero-badge { left:16px; bottom:-22px; }
-  .boutique-page .b-breadcrumb { display:none; }
   .boutique-page .b-proof-grid { margin-top:56px; }
 }
 @media (max-width:600px) {
-  .boutique-page { font-size:15.5px; }
   .boutique-page .b-wrap { padding-inline:20px; }
   .boutique-page section { padding:56px 0; }
-  .boutique-page .b-nav .b-wrap { height:64px; }
-  .boutique-page .b-logo { font-size:20px; }
-  .boutique-page .b-nav .b-button { display:none; }
-  .boutique-page .b-hero { padding:44px 0 0; }
+  .boutique-page .b-hero { padding:124px 0 0; }
   .boutique-page .b-hero-grid { padding-bottom:56px; gap:40px; }
   .boutique-page .b-lede { font-size:17px; }
   .boutique-page .b-cta-row { flex-direction:column; }

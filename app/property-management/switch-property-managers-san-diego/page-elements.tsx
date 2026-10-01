@@ -32,10 +32,10 @@ export function SwitchHeading({ eyebrow, title, subtitle, dark = false, left = f
 export function SwitchActions({ dark = false, vertical = false }: { dark?: boolean; vertical?: boolean }) {
   return (
     <div className={cn('flex flex-col gap-3', !vertical && 'sm:flex-row sm:flex-wrap')}>
-      <a href="#analysis" className="btn-gold inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-md px-6 py-4 text-center text-sm font-semibold sm:w-auto">
+      <a href="#analysis" className="btn-gold inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-md px-6 py-4 text-center font-headline text-sm font-semibold uppercase tracking-widest sm:w-auto">
         {c.cta.primary}<ArrowRight aria-hidden="true" className="size-4 shrink-0" />
       </a>
-      <Link href={c.cta.callHref} target="_blank" rel="noopener noreferrer" className={cn('inline-flex min-h-14 w-full items-center justify-center rounded-md border-2 px-6 py-4 text-center text-sm font-semibold transition-colors sm:w-auto', dark ? 'border-primary-foreground/40 text-primary-foreground hover:border-gold hover:text-gold' : 'border-navy-deep text-navy-deep hover:bg-navy-deep hover:text-primary-foreground')}>
+      <Link href={c.cta.callHref} target="_blank" rel="noopener noreferrer" className={cn('inline-flex min-h-14 w-full items-center justify-center rounded-md border-2 px-6 py-4 text-center font-headline text-sm font-semibold uppercase tracking-widest transition-colors sm:w-auto', dark ? 'border-primary-foreground/40 text-primary-foreground hover:border-gold hover:text-gold' : 'border-navy-deep text-navy-deep hover:bg-navy-deep hover:text-primary-foreground')}>
         {c.cta.secondary}
       </Link>
     </div>
@@ -46,7 +46,7 @@ export function SwitchCard({ title, body }: { title: string; body: string }) {
   return (
     <article className="flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-7 text-card-foreground">
       <span aria-hidden="true" className="h-0.5 w-8 bg-gold" />
-      <h3 className="font-display text-xl font-semibold leading-snug text-navy-deep">{title}</h3>
+      <h3 className="font-headline text-xl font-semibold uppercase tracking-wider leading-snug text-navy-deep">{title}</h3>
       <p className="text-sm leading-relaxed text-muted-foreground"><SwitchBody text={body} /></p>
     </article>
   )

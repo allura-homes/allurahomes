@@ -130,7 +130,7 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
               className="font-headline text-sm font-semibold uppercase tracking-widest text-gold"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Markets we serve and are expanding into.
+              Markets We Serve
             </h3>
             <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-primary-foreground/60">
               {MARKETS.map((market) => (

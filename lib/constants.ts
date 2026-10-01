@@ -159,40 +159,34 @@ export const TESTIMONIALS = [
   },
 ] as const
 
-// ─── Featured Properties (Placeholders) ─────────────────────
-// TODO(Mike): NEEDS-REAL-DATA. These are placeholder listings, not live
-// inventory. `rating` is intentionally not displayed on the card (see
-// property-card.tsx) until it reflects real, current reviews.
+// ─── Featured Properties ────────────────────────────────────
 export const FEATURED_PROPERTIES = [
   {
-    title: 'The Sunset Estate',
-    location: 'La Jolla, San Diego',
-    image: '/images/property-sunset-estate.jpg',
-    beds: 4,
-    baths: 3,
-    guests: 8,
-    rating: 4.97,
-    href: 'https://reservations.allurahomes.com',
-  },
-  {
-    title: 'Vineyard View Retreat',
-    location: 'Temecula Wine Country',
-    image: '/images/property-vineyard-retreat.jpg',
+    title: 'Allura South Park',
+    location: 'South Park, San Diego',
+    image: '/images/property-south-park.webp',
     beds: 3,
-    baths: 2,
+    baths: 2.5,
     guests: 6,
-    rating: 4.95,
-    href: 'https://reservations.allurahomes.com',
+    href: 'https://book.allurahomes.com/property/710907395953394820',
   },
   {
-    title: 'Coastal Modern Villa',
-    location: 'Encinitas, North County',
-    image: '/images/property-coastal-villa.jpg',
+    title: 'Allura Champagne',
+    location: 'Menifee, Temecula Wine Country',
+    image: '/images/property-champagne.webp',
     beds: 5,
     baths: 4,
     guests: 10,
-    rating: 4.98,
-    href: 'https://reservations.allurahomes.com',
+    href: 'https://book.allurahomes.com/property/710286979736011811',
+  },
+  {
+    title: 'Desert Princess Villa',
+    location: 'Cathedral City, Palm Springs Area',
+    image: '/images/property-desert-princess.webp',
+    beds: 2,
+    baths: 2.5,
+    guests: 5,
+    href: 'https://book.allurahomes.com/property/710224691280740793',
   },
 ] as const
 

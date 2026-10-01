@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { boutiqueContent as c, boutiqueStructuredData } from './content'
-import { BoutiqueHeader, BoutiqueHero, BoutiqueProof, BoutiqueHousing, BoutiqueServices, BoutiqueFeesAndPromise, BoutiqueFAQ, BoutiqueClosing, BoutiqueFooter } from './sections'
+import { BoutiqueHero, BoutiqueProof, BoutiqueHousing, BoutiqueServices, BoutiqueFeesAndPromise, BoutiqueFAQ, BoutiqueClosing } from './sections'
 import './boutique-page.css'
 
 export const metadata: Metadata = {
@@ -20,8 +20,7 @@ export const metadata: Metadata = {
 export default function BoutiqueManagementPage() {
   return <div className="boutique-page font-sans">
     <a href="#top" className="b-skip-link">Skip to content</a>
-    <BoutiqueHeader />
-    <main>
+    <div>
       <BoutiqueHero />
       <BoutiqueProof />
       <BoutiqueHousing />
@@ -29,8 +28,7 @@ export default function BoutiqueManagementPage() {
       <BoutiqueFeesAndPromise />
       <BoutiqueFAQ />
       <BoutiqueClosing />
-    </main>
-    <BoutiqueFooter />
+    </div>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(boutiqueStructuredData).replace(/</g, '\\u003c') }} />
   </div>
 }
