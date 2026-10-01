@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SHARE_IMAGE, metaDescription } from '@/lib/seo'
+import { SHARE_IMAGE, metaDescription, metaTitle } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import { getMetroArea, getAllMetroSlugs } from '@/lib/metro-areas'
 import { MetroAreaContent } from './content'
@@ -16,18 +16,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!metro) return {}
 
   return {
-    title: metro.seo.title,
+    title: { absolute: metaTitle(metro.seo.title) },
     description: metaDescription(metro.seo.description),
     keywords: metro.seo.keywords,
     alternates: { canonical: metro.seo.canonical },
     openGraph: {
       images: [SHARE_IMAGE],
-      title: `${metro.seo.title} | Allura Homes`,
+      title: metaTitle(metro.seo.title),
       description: metaDescription(metro.seo.description),
       url: metro.seo.canonical,
     },
     twitter: {
-      title: `${metro.name} Property Management | Allura Homes`,
+      title: metaTitle(`${metro.name} Property Management`),
       description: metaDescription(metro.seo.description),
     },
   }

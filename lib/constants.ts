@@ -33,6 +33,8 @@ export const NAV_ITEMS = [
     label: 'Property Management',
     href: '/property-management',
     children: [
+      { label: 'San Diego Vacation Rental Management', href: '/san-diego-vacation-rental-management' },
+      { label: 'Switching Managers', href: '/property-management/switch-property-managers-san-diego' },
       { label: 'San Diego & Temecula', href: '/property-management/san-diego-temecula' },
       { label: 'Coachella Valley', href: '/property-management/coachella-valley' },
       { label: 'Los Angeles', href: '/property-management/los-angeles' },

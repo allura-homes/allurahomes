@@ -110,7 +110,7 @@ export const METRO_AREAS: MetroArea[] = [
       ],
     },
     seo: {
-      title: 'San Diego & Temecula Vacation Rental Property Management',
+      title: 'San Diego & Temecula Rental Management',
       description:
         'Boutique STR and 30-night management in San Diego and Temecula Wine Country. Less than 20 homes under management. 4.9 star rating in 2025.',
       keywords: [
@@ -184,7 +184,7 @@ export const METRO_AREAS: MetroArea[] = [
       ],
     },
     seo: {
-      title: 'Coachella Valley Vacation Rental Property Management - Palm Springs, Palm Desert',
+      title: 'Coachella Valley Rental Management',
       description:
         'Furnished-monthly and 30-night context for Coachella Valley. Allura\'s listed STR homes are not a Palm Springs roster.',
       keywords: [
@@ -257,7 +257,7 @@ export const METRO_AREAS: MetroArea[] = [
       ],
     },
     seo: {
-      title: 'Los Angeles Vacation Rental Property Management - Hollywood Hills, Woodland Hills',
+      title: 'Los Angeles Rental Management',
       description:
         'Los Angeles is not a listed Allura STR market. Furnished-monthly / 30-night only where that is the honest fit.',
       keywords: [
@@ -330,7 +330,7 @@ export const METRO_AREAS: MetroArea[] = [
       ],
     },
     seo: {
-      title: 'SF Bay Area & Wine Country Vacation Rental Property Management - Napa, Oakland',
+      title: 'SF Bay Area & Wine Country Rental Management',
       description:
         'Oakland and Napa (30-night / furnished monthly) with Allura Homes. Boutique California management since 2013.',
       keywords: [

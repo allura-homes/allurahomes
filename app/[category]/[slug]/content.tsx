@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BRAND } from '@/lib/constants'
@@ -37,6 +38,17 @@ export function ArticleContent({
   post: BlogPost
   relatedPosts: BlogPost[]
 }) {
+  useEffect(() => {
+    const restoreAnchor = () => {
+      if (!/^#maximizing-multi-channel-yield(?:-with-allura-homes)?$/i.test(window.location.hash)) return
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#improving-multi-channel-yield`)
+      document.getElementById('improving-multi-channel-yield')?.scrollIntoView()
+    }
+    restoreAnchor()
+    window.addEventListener('hashchange', restoreAnchor)
+    return () => window.removeEventListener('hashchange', restoreAnchor)
+  }, [post.slug])
+
   return (
     <>
       {/* Hero / Header */}
