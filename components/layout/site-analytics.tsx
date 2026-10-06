@@ -21,6 +21,7 @@ export function SiteAnalytics() {
   if (excluded) return null
 
   return <>
+    <Script src="https://cdn.bookingscloud.ai/scripts/analytics.min.js" strategy="afterInteractive" />
     <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
     <Script id="google-analytics" strategy="afterInteractive">{`
       window.dataLayer = window.dataLayer || [];
