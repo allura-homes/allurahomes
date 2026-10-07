@@ -86,4 +86,36 @@ describe('pickCanonicalCategory', () => {
       }
     }
   })
+
+  describe('includeLegacyOnly option', () => {
+    it('includes legacy-only posts by default (for rendering)', () => {
+      const result = pickCanonicalCategory([4], mockCategories)
+      expect(result).toBe('hosting')
+    })
+
+    it('includes legacy-only posts when includeLegacyOnly=true', () => {
+      const result = pickCanonicalCategory([4], mockCategories, { includeLegacyOnly: true })
+      expect(result).toBe('hosting')
+    })
+
+    it('excludes legacy-only posts when includeLegacyOnly=false (for sitemap)', () => {
+      const result = pickCanonicalCategory([4], mockCategories, { includeLegacyOnly: false })
+      expect(result).toBeNull()
+    })
+
+    it('excludes shortterm-rental-regulations-only posts when includeLegacyOnly=false', () => {
+      const result = pickCanonicalCategory([5], mockCategories, { includeLegacyOnly: false })
+      expect(result).toBeNull()
+    })
+
+    it('still returns allowed categories regardless of includeLegacyOnly setting', () => {
+      const result1 = pickCanonicalCategory([1], mockCategories, { includeLegacyOnly: false })
+      const result2 = pickCanonicalCategory([2], mockCategories, { includeLegacyOnly: false })
+      const result3 = pickCanonicalCategory([3], mockCategories, { includeLegacyOnly: false })
+      
+      expect(result1).toBe('hosting')
+      expect(result2).toBe('regulations')
+      expect(result3).toBe('ai')
+    })
+  })
 })

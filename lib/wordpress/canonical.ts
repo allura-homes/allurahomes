@@ -9,8 +9,10 @@ const LEGACY_CATEGORY_MAP: Record<string, CanonicalCategory> = {
 
 export function pickCanonicalCategory(
   postCategoryIds: number[],
-  allCategories: { id: number; slug: string }[]
+  allCategories: { id: number; slug: string }[],
+  options: { includeLegacyOnly?: boolean } = {}
 ): string | null {
+  const { includeLegacyOnly = true } = options
   const allowedSet = new Set(CANONICAL_CATEGORIES)
 
   for (const cat of allCategories) {
@@ -19,11 +21,13 @@ export function pickCanonicalCategory(
     }
   }
 
-  for (const cat of allCategories) {
-    if (postCategoryIds.includes(cat.id)) {
-      const mapped = LEGACY_CATEGORY_MAP[cat.slug]
-      if (mapped) {
-        return mapped
+  if (includeLegacyOnly) {
+    for (const cat of allCategories) {
+      if (postCategoryIds.includes(cat.id)) {
+        const mapped = LEGACY_CATEGORY_MAP[cat.slug]
+        if (mapped) {
+          return mapped
+        }
       }
     }
   }

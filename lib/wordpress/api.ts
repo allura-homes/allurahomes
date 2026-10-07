@@ -341,7 +341,7 @@ export async function getPublishedPostsForSitemap(): Promise<{ slug: string; mod
       status: 'publish', per_page: '100', page: String(page), _fields: 'slug,modified,categories',
     })
     for (const post of data) {
-      const canonicalSlug = pickCanonicalCategory(post.categories, categories)
+      const canonicalSlug = pickCanonicalCategory(post.categories, categories, { includeLegacyOnly: false })
       if (canonicalSlug) {
         result.push({ slug: post.slug, modified: post.modified, category: canonicalSlug })
       }
