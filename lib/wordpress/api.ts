@@ -1,4 +1,5 @@
 import { normalizeMarketingCopy, normalizeMarketingHTML } from '@/lib/marketing-copy'
+import { pickCanonicalCategory } from './canonical'
 
 import type {
   WPPost,
@@ -29,8 +30,10 @@ function normalizePost(post: WPPost, categories: WPCategory[]): BlogPost {
   const tagTerms = embedded?.['wp:term']?.[1] ?? []
   const author = embedded?.author?.[0]
 
-  const postCatId = post.categories?.[0]
-  const cat = categories.find((c) => c.id === postCatId) ?? terms[0]
+  const canonicalSlug = pickCanonicalCategory(post.categories, categories)
+  const cat = canonicalSlug
+    ? categories.find((c) => c.slug === canonicalSlug) ?? terms.find((t: { slug: string }) => t.slug === canonicalSlug)
+    : null
 
   return {
     id: post.id,
@@ -330,7 +333,6 @@ export async function getAllPosts(page = 1, perPage = 20): Promise<BlogPost[]> {
 export async function getPublishedPostsForSitemap(): Promise<{ slug: string; modified: string; category: string }[]> {
   const categories = await wpFetch<WPCategory[]>('/categories', { per_page: '100', _fields: 'id,slug' })
 
-  const allowed = new Set(['hosting', 'regulations', 'ai'])
   const result: { slug: string; modified: string; category: string }[] = []
   let page = 1
   let pageCount = 1
@@ -339,8 +341,10 @@ export async function getPublishedPostsForSitemap(): Promise<{ slug: string; mod
       status: 'publish', per_page: '100', page: String(page), _fields: 'slug,modified,categories',
     })
     for (const post of data) {
-      const category = categories.find(cat => post.categories.includes(cat.id) && allowed.has(cat.slug))
-      if (category) result.push({ slug: post.slug, modified: post.modified, category: category.slug })
+      const canonicalSlug = pickCanonicalCategory(post.categories, categories)
+      if (canonicalSlug) {
+        result.push({ slug: post.slug, modified: post.modified, category: canonicalSlug })
+      }
     }
     pageCount = pages
     page++
