@@ -32,7 +32,9 @@ type Props = { params: Promise<{ category: string; slug: string }> }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, slug } = await params
   const post = await getPostBySlug(slug)
-  if (!post) return {}
+  if (!post) {
+    return {}
+  }
 
   const postUrl = `https://www.allurahomes.com/${category}/${slug}`
   const location = post.title.match(/^Comprehensive Guide to Operating an? Airbnb or Short-Term Rental in (.*?)(?:, California)?\.?$/i)?.[1]
@@ -69,9 +71,10 @@ export default async function ArticlePage({ params }: Props) {
   }
 
   const post = await getPostBySlug(slug)
-  if (!post) notFound()
+  if (!post) {
+    notFound()
+  }
 
-  // Fetch related posts from same category
   const { posts: relatedPosts } = await getPostsByCategory(post.category.slug)
   const related = relatedPosts.filter((p) => p.id !== post.id).slice(0, 3)
 

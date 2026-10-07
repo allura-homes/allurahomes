@@ -7,17 +7,18 @@ import type {
   BlogCategory,
 } from './types'
 
+export class WordPressUnavailableError extends Error {
+  constructor(message: string, public readonly cause?: unknown) {
+    super(message)
+    this.name = 'WordPressUnavailableError'
+  }
+}
+
 // ─── Configuration ───────────────────────────────────────────
-// Set WORDPRESS_API_URL env var to your WordPress site URL.
-// e.g. http://blog.allurahomes.com
-// If the blog doesn't have SSL, use http:// — the code will also auto-fallback from https→http.
 const _rawWpUrl = (process.env.WORDPRESS_API_URL ?? '').trim().replace(/\/$/, '')
 const WP_API_URL = _rawWpUrl ? `${_rawWpUrl}/wp-json/wp/v2` : null
-// If env var was set with https but the server only supports http, derive a fallback
-const WP_API_URL_HTTP_FALLBACK =
-  WP_API_URL && WP_API_URL.startsWith('https://')
-    ? WP_API_URL.replace('https://', 'http://')
-    : null
+const WP_API_URL_IS_HTTP = WP_API_URL?.startsWith('http://')
+const CONCURRENCY_LIMIT = 2
 
 // ─── Demo Data (used when no WordPress is connected) ─────────
 const DEMO_CATEGORIES: BlogCategory[] = [
@@ -260,90 +261,172 @@ function decodeHTML(text: string): string {
     .replace(/&quot;/g, '"')
 }
 
+// ─── Concurrency limiter ─────────────────────────────────────
+let activeFetches = 0
+const waitForSlot = () => new Promise<void>(resolve => {
+  const check = () => {
+    if (activeFetches < CONCURRENCY_LIMIT) {
+      activeFetches++
+      resolve()
+    } else {
+      setTimeout(check, 50)
+    }
+  }
+  check()
+})
+
 // ─── Fetcher ─────────────────────────────────────────────────
 
-async function wpFetch<T>(endpoint: string, params?: Record<string, string>): Promise<T | null> {
-  if (!WP_API_URL) return null
+async function wpFetch<T>(endpoint: string, params?: Record<string, string>): Promise<T> {
+  if (!WP_API_URL) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[WordPress] WORDPRESS_API_URL not set, returning empty data')
+    }
+    throw new WordPressUnavailableError('WORDPRESS_API_URL not configured')
+  }
 
+  await waitForSlot()
+  try {
+    return await _wpFetchInternal<T>(endpoint, params)
+  } finally {
+    activeFetches--
+  }
+}
+
+async function _wpFetchInternal<T>(endpoint: string, params?: Record<string, string>, isRetry = false): Promise<T> {
   const url = new URL(`${WP_API_URL}${endpoint}`)
   if (params) {
     Object.entries(params).forEach(([key, val]) => url.searchParams.set(key, val))
   }
 
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 10000)
+
   try {
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 10000)
     const res = await fetch(url.toString(), {
       next: { revalidate: 300 },
       signal: controller.signal,
       headers: { Accept: 'application/json' },
     })
     clearTimeout(timeout)
-    if (!res.ok) return null
-    return await res.json()
-  } catch {
-    // If HTTPS failed, retry with HTTP fallback
-    if (WP_API_URL_HTTP_FALLBACK && url.toString().startsWith('https://')) {
-      try {
-        const httpUrl = new URL(url.toString().replace('https://', 'http://'))
-        const controller = new AbortController()
-        const timeout = setTimeout(() => controller.abort(), 10000)
-        const res = await fetch(httpUrl.toString(), {
-          next: { revalidate: 300 },
-          signal: controller.signal,
-          headers: { Accept: 'application/json' },
-        })
-        clearTimeout(timeout)
-        if (!res.ok) return null
-        return await res.json()
-      } catch {
-        return null
-      }
+
+    if (res.status !== 200) {
+      throw new WordPressUnavailableError(`WordPress returned status ${res.status}`)
     }
-    return null
+
+    const contentType = res.headers.get('content-type') || ''
+    if (!contentType.includes('application/json')) {
+      throw new WordPressUnavailableError(`WordPress returned non-JSON content-type: ${contentType}`)
+    }
+
+    if (res.headers.get('sg-captcha')) {
+      throw new WordPressUnavailableError('WordPress challenge detected (sg-captcha header)')
+    }
+
+    try {
+      return await res.json()
+    } catch (err) {
+      throw new WordPressUnavailableError('WordPress returned malformed JSON', err)
+    }
+  } catch (err) {
+    clearTimeout(timeout)
+
+    if (err instanceof WordPressUnavailableError) {
+      throw err
+    }
+
+    if (err instanceof Error && err.name === 'AbortError') {
+      throw new WordPressUnavailableError('WordPress request timeout', err)
+    }
+
+    if (!isRetry && !WP_API_URL_IS_HTTP) {
+      await new Promise(resolve => setTimeout(resolve, 750))
+      return _wpFetchInternal<T>(endpoint, params, true)
+    }
+
+    throw new WordPressUnavailableError('WordPress network error', err)
   }
 }
 
-// Fetcher that also returns WP pagination headers
 async function wpFetchWithHeaders<T>(
   endpoint: string,
   params?: Record<string, string>
-): Promise<{ data: T | null; total: number; pages: number }> {
-  if (!WP_API_URL) return { data: null, total: 0, pages: 0 }
+): Promise<{ data: T; total: number; pages: number }> {
+  if (!WP_API_URL) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[WordPress] WORDPRESS_API_URL not set, returning empty data')
+    }
+    throw new WordPressUnavailableError('WORDPRESS_API_URL not configured')
+  }
 
+  await waitForSlot()
+  try {
+    return await _wpFetchWithHeadersInternal<T>(endpoint, params)
+  } finally {
+    activeFetches--
+  }
+}
+
+async function _wpFetchWithHeadersInternal<T>(
+  endpoint: string,
+  params?: Record<string, string>,
+  isRetry = false
+): Promise<{ data: T; total: number; pages: number }> {
   const url = new URL(`${WP_API_URL}${endpoint}`)
   if (params) {
     Object.entries(params).forEach(([key, val]) => url.searchParams.set(key, val))
   }
 
-  async function _fetchWithHeaders(fetchUrl: string) {
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 10000)
-    const res = await fetch(fetchUrl, {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 10000)
+
+  try {
+    const res = await fetch(url.toString(), {
       next: { revalidate: 300 },
       signal: controller.signal,
       headers: { Accept: 'application/json' },
     })
     clearTimeout(timeout)
-    if (!res.ok) return { data: null as T | null, total: 0, pages: 0 }
+
+    if (res.status !== 200) {
+      throw new WordPressUnavailableError(`WordPress returned status ${res.status}`)
+    }
+
+    const contentType = res.headers.get('content-type') || ''
+    if (!contentType.includes('application/json')) {
+      throw new WordPressUnavailableError(`WordPress returned non-JSON content-type: ${contentType}`)
+    }
+
+    if (res.headers.get('sg-captcha')) {
+      throw new WordPressUnavailableError('WordPress challenge detected (sg-captcha header)')
+    }
+
     const total = parseInt(res.headers.get('X-WP-Total') ?? '0', 10)
     const pages = parseInt(res.headers.get('X-WP-TotalPages') ?? '1', 10)
-    const data: T = await res.json()
-    return { data, total, pages }
-  }
 
-  try {
-    return await _fetchWithHeaders(url.toString())
-  } catch {
-    // HTTPS→HTTP fallback
-    if (WP_API_URL_HTTP_FALLBACK && url.toString().startsWith('https://')) {
-      try {
-        return await _fetchWithHeaders(url.toString().replace('https://', 'http://'))
-      } catch {
-        return { data: null, total: 0, pages: 0 }
-      }
+    try {
+      const data: T = await res.json()
+      return { data, total, pages }
+    } catch (err) {
+      throw new WordPressUnavailableError('WordPress returned malformed JSON', err)
     }
-    return { data: null, total: 0, pages: 0 }
+  } catch (err) {
+    clearTimeout(timeout)
+
+    if (err instanceof WordPressUnavailableError) {
+      throw err
+    }
+
+    if (err instanceof Error && err.name === 'AbortError') {
+      throw new WordPressUnavailableError('WordPress request timeout', err)
+    }
+
+    if (!isRetry && !WP_API_URL_IS_HTTP) {
+      await new Promise(resolve => setTimeout(resolve, 750))
+      return _wpFetchWithHeadersInternal<T>(endpoint, params, true)
+    }
+
+    throw new WordPressUnavailableError('WordPress network error', err)
   }
 }
 
@@ -354,8 +437,6 @@ export async function getCategories(): Promise<BlogCategory[]> {
     per_page: '50',
     hide_empty: 'true',
   })
-
-  if (!wpCats) return DEMO_CATEGORIES
 
   return wpCats
     .filter((c) => c.slug !== 'uncategorized')
@@ -372,21 +453,18 @@ export async function getPostsByCategory(
   page = 1,
   perPage = 12
 ): Promise<{ posts: BlogPost[]; total: number; pages: number }> {
-  // Resolve the category by slug
   const allCategories = await wpFetch<WPCategory[]>('/categories', {
     slug: categorySlug,
     per_page: '50',
   })
 
-  if (!allCategories || allCategories.length === 0) {
-    const demoPosts = DEMO_POSTS.filter((p) => p.category.slug === categorySlug)
-    return { posts: demoPosts, total: demoPosts.length, pages: 1 }
+  if (allCategories.length === 0) {
+    return { posts: [], total: 0, pages: 0 }
   }
 
   const category = allCategories[0]
-  const allCats = (await wpFetch<WPCategory[]>('/categories', { per_page: '50' })) ?? []
+  const allCats = await wpFetch<WPCategory[]>('/categories', { per_page: '50' })
 
-  // Use header-aware fetcher to get correct total + pages from WP REST API
   const { data: wpPosts, total, pages } = await wpFetchWithHeaders<WPPost[]>('/posts', {
     categories: String(category.id),
     per_page: String(perPage),
@@ -395,11 +473,6 @@ export async function getPostsByCategory(
     orderby: 'date',
     order: 'desc',
   })
-
-  if (!wpPosts) {
-    const demoPosts = DEMO_POSTS.filter((p) => p.category.slug === categorySlug)
-    return { posts: demoPosts, total: demoPosts.length, pages: 1 }
-  }
 
   return {
     posts: wpPosts.map((p) => normalizePost(p, allCats)),
@@ -414,16 +487,16 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     _embed: 'true',
   })
 
-  if (!wpPosts || wpPosts.length === 0) {
-    return DEMO_POSTS.find((p) => p.slug === slug) ?? null
+  if (wpPosts.length === 0) {
+    return null
   }
 
-  const allCats = (await wpFetch<WPCategory[]>('/categories', { per_page: '50' })) ?? []
+  const allCats = await wpFetch<WPCategory[]>('/categories', { per_page: '50' })
   return normalizePost(wpPosts[0], allCats)
 }
 
 export async function getAllPosts(page = 1, perPage = 20): Promise<BlogPost[]> {
-  const allCats = (await wpFetch<WPCategory[]>('/categories', { per_page: '50' })) ?? []
+  const allCats = await wpFetch<WPCategory[]>('/categories', { per_page: '50' })
 
   const wpPosts = await wpFetch<WPPost[]>('/posts', {
     per_page: String(perPage),
@@ -433,13 +506,11 @@ export async function getAllPosts(page = 1, perPage = 20): Promise<BlogPost[]> {
     order: 'desc',
   })
 
-  if (!wpPosts) return DEMO_POSTS
   return wpPosts.map((p) => normalizePost(p, allCats))
 }
 
 export async function getPublishedPostsForSitemap(): Promise<{ slug: string; modified: string; category: string }[]> {
   const categories = await wpFetch<WPCategory[]>('/categories', { per_page: '100', _fields: 'id,slug' })
-  if (!categories) throw new Error('WordPress sitemap categories unavailable')
 
   const allowed = new Set(['hosting', 'regulations', 'ai'])
   const result: { slug: string; modified: string; category: string }[] = []
@@ -449,7 +520,6 @@ export async function getPublishedPostsForSitemap(): Promise<{ slug: string; mod
     const { data, pages } = await wpFetchWithHeaders<Pick<WPPost, 'slug' | 'modified' | 'categories'>[]>('/posts', {
       status: 'publish', per_page: '100', page: String(page), _fields: 'slug,modified,categories',
     })
-    if (!data) throw new Error(`WordPress sitemap posts unavailable on page ${page}`)
     for (const post of data) {
       const category = categories.find(cat => post.categories.includes(cat.id) && allowed.has(cat.slug))
       if (category) result.push({ slug: post.slug, modified: post.modified, category: category.slug })
