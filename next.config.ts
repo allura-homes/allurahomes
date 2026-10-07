@@ -8,6 +8,37 @@ const nextConfig: NextConfig = {
       { source: '/tag/high-end-rentals', destination: '/hosting', statusCode: 301 },
       { source: '/switch-managers', destination: SWITCH_PAGE_PATH, statusCode: 301 },
       { source: '/switch-managers/', destination: SWITCH_PAGE_PATH, statusCode: 301 },
+      // Fix typo redirects (specific paths must come before wildcards)
+      {
+        source: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-sshort-term-rental-in-oceanside-california',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-oceanside-california',
+        statusCode: 301,
+      },
+      {
+        source: '/shortterm-rental-regulations/comprehensive-guide-to-operating-an-airbnb-or-sshort-term-rental-in-oceanside-california',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-oceanside-california',
+        statusCode: 301,
+      },
+      {
+        source: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-caliornia',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-california',
+        statusCode: 301,
+      },
+      {
+        source: '/shortterm-rental-regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-caliornia',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-california',
+        statusCode: 301,
+      },
+      {
+        source: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-encinitas-california-gwybz',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-encinitas-california',
+        statusCode: 301,
+      },
+      {
+        source: '/shortterm-rental-regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-encinitas-california-gwybz',
+        destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-encinitas-california',
+        statusCode: 301,
+      },
       // Legacy blog category slugs → new short slugs (301 = permanent moved)
       {
         source: '/hosting-resources',
