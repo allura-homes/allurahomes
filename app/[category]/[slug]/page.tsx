@@ -9,13 +9,19 @@ const BLOG_CATEGORY_SLUGS = CANONICAL_CATEGORIES
 
 export async function generateStaticParams() {
   const categories = await getCategories()
+  const seen = new Set<string>()
   const params: { category: string; slug: string }[] = []
 
   for (const cat of categories) {
     if (!BLOG_CATEGORY_SLUGS.includes(cat.slug as any)) continue
     const { posts } = await getPostsByCategory(cat.slug)
     for (const post of posts) {
-      params.push({ category: post.category.slug, slug: post.slug })
+      if (!BLOG_CATEGORY_SLUGS.includes(post.category.slug as any)) continue
+      const key = `${post.category.slug}/${post.slug}`
+      if (!seen.has(key)) {
+        seen.add(key)
+        params.push({ category: post.category.slug, slug: post.slug })
+      }
     }
   }
 
@@ -28,6 +34,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = await getPostBySlug(slug)
   if (!post) {
+    return {}
+  }
+
+  if (!BLOG_CATEGORY_SLUGS.includes(post.category.slug as any)) {
     return {}
   }
 
@@ -70,7 +80,7 @@ export default async function ArticlePage({ params }: Props) {
     notFound()
   }
 
-  if (!post.category.slug) {
+  if (!BLOG_CATEGORY_SLUGS.includes(post.category.slug as any)) {
     notFound()
   }
 

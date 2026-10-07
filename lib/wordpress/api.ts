@@ -30,9 +30,9 @@ function normalizePost(post: WPPost, categories: WPCategory[]): BlogPost {
   const tagTerms = embedded?.['wp:term']?.[1] ?? []
   const author = embedded?.author?.[0]
 
-  const canonicalSlug = pickCanonicalCategory(post.categories, categories)
-  const cat = canonicalSlug
-    ? categories.find((c) => c.slug === canonicalSlug) ?? terms.find((t: { slug: string }) => t.slug === canonicalSlug)
+  const canonical = pickCanonicalCategory(post.categories, categories)
+  const cat = canonical
+    ? categories.find((c) => c.slug === canonical.slug) ?? terms.find((t: { slug: string }) => t.slug === canonical.slug)
     : null
 
   return {
@@ -100,9 +100,6 @@ const waitForSlot = () => new Promise<void>(resolve => {
 
 async function wpFetch<T>(endpoint: string, params?: Record<string, string>): Promise<T> {
   if (!WP_API_URL) {
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('[WordPress] WORDPRESS_API_URL not set, returning empty data')
-    }
     throw new WordPressUnavailableError('WORDPRESS_API_URL not configured')
   }
 
@@ -174,9 +171,6 @@ async function wpFetchWithHeaders<T>(
   params?: Record<string, string>
 ): Promise<{ data: T; total: number; pages: number }> {
   if (!WP_API_URL) {
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('[WordPress] WORDPRESS_API_URL not set, returning empty data')
-    }
     throw new WordPressUnavailableError('WORDPRESS_API_URL not configured')
   }
 
@@ -255,7 +249,7 @@ async function _wpFetchWithHeadersInternal<T>(
 
 export async function getCategories(): Promise<BlogCategory[]> {
   const wpCats = await wpFetch<WPCategory[]>('/categories', {
-    per_page: '50',
+    per_page: '100',
     hide_empty: 'true',
   })
 
@@ -276,7 +270,7 @@ export async function getPostsByCategory(
 ): Promise<{ posts: BlogPost[]; total: number; pages: number }> {
   const allCategories = await wpFetch<WPCategory[]>('/categories', {
     slug: categorySlug,
-    per_page: '50',
+    per_page: '100',
   })
 
   if (allCategories.length === 0) {
@@ -284,7 +278,7 @@ export async function getPostsByCategory(
   }
 
   const category = allCategories[0]
-  const allCats = await wpFetch<WPCategory[]>('/categories', { per_page: '50' })
+  const allCats = await wpFetch<WPCategory[]>('/categories', { per_page: '100' })
 
   const { data: wpPosts, total, pages } = await wpFetchWithHeaders<WPPost[]>('/posts', {
     categories: String(category.id),
@@ -312,12 +306,12 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     return null
   }
 
-  const allCats = await wpFetch<WPCategory[]>('/categories', { per_page: '50' })
+  const allCats = await wpFetch<WPCategory[]>('/categories', { per_page: '100' })
   return normalizePost(wpPosts[0], allCats)
 }
 
 export async function getAllPosts(page = 1, perPage = 20): Promise<BlogPost[]> {
-  const allCats = await wpFetch<WPCategory[]>('/categories', { per_page: '50' })
+  const allCats = await wpFetch<WPCategory[]>('/categories', { per_page: '100' })
 
   const wpPosts = await wpFetch<WPPost[]>('/posts', {
     per_page: String(perPage),
@@ -341,9 +335,9 @@ export async function getPublishedPostsForSitemap(): Promise<{ slug: string; mod
       status: 'publish', per_page: '100', page: String(page), _fields: 'slug,modified,categories',
     })
     for (const post of data) {
-      const canonicalSlug = pickCanonicalCategory(post.categories, categories, { includeLegacyOnly: false })
-      if (canonicalSlug) {
-        result.push({ slug: post.slug, modified: post.modified, category: canonicalSlug })
+      const canonical = pickCanonicalCategory(post.categories, categories)
+      if (canonical && !canonical.viaLegacy) {
+        result.push({ slug: post.slug, modified: post.modified, category: canonical.slug })
       }
     }
     pageCount = pages

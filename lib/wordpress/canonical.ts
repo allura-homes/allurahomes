@@ -7,27 +7,28 @@ const LEGACY_CATEGORY_MAP: Record<string, CanonicalCategory> = {
   'shortterm-rental-regulations': 'regulations',
 }
 
+export type CanonicalCategoryResult = {
+  slug: string
+  viaLegacy: boolean
+} | null
+
 export function pickCanonicalCategory(
   postCategoryIds: number[],
-  allCategories: { id: number; slug: string }[],
-  options: { includeLegacyOnly?: boolean } = {}
-): string | null {
-  const { includeLegacyOnly = true } = options
+  allCategories: { id: number; slug: string }[]
+): CanonicalCategoryResult {
   const allowedSet = new Set(CANONICAL_CATEGORIES)
 
   for (const cat of allCategories) {
     if (postCategoryIds.includes(cat.id) && allowedSet.has(cat.slug as CanonicalCategory)) {
-      return cat.slug
+      return { slug: cat.slug, viaLegacy: false }
     }
   }
 
-  if (includeLegacyOnly) {
-    for (const cat of allCategories) {
-      if (postCategoryIds.includes(cat.id)) {
-        const mapped = LEGACY_CATEGORY_MAP[cat.slug]
-        if (mapped) {
-          return mapped
-        }
+  for (const cat of allCategories) {
+    if (postCategoryIds.includes(cat.id)) {
+      const mapped = LEGACY_CATEGORY_MAP[cat.slug]
+      if (mapped) {
+        return { slug: mapped, viaLegacy: true }
       }
     }
   }
