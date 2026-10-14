@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import type { BlogPost } from '@/lib/wordpress/types'
+import { resolvePostHref } from '@/lib/retired-posts'
 import { CalendarDays, Clock, ArrowRight } from 'lucide-react'
 
 function formatDate(dateString: string) {
@@ -26,7 +27,7 @@ export function PostCard({
   post: BlogPost
   index?: number
 }) {
-  const href = `/${post.category.slug}/${post.slug}`
+  const href = resolvePostHref(`/${post.category.slug}/${post.slug}`)
 
   return (
     <AnimateOnScroll delay={index * 0.1}>

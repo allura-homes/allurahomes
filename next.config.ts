@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next'
 import { SWITCH_PAGE_PATH } from './lib/site-config'
+import { RETIRED_POST_REDIRECTS } from './lib/retired-posts'
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -8,6 +9,7 @@ const nextConfig: NextConfig = {
       { source: '/tag/high-end-rentals', destination: '/hosting', statusCode: 301 },
       { source: '/switch-managers', destination: SWITCH_PAGE_PATH, statusCode: 301 },
       { source: '/switch-managers/', destination: SWITCH_PAGE_PATH, statusCode: 301 },
+      ...Object.entries(RETIRED_POST_REDIRECTS).map(([source, destination]) => ({ source, destination, statusCode: 301 as const })),
       // Legacy blog category slugs → new short slugs (301 = permanent moved)
       {
         source: '/hosting-resources',
