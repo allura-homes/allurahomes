@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getPublishedPostsForSitemap } from '@/lib/wordpress/api'
 import { METRO_AREAS } from '@/lib/metro-areas'
 import { SWITCH_PAGE_PATH } from '@/lib/site-config'
+import { RETIRED_POST_REDIRECTS } from '@/lib/retired-posts'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.allurahomes.com'
@@ -100,7 +101,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   const posts = await getPublishedPostsForSitemap()
-  const blogPages: MetadataRoute.Sitemap = posts.map(post => ({
+  const blogPages: MetadataRoute.Sitemap = posts.filter(post => !(`/${post.category}/${post.slug}` in RETIRED_POST_REDIRECTS)).map(post => ({
     url: `${baseUrl}/${post.category}/${post.slug}`,
     lastModified: post.modified.slice(0, 10),
     changeFrequency: 'monthly',
