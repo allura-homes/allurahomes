@@ -87,6 +87,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   staticPages.push(
     { url: `${baseUrl}/san-diego-vacation-rental-management`, lastModified: contentRevision, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/san-diego-airbnb-income`, lastModified: new Date('2026-10-14'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/stays`, lastModified: contentRevision, changeFrequency: 'weekly', priority: 0.8 },
   )
 
