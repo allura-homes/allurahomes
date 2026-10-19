@@ -6,8 +6,8 @@ const PAGE_URL = `${SITE}${INCOME_PAGE_PATH}`
 
 export const incomeContent = {
   seo: {
-    title: 'San Diego Airbnb Income vs 30+ Night Rentals | Allura',
-    description: 'What a San Diego home really earns as an Airbnb vs a furnished 30+ night rental: gross vs net after fees, TOT, cleaning and vacancy. Get a free estimate.',
+    title: 'How Much Can My San Diego Home Earn on Airbnb? | Allura',
+    description: 'What your San Diego home earns on Airbnb vs 30+ night rentals: real numbers after fees, taxes, and vacancy. Blended calendar net income calculator.',
     url: PAGE_URL,
   },
   cta: {
@@ -24,7 +24,7 @@ export const incomeContent = {
   title: 'What your San Diego home actually earns: Airbnb vs furnished 30+ nights',
   byline: 'By Mike Corrales, founder, Allura Homes · Updated October 14, 2026',
   datePublished: '2026-10-14',
-  answer: 'For most San Diego homes that can hold a short-term license and whose HOA allows it, a blended calendar earns the most: nightly stays in peak season, furnished 30+ night stays in the slow months. Judge it on net, after tourist tax, platform fees, utilities and management. Allura charges 20% of short-term accommodation fare, from 15% for monthly stays.',
+  answer: 'Your San Diego home can earn more with a blended calendar combining Airbnb stays in peak season and furnished 30+ night rentals in slower months, when it qualifies for a short-term license and your HOA allows it. The illustrative example below shows $51,818 net after fees, taxes, and all costs for a blended approach vs $49,698 for nightly-only. Allura charges 20% for short-term, from 15% for monthly.',
   trust: ['Since 2013', 'Airbnb Superhost', 'Less than 20 homes', '4.9 star rating in 2025'],
   superhostHref: AIRBNB_PROFILE_HREF,
   recommendation: {
@@ -175,7 +175,7 @@ export const incomeContent = {
   },
   related: [
     { label: 'Boutique vacation rental management in San Diego', href: '/san-diego-vacation-rental-management' },
-    { label: 'Leaving a big management company?', href: '/property-management/switch-property-managers-san-diego' },
+    { label: 'Switch from a big management company?', href: '/property-management/switch-property-managers-san-diego' },
     { label: 'San Diego regulations guide', href: '/regulations/san-diego-california' },
     { label: 'How it works', href: '/how-it-works' },
     { label: 'FAQ', href: '/faq' },
