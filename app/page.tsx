@@ -107,10 +107,6 @@ export default function HomePage() {
               email: 'support@allurahomes.com',
               areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),
               sameAs: Object.values(BRAND.social),
-              // NEEDS-REAL-DATA: aggregateRating requires a real, verifiable
-              // ratingCount (e.g. from Airbnb/Google). Do not publish an
-              // estimated count — Google can penalize unverifiable review
-              // markup.
             },
             {
               '@context': 'https://schema.org',
@@ -124,14 +120,13 @@ export default function HomePage() {
             {
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
-              '@id': 'https://www.allurahomes.com/#organization',
+              '@id': 'https://www.allurahomes.com/#localbusiness',
               name: 'Allura Homes',
               image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gold%20Bug%20-%20blue%20background-w5gGFhOU00lG43WErprop28jNDADyc.png',
               telephone: PHONE_TEL,
               email: 'support@allurahomes.com',
               url: 'https://www.allurahomes.com',
               areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),
-              // TODO(Mike): confirm price range and hours
               priceRange: '$$',
               openingHoursSpecification: {
                 '@type': 'OpeningHoursSpecification',
