@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { SHARE_IMAGE, metaDescription, metaTitle } from '@/lib/seo'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { getPostBySlug, getPostsByCategory, getCategories } from '@/lib/wordpress/api'
 import { ArticleContent } from './content'
+import { RETIRED_POST_REDIRECTS } from '@/lib/retired-posts'
 
 const BLOG_CATEGORY_SLUGS = [
   'hosting-resources',
@@ -20,6 +21,10 @@ export async function generateStaticParams() {
     if (!BLOG_CATEGORY_SLUGS.includes(cat.slug)) continue
     const { posts } = await getPostsByCategory(cat.slug)
     for (const post of posts) {
+      // Skip retired posts - they redirect via next.config.ts
+      const postPath = `/${cat.slug}/${post.slug}`
+      if (postPath in RETIRED_POST_REDIRECTS) continue
+      
       params.push({ category: cat.slug, slug: post.slug })
     }
   }
@@ -86,6 +91,12 @@ export default async function ArticlePage({ params }: Props) {
 
   if (!BLOG_CATEGORY_SLUGS.includes(categorySlug)) {
     notFound()
+  }
+
+  // Check if this post is retired and should redirect
+  const postPath = `/${categorySlug}/${slug}`
+  if (postPath in RETIRED_POST_REDIRECTS) {
+    redirect(RETIRED_POST_REDIRECTS[postPath])
   }
 
   const post = await getPostBySlug(slug)
