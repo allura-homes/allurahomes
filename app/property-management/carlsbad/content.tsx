@@ -12,28 +12,28 @@ import { PRIMARY_PHONE_DISPLAY, FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, GUEST
 
 const faqItems = [
   {
+    question: 'Can I run a short-term rental anywhere in Carlsbad?',
+    answer: 'No. Short-term rentals are only allowed in Carlsbad\'s Coastal Zone or the La Costa Resort & Spa Master Plan area. Use the City\'s E-Zoning Map to check if your property qualifies. Outside those areas, short-term rentals are prohibited.'
+  },
+  {
+    question: 'What permits do I need for a Carlsbad short-term rental?',
+    answer: 'Two approvals before you list: a Short-Term Vacation Rental (STVR) permit from Community Development and a Home-Based Business license from Finance. The STVR permit costs $231 per year and must be renewed annually. Allura handles the permit paperwork.'
+  },
+  {
+    question: 'Does Airbnb collect Carlsbad taxes automatically?',
+    answer: 'Yes. Airbnb collects and remits the 10% Transient Occupancy Tax (TOT) and the 2% Carlsbad Tourism Business Improvement District (CTBID) assessment. Allura handles TOT filing for bookings on other platforms.'
+  },
+  {
+    question: 'Can my Carlsbad ADU be a short-term rental?',
+    answer: 'Not if it received a building permit on or after January 1, 2020. ADUs permitted after that date can only be rented as furnished 30+ night stays, which are not subject to STVR rules and are TOT-exempt with a written 30+ day agreement.'
+  },
+  {
     question: 'What does Allura charge for Carlsbad vacation rental management?',
     answer: '20% of accommodation fare for short-term stays, from 15% for furnished stays of 30+ nights. Supplies are billed at cost with receipts. We evaluate every home individually.'
   },
   {
-    question: 'How long does it take to launch my Carlsbad rental?',
-    answer: 'Weeks, not months. After onboarding, we handle furnishing, photography, permitting, and listing setup. Your timeline depends on permit processing and your home\'s readiness.'
-  },
-  {
     question: 'What if I want to leave Allura?',
     answer: 'Mutual 30-day out clause. Either party can end the agreement with 30 days\' notice. No penalties.'
-  },
-  {
-    question: 'Does Allura manage properties in Carlsbad\'s coastal zone?',
-    answer: 'Yes, where permits allow. Coastal zone properties may have additional requirements. We recommend contacting the City of Carlsbad to confirm your property\'s permit eligibility before onboarding.'
-  },
-  {
-    question: 'When do I receive my owner statements?',
-    answer: 'Monthly statements are guaranteed by the 10th of the following month. Clear revenue breakdowns, expense receipts, and proactive quarterly reviews.'
-  },
-  {
-    question: 'Can you manage my Carlsbad ADU?',
-    answer: 'Yes. ADUs can be rented as furnished 30+ night homes. Short-term rentals (under 30 days) are not allowed for ADUs under California law.'
   },
 ]
 
@@ -269,7 +269,7 @@ export function CarlsbadContent({ metro }: { metro: MetroArea }) {
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.1}>
             <p className="mt-4 text-lg leading-relaxed text-primary-foreground/70">
-              Staying compliant is critical. Allura monitors regulatory changes and serves as your local contact.
+              Allura handles permit paperwork, serves as your 24/7 local contact, and manages TOT filing.
             </p>
           </AnimateOnScroll>
           <ul className="mt-10 flex flex-col gap-4">
@@ -285,9 +285,21 @@ export function CarlsbadContent({ metro }: { metro: MetroArea }) {
             ))}
           </ul>
           <AnimateOnScroll delay={0.5}>
-            <div className="mt-8 rounded-xl bg-primary-foreground/5 p-6">
+            <div className="mt-8 rounded-xl bg-primary-foreground/5 p-6 space-y-3">
               <p className="text-sm leading-relaxed text-primary-foreground/70">
-                This is general information, not legal advice. Contact the City of Carlsbad Planning Department to confirm your property's permit eligibility and any coastal zone requirements.
+                This is general information, not legal advice. For complete requirements, visit the{' '}
+                <a
+                  href="https://www.carlsbadca.gov/departments/community-development/short-term-vacation-rentals"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gold underline hover:text-gold/80"
+                >
+                  City of Carlsbad STVR page
+                </a>
+                .
+              </p>
+              <p className="text-sm leading-relaxed text-primary-foreground/70">
+                Rules change, so contact the City of Carlsbad to confirm before you list.
               </p>
             </div>
           </AnimateOnScroll>
