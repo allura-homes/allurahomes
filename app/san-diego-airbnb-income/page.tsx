@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Mike Corrales' }],
   openGraph: {
     type: 'article', url: c.seo.url, siteName: 'Allura Homes', title: c.seo.title, description: metaDescription(c.seo.description),
-    publishedTime: c.datePublished, modifiedTime: c.datePublished, authors: ['Mike Corrales'],
+    publishedTime: c.datePublished, modifiedTime: c.dateModified, authors: ['Mike Corrales'],
     images: [SHARE_IMAGE],
   },
   twitter: { card: 'summary_large_image', title: c.seo.title, description: metaDescription(c.seo.description), images: [SHARE_IMAGE.url] },
