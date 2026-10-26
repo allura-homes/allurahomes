@@ -88,7 +88,7 @@ export const METRO_AREAS: MetroArea[] = [
       heading: 'Carlsbad Short-Term Rental Regulations',
       items: [
         'The City of Carlsbad requires a Short-Term Vacation Rental (STVR) permit for rentals under 30 days. [CONFIRM]',
-        'Coastal zone properties may have additional permit requirements. Contact the City of Carlsbad Planning Department to confirm your property's status. [CONFIRM]',
+        'Coastal zone properties may have additional permit requirements. Contact the City of Carlsbad Planning Department to confirm your property\'s status. [CONFIRM]',
         'Transient occupancy tax (TOT) applies to short-term rentals. [CONFIRM]',
         'Owners should verify current permit availability, zone restrictions, and HOA rules before listing.',
         'Allura serves as your local contact and handles compliance where permits are available.',

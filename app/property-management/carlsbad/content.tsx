@@ -17,7 +17,7 @@ const faqItems = [
   },
   {
     question: 'How long does it take to launch my Carlsbad rental?',
-    answer: 'Weeks, not months. After onboarding, we handle furnishing, photography, permitting, and listing setup. Your timeline depends on permit processing and your home's readiness.'
+    answer: 'Weeks, not months. After onboarding, we handle furnishing, photography, permitting, and listing setup. Your timeline depends on permit processing and your home\'s readiness.'
   },
   {
     question: 'What if I want to leave Allura?',

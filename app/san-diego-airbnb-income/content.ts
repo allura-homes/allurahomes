@@ -7,7 +7,7 @@ const PAGE_URL = `${SITE}${INCOME_PAGE_PATH}`
 export const incomeContent = {
   seo: {
     title: 'San Diego Airbnb Income: Free Earnings Report',
-    description: 'Get your San Diego home's actual Airbnb earnings—gross and net, blended vs short-term only—in a free report delivered in 24 hours. No obligation.',
+    description: 'Get your San Diego home\'s actual Airbnb earnings—gross and net, blended vs short-term only—in a free report delivered in 24 hours. No obligation.',
     url: PAGE_URL,
   },
   cta: {
