@@ -182,7 +182,7 @@ Configured in `BRAND.social` in `lib/constants.ts`:
 | Instagram | https://www.instagram.com/allurahomes |
 | Facebook | https://www.facebook.com/allurahomes.us |
 | X (Twitter) | https://x.com/AlluraHomes |
-| LinkedIn | https://www.linkedin.com/company/allurahomes/ |
+| LinkedIn | https://www.linkedin.com/company/82304816 |
 
 ---
 

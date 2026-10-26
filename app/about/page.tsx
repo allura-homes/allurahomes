@@ -51,7 +51,7 @@ const aboutSchema = {
         'https://x.com/AlluraHomes',
         'https://www.instagram.com/allurahomes',
         'https://www.facebook.com/allurahomes.us',
-        'https://www.linkedin.com/company/allurahomes/',
+        'https://www.linkedin.com/company/82304816',
       ],
     },
     {
