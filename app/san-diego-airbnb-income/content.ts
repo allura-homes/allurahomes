@@ -25,7 +25,7 @@ export const incomeContent = {
   byline: 'By Mike Corrales, founder, Allura Homes · Updated October 26, 2026',
   datePublished: '2026-10-14',
   dateModified: '2026-10-26',
-  answer: 'A San Diego home can earn $49,700–$51,800 net a year with a blended calendar where it qualifies for a short-term license and the HOA allows it. Allura estimates your home's actual earnings—gross and net, blended vs short-term only—with a free report delivered in 24 hours.',
+  answer: 'A San Diego home can earn $49,700–$51,800 net a year with a blended calendar where it qualifies for a short-term license and the HOA allows it. Allura estimates your home\'s actual earnings—gross and net, blended vs short-term only—with a free report delivered in 24 hours.',
   trust: ['Since 2013', 'Airbnb Superhost', 'Less than 20 homes', '4.9 star rating in 2025'],
   superhostHref: AIRBNB_PROFILE_HREF,
   recommendation: {

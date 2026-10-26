@@ -21,11 +21,11 @@ const faqItems = [
   },
   {
     question: 'What if I want to leave Allura?',
-    answer: 'Mutual 30-day out clause. Either party can end the agreement with 30 days' notice. No penalties.'
+    answer: 'Mutual 30-day out clause. Either party can end the agreement with 30 days\' notice. No penalties.'
   },
   {
-    question: 'Does Allura manage properties in Carlsbad's coastal zone?',
-    answer: 'Yes, where permits allow. Coastal zone properties may have additional requirements. We recommend contacting the City of Carlsbad to confirm your property's permit eligibility before onboarding.'
+    question: 'Does Allura manage properties in Carlsbad\'s coastal zone?',
+    answer: 'Yes, where permits allow. Coastal zone properties may have additional requirements. We recommend contacting the City of Carlsbad to confirm your property\'s permit eligibility before onboarding.'
   },
   {
     question: 'When do I receive my owner statements?',
