@@ -12,7 +12,7 @@ export function ManagementPageLinks({ current }: { current?: 'boutique' | 'switc
           ) : current === 'switch' ? (
             <>Learn more about our <Link href="/san-diego-vacation-rental-management" className={linkClass}>San Diego Vacation Rental Management</Link>.</>
           ) : (
-            <>Explore our <Link href="/san-diego-vacation-rental-management" className={linkClass}>San Diego Vacation Rental Management</Link> or read about <Link href="/property-management/switch-property-managers-san-diego" className={linkClass}>switching managers</Link>.</>
+            <>Explore our <Link href="/san-diego-vacation-rental-management" className={linkClass}>San Diego Vacation Rental Management</Link>, <Link href="/property-management/furnished-monthly-rentals" className={linkClass}>furnished monthly stays (30+ nights)</Link>, or read about <Link href="/property-management/switch-property-managers-san-diego" className={linkClass}>switching managers</Link>.</>
           )}
         </p>
       </div>
