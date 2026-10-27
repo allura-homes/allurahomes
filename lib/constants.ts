@@ -14,7 +14,7 @@ export const BRAND = {
     instagram: 'https://www.instagram.com/allurahomes',
     facebook: 'https://www.facebook.com/allurahomes.us',
     x: 'https://x.com/AlluraHomes',
-    linkedin: 'https://www.linkedin.com/company/allurahomes/',
+    linkedin: 'https://www.linkedin.com/company/82304816',
   },
   logos: {
     horizontal:

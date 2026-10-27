@@ -6,8 +6,8 @@ const PAGE_URL = `${SITE}${INCOME_PAGE_PATH}`
 
 export const incomeContent = {
   seo: {
-    title: 'How Much Can My San Diego Home Earn on Airbnb? | Allura',
-    description: 'What your San Diego home earns on Airbnb vs 30+ night rentals: real numbers after fees, taxes, and vacancy. Blended calendar net income calculator.',
+    title: 'San Diego Airbnb Income: Free Earnings Report',
+    description: 'Get your San Diego home\'s actual Airbnb earnings—gross and net, blended vs short-term only—in a free report delivered in 24 hours. No obligation.',
     url: PAGE_URL,
   },
   cta: {
@@ -22,9 +22,10 @@ export const incomeContent = {
   },
   breadcrumb: 'San Diego Airbnb Income',
   title: 'What your San Diego home actually earns: Airbnb vs furnished 30+ nights',
-  byline: 'By Mike Corrales, founder, Allura Homes · Updated October 14, 2026',
+  byline: 'By Mike Corrales, founder, Allura Homes · Updated October 26, 2026',
   datePublished: '2026-10-14',
-  answer: 'Your San Diego home can earn more with a blended calendar combining Airbnb stays in peak season and furnished 30+ night rentals in slower months, when it qualifies for a short-term license and your HOA allows it. The illustrative example below shows $51,818 net after fees, taxes, and all costs for a blended approach vs $49,698 for nightly-only. Allura charges 20% for short-term, from 15% for monthly.',
+  dateModified: '2026-10-26',
+  answer: 'A San Diego home can earn $49,700–$51,800 net a year with a blended calendar where it qualifies for a short-term license and the HOA allows it. Allura estimates your home\'s actual earnings—gross and net, blended vs short-term only—with a free report delivered in 24 hours.',
   trust: ['Since 2013', 'Airbnb Superhost', 'Less than 20 homes', '4.9 star rating in 2025'],
   superhostHref: AIRBNB_PROFILE_HREF,
   recommendation: {
@@ -200,7 +201,7 @@ export const incomeStructuredData = {
       '@type': 'Article', '@id': `${PAGE_URL}#article`,
       headline: incomeContent.title, description: incomeContent.seo.description,
       author: { '@id': PERSON_ID }, publisher: { '@id': ORG_ID },
-      datePublished: incomeContent.datePublished, dateModified: incomeContent.datePublished,
+      datePublished: incomeContent.datePublished, dateModified: incomeContent.dateModified,
       mainEntityOfPage: PAGE_URL, inLanguage: 'en-US',
     },
     {
