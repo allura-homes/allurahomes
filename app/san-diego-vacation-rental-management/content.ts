@@ -24,6 +24,41 @@ export const boutiqueContent = {
   },
   trust: ['13+ Years Hosting', 'Airbnb Superhost', 'Vrbo Premier Host', '4.9 star rating in 2025', 'Less than 20 homes managed like they are our own.'],
   answer: 'Allura Homes is a boutique vacation rental manager in San Diego, founded in 2013. Less than 20 homes managed like they are our own. No owner is a number in a queue. We run short-term stays and furnished stays of 30+ nights, with statements by the 10th. Airbnb Superhost. Vrbo Premier Host.',
+  answerFirst: {
+    eyebrow: 'Quick answer',
+    title: 'San Diego vacation rental management at a glance',
+    fees: {
+      title: 'Fees',
+      items: [
+        { label: 'Short-term stays', value: '20% of the accommodation fare the guest pays' },
+        { label: 'Furnished stays of 30+ nights', value: 'From 15%' },
+        { label: 'Supplies', value: 'At cost. No markup. Receipts with your monthly statement.' },
+      ],
+    },
+    included: {
+      title: "What's included",
+      description: 'Listing and pricing, guest communication, cleaning coordination, maintenance, owner statements.',
+    },
+    stro: {
+      title: 'STRO help',
+      description: 'Allura files San Diego STRO quarterly reports and keeps the booking records.',
+    },
+    contact: {
+      title: 'Local contact',
+      description: 'Available 24/7, with an average response time under 5 minutes.',
+    },
+    credentials: {
+      title: 'About Allura',
+      items: [
+        'Fewer than 20 homes',
+        'Local since 2013',
+        'Airbnb Superhost',
+        'Vrbo Premier Host',
+        '4.9-star rating in 2025',
+      ],
+    },
+    updated: 'Updated October 2026',
+  },
   boutique: {
     eyebrow: 'Boutique, in practice', title: 'What "boutique" actually means',
     items: [
@@ -119,7 +154,7 @@ export const boutiqueStructuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     { '@type': ['Organization', 'LocalBusiness'], '@id': organizationId, name: 'Allura Homes', url: 'https://www.allurahomes.com', description: 'Boutique vacation rental management in San Diego. Less than 20 homes managed like they are our own.', foundingDate: '2013', telephone: PRIMARY_PHONE_E164, areaServed: MARKETS.map(name => ({ '@type': 'City', name })), sameAs: ['https://www.instagram.com/allurahomes', 'https://www.facebook.com/allurahomes.us', 'https://www.linkedin.com/company/82304816', AIRBNB_PROFILE_HREF] },
-    { '@type': 'WebPage', '@id': `${c.seo.url}#webpage`, url: c.seo.url, name: c.seo.title, description: c.seo.description, about: { '@id': organizationId }, primaryImageOfPage: { '@type': 'ImageObject', url: 'https://www.allurahomes.com/images/boutique/hero.jpg' }, speakable: { '@type': 'SpeakableSpecification', cssSelector: ["[data-speakable='answer-card']", 'h1'] } },
+    { '@type': 'WebPage', '@id': `${c.seo.url}#webpage`, url: c.seo.url, name: c.seo.title, description: c.seo.description, dateModified: '2026-10-22', about: { '@id': organizationId }, primaryImageOfPage: { '@type': 'ImageObject', url: 'https://www.allurahomes.com/images/boutique/hero.jpg' }, speakable: { '@type': 'SpeakableSpecification', cssSelector: ["[data-speakable='answer-card']", "[data-speakable='answer-first']", 'h1'] } },
     { '@type': 'FAQPage', '@id': `${c.seo.url}#faq`, mainEntity: boutiqueFAQs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.paragraphs.join(' ') + (faq.link ? ` ${faq.link.text}.` : '') } })) },
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: c.header.home, item: 'https://www.allurahomes.com/' }, { '@type': 'ListItem', position: 2, name: c.header.breadcrumb, item: c.seo.url }] },
     ...['Vacation rental property management', 'Furnished 30+ night stay management'].map(serviceType => ({ '@type': 'Service', serviceType, areaServed: MARKETS.map(name => ({ '@type': 'City', name })), provider: { '@id': organizationId } })),

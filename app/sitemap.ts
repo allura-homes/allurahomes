@@ -100,7 +100,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }))
 
-  const posts = await getPublishedPostsForSitemap()
+  const posts = await getPublishedPostsForSitemap().catch(() => [])
   const blogPages: MetadataRoute.Sitemap = posts.filter(post => !(`/${post.category}/${post.slug}` in RETIRED_POST_REDIRECTS)).map(post => ({
     url: `${baseUrl}/${post.category}/${post.slug}`,
     lastModified: post.modified.slice(0, 10),
