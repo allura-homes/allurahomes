@@ -91,6 +91,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/san-diego-airbnb-income`, lastModified: new Date('2026-10-26'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/stays`, lastModified: contentRevision, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/property-management/furnished-monthly-rentals`, lastModified: new Date('2026-10-27'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/solana-beach-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/del-mar-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/rancho-santa-fe-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/san-diego-county-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
   )
 
   // Metro area pages
