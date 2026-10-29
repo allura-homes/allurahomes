@@ -32,6 +32,16 @@
       ],
       "destination": "https://www.allurahomes.com/hosting",
       "statusCode": 301
+    },
+    {
+      "source": "/regulations/rancho-santa-fe-caliornia",
+      "destination": "/hosting/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-california",
+      "statusCode": 308
+    },
+    {
+      "source": "/regulations/rancho-santa-fe-california",
+      "destination": "/hosting/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-rancho-santa-fe-california",
+      "statusCode": 308
     }
   ]
 }
