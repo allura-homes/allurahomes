@@ -6,14 +6,14 @@ export const sanDiegoCountyContent = {
   seo: {
     title: 'San Diego County Vacation Rental Management: Fallbrook, Bonsall, Julian & Ramona | Allura Homes',
     description:
-      'Boutique management for homes in unincorporated San Diego County: County TOT registration, quarterly 8% filings, and guest care for country homes. Free earnings report.',
+      'Boutique management for country homes in unincorporated San Diego County: County TOT registration, quarterly 8% filings and thoughtful guest care. Free earnings report.',
     url: 'https://www.allurahomes.com/san-diego-county-vacation-rental-management',
   },
   hero: {
     eyebrow: 'Unincorporated San Diego County vacation rental management',
     title: 'Vacation Rental Management for Unincorporated San Diego County',
     subtitle:
-      'Boutique management for homes in Fallbrook, Bonsall, Rainbow, Julian and Ramona. County TOT registration. Quarterly 8% filings.',
+      'For homes in Fallbrook, Bonsall, Rainbow, Julian and Ramona. We register you for County TOT and file the 8% return every quarter.',
   },
   answer: {
     text: 'Fallbrook, Bonsall, Rainbow, Julian and Ramona are in unincorporated San Diego County, which has no short-term rental permit program as of October 2026. Owners must register with the County Treasurer-Tax Collector within 30 days of starting, collect 8% TOT on stays of 30 days or less, and report quarterly. The TOT certificate is not a permit, and HOA rules still apply.',
@@ -23,33 +23,33 @@ export const sanDiegoCountyContent = {
   highlights: [
     {
       title: 'No City Permit',
-      body: 'Unincorporated San Diego County has no short-term rental permit program as of October 2026. You register for County TOT, not a permit.',
+      body: 'As of October 2026, unincorporated San Diego County has no short-term rental permit program. What you need instead is County TOT registration.',
       icon: 'FileCheck',
     },
     {
       title: 'County TOT',
-      body: '8% County TOT on stays of 30 days or less, reported quarterly. We handle registration and quarterly filings.',
+      body: 'The County collects 8% on stays of 30 days or less. We register you and keep the paperwork off your desk.',
       icon: 'FileText',
     },
     {
       title: 'Quarterly Reporting',
-      body: 'TOT is due quarterly: October 31, January 31, April 30, and July 31. We file on time, every time.',
+      body: 'Returns are due October 31, January 31, April 30 and July 31. We put each one in before the deadline.',
       icon: 'Calendar',
     },
     {
       title: 'Country Home Care',
-      body: 'Wells, septic, long drives, fire-season readiness. We understand what country homes need.',
+      body: 'A well, a septic system, a long drive in and a fire season to prepare for. Country homes ask for a different kind of attention.',
       icon: 'Home',
     },
   ],
   isUnincorporated: {
     title: 'Is My Home in Unincorporated County or a City?',
-    body: 'If your home is inside an incorporated city (like Escondido, Vista, or Oceanside), that city\'s rules and TOT apply instead. Fallbrook, Bonsall, Rainbow, Julian and Ramona are unincorporated communities. Check your property\'s status with the County.',
+    body: 'Fallbrook, Bonsall, Rainbow, Julian and Ramona are unincorporated communities. If your home sits inside an incorporated city such as Escondido, Vista or Oceanside, that city\'s rules and TOT apply instead. The County can confirm your property\'s status.',
   },
   requirements: {
     title: 'Owner Checklist',
     intro:
-      'A step-by-step checklist for owners. Rules change, so contact the County to confirm before you list.',
+      'Here is the short list for country owners. Rules change, so check with the County before you list.',
     items: [
       'Confirm your home is in unincorporated San Diego County, not inside a city.',
       'Check your HOA or CC&Rs and any deed restrictions.',
@@ -62,11 +62,11 @@ export const sanDiegoCountyContent = {
   },
   enforcement: {
     title: 'The County Is Enforcing TOT',
-    body: 'The County Treasurer-Tax Collector is actively enforcing TOT registration in Fallbrook, Bonsall, and Rainbow. Register within 30 days, file quarterly, and keep three years of records. We handle filings for owners.',
+    body: 'The County Treasurer-Tax Collector is actively enforcing TOT registration in Fallbrook, Bonsall and Rainbow. Register within 30 days, file quarterly and hold on to three years of records, or hand the filings to us.',
   },
   countryHomes: {
     title: 'Running a Country Home Well',
-    body: 'Country homes need different care: wells and septic, long drives, fire-season readiness, and wineries and Julian seasonality. We handle the operational details so your home runs well year-round.',
+    body: 'Out here, the details differ. Wells and septic need watching, guests drive farther, fire season needs a plan, and winery weekends and Julian\'s busy seasons set the rhythm. We stay on top of it so your home runs well year-round.',
   },
   management: {
     title: 'How Allura Manages Your San Diego County Home',
@@ -78,10 +78,10 @@ export const sanDiegoCountyContent = {
     ],
     badges: ['Airbnb Superhost', 'Vrbo Premier Host'],
     features: [
-      'Fewer than 20 homes managed like they are our own',
+      'A small roster of fewer than 20 homes, each run like our own',
       '24/7 local contact with average response under 5 minutes',
       'Owner reports delivered within 24 hours',
-      'Monthly statements guaranteed by the 10th',
+      'Monthly statements sent by the 10th',
     ],
   },
   fees: {

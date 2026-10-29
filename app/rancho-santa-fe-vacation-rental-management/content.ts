@@ -6,46 +6,46 @@ export const ranchoSantaFeContent = {
   seo: {
     title: 'Rancho Santa Fe & Fairbanks Ranch Luxury Vacation Rental Management | Allura Homes',
     description:
-      'Discreet, boutique management for Rancho Santa Fe and Fairbanks Ranch estates: Covenant-aware short stays or furnished 30+ night stays. Free earnings report.',
+      'Discreet vacation rental management for Rancho Santa Fe and Fairbanks Ranch estates. Covenant-aware short stays or furnished 30+ night stays. Free earnings report.',
     url: 'https://www.allurahomes.com/rancho-santa-fe-vacation-rental-management',
   },
   hero: {
-    eyebrow: 'Rancho Santa Fe & Fairbanks Ranch luxury rental management',
-    title: 'Luxury Vacation Rental Management in Rancho Santa Fe & Fairbanks Ranch',
+    eyebrow: 'Rancho Santa Fe & Fairbanks Ranch vacation rental management',
+    title: 'Luxury Vacation Rental Management for Rancho Santa Fe & Fairbanks Ranch Estates',
     subtitle:
-      'Discreet, boutique management for estates in the Covenant of Rancho Santa Fe and Fairbanks Ranch. Short stays or furnished 30+ night stays.',
+      'Quiet, careful management for estates in the Covenant of Rancho Santa Fe and Fairbanks Ranch, whether you host short stays or furnished stays of 30+ nights.',
   },
   answer: {
-    text: 'Rancho Santa Fe and Fairbanks Ranch are in unincorporated San Diego County, so there\'s no city rental permit. Owners register with the County Treasurer-Tax Collector within 30 days and remit 8% TOT quarterly on stays of 30 days or less. Association rules also apply. The RSF Covenant bars paid event rentals and limits renting guest houses, so check before you list.',
+    text: 'Rancho Santa Fe and Fairbanks Ranch sit in unincorporated San Diego County, so no city rental permit applies. Owners register with the County Treasurer-Tax Collector within 30 days and remit 8% TOT quarterly on stays of 30 days or less. Association rules sit on top of that: the RSF Covenant bars paid event rentals and limits renting guest houses, so check before you list.',
     updated: 'Updated October 2026',
     author: 'Mike Corrales',
   },
   highlights: [
     {
       title: 'Estate-Grade Care',
-      body: 'Discretion, vetted guests, no events, house manual, vendor coordination. Fewer than 20 homes managed like they are our own.',
+      body: 'Vetted guests, a written house manual and vendors who answer to us. No events. With fewer than 20 homes, each estate gets our full attention.',
       icon: 'Home',
     },
     {
       title: 'Covenant-Aware',
-      body: 'The RSF Association prohibits paid event rentals and limits renting guest houses. We manage within those rules.',
+      body: 'The RSF Association prohibits paid event rentals and limits renting guest houses. Our plan for your estate starts from those rules.',
       icon: 'Shield',
     },
     {
       title: 'Short or Long Stays',
-      body: 'Short stays or furnished stays of more than 30 nights for corporate relocation, insurance, and seasonal guests. Stays of more than 30 nights avoid TOT.',
+      body: 'Host short stays, or furnished stays of more than 30 nights for corporate relocations, insurance placements and seasonal guests. Stays of more than 30 nights avoid TOT.',
       icon: 'Calendar',
     },
     {
       title: 'County TOT',
-      body: '8% County TOT on stays of 30 days or less, reported quarterly. We handle registration and filings.',
+      body: 'County TOT is 8% on stays of 30 days or less, reported quarterly. Registration and every filing are on us.',
       icon: 'FileText',
     },
   ],
   layers: {
     title: 'Three Layers of Rules',
     intro:
-      'Rancho Santa Fe and Fairbanks Ranch are in unincorporated San Diego County. There\'s no city rental permit, but three sets of rules apply:',
+      'Rancho Santa Fe and Fairbanks Ranch are in unincorporated San Diego County. No city rental permit applies, yet three sets of rules still shape how you rent:',
     items: [
       {
         title: 'County TOT',
@@ -64,7 +64,7 @@ export const ranchoSantaFeContent = {
   requirements: {
     title: 'Owner Checklist',
     intro:
-      'A step-by-step checklist for owners. Rules change, so contact the County and your association to confirm before you list.',
+      'Before you list, work through these steps. Rules change, so confirm with the County and your association first.',
     items: [
       'Confirm your home is in unincorporated San Diego County (Covenant of Rancho Santa Fe, Fairbanks Ranch).',
       'Check your association rules: the RSF Association for Covenant homes, or the Fairbanks Ranch Association. Ask about minimum stays and guest houses.',
@@ -77,12 +77,12 @@ export const ranchoSantaFeContent = {
   },
   estates: {
     title: 'Short Stays vs Furnished 30+ Nights for Estates',
-    body: 'Estates can host short stays or furnished stays of more than 30 nights. Furnished stays are good for corporate relocation, insurance housing, and Del Mar race season. They avoid County TOT and fill the calendar between short-stay bookings.',
+    body: 'An estate can host short stays or furnished stays of more than 30 nights. The longer stays suit corporate relocations, insurance housing and Del Mar race season. They also avoid County TOT and bridge the gaps between short-stay bookings.',
   },
   management: {
-    title: 'Estate-Grade Care',
+    title: 'How Allura Runs Your Estate',
     intro:
-      'Discretion, vetted guests, no events, house manual, vendor coordination. Fewer than 20 homes managed like they are our own.',
+      'Discretion comes first. Guests are screened, events stay off the property and one team coordinates every vendor.',
     stats: [
       { label: 'Founded', value: '2013' },
       { label: 'Homes managed', value: '< 20' },
@@ -91,10 +91,10 @@ export const ranchoSantaFeContent = {
     ],
     badges: ['Airbnb Superhost', 'Vrbo Premier Host'],
     features: [
-      'Fewer than 20 homes managed like they are our own',
+      'Fewer than 20 homes, each cared for like our own',
       '24/7 local contact with average response under 5 minutes',
       'Owner reports delivered within 24 hours',
-      'Monthly statements guaranteed by the 10th',
+      'Monthly statements delivered by the 10th',
     ],
   },
   fees: {
@@ -138,7 +138,7 @@ export const ranchoSantaFeStructuredData = {
   '@graph': [
     {
       '@type': 'Service',
-      name: 'Rancho Santa Fe & Fairbanks Ranch Luxury Rental Management',
+      name: 'Rancho Santa Fe & Fairbanks Ranch Vacation Rental Management',
       provider: {
         '@type': 'Organization',
         name: 'Allura Homes',

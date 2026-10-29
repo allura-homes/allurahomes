@@ -199,8 +199,8 @@ export function RanchoSantaFeFees() {
             <div className="border-t border-border pt-4">
               <p className="font-semibold text-navy-deep">{c.fees.note}</p>
               <p className="mt-2 text-muted-foreground">
-                Tell us about your Rancho Santa Fe or Fairbanks Ranch estate and we'll show you what it
-                can earn.
+                Share a few details about your estate and we'll show you what it
+                could earn.
               </p>
             </div>
           </div>
@@ -248,8 +248,8 @@ export function RanchoSantaFeClosing() {
           Get Your Free Earnings Report
         </h2>
         <p className="mt-6 text-lg leading-relaxed text-primary-foreground/80">
-          Tell us about your Rancho Santa Fe or Fairbanks Ranch estate and we'll show you what it can
-          earn. Or call us at{' '}
+          Tell us about your Rancho Santa Fe or Fairbanks Ranch estate and we'll run the numbers
+          with you. Or call us at{' '}
           <a href={`tel:${PRIMARY_PHONE_E164}`} className="font-medium text-gold hover:underline">
             {PRIMARY_PHONE_DISPLAY}
           </a>
