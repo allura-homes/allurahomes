@@ -4,7 +4,7 @@ export type FAQ = { question: string; paragraphs: string[]; link?: { text: strin
 
 export const ranchoSantaFeContent = {
   seo: {
-    title: 'Rancho Santa Fe & Fairbanks Ranch Luxury Rental Management | Allura Homes',
+    title: 'Rancho Santa Fe & Fairbanks Ranch Luxury Vacation Rental Management | Allura Homes',
     description:
       'Discreet, boutique management for Rancho Santa Fe and Fairbanks Ranch estates: Covenant-aware short stays or furnished 30+ night stays. Free earnings report.',
     url: 'https://www.allurahomes.com/rancho-santa-fe-vacation-rental-management',
@@ -33,7 +33,7 @@ export const ranchoSantaFeContent = {
     },
     {
       title: 'Short or Long Stays',
-      body: 'Short stays or furnished 30+ night stays for corporate relocation, insurance, and seasonal guests. 30+ nights avoid TOT.',
+      body: 'Short stays or furnished stays of more than 30 nights for corporate relocation, insurance, and seasonal guests. Stays of more than 30 nights avoid TOT.',
       icon: 'Calendar',
     },
     {
@@ -77,7 +77,7 @@ export const ranchoSantaFeContent = {
   },
   estates: {
     title: 'Short Stays vs Furnished 30+ Nights for Estates',
-    body: 'Estates can host short stays or furnished stays of 30+ nights. Furnished stays are good for corporate relocation, insurance housing, and Del Mar race season. They avoid County TOT and fill the calendar between short-stay bookings.',
+    body: 'Estates can host short stays or furnished stays of more than 30 nights. Furnished stays are good for corporate relocation, insurance housing, and Del Mar race season. They avoid County TOT and fill the calendar between short-stay bookings.',
   },
   management: {
     title: 'Estate-Grade Care',

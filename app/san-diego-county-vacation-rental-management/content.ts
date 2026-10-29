@@ -4,7 +4,7 @@ export type FAQ = { question: string; paragraphs: string[]; link?: { text: strin
 
 export const sanDiegoCountyContent = {
   seo: {
-    title: 'Vacation Rental Management in Fallbrook, Bonsall, Julian & Ramona | Allura Homes',
+    title: 'San Diego County Vacation Rental Management: Fallbrook, Bonsall, Julian & Ramona | Allura Homes',
     description:
       'Boutique management for homes in unincorporated San Diego County: County TOT registration, quarterly 8% filings, and guest care for country homes. Free earnings report.',
     url: 'https://www.allurahomes.com/san-diego-county-vacation-rental-management',

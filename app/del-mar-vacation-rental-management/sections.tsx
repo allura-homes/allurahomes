@@ -2,7 +2,7 @@ import { Hero } from '@/components/sections/hero'
 import { SectionHeading } from '@/components/section-heading'
 import { SiteButton } from '@/components/site-button'
 import { ContentSection, FeatureCard } from '@/components/sections/content-section'
-import { BOOK_A_CALL_HREF, FREE_INCOME_REPORT_HREF, PRIMARY_PHONE_DISPLAY, SWITCH_PAGE_HREF } from '@/lib/site-config'
+import { BOOK_A_CALL_HREF, FREE_INCOME_REPORT_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164, SWITCH_PAGE_HREF } from '@/lib/site-config'
 import { delMarContent as c, delMarFAQs } from './content'
 import { Clock, Shield, Calendar, FileText, CheckCircle2 } from 'lucide-react'
 
@@ -284,7 +284,7 @@ export function DelMarClosing() {
         </h2>
         <p className="mt-6 text-lg leading-relaxed text-primary-foreground/80">
           Tell us about your Del Mar home and we'll show you what it can earn. Or call us at{' '}
-          <a href={`tel:${PRIMARY_PHONE_DISPLAY}`} className="font-medium text-gold hover:underline">
+          <a href={`tel:${PRIMARY_PHONE_E164}`} className="font-medium text-gold hover:underline">
             {PRIMARY_PHONE_DISPLAY}
           </a>
         </p>

@@ -6,75 +6,75 @@ export const delMarContent = {
   seo: {
     title: 'Del Mar Vacation Rental Management | Allura Homes',
     description:
-      'Protect your Del Mar STR permit: 30-minute response, 3-night minimum, 13% TOT filed monthly. Boutique management and a free earnings report for your home.',
+      'Del Mar vacation rental management that protects your STR permit: 30-minute response, 3-night minimum, 13% TOT filed monthly. Get a free earnings report.',
     url: 'https://www.allurahomes.com/del-mar-vacation-rental-management',
   },
   hero: {
     eyebrow: 'Del Mar vacation rental management',
     title: 'Del Mar Vacation Rental Management That Protects Your Permit',
     subtitle:
-      'Boutique management for Del Mar STR permit holders. 30-minute response required. 3-night minimum. Permits capped at 129 citywide.',
+      'With only 129 permits citywide, a Del Mar STR permit is worth guarding. We answer inside the City\'s 30-minute window and keep every stay at three nights or more.',
   },
   answer: {
-    text: 'Del Mar caps short-term rental permits at 129 citywide, and new owners go on a City waitlist. Permits belong to the owner, last two years, and end when the home is sold. Every stay must be at least three nights. A local contact must respond to complaints within 30 minutes, 24/7, and owners remit 13% TOT monthly through Rentalscape.',
+    text: 'Del Mar caps short-term rental permits at 129 citywide; new owners join a City waitlist. A permit belongs to the owner, lasts two years and ends when the home is sold. Every stay runs at least three nights. A local contact must answer complaints within 30 minutes, 24/7, and owners remit 13% TOT monthly through Rentalscape.',
     updated: 'Updated October 2026',
     author: 'Mike Corrales',
   },
   highlights: [
     {
       title: '30-Minute Response',
-      body: 'Del Mar requires a 30-minute response to complaints, 24/7. We serve as your local contact and protect your permit.',
+      body: 'The City gives you 30 minutes to respond to a complaint, day or night. As your local contact, our average response runs under 5 minutes.',
       icon: 'Clock',
     },
     {
       title: 'Permit Protection',
-      body: 'Your permit is valuable. We handle biennial renewal, insurance tracking, signage, and compliance so you keep it in good standing.',
+      body: 'Del Mar permits are scarce. We track the biennial renewal, insurance and signage so yours stays in good standing.',
       icon: 'Shield',
     },
     {
       title: '3-Night Minimum',
-      body: 'Every reservation must be at least three consecutive nights. We set your calendar and pricing to match.',
+      body: 'Every reservation must run at least three consecutive nights. Your calendar and pricing are set that way from the start.',
       icon: 'Calendar',
     },
     {
       title: 'TOT Through Rentalscape',
-      body: 'We file your 13% TOT monthly through the City\'s Rentalscape portal, by the last day of the following month.',
+      body: 'Your 13% TOT goes through the City\'s Rentalscape portal each month, filed by the last day of the following month.',
       icon: 'FileText',
     },
   ],
   permitRules: {
     title: 'Who Can Rent Short Term in Del Mar Today',
     intro:
-      'Del Mar\'s STR ordinance caps permits at 129 citywide. There are 150 Existing STRs grandfathered in, and new owners go on a waitlist.',
+      'Del Mar\'s STR ordinance caps permits at 129 citywide. It grandfathered in 150 Existing STRs, and new owners wait on a City list for an opening.',
     items: [
       {
         title: 'Existing STR permits',
-        body: 'If you hold an Existing-STR permit, protect it. Keep your permit renewed, insurance current, and compliance tight. A lapse ends your Existing-STR status.',
+        body: 'If you hold an Existing-STR permit, guard it. Renew on time and keep your insurance current. A single lapse ends your Existing-STR status.',
       },
       {
         title: 'Waitlist',
-        body: 'New owners can\'t apply until a permit opens. Join the City waitlist. When called, you have 30 days to apply or you\'re removed.',
+        body: 'New owners can\'t apply until a permit opens, so the first step is the City waitlist. When your name comes up, you have 30 days to apply or you\'re removed.',
       },
       {
         title: 'Primary residence requirement',
-        body: 'New STR permits (when capacity opens) must be in your primary residence—you live there 6+ months per year. Existing STRs are exempt.',
+        body: 'When capacity opens, new STR permits go only to a primary residence, meaning you live there 6+ months a year. Existing STRs are exempt.',
       },
     ],
   },
   keepPermit: {
     title: 'Keep Your Permit in Good Standing',
-    body: 'Permits renew every two years. You must maintain $1,000,000 liability insurance, post signage, respond within 30 minutes, and remit TOT monthly. A lapse or revocation ends Existing-STR protection.',
+    body: 'Permits renew every two years. In between, you carry $1,000,000 in liability insurance, keep signage posted, respond within 30 minutes and remit TOT monthly. A lapse or revocation ends Existing-STR protection.',
   },
   buying: {
     title: 'Buying in Del Mar',
-    body: 'Permits don\'t transfer with the home. When ownership transfers, the permit terminates and Existing-STR status ends. Inheritance or a title change where an original owner stays on is OK, with notice to the City within 30 days.',
+    body: 'A Del Mar permit doesn\'t come with the house. When ownership transfers, the permit terminates and Existing-STR status ends. Inheritance, or a title change that keeps an original owner on, is allowed with notice to the City within 30 days.',
   },
   requirements: {
     title: 'Owner Checklist',
-    intro: 'A step-by-step checklist for Del Mar permit holders. Rules change, so contact the City of Del Mar to confirm before you list.',
+    intro: 'What Del Mar asks of permit holders, in order. Rules change, so confirm with the City of Del Mar before you list.',
     items: [
       'Check whether your home is an Existing STR on the City\'s registry, or join the waitlist.',
-      'New STRs only: the home must be your primary residence, owned by you, a family trust, or a people-owned LLC/LP/LLP.',
+      'New STRs only: the home must be your primary residence, owned by you, a family trust, or an LLC/LP/LLP owned by individuals.',
       'Confirm the zone allows STRs and the unit isn\'t an ADU, rental apartment or deed-restricted unit. Get HOA written consent if you have one.',
       'Gather the application: deed, rental agreement, parking plan, floor plan, safety self-certification, $1,000,000 liability insurance, local contact consent.',
       'Pay the permit fee ($815 initial for two years; $598 renewal).',
@@ -88,7 +88,7 @@ export const delMarContent = {
   },
   longTerm: {
     title: '30+ Night and Month-Long Stays',
-    body: 'Rentals of more than 30 consecutive days, and a calendar-month rental to the same renter, are long-term rentals. They\'re exempt from Del Mar\'s STR rules and TOT. Month-long stays can fill the calendar between STR seasons.',
+    body: 'Rentals of more than 30 consecutive days, and a calendar-month rental to the same renter, count as long-term rentals. They\'re exempt from Del Mar\'s STR rules and TOT, and month-long guests can carry the calendar between short-term seasons.',
   },
   management: {
     title: 'How Allura Manages Your Del Mar Home',
@@ -100,10 +100,10 @@ export const delMarContent = {
     ],
     badges: ['Airbnb Superhost', 'Vrbo Premier Host'],
     features: [
-      'Fewer than 20 homes managed like they are our own',
+      'Under 20 homes on our roster, each treated as our own',
       '24/7 local contact with average response under 5 minutes',
       'Owner reports delivered within 24 hours',
-      'Monthly statements guaranteed by the 10th',
+      'Monthly statements by the 10th',
     ],
   },
   fees: {
@@ -137,7 +137,7 @@ export const delMarFAQs: FAQ[] = [
   {
     question: 'How fast must a Del Mar local contact respond?',
     paragraphs: [
-      'Within 30 minutes, 24 hours a day, seven days a week, to complaints from the City, the Sheriff\'s Department or residents.',
+      'Within 30 minutes, 24/7, whether the complaint comes from the City, the Sheriff\'s Department or a resident.',
     ],
   },
   {
