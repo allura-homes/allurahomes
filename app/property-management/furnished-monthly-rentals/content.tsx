@@ -6,7 +6,7 @@ import { Hero } from '@/components/sections/hero'
 import { SectionHeading } from '@/components/section-heading'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { CTABand } from '@/components/sections/cta-band'
-import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164 } from '@/lib/site-config'
+import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164, HOME_COUNT_PHRASE } from '@/lib/site-config'
 
 const faqItems = [
   {
@@ -43,7 +43,7 @@ const faqItems = [
   },
   {
     question: 'How many homes does Allura Homes manage?',
-    answer: 'Allura Homes manages fewer than 20 homes, so each one gets hands-on attention. It is an Airbnb Superhost and Vrbo Premier Host, with a 4.9-star guest rating in 2025.'
+    answer: `Allura Homes manages ${HOME_COUNT_PHRASE}, so each one gets hands-on attention. It is an Airbnb Superhost and Vrbo Premier Host, with a 4.9-star guest rating in 2025.`
   },
 ]
 
@@ -56,7 +56,7 @@ export function FurnishedMonthlyContent() {
         image="/images/hero-pm.jpg"
         accent="Furnished Monthly Rentals"
         title="How We Find and Vet Monthly Guests for Your Furnished Home"
-        subtitle="Furnished stays of 30+ nights across San Diego, Temecula and Palm Springs. Managed hands-on since 2013, with fewer than 20 homes in our care."
+        subtitle={`Furnished stays of 30+ nights across San Diego, Temecula and Palm Springs. Managed hands-on since 2013, with ${HOME_COUNT_PHRASE} in our care.`}
         primaryCta={{ label: 'Get Free Income Report', href: FREE_INCOME_REPORT_HREF }}
         secondaryCta={{ label: 'Book a Call', href: BOOK_A_CALL_HREF }}
         fullHeight
@@ -298,8 +298,8 @@ export function FurnishedMonthlyContent() {
             </AnimateOnScroll>
             <AnimateOnScroll delay={0.4}>
               <div className="rounded-xl border border-border bg-background p-6 text-center">
-                <p className="text-3xl font-bold text-gold">&lt; 20</p>
-                <p className="mt-2 text-sm text-muted-foreground">fewer than 20 homes</p>
+                <p className="text-3xl font-bold text-gold">&lt; 2 dozen</p>
+                <p className="mt-2 text-sm text-muted-foreground">{HOME_COUNT_PHRASE}</p>
                 <p className="mt-1 text-xs text-muted-foreground">so each one gets hands-on attention</p>
               </div>
             </AnimateOnScroll>

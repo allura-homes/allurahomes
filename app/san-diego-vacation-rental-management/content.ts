@@ -1,4 +1,4 @@
-import { AIRBNB_PROFILE_HREF, MARKETS, PRIMARY_PHONE_E164, SHOW_FEES, SHOW_TRIAL, SWITCH_PAGE_HREF } from '@/lib/site-config'
+import { AIRBNB_PROFILE_HREF, MARKETS, PRIMARY_PHONE_E164, SHOW_FEES, SHOW_TRIAL, SWITCH_PAGE_HREF, HOME_COUNT_PHRASE, HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
 
 export type ContentItem = { title: string; body: string }
 export type FAQ = { question: string; paragraphs: string[]; link?: { text: string; href: string } }
@@ -7,8 +7,8 @@ export const boutiqueContent = {
   seo: {
     title: 'Boutique Vacation Rental Management San Diego | Allura',
     description: SHOW_TRIAL
-      ? 'Boutique San Diego management since 2013. Less than 20 homes under management. Airbnb Superhost. Furnished 30+ night stays. 90-day trial.'
-      : 'Boutique San Diego management since 2013. Less than 20 homes under management. Airbnb Superhost. Furnished 30+ night stays.',
+      ? `Boutique San Diego management since 2013. ${HOME_COUNT_PHRASE_CAPITALIZED} under management. Airbnb Superhost. Furnished 30+ night stays. 90-day trial.`
+      : `Boutique San Diego management since 2013. ${HOME_COUNT_PHRASE_CAPITALIZED} under management. Airbnb Superhost. Furnished 30+ night stays.`,
     url: 'https://www.allurahomes.com/san-diego-vacation-rental-management',
   },
   header: { brand: 'ALLURA', brandAccent: 'HOMES', home: 'Home', breadcrumb: 'San Diego Vacation Rental Management' },
@@ -18,12 +18,12 @@ export const boutiqueContent = {
     title: 'Boutique vacation rental management in San Diego.',
     emphasis: 'Small portfolio. Serious results.',
     lede: 'A boutique San Diego team. Nightly stays and furnished 30+ night stays. A manager who picks up the phone.',
-    body: "Big national managers can run 200+ properties. The biggest have thousands of doors, and we don't want you to feel like a number. Less than 20 homes managed like they are our own.",
+    body: `Big national managers can run 200+ properties. The biggest have thousands of doors, and we don't want you to feel like a number. ${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own.`,
     imageAlt: 'A modern single-story home on a hillside at golden hour, with a pool, palm trees and warm light glowing from the windows',
-    badge: 'Less than 20 homes under management', badgeLabel: 'Like our own',
+    badge: `${HOME_COUNT_PHRASE_CAPITALIZED} under management`, badgeLabel: 'Like our own',
   },
-  trust: ['13+ Years Hosting', 'Airbnb Superhost', 'Vrbo Premier Host', '4.9 star rating in 2025', 'Less than 20 homes managed like they are our own.'],
-  answer: 'Allura Homes is a boutique vacation rental manager in San Diego, founded in 2013. Less than 20 homes managed like they are our own. No owner is a number in a queue. We run short-term stays and furnished stays of 30+ nights, with statements by the 10th. Airbnb Superhost. Vrbo Premier Host.',
+  trust: ['13+ Years Hosting', 'Airbnb Superhost', 'Vrbo Premier Host', '4.9 star rating in 2025', `${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own.`],
+  answer: `Allura Homes is a boutique vacation rental manager in San Diego, founded in 2013. ${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own. No owner is a number in a queue. We run short-term stays and furnished stays of 30+ nights, with statements by the 10th. Airbnb Superhost. Vrbo Premier Host.`,
   answerFirst: {
     eyebrow: 'Quick answer',
     title: 'San Diego vacation rental management at a glance',
@@ -50,7 +50,7 @@ export const boutiqueContent = {
     credentials: {
       title: 'About Allura',
       items: [
-        'Fewer than 20 homes',
+        HOME_COUNT_PHRASE_CAPITALIZED,
         'Local since 2013',
         'Airbnb Superhost',
         'Vrbo Premier Host',
@@ -62,7 +62,7 @@ export const boutiqueContent = {
   boutique: {
     eyebrow: 'Boutique, in practice', title: 'What "boutique" actually means',
     items: [
-      { title: 'A small portfolio', body: 'Less than 20 homes managed like they are our own. Your home is never a number in a queue.' },
+      { title: 'A small portfolio', body: `${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own. Your home is never a number in a queue.` },
       { title: 'One accountable team', body: 'A team that knows your home, your guests and your goals. A manager who picks up the phone. Under 5 minute average response time.' },
       { title: 'Revenue managed by a person', body: 'A full-time human revenue manager plus dynamic pricing updated daily. Distribution across Airbnb, Vrbo, Booking.com, Google Vacation Rentals, and direct booking.' },
       { title: 'Reporting you can read', body: 'Real-time owner portal, statements by the 10th, monthly check-ins, and quarterly reviews.' },
@@ -74,7 +74,7 @@ export const boutiqueContent = {
     quote: 'After trying two other management companies, Allura was a breath of fresh air. They actually care about our property as if it were their own.',
     author: 'David & Jen R., Temecula, CA', rating: '4.9 star rating in 2025',
     note: 'One Allura home: 71% revenue uplift (single case study, results vary)',
-    eyebrow: 'Why boutique beats big-box', title: 'Big national managers can run 200+ properties.', emphasis: 'Less than 20 homes under management.',
+    eyebrow: 'Why boutique beats big-box', title: 'Big national managers can run 200+ properties.', emphasis: `${HOME_COUNT_PHRASE_CAPITALIZED} under management.`,
     body: "The biggest managers have thousands of doors. We don't want you to feel like a number. That's what makes us different: a manager who picks up the phone, and fewer homes for finer results.",
   },
   housing: {
@@ -136,7 +136,7 @@ export const boutiqueContent = {
 }
 
 export const boutiqueFAQs: FAQ[] = [
-  { question: 'What does "boutique" mean for a vacation rental manager?', paragraphs: ['A boutique manager keeps the portfolio small, so your home gets real attention. Less than 20 homes managed like they are our own. You get a manager who picks up the phone, a full-time human revenue manager, dynamic pricing updated daily, and statements by the 10th. Fewer homes, finer results.'] },
+  { question: 'What does "boutique" mean for a vacation rental manager?', paragraphs: [`A boutique manager keeps the portfolio small, so your home gets real attention. ${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own. You get a manager who picks up the phone, a full-time human revenue manager, dynamic pricing updated daily, and statements by the 10th. Fewer homes, finer results.`] },
   { question: 'How does switching to Allura work?', paragraphs: ["Your current contract's notice period sets the start date, commonly 30 to 90 days. We prepare your home in parallel: market analysis, pricing, photography, listing optimization and smart-lock setup, so you are launch-ready in weeks, not months."], link: { text: 'Leaving a big management company? See the full switch checklist', href: SWITCH_PAGE_HREF } },
   { question: 'What happens to my existing bookings and reviews when I switch?', paragraphs: ['Confirmed guests should keep their stays, and the outgoing manager usually services arrivals inside the notice period. Settle in writing how each reservation is handled and paid. Reviews depend on whose account owns the listing: if you own it and your manager is a co-host, Airbnb says removing them leaves the listing with you.'] },
   // REMOVABLE: public use of fees needs Mike sign-off.
@@ -153,7 +153,7 @@ const c = boutiqueContent
 export const boutiqueStructuredData = {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': ['Organization', 'LocalBusiness'], '@id': organizationId, name: 'Allura Homes', url: 'https://www.allurahomes.com', description: 'Boutique vacation rental management in San Diego. Less than 20 homes managed like they are our own.', foundingDate: '2013', telephone: PRIMARY_PHONE_E164, areaServed: MARKETS.map(name => ({ '@type': 'City', name })), sameAs: ['https://www.instagram.com/allurahomes', 'https://www.facebook.com/allurahomes.us', 'https://www.linkedin.com/company/82304816', AIRBNB_PROFILE_HREF] },
+    { '@type': ['Organization', 'LocalBusiness'], '@id': organizationId, name: 'Allura Homes', url: 'https://www.allurahomes.com', description: `Boutique vacation rental management in San Diego. ${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own.`, foundingDate: '2013', telephone: PRIMARY_PHONE_E164, areaServed: MARKETS.map(name => ({ '@type': 'City', name })), sameAs: ['https://www.instagram.com/allurahomes', 'https://www.facebook.com/allurahomes.us', 'https://www.linkedin.com/company/82304816', AIRBNB_PROFILE_HREF] },
     { '@type': 'WebPage', '@id': `${c.seo.url}#webpage`, url: c.seo.url, name: c.seo.title, description: c.seo.description, dateModified: '2026-10-22', about: { '@id': organizationId }, primaryImageOfPage: { '@type': 'ImageObject', url: 'https://www.allurahomes.com/images/boutique/hero.jpg' }, speakable: { '@type': 'SpeakableSpecification', cssSelector: ["[data-speakable='answer-card']", "[data-speakable='answer-first']", 'h1'] } },
     { '@type': 'FAQPage', '@id': `${c.seo.url}#faq`, mainEntity: boutiqueFAQs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.paragraphs.join(' ') + (faq.link ? ` ${faq.link.text}.` : '') } })) },
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: c.header.home, item: 'https://www.allurahomes.com/' }, { '@type': 'ListItem', position: 2, name: c.header.breadcrumb, item: c.seo.url }] },

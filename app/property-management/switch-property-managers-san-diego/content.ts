@@ -1,5 +1,5 @@
 import { BRAND } from '@/lib/constants'
-import { BOOK_A_CALL_HREF, MARKETS, PRIMARY_PHONE_E164, SWITCH_PAGE_PATH } from '@/lib/site-config'
+import { BOOK_A_CALL_HREF, MARKETS, PRIMARY_PHONE_E164, SWITCH_PAGE_PATH, HOME_COUNT_PHRASE, HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
 
 type ContentItem = { title: string; body: string }
 type FAQ = { question: string; paragraphs: readonly string[] }
@@ -16,11 +16,11 @@ export const switchContent = {
     title: 'Switch Your San Diego Vacation Rental Manager.',
     emphasis: 'Keep Your Bookings. Raise the Bar.',
     lede: 'A boutique San Diego team. A clean handover. A manager who picks up the phone.',
-    body: "Big-box managers can run 200+ properties. The biggest have thousands of doors, and we don't want you to feel like a number. That's what makes us different. Less than 20 homes managed like they are our own. We handle the switch with you: contract, bookings, license paperwork, listings, and a set handover date.",
+    body: `Big-box managers can run 200+ properties. The biggest have thousands of doors, and we don't want you to feel like a number. That's what makes us different. ${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own. We handle the switch with you: contract, bookings, license paperwork, listings, and a set handover date.`,
     imageAlt: 'A modern single-story home on a hillside at golden hour, with a pool, palm trees and warm light glowing from the windows',
-    badge: 'Less than 20 homes under management', badgeLabel: 'Like our own',
+    badge: `${HOME_COUNT_PHRASE_CAPITALIZED} under management`, badgeLabel: 'Like our own',
   },
-  trust: ['13+ Years Hosting', 'Airbnb Superhost', 'Vrbo Premier Host', '4.9 star rating in 2025', 'Less than 20 homes managed like they are our own.'],
+  trust: ['13+ Years Hosting', 'Airbnb Superhost', 'Vrbo Premier Host', '4.9 star rating in 2025', `${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own.`],
   superhostHref: 'https://www.airbnb.com/users/profile/1462510352178210196',
   answer: "Switching vacation rental managers in San Diego takes a set order. Check your contract's notice period and who owns the listing. Confirm your STRO license is in your name. Give written notice. Agree in writing how booked stays are handled. Then hand over access, pricing and guest messaging on a fixed date.",
   pain: {
@@ -73,7 +73,7 @@ export const switchContent = {
     quote: 'After trying two other management companies, Allura was a breath of fresh air. They actually care about our property as if it were their own.',
     author: 'David & Jen R., Temecula, CA', rating: '4.9 star rating in 2025',
     note: 'One Allura home: 71% revenue uplift (single case study, results vary)',
-    eyebrow: 'Why boutique beats big-box', title: 'Less than 20 homes managed like they are our own.',
+    eyebrow: 'Why boutique beats big-box', title: `${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own.`,
     body: "The biggest managers have thousands of doors. We don't want you to feel like a number. That's what makes us different: a manager who picks up the phone, and fewer homes for finer results.",
     items: [
       { title: 'Revenue, rigorously managed', body: 'A full-time human revenue manager plus dynamic pricing updated daily. Distribution across Airbnb, Vrbo, Booking.com, Google Vacation Rentals, and direct booking.' },
@@ -125,7 +125,7 @@ export const switchStructuredData = {
     {
       '@type': ['Organization', 'LocalBusiness'], '@id': 'https://www.allurahomes.com/#organization',
       name: 'Allura Homes', url: 'https://www.allurahomes.com', foundingDate: '2013',
-      description: 'Boutique vacation rental management in San Diego. Less than 20 homes managed like they are our own.',
+      description: `Boutique vacation rental management in San Diego. ${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own.`,
       telephone: PRIMARY_PHONE_E164, logo: BRAND.logos.bug,
       areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),
       sameAs: Object.values(BRAND.social),

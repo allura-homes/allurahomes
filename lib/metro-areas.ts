@@ -1,4 +1,5 @@
 import { BRAND } from './constants'
+import { HOME_COUNT_PHRASE, HOME_COUNT_PHRASE_CAPITALIZED } from './site-config'
 
 function cityBookingUrl(city: string) {
   return `https://reservations.allurahomes.com/en/properties?city=${encodeURIComponent(city)}&country=United+States&minOccupancy=1`
@@ -47,7 +48,7 @@ export const METRO_AREAS: MetroArea[] = [
     heroAccent: 'Coastal Vacation Rental Management',
     heroTitle: 'Carlsbad\nVacation Rental Management',
     heroSubtitle:
-      'Boutique Airbnb and vacation rental management in Carlsbad. Less than 20 homes. 4.9 star rating in 2025. Since 2013.',
+      `Boutique Airbnb and vacation rental management in Carlsbad. ${HOME_COUNT_PHRASE_CAPITALIZED}. 4.9 star rating in 2025. Since 2013.`,
     intro: {
       heading: 'Carlsbad Vacation Rental Management',
       paragraphs: [
@@ -66,9 +67,9 @@ export const METRO_AREAS: MetroArea[] = [
         icon: 'Briefcase',
       },
       {
-        title: 'Less Than 20 Homes',
+        title: HOME_COUNT_PHRASE_CAPITALIZED,
         description:
-          'We run fewer than 20 homes total. Small by design. Every property gets our full attention.',
+          `We run ${HOME_COUNT_PHRASE} total. Small by design. Every property gets our full attention.`,
         icon: 'Home',
       },
       {
@@ -180,7 +181,7 @@ export const METRO_AREAS: MetroArea[] = [
     seo: {
       title: 'San Diego & Temecula Rental Management',
       description:
-        'Boutique STR and 30-night management in San Diego and Temecula Wine Country. Less than 20 homes under management. 4.9 star rating in 2025.',
+        `Boutique STR and 30-night management in San Diego and Temecula Wine Country. ${HOME_COUNT_PHRASE_CAPITALIZED} under management. 4.9 star rating in 2025.`,
       keywords: [
         'San Diego property management',
         'Temecula vacation rental management',

@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { BRAND } from '@/lib/constants'
-import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164, AIRBNB_PROFILE_HREF } from '@/lib/site-config'
+import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164, AIRBNB_PROFILE_HREF, HOME_COUNT_PHRASE } from '@/lib/site-config'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { SectionHeading } from '@/components/section-heading'
 import { StatsBar } from '@/components/sections/stats-bar'
@@ -71,7 +71,7 @@ export function AboutContent() {
                   Who we are
                 </h2>
                 <p className="mb-4 leading-relaxed text-primary-foreground/80">
-                  <strong>Allura Homes</strong> is a boutique vacation rental and monthly furnished (30+ night) rental management company based in San Diego, California. Founded in 2013, we manage less than 20 homes, are an <a href={AIRBNB_PROFILE_HREF} target="_blank" rel="noopener noreferrer" className="text-gold-light underline hover:text-gold">Airbnb Superhost</a> and Vrbo Premier Host, and averaged above 4.9 stars in 2025. We also serve Temecula, French Valley, Palm Springs, Los Angeles, Ojai, Napa and Oakland. Call <a href={`tel:${PRIMARY_PHONE_E164}`} className="text-gold-light underline hover:text-gold">{PRIMARY_PHONE_DISPLAY}</a>. Guests book at <a href="https://reservations.allurahomes.com" target="_blank" rel="noopener noreferrer" className="text-gold-light underline hover:text-gold">reservations.allurahomes.com</a>.
+                  <strong>Allura Homes</strong> is a boutique vacation rental and monthly furnished (30+ night) rental management company based in San Diego, California. Founded in 2013, we manage {HOME_COUNT_PHRASE}, are an <a href={AIRBNB_PROFILE_HREF} target="_blank" rel="noopener noreferrer" className="text-gold-light underline hover:text-gold">Airbnb Superhost</a> and Vrbo Premier Host, and averaged above 4.9 stars in 2025. We also serve Temecula, French Valley, Palm Springs, Los Angeles, Ojai, Napa and Oakland. Call <a href={`tel:${PRIMARY_PHONE_E164}`} className="text-gold-light underline hover:text-gold">{PRIMARY_PHONE_DISPLAY}</a>. Guests book at <a href="https://reservations.allurahomes.com" target="_blank" rel="noopener noreferrer" className="text-gold-light underline hover:text-gold">reservations.allurahomes.com</a>.
                 </p>
                 <p className="mb-4 text-sm italic leading-relaxed text-primary-foreground/60">
                   Not affiliated with similarly named home builders, renovation or siding companies. We manage rental homes; we don&apos;t build or remodel them.

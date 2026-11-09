@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { AboutContent } from './content'
-import { AIRBNB_PROFILE_HREF, PRIMARY_PHONE_E164 } from '@/lib/site-config'
+import { AIRBNB_PROFILE_HREF, PRIMARY_PHONE_E164, HOME_COUNT_PHRASE, HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
 
 const SITE = 'https://www.allurahomes.com'
 
@@ -27,7 +27,7 @@ const aboutSchema = {
       },
       telephone: PRIMARY_PHONE_E164,
       email: 'support@allurahomes.com',
-      description: 'Boutique San Diego vacation rental (short-term) and monthly furnished (30+ night) rental management company, founded in 2013, managing less than 20 homes. Airbnb Superhost and Vrbo Premier Host. Not a home builder or renovation company.',
+      description: `Boutique San Diego vacation rental (short-term) and monthly furnished (30+ night) rental management company, founded in 2013, managing ${HOME_COUNT_PHRASE}. Airbnb Superhost and Vrbo Premier Host. Not a home builder or renovation company.`,
       areaServed: [
         { '@type': 'City', name: 'San Diego' },
         { '@type': 'City', name: 'Temecula' },
@@ -117,12 +117,12 @@ const aboutSchema = {
 export const metadata: Metadata = {
   title: 'About Allura Homes - Our Story & Mission',
   description:
-    'Founded in 2013 in San Diego. Boutique management. Less than 20 homes under management. 4.9 star rating in 2025.',
+    `Founded in 2013 in San Diego. Boutique management. ${HOME_COUNT_PHRASE_CAPITALIZED} under management. 4.9 star rating in 2025.`,
   alternates: { canonical: 'https://www.allurahomes.com/about' },
   keywords: ['Allura Homes about', 'Mike Corrales', 'vacation rental management company', 'San Diego property manager', 'Superhost certified'],
   openGraph: {
     title: 'About Allura Homes | Our Story & Mission',
-    description: 'Founded in 2013 in San Diego. Boutique management. Less than 20 homes under management. 4.9 star rating in 2025.',
+    description: `Founded in 2013 in San Diego. Boutique management. ${HOME_COUNT_PHRASE_CAPITALIZED} under management. 4.9 star rating in 2025.`,
     url: 'https://www.allurahomes.com/about',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Allura Homes boutique vacation rental management' }],
   },

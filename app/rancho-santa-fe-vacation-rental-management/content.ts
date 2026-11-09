@@ -1,4 +1,4 @@
-import { PRIMARY_PHONE_E164 } from '@/lib/site-config'
+import { PRIMARY_PHONE_E164, HOME_COUNT_PHRASE, HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
 
 export type FAQ = { question: string; paragraphs: string[]; link?: { text: string; href: string } }
 
@@ -23,7 +23,7 @@ export const ranchoSantaFeContent = {
   highlights: [
     {
       title: 'Estate-Grade Care',
-      body: 'Vetted guests, a written house manual and vendors who answer to us. No events. With fewer than 20 homes, each estate gets our full attention.',
+      body: `Vetted guests, a written house manual and vendors who answer to us. No events. With ${HOME_COUNT_PHRASE}, each estate gets our full attention.`,
       icon: 'Home',
     },
     {
@@ -91,7 +91,7 @@ export const ranchoSantaFeContent = {
     ],
     badges: ['Airbnb Superhost', 'Vrbo Premier Host'],
     features: [
-      'Fewer than 20 homes, each cared for like our own',
+      `${HOME_COUNT_PHRASE_CAPITALIZED}, each cared for like our own`,
       '24/7 local contact with average response under 5 minutes',
       'Owner reports delivered within 24 hours',
       'Monthly statements delivered by the 10th',

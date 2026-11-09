@@ -1,4 +1,4 @@
-import { PRIMARY_PHONE_E164 } from '@/lib/site-config'
+import { PRIMARY_PHONE_E164, HOME_COUNT_PHRASE } from '@/lib/site-config'
 
 export type FAQ = { question: string; paragraphs: string[]; link?: { text: string; href: string } }
 
@@ -78,7 +78,7 @@ export const sanDiegoCountyContent = {
     ],
     badges: ['Airbnb Superhost', 'Vrbo Premier Host'],
     features: [
-      'A small roster of fewer than 20 homes, each run like our own',
+      `A small roster of ${HOME_COUNT_PHRASE}, each run like our own`,
       '24/7 local contact with average response under 5 minutes',
       'Owner reports delivered within 24 hours',
       'Monthly statements sent by the 10th',

@@ -5,6 +5,7 @@ import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { SectionHeading } from '@/components/section-heading'
 import { ContentSection, FeatureCard } from '@/components/sections/content-section'
 import { SERVICE_PILLARS } from '@/lib/constants'
+import { HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
 
 const iconMap: Record<string, LucideIcon> = {
   TrendingUp,
@@ -22,7 +23,7 @@ export function FeatureGrid() {
           <SectionHeading
             accent="The Allura Advantage"
             title="Why Owners Choose Us"
-            subtitle="Less than 20 homes managed like they are our own. A small team and a real-time owner portal keep you connected to your home."
+            subtitle={`${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own. A small team and a real-time owner portal keep you connected to your home.`}
           />
         </AnimateOnScroll>
 
