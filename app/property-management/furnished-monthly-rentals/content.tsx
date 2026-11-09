@@ -6,7 +6,7 @@ import { Hero } from '@/components/sections/hero'
 import { SectionHeading } from '@/components/section-heading'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { CTABand } from '@/components/sections/cta-band'
-import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164, HOME_COUNT_PHRASE } from '@/lib/site-config'
+import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164, HOME_COUNT_PHRASE, HOME_COUNT_SHORT } from '@/lib/site-config'
 
 const faqItems = [
   {
@@ -298,7 +298,7 @@ export function FurnishedMonthlyContent() {
             </AnimateOnScroll>
             <AnimateOnScroll delay={0.4}>
               <div className="rounded-xl border border-border bg-background p-6 text-center">
-                <p className="text-3xl font-bold text-gold">&lt; 2 dozen</p>
+                <p className="text-3xl font-bold text-gold">{HOME_COUNT_SHORT}</p>
                 <p className="mt-2 text-sm text-muted-foreground">{HOME_COUNT_PHRASE}</p>
                 <p className="mt-1 text-xs text-muted-foreground">so each one gets hands-on attention</p>
               </div>
