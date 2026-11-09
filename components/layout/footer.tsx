@@ -119,7 +119,7 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex size-10 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors hover:bg-gold hover:text-navy-deep"
-                aria-label="Follow us on LinkedIn"
+                aria-label="Allura Homes on LinkedIn"
               >
                 <Linkedin className="size-4" />
               </a>

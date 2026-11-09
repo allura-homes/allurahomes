@@ -41,6 +41,74 @@ export type MetroArea = {
 
 export const METRO_AREAS: MetroArea[] = [
   {
+    slug: 'carlsbad',
+    name: 'Carlsbad',
+    region: 'North San Diego County',
+    heroAccent: 'Coastal Vacation Rental Management',
+    heroTitle: 'Carlsbad\nVacation Rental Management',
+    heroSubtitle:
+      'Boutique Airbnb and vacation rental management in Carlsbad. Less than 20 homes. 4.9 star rating in 2025. Since 2013.',
+    intro: {
+      heading: 'Carlsbad Vacation Rental Management',
+      paragraphs: [
+        'Carlsbad sits between Oceanside and Encinitas on the North County coast, with village charm, family beaches, flower fields, and LEGOLAND. Allura manages whole homes and ADUs as short-term vacation rentals where permits allow, and as furnished 30+ night stays everywhere.',
+        "We're a small operation. Under 5 minute average response time. Every owner works with us directly. We don't onboard homes we can't run well.",
+      ],
+    },
+    cities: [
+      { name: 'Carlsbad', bookable: false },
+    ],
+    highlights: [
+      {
+        title: '24/7 Local Contact',
+        description:
+          'Every owner has a 24/7 local contact. Under 5 minute average response time. We handle guest questions, move-ins, and maintenance directly.',
+        icon: 'Briefcase',
+      },
+      {
+        title: 'Less Than 20 Homes',
+        description:
+          'We run fewer than 20 homes total. Small by design. Every property gets our full attention.',
+        icon: 'Home',
+      },
+      {
+        title: '4.9 Stars in 2025',
+        description:
+          'Airbnb Superhost. Vrbo Premier Host. 4.9 star rating in 2025. Guest reviews reflect how we run your home.',
+        icon: 'Sun',
+      },
+      {
+        title: 'Since 2013',
+        description:
+          'Founded in San Diego in 2013. We understand North County markets, seasonal patterns, and local regulations.',
+        icon: 'Calendar',
+      },
+    ],
+    regulations: {
+      heading: 'Carlsbad Short-Term Rental Regulations',
+      items: [
+        'The City of Carlsbad requires a Short-Term Vacation Rental (STVR) permit for rentals under 30 days. [CONFIRM]',
+        'Coastal zone properties may have additional permit requirements. Contact the City of Carlsbad Planning Department to confirm your property\'s status. [CONFIRM]',
+        'Transient occupancy tax (TOT) applies to short-term rentals. [CONFIRM]',
+        'Owners should verify current permit availability, zone restrictions, and HOA rules before listing.',
+        'Allura serves as your local contact and handles compliance where permits are available.',
+      ],
+    },
+    seo: {
+      title: 'Carlsbad Vacation Rental Management',
+      description:
+        'Boutique Airbnb and vacation rental management in Carlsbad. 20% / from 15% / supplies at cost. Free earnings report in 24 hours. 4.9 stars in 2025.',
+      keywords: [
+        'Carlsbad vacation rental management',
+        'Carlsbad Airbnb management',
+        'Carlsbad property management',
+        'North County vacation rental',
+        'Carlsbad short-term rental',
+      ],
+      canonical: 'https://www.allurahomes.com/property-management/carlsbad',
+    },
+  },
+  {
     slug: 'san-diego-temecula',
     name: 'San Diego & Temecula',
     region: 'Southern California',

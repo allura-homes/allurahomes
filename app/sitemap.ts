@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getPublishedPostsForSitemap } from '@/lib/wordpress/api'
 import { METRO_AREAS } from '@/lib/metro-areas'
 import { SWITCH_PAGE_PATH } from '@/lib/site-config'
+import { RETIRED_POST_REDIRECTS } from '@/lib/retired-posts'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.allurahomes.com'
@@ -87,7 +88,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   staticPages.push(
     { url: `${baseUrl}/san-diego-vacation-rental-management`, lastModified: contentRevision, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/san-diego-airbnb-income`, lastModified: new Date('2026-10-26'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/stays`, lastModified: contentRevision, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/property-management/furnished-monthly-rentals`, lastModified: new Date('2026-10-27'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/solana-beach-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/del-mar-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/rancho-santa-fe-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/san-diego-county-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
   )
 
   // Metro area pages
@@ -98,8 +105,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }))
 
-  const posts = await getPublishedPostsForSitemap()
-  const blogPages: MetadataRoute.Sitemap = posts.map(post => ({
+  const posts = await getPublishedPostsForSitemap().catch(() => [])
+  const blogPages: MetadataRoute.Sitemap = posts.filter(post => !(`/${post.category}/${post.slug}` in RETIRED_POST_REDIRECTS)).map(post => ({
     url: `${baseUrl}/${post.category}/${post.slug}`,
     lastModified: post.modified.slice(0, 10),
     changeFrequency: 'monthly',

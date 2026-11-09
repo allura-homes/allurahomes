@@ -84,7 +84,10 @@ export function HowItWorksContent() {
               <div className="mx-auto mt-4 h-0.5 w-16 bg-gold" />
               <p className="mt-6 text-lg leading-relaxed text-primary-foreground/70">
                 From first conversation to first booking, our process is designed
-                to be effortless for you. Here is exactly what to expect.
+                to be effortless for you. Here is exactly what to expect. Whether you're interested in vacation rentals or{' '}
+                <Link href="/property-management/furnished-monthly-rentals" className="font-medium text-gold hover:underline">
+                  furnished monthly stays (30+ nights)
+                </Link>, we tailor the approach to your property.
               </p>
             </AnimateOnScroll>
           </div>
