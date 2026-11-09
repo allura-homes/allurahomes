@@ -1,7 +1,9 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { BRAND } from '@/lib/constants'
+import { FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164, AIRBNB_PROFILE_HREF } from '@/lib/site-config'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { SectionHeading } from '@/components/section-heading'
 import { StatsBar } from '@/components/sections/stats-bar'
@@ -62,6 +64,28 @@ export function AboutContent() {
                 We built Allura to be the management company we wished existed when we were property
                 owners ourselves, one that treats every home as if it were our own.
               </p>
+              
+              {/* Identity Block */}
+              <div className="mt-8 rounded-lg border border-gold/30 bg-navy-deep/50 p-6">
+                <h2 className="mb-4 text-xl font-semibold text-gold-light" style={{ fontFamily: 'var(--font-headline)' }}>
+                  Who we are
+                </h2>
+                <p className="mb-4 leading-relaxed text-primary-foreground/80">
+                  <strong>Allura Homes</strong> is a boutique vacation rental and monthly furnished (30+ night) rental management company based in San Diego, California. Founded in 2013, we manage less than 20 homes, are an <a href={AIRBNB_PROFILE_HREF} target="_blank" rel="noopener noreferrer" className="text-gold-light underline hover:text-gold">Airbnb Superhost</a> and Vrbo Premier Host, and averaged above 4.9 stars in 2025. We also serve Temecula, French Valley, Palm Springs, Los Angeles, Ojai, Napa and Oakland. Call <a href={`tel:${PRIMARY_PHONE_E164}`} className="text-gold-light underline hover:text-gold">{PRIMARY_PHONE_DISPLAY}</a>. Guests book at <a href="https://reservations.allurahomes.com" target="_blank" rel="noopener noreferrer" className="text-gold-light underline hover:text-gold">reservations.allurahomes.com</a>.
+                </p>
+                <p className="mb-4 text-sm italic leading-relaxed text-primary-foreground/60">
+                  Not affiliated with similarly named home builders, renovation or siding companies. We manage rental homes; we don&apos;t build or remodel them.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Link href={FREE_INCOME_REPORT_HREF} className="text-sm font-semibold text-gold-light underline hover:text-gold">
+                    Fill out the owner form
+                  </Link>
+                  <span className="text-primary-foreground/40">·</span>
+                  <a href={BOOK_A_CALL_HREF} className="text-sm font-semibold text-gold-light underline hover:text-gold">
+                    Book a call
+                  </a>
+                </div>
+              </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={0.2}>

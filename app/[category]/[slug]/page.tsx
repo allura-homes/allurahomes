@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { SHARE_IMAGE, metaDescription, metaTitle } from '@/lib/seo'
-import { notFound, permanentRedirect } from 'next/navigation'
+import { notFound, permanentRedirect, redirect } from 'next/navigation'
 import { getPostBySlug, getPostsByCategory, getCategories } from '@/lib/wordpress/api'
 import { CANONICAL_CATEGORIES } from '@/lib/wordpress/canonical'
 import { ArticleContent } from './content'
+import { RETIRED_POST_REDIRECTS } from '@/lib/retired-posts'
 
 const BLOG_CATEGORY_SLUGS = CANONICAL_CATEGORIES
 
@@ -17,6 +18,11 @@ export async function generateStaticParams() {
     const { posts } = await getPostsByCategory(cat.slug)
     for (const post of posts) {
       if (!BLOG_CATEGORY_SLUGS.includes(post.category.slug as any)) continue
+      
+      // Skip retired posts - they redirect via next.config.ts
+      const postPath = `/${post.category.slug}/${post.slug}`
+      if (postPath in RETIRED_POST_REDIRECTS) continue
+      
       const key = `${post.category.slug}/${post.slug}`
       if (!seen.has(key)) {
         seen.add(key)
@@ -31,7 +37,7 @@ export async function generateStaticParams() {
 type Props = { params: Promise<{ category: string; slug: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const { category, slug } = await params
   const post = await getPostBySlug(slug)
   if (!post) {
     return {}
@@ -42,6 +48,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const canonicalUrl = `https://www.allurahomes.com/${post.category.slug}/${slug}`
+  
+  // Special handling for Chula Vista regulations page
+  if (slug === 'chula-vista-ca' && category === 'regulations') {
+    return {
+      title: { absolute: 'Chula Vista Airbnb Rules & Vacation Rental Management | Allura' },
+      description: 'Chula Vista Airbnb and short-term rental rules: STR permit, business license, TOT and limits. Need a manager? Allura Homes has hosted since 2013.',
+      alternates: { canonical: canonicalUrl },
+      openGraph: {
+        title: 'Chula Vista Airbnb Rules & Vacation Rental Management | Allura',
+        description: 'Chula Vista Airbnb and short-term rental rules: STR permit, business license, TOT and limits. Need a manager? Allura Homes has hosted since 2013.',
+        type: 'article',
+        url: canonicalUrl,
+        publishedTime: post.date,
+        modifiedTime: post.modified,
+        authors: [post.author.name],
+        images: [SHARE_IMAGE],
+      },
+    }
+  }
+  
   const location = post.title.match(/^Comprehensive Guide to Operating an? Airbnb or Short-Term Rental in (.*?)(?:, California)?\.?$/i)?.[1]
   const permitLocation = post.title.match(/^Get Started Registering Your Airbnb for a Short-Term Rental Permit in (.*?), California$/i)?.[1]
   const shortTitle = post.category.slug === 'regulations'
@@ -75,6 +101,12 @@ export default async function ArticlePage({ params }: Props) {
     notFound()
   }
 
+  // Check if this post is retired and should redirect
+  const postPath = `/${categorySlug}/${slug}`
+  if (postPath in RETIRED_POST_REDIRECTS) {
+    redirect(RETIRED_POST_REDIRECTS[postPath])
+  }
+
   const post = await getPostBySlug(slug)
   if (!post) {
     notFound()
@@ -91,5 +123,31 @@ export default async function ArticlePage({ params }: Props) {
   const { posts: relatedPosts } = await getPostsByCategory(post.category.slug)
   const related = relatedPosts.filter((p) => p.id !== post.id).slice(0, 3)
 
-  return <ArticleContent post={post} relatedPosts={related} />
+  // Chula Vista FAQ schema
+  const chulaVistaFaqSchema = slug === 'chula-vista-ca' && categorySlug === 'regulations' ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Who can manage my Chula Vista vacation rental?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Allura Homes manages Chula Vista vacation rentals. We are a boutique manager hosting since 2013, with less than 20 homes. Airbnb Superhost, Vrbo Premier Host, and a 4.9 star rating in 2025. Your local contact, available 24/7. Fees: 20% for short-term stays, from 15% for furnished 30+ night stays, supplies at cost.',
+        },
+      },
+    ],
+  } : null
+
+  return (
+    <>
+      <ArticleContent post={post} relatedPosts={related} />
+      {chulaVistaFaqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(chulaVistaFaqSchema).replace(/</g, '\\u003c') }}
+        />
+      )}
+    </>
+  )
 }
