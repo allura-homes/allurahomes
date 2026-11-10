@@ -8,16 +8,17 @@ import { CTABand } from '@/components/sections/cta-band'
 import { ProblemSection } from './problem-section'
 import { AlluraDifference } from './allura-difference'
 import { ManagementPageLinks } from '@/components/sections/management-page-links'
+import { HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
 
 export const metadata: Metadata = {
   title: { absolute: 'California Vacation Rental Management | Allura Homes' },
   description:
-    'Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. Less than 20 homes under management.',
+    `Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. ${HOME_COUNT_PHRASE_CAPITALIZED} under management.`,
   alternates: { canonical: 'https://www.allurahomes.com/property-management' },
   keywords: ['property management San Diego', 'Airbnb management Temecula', 'vacation rental manager California', 'Vrbo property management', 'short-term rental management'],
   openGraph: {
     title: 'California Vacation Rental Management | Allura Homes',
-    description: 'Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. Less than 20 homes under management.',
+    description: `Boutique California vacation-rental and furnished-monthly management. San Diego and Temecula. ${HOME_COUNT_PHRASE_CAPITALIZED} under management.`,
     url: 'https://www.allurahomes.com/property-management',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Allura Homes boutique vacation rental management' }],
   },

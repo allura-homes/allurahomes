@@ -5,6 +5,8 @@ import {
   BOOK_CALL_URL,
   PHONE_TEL,
   MARKETS,
+  HOME_COUNT_PHRASE,
+  HOME_COUNT_PHRASE_CAPITALIZED,
 } from '@/lib/site-config'
 import { Hero } from '@/components/sections/hero'
 import { StatsBar } from '@/components/sections/stats-bar'
@@ -17,7 +19,7 @@ import { CTABand } from '@/components/sections/cta-band'
 
 const HOME_TITLE = 'California Vacation Rental Management | Allura Homes'
 const HOME_DESCRIPTION =
-  'Boutique management since 2013. Less than 20 homes under management. Airbnb Superhost. Vrbo Premier Host. 4.9 star rating in 2025. Free income report.'
+  `Boutique management since 2013. ${HOME_COUNT_PHRASE_CAPITALIZED} under management. Airbnb Superhost. Vrbo Premier Host. 4.9 star rating in 2025. Free income report.`
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.allurahomes.com'),
@@ -56,7 +58,7 @@ export default function HomePage() {
         image="/images/hero-home.jpg"
         accent="Distinguished by Design"
         title="Boutique Management. Higher Standards. Better Returns."
-        subtitle="Less than 20 homes managed like they are our own. Airbnb Superhost. Vrbo Premier Host. 4.9 star rating in 2025. Built for owners who want revenue, protection, and peace of mind."
+        subtitle={`${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own. Airbnb Superhost. Vrbo Premier Host. 4.9 star rating in 2025. Built for owners who want revenue, protection, and peace of mind.`}
         primaryCta={{ label: 'Get Your Free Income Report', href: FORM_URL }}
         secondaryCta={{ label: 'Book a Call', href: BOOK_CALL_URL }}
         fullHeight
@@ -102,7 +104,7 @@ export default function HomePage() {
               url: 'https://www.allurahomes.com',
               logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gold%20Bug%20-%20blue%20background-w5gGFhOU00lG43WErprop28jNDADyc.png',
               description:
-                'Boutique vacation rental management in California since 2013. Less than 20 homes managed like they are our own. Airbnb Superhost. Vrbo Premier Host.',
+                `Boutique vacation rental management in California since 2013. ${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own. Airbnb Superhost. Vrbo Premier Host.`,
               telephone: PHONE_TEL,
               email: 'support@allurahomes.com',
               areaServed: MARKETS.map((name) => ({ '@type': 'City', name })),

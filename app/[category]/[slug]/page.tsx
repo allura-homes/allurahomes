@@ -4,6 +4,7 @@ import { notFound, redirect } from 'next/navigation'
 import { getPostBySlug, getPostsByCategory, getCategories } from '@/lib/wordpress/api'
 import { ArticleContent } from './content'
 import { RETIRED_POST_REDIRECTS } from '@/lib/retired-posts'
+import { HOME_COUNT_PHRASE } from '@/lib/site-config'
 
 const BLOG_CATEGORY_SLUGS = [
   'hosting-resources',
@@ -116,7 +117,7 @@ export default async function ArticlePage({ params }: Props) {
         name: 'Who can manage my Chula Vista vacation rental?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Allura Homes manages Chula Vista vacation rentals. We are a boutique manager hosting since 2013, with less than 20 homes. Airbnb Superhost, Vrbo Premier Host, and a 4.9 star rating in 2025. Your local contact, available 24/7. Fees: 20% for short-term stays, from 15% for furnished 30+ night stays, supplies at cost.',
+          text: `Allura Homes manages Chula Vista vacation rentals. We are a boutique manager hosting since 2013, with ${HOME_COUNT_PHRASE}. Airbnb Superhost, Vrbo Premier Host, and a 4.9 star rating in 2025. Your local contact, available 24/7. Fees: 20% for short-term stays, from 15% for furnished 30+ night stays, supplies at cost.`,
         },
       },
     ],
