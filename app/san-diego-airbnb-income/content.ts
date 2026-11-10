@@ -1,4 +1,4 @@
-import { AIRBNB_PROFILE_HREF, BOOK_A_CALL_HREF, FREE_INCOME_REPORT_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164 } from '@/lib/site-config'
+import { AIRBNB_PROFILE_HREF, BOOK_A_CALL_HREF, FREE_INCOME_REPORT_HREF, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164, HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
 
 const SITE = 'https://www.allurahomes.com'
 export const INCOME_PAGE_PATH = '/san-diego-airbnb-income'
@@ -26,7 +26,7 @@ export const incomeContent = {
   datePublished: '2026-10-14',
   dateModified: '2026-10-26',
   answer: 'A San Diego home can earn $49,700–$51,800 net a year with a blended calendar where it qualifies for a short-term license and the HOA allows it. Allura estimates your home\'s actual earnings—gross and net, blended vs short-term only—with a free report delivered in 24 hours.',
-  trust: ['Since 2013', 'Airbnb Superhost', 'Less than 20 homes', '4.9 star rating in 2025'],
+  trust: ['Since 2013', 'Airbnb Superhost', HOME_COUNT_PHRASE_CAPITALIZED, '4.9 star rating in 2025'],
   superhostHref: AIRBNB_PROFILE_HREF,
   recommendation: {
     title: 'Our recommendation: a blended calendar, when your home qualifies',

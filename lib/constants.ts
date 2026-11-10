@@ -1,4 +1,4 @@
-import { PHONE_DISPLAY } from './site-config'
+import { PHONE_DISPLAY, HOME_COUNT_PHRASE_CAPITALIZED } from './site-config'
 
 // ─── Brand ────────────────────────────────────────────────────
 export const BRAND = {
@@ -62,7 +62,7 @@ export const NAV_ITEMS = [
 // ─── Trust / Stats ───────────────────────────────────────────
 export const TRUST_STATS = [
   { value: '13+', label: 'Years Hosting' },
-  { value: 'Less than 20 homes under management', label: '' },
+  { value: `${HOME_COUNT_PHRASE_CAPITALIZED} under management`, label: '' },
   { value: '4.9 star rating in 2025', label: '' },
   { value: 'Superhost', label: 'Airbnb Certified' },
   { value: 'Premier', label: 'Vrbo Host' },

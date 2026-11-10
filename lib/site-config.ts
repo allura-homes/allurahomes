@@ -31,3 +31,9 @@ export const PRIMARY_PHONE_CONFIRMED = true
 // REMOVABLE: public use on the boutique page needs Mike sign-off.
 export const SHOW_FEES = true
 export const SHOW_TRIAL = true
+
+// ─── Home Count Phrase ───────────────────────────────────────
+// Single source of truth for portfolio size messaging across the site
+export const HOME_COUNT_PHRASE = 'less than two dozen homes'
+export const HOME_COUNT_PHRASE_CAPITALIZED = 'Less than two dozen homes'
+export const HOME_COUNT_SHORT = '< 2 dozen'

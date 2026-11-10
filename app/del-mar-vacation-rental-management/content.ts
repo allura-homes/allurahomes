@@ -1,4 +1,4 @@
-import { PRIMARY_PHONE_E164 } from '@/lib/site-config'
+import { PRIMARY_PHONE_E164, HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
 
 export type FAQ = { question: string; paragraphs: string[]; link?: { text: string; href: string } }
 
@@ -100,7 +100,7 @@ export const delMarContent = {
     ],
     badges: ['Airbnb Superhost', 'Vrbo Premier Host'],
     features: [
-      'Under 20 homes on our roster, each treated as our own',
+      `${HOME_COUNT_PHRASE_CAPITALIZED} on our roster, each treated as our own`,
       '24/7 local contact with average response under 5 minutes',
       'Owner reports delivered within 24 hours',
       'Monthly statements by the 10th',

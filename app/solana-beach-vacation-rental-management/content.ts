@@ -1,4 +1,4 @@
-import { PRIMARY_PHONE_E164 } from '@/lib/site-config'
+import { PRIMARY_PHONE_E164, HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
 
 export type FAQ = { question: string; paragraphs: string[]; link?: { text: string; href: string } }
 
@@ -77,7 +77,7 @@ export const solanaBeachContent = {
     ],
     badges: ['Airbnb Superhost', 'Vrbo Premier Host'],
     features: [
-      'Fewer than 20 homes, each run like our own',
+      `${HOME_COUNT_PHRASE_CAPITALIZED}, each run like our own`,
       '24/7 local contact with average response under 5 minutes',
       'Owner reports delivered within 24 hours',
       'Monthly statements in your inbox by the 10th',
