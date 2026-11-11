@@ -99,7 +99,7 @@ All content follows approved guidelines:
 - ✅ No competitor names in new copy
 - ✅ No guest list or booking domain claims
 - ✅ Fees: 20% short-term, from 15% monthly, supplies at cost
-- ✅ "Less than 20 homes" language used
+- ✅ "Fewer than two dozen homes" language used
 - ✅ Phone: (858) 244-9400
 - ✅ CTAs: income report first, then book-a-call
 
