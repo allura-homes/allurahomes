@@ -1,9 +1,9 @@
-import { revalidatePath, revalidateTag } from 'next/cache'
+import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 
 // WordPress calls this webhook when a post is published, updated, or deleted.
 // Set this URL in WP Admin → Settings → (or use a plugin like WP Webhooks):
-//   https://allurahomes.com/api/revalidate?secret=YOUR_SECRET
+//   https://www.allurahomes.com/api/revalidate?secret=YOUR_SECRET
 //
 // Add REVALIDATE_SECRET to your Vercel env vars to secure the endpoint.
 
@@ -19,23 +19,10 @@ export async function POST(request: NextRequest) {
     const slug: string | undefined = body?.post_slug ?? body?.slug
     const categorySlug: string | undefined = body?.category_slug ?? body?.category
 
-    // Always revalidate the blog index paths
-    revalidatePath('/hosting')
-    revalidatePath('/hosting-resources')
-    revalidatePath('/regulations')
-    revalidatePath('/shortterm-rental-regulations')
-    revalidatePath('/ai')
+    revalidatePath('/[category]', 'layout')
 
-    // If a specific post slug was provided, revalidate that post across all categories
-    if (slug) {
-      revalidatePath(`/hosting/${slug}`)
-      revalidatePath(`/regulations/${slug}`)
-      revalidatePath(`/ai/${slug}`)
-    }
-
-    // If a specific category was provided, also revalidate its index
-    if (categorySlug) {
-      revalidatePath(`/${categorySlug}`)
+    if (slug && categorySlug) {
+      revalidatePath(`/${categorySlug}/${slug}`)
     }
 
     return NextResponse.json({ revalidated: true, slug, categorySlug })
@@ -44,7 +31,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Also support GET for easy browser testing
 export async function GET(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get('secret')
 
@@ -52,9 +38,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ message: 'Invalid secret' }, { status: 401 })
   }
 
-  revalidatePath('/hosting')
-  revalidatePath('/regulations')
-  revalidatePath('/ai')
+  revalidatePath('/[category]', 'layout')
 
   return NextResponse.json({ revalidated: true, message: 'All blog paths revalidated' })
 }

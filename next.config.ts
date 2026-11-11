@@ -40,6 +40,42 @@ const nextConfig: NextConfig = {
         destination: '/regulations/comprehensive-guide-to-operating-an-airbnb-or-short-term-rental-in-encinitas-california',
         statusCode: 301,
       },
+      // URL cleanup redirects from PR #22
+      {
+        source: '/home',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/home/',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/:category(hosting|regulations|ai)/san-diego-str-permit-guide',
+        destination: '/hosting/san-diego-vacation-rental-permit-the-2026-homeowners-guide-to-stro-compliance',
+        statusCode: 301,
+      },
+      {
+        source: '/:category(hosting|regulations|ai)/dynamic-pricing-strategies-vacation-rentals',
+        destination: '/hosting/dynamic-pricing-vacation-rentals',
+        statusCode: 301,
+      },
+      {
+        source: '/:category(hosting|regulations|ai)/temecula-wine-country-hosting-tips',
+        destination: '/hosting/temecula-vacation-rental-management-the-2026-owners-guide-to-high-yield-stewardship',
+        statusCode: 301,
+      },
+      {
+        source: '/:category(hosting|regulations|ai)/ai-pricing-tools-vacation-rentals',
+        destination: '/hosting/dynamic-pricing-vacation-rentals',
+        statusCode: 301,
+      },
+      {
+        source: '/:category(hosting|regulations|ai)/guest-experience-automation',
+        destination: '/hosting',
+        statusCode: 301,
+      },
       ...Object.entries(RETIRED_POST_REDIRECTS).map(([source, destination]) => ({ source, destination, statusCode: 301 as const })),
       // Legacy blog category slugs → new short slugs (301 = permanent moved)
       {
@@ -60,17 +96,6 @@ const nextConfig: NextConfig = {
       {
         source: '/shortterm-rental-regulations/:slug*',
         destination: '/regulations/:slug*',
-        statusCode: 301,
-      },
-      // /home redirects to homepage
-      {
-        source: '/home',
-        destination: '/',
-        statusCode: 301,
-      },
-      {
-        source: '/home/',
-        destination: '/',
         statusCode: 301,
       },
     ]

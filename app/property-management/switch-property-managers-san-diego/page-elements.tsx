@@ -7,7 +7,7 @@ import { switchContent as c } from './content'
 import { FREE_INCOME_REPORT_HREF } from '@/lib/site-config'
 
 const bodyLinks = [
-  { text: 'STRO license', href: '/hosting/san-diego-str-permit-guide' },
+  { text: 'STRO license', href: '/hosting/san-diego-vacation-rental-permit-the-2026-homeowners-guide-to-stro-compliance' },
   { text: 'STRO, TOT', href: '/regulations/san-diego-california' },
   { text: 'free switch analysis', href: FREE_INCOME_REPORT_HREF },
   { text: 'end-to-end', href: '/how-it-works' },
