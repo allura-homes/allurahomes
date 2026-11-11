@@ -45,7 +45,7 @@ This document lists content changes that must be made in WordPress at blog.allur
 ```html
 <div class="management-cta-block">
   <h3>Need a manager for your Chula Vista home?</h3>
-  <p>Allura Homes manages Chula Vista homes for owners who want the income without the daily work. We are a boutique team hosting since 2013, with less than 20 homes, Airbnb Superhost and Vrbo Premier Host status, and a 4.9 star rating in 2025. You get your local contact, available 24/7, with an under 5 minute average response time, and fees of 20% for short-term stays, from 15% for furnished 30+ night stays, and supplies at cost.</p>
+  <p>Allura Homes manages Chula Vista homes for owners who want the income without the daily work. We are a boutique team hosting since 2013, with fewer than two dozen homes, Airbnb Superhost and Vrbo Premier Host status, and a 4.9 star rating in 2025. You get your local contact, available 24/7, with an under 5 minute average response time, and fees of 20% for short-term stays, from 15% for furnished 30+ night stays, and supplies at cost.</p>
   
   <p><strong><a href="https://www.allurahomes.com/free-income-report">Get My Free Income Report</a></strong> (primary CTA)<br>
   <a href="https://www.allurahomes.com/book-a-call">Book a Call</a> (secondary) · or call (858) 244-9400</p>
@@ -66,7 +66,7 @@ This document lists content changes that must be made in WordPress at blog.allur
 <h2>Frequently asked questions</h2>
 
 <h3>Who can manage my Chula Vista vacation rental?</h3>
-<p>Allura Homes manages Chula Vista vacation rentals. We are a boutique manager hosting since 2013, with less than 20 homes. Airbnb Superhost, Vrbo Premier Host, and a 4.9 star rating in 2025. Your local contact, available 24/7. Fees: 20% for short-term stays, from 15% for furnished 30+ night stays, supplies at cost.</p>
+<p>Allura Homes manages Chula Vista vacation rentals. We are a boutique manager hosting since 2013, with fewer than two dozen homes. Airbnb Superhost, Vrbo Premier Host, and a 4.9 star rating in 2025. Your local contact, available 24/7. Fees: 20% for short-term stays, from 15% for furnished 30+ night stays, supplies at cost.</p>
 ```
 
 **Note:** The FAQ text MUST match the FAQPage schema word-for-word (schema is already added in code).
@@ -111,7 +111,7 @@ As a reminder, do NOT include any of the following in WordPress edits:
 
 **Approved language:**
 - ✅ Fees: 20% short-term, from 15% monthly, supplies at cost
-- ✅ "Less than 20 homes"
+- ✅ "Fewer than two dozen homes"
 - ✅ Phone: (858) 244-9400
 - ✅ CTAs: free income report or form first, then book-a-call
 

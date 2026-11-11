@@ -34,6 +34,6 @@ export const SHOW_TRIAL = true
 
 // ─── Home Count Phrase ───────────────────────────────────────
 // Single source of truth for portfolio size messaging across the site
-export const HOME_COUNT_PHRASE = 'less than two dozen homes'
-export const HOME_COUNT_PHRASE_CAPITALIZED = 'Less than two dozen homes'
+export const HOME_COUNT_PHRASE = 'fewer than two dozen homes'
+export const HOME_COUNT_PHRASE_CAPITALIZED = 'Fewer than two dozen homes'
 export const HOME_COUNT_SHORT = '< 2 dozen'
