@@ -95,6 +95,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/del-mar-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/rancho-santa-fe-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/san-diego-county-vacation-rental-management`, lastModified: new Date('2026-10-29'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/top-san-diego-vacation-rental-managers`, lastModified: new Date('2026-11-13'), changeFrequency: 'monthly', priority: 0.85 },
   )
 
   // Metro area pages
