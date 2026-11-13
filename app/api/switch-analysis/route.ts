@@ -14,6 +14,29 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
   }
+
+  // Honeypot check - if website field is filled, silently accept but don't process
+  if (raw && typeof raw === 'object' && 'website' in raw && raw.website) {
+    console.log('[switch-analysis] Blocked spam submission (honeypot filled):', {
+      name: 'name' in raw ? raw.name : 'unknown',
+      email: 'email' in raw ? raw.email : 'unknown'
+    })
+    return NextResponse.json({ success: true })
+  }
+
+  // Timestamp check - block submissions faster than 3 seconds
+  if (raw && typeof raw === 'object' && 'formTimestamp' in raw && typeof raw.formTimestamp === 'number') {
+    const elapsed = Date.now() - raw.formTimestamp
+    if (elapsed < 3000) {
+      console.log('[switch-analysis] Blocked spam submission (too fast):', {
+        name: 'name' in raw ? raw.name : 'unknown',
+        email: 'email' in raw ? raw.email : 'unknown',
+        elapsed
+      })
+      return NextResponse.json({ success: true })
+    }
+  }
+
   const result = switchAnalysisSchema.safeParse(raw)
   if (!result.success) {
     return NextResponse.json({ error: 'Please check your details and try again.', fields: result.error.flatten().fieldErrors }, { status: 400 })

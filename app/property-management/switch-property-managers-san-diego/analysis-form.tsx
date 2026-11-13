@@ -70,7 +70,12 @@ export function AnalysisForm() {
       ) : (
         <form noValidate onSubmit={handleSubmit} onChange={() => { if (!pending) requestId.current = '' }} aria-busy={pending} className="flex flex-col gap-5">
           {submitError && <p role="alert" className="rounded-md border border-destructive bg-muted p-3 text-sm text-foreground">{submitError}</p>}
-          <div hidden aria-hidden="true"><label htmlFor="switch-website">Website</label><input id="switch-website" name="website" tabIndex={-1} autoComplete="off" /></div>
+          {/* Honeypot field - hidden from users but visible to bots */}
+          <div className="honeypot-field" aria-hidden="true">
+            <label htmlFor="switch-website">Company Website</label>
+            <input id="switch-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
+          <input type="hidden" name="formTimestamp" value={Date.now()} />
           <fieldset disabled={pending} className="flex min-w-0 flex-col gap-5 border-0 p-0">
           <div className="grid gap-5 sm:grid-cols-2">
             <label htmlFor="switch-name" className="flex flex-col gap-2 text-sm font-medium">
