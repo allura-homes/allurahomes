@@ -4,7 +4,22 @@ import { NextResponse } from 'next/server'
 export async function POST(req: Request) {
   try {
     const body = await req.json()
-    const { name, email, phone, propertyAddress, city, bedrooms, currentlyListed, currentPlatform } = body
+    const { name, email, phone, propertyAddress, city, bedrooms, currentlyListed, currentPlatform, _hp_company_website, _timestamp } = body
+
+    // Honeypot check - if filled, silently accept but don't process
+    if (_hp_company_website) {
+      console.log('[income-report] Blocked spam submission (honeypot filled):', { name, email })
+      return NextResponse.json({ success: true })
+    }
+
+    // Timestamp check - block submissions faster than 3 seconds
+    if (_timestamp && typeof _timestamp === 'number') {
+      const elapsed = Date.now() - _timestamp
+      if (elapsed < 3000) {
+        console.log('[income-report] Blocked spam submission (too fast):', { name, email, elapsed })
+        return NextResponse.json({ success: true })
+      }
+    }
 
     if (!name || !email || !propertyAddress) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })

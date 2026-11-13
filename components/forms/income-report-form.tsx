@@ -27,6 +27,7 @@ const errorClasses = 'mt-1 text-xs text-destructive'
 
 export function IncomeReportForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [formTimestamp] = useState(() => Date.now())
 
   const {
     register,
@@ -51,6 +52,8 @@ export function IncomeReportForm() {
           bedrooms: data.propertyType,
           currentlyListed: data.currentlyManaged,
           currentPlatform: data.referralSource,
+          _hp_company_website: (document.getElementById('company_website') as HTMLInputElement)?.value || '',
+          _timestamp: formTimestamp,
         }),
       })
       if (res.ok) {
@@ -83,6 +86,18 @@ export function IncomeReportForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="rounded-xl border border-border bg-card p-8 shadow-sm">
+      {/* Honeypot field - hidden from users but visible to bots */}
+      <div className="honeypot-field" aria-hidden="true">
+        <label htmlFor="company_website">Company Website</label>
+        <input
+          type="text"
+          id="company_website"
+          name="company_website"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="firstName" className={labelClasses}>

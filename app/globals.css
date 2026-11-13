@@ -308,3 +308,12 @@
   background: var(--off-white);
   font-weight: 600;
 }
+
+/* Honeypot spam filter - positions field off-screen for bots while keeping it accessible */
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

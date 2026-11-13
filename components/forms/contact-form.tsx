@@ -23,6 +23,7 @@ const errorClasses = 'mt-1 text-xs text-destructive'
 
 export function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [formTimestamp] = useState(() => Date.now())
 
   const {
     register,
@@ -39,7 +40,11 @@ export function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          _hp_company_website: (document.getElementById('company_website') as HTMLInputElement)?.value || '',
+          _timestamp: formTimestamp,
+        }),
       })
       if (res.ok) {
         setStatus('success')
@@ -71,6 +76,18 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="rounded-xl border border-border bg-card p-8 shadow-sm">
+      {/* Honeypot field - hidden from users but visible to bots */}
+      <div className="honeypot-field" aria-hidden="true">
+        <label htmlFor="company_website">Company Website</label>
+        <input
+          type="text"
+          id="company_website"
+          name="company_website"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClasses}>
