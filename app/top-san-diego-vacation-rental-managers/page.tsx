@@ -8,6 +8,7 @@ import {
   ComparisonHowWeBuilt,
   ComparisonCompaniesIncluded,
   ComparisonCompanyEntries,
+  ComparisonWhatLowFeeCovers,
   ComparisonTable,
   ComparisonHowToUse,
   ComparisonFAQ,
@@ -50,6 +51,7 @@ export default function ComparisonPage() {
         <ComparisonHowWeBuilt />
         <ComparisonCompaniesIncluded />
         <ComparisonCompanyEntries />
+        <ComparisonWhatLowFeeCovers />
         <ComparisonTable />
         <ComparisonHowToUse />
         <ComparisonFAQ />

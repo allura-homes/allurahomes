@@ -50,6 +50,32 @@ export const comparisonContent = {
     alluraNote: 'Allura is in the list because it meets the same inclusion test as the others, and because it publishes this page. It is not placed first. Alphabetically, it sits second, after Air Concierge.',
     entriesNote: 'Each entry below has the fields Model, Service area (as stated), Published fee, Google rating, optional Other published facts, and Source(s).',
   },
+  whatLowFeeCOvers: {
+    title: 'What a low fee usually covers',
+    body: 'A lower published percentage often covers only part of the job. Listing, pricing, and guest messages may be included, while cleaning, maintenance, restocking, or on-site response is billed separately or left to the owner. So look at what each rate includes before you compare the numbers.',
+    examples: [
+      {
+        text: 'Open Road Stays',
+        href: 'https://openroadstays.com/',
+        description: '\' Lite plan (12%) is for owners who handle their own cleaning and repairs.',
+      },
+      {
+        text: 'Salt & Sky',
+        href: 'https://www.saltandskylodgingco.com/short-term-rental-management-services',
+        description: ' co-hosting (15% to 20%) covers pricing, listing optimization, and guest communication, and the owner stays involved in the rest.',
+      },
+      {
+        text: 'OODA',
+        href: 'https://oodahost.com/pricing',
+        description: ' publishes lower-fee revenue-management plans at 5% or 7%, depending on the page.',
+      },
+    ],
+    outsideNote: {
+      text: 'Evolve',
+      href: 'https://evolve.com/owner/vacation-rental-management-sb',
+      description: '\'s Core plan (10%) is described as hybrid. It covers listing, marketing, pricing, and guest support, and the owner keeps cleaning and on-site care.',
+    },
+  },
   howToUse: {
     title: 'How to use this list',
     body: 'Before signing with any company on this page, ask for a written fee schedule (what the percentage is charged on, and what sits outside it), who owns the listing and its reviews, who files STRO and TOT paperwork, and a sample owner statement from a comparable home. A lower published percentage is not automatically a lower cost if cleaning, supplies, or maintenance sit outside the fee.',
@@ -288,6 +314,10 @@ export const faqs: FAQ[] = [
   {
     question: 'Why do some fees say "not published"?',
     paragraphs: ['If we could not find a percentage on the company\'s own public page, we did not invent one. Ask that company for a written quote.'],
+  },
+  {
+    question: 'Do lower management fees include full-service operations?',
+    paragraphs: ['Not always. Some published rates cover listing, pricing, and guest messages, while cleaning, maintenance, or on-site work stays with the owner or is billed separately. On this page, Open Road Stays\' Lite plan (12%) is for owners who handle their own cleaning and repairs, and Salt & Sky co-hosting (15% to 20%) covers pricing, listing optimization, and guest communication. OODA also publishes a lower-fee revenue-management option. A 10% fee doesn\'t always mean a limited plan. Atlia describes its flat 10% as full-service management, and Air Concierge\'s 10% rate applies to stays of 30 days or more rather than a reduced short-term package. Outside this list, Evolve describes its 10% Core plan as hybrid management, with cleaning and on-site care left to the owner or a local partner. Ask each company for a written list of what its percentage includes.'],
   },
   {
     question: 'Why do some companies show two sets of fees?',

@@ -154,6 +154,48 @@ export function ComparisonCompanyEntries() {
   )
 }
 
+export function ComparisonWhatLowFeeCovers() {
+  return (
+    <ContentSection>
+      <div className="mx-auto max-w-4xl">
+        <SectionHeading title={c.whatLowFeeCOvers.title} alignment="left" />
+        <div className="space-y-4 text-foreground">
+          <p className="leading-relaxed">{c.whatLowFeeCOvers.body}</p>
+          <p className="leading-relaxed">
+            {c.whatLowFeeCOvers.examples.map((example, index) => (
+              <span key={example.href}>
+                {index > 0 && ' '}
+                <a
+                  href={example.href}
+                  className="text-navy-deep underline decoration-gold underline-offset-2 hover:text-gold-dark"
+                  rel="nofollow noopener"
+                  target="_blank"
+                >
+                  {example.text}
+                </a>
+                {example.description}
+                {index < c.whatLowFeeCOvers.examples.length - 1 && ' '}
+              </span>
+            ))}
+          </p>
+          <p className="leading-relaxed">
+            Outside this list,{' '}
+            <a
+              href={c.whatLowFeeCOvers.outsideNote.href}
+              className="text-navy-deep underline decoration-gold underline-offset-2 hover:text-gold-dark"
+              rel="nofollow noopener"
+              target="_blank"
+            >
+              {c.whatLowFeeCOvers.outsideNote.text}
+            </a>
+            {c.whatLowFeeCOvers.outsideNote.description}
+          </p>
+        </div>
+      </div>
+    </ContentSection>
+  )
+}
+
 export function ComparisonTable() {
   return (
     <ContentSection>
