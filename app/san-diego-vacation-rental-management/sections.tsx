@@ -2,7 +2,7 @@ import { Hero } from '@/components/sections/hero'
 import { SectionHeading } from '@/components/section-heading'
 import { SiteButton } from '@/components/site-button'
 import { ContentSection, FeatureCard } from '@/components/sections/content-section'
-import { AIRBNB_PROFILE_HREF, BOOK_A_CALL_HREF, FREE_INCOME_REPORT_HREF, SHOW_FEES, SHOW_TRIAL, SWITCH_PAGE_HREF } from '@/lib/site-config'
+import { AIRBNB_PROFILE_HREF, BOOK_A_CALL_HREF, FREE_INCOME_REPORT_HREF, SHOW_FEES, SWITCH_PAGE_HREF } from '@/lib/site-config'
 import { boutiqueContent as c, boutiqueFAQs, type ContentItem } from './content'
 
 function CTAButtons({ dark = false }: { dark?: boolean }) {
@@ -39,8 +39,6 @@ export function BoutiqueFeesAndPromise() {
   return <>
     {/* REMOVABLE: public use of fees needs Mike sign-off. */}
     {SHOW_FEES && <ContentSection muted><SectionHeading accent={c.fees.eyebrow} title={c.fees.title} subtitle={c.fees.lede} /><div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-border bg-card text-card-foreground"><table className="w-full text-left text-sm"><caption className="sr-only">{c.fees.title}</caption><thead className="bg-navy-deep text-primary-foreground"><tr>{c.fees.headers.map(header => <th key={header} scope="col" className="p-6">{header}</th>)}</tr></thead><tbody>{c.fees.rows.map(([label, value]) => <tr key={label} className="border-t border-border"><th scope="row" className="p-6 font-medium">{label}</th><td className="p-6 leading-relaxed text-muted-foreground">{value}</td></tr>)}</tbody></table></div></ContentSection>}
-    {/* REMOVABLE: public use of the trial needs Mike sign-off. */}
-    {SHOW_TRIAL && <ContentSection dark><SectionHeading accent={c.promise.eyebrow} title={c.promise.title} dark /><div className="flex flex-col items-center gap-6 text-center"><p className="font-headline text-3xl font-semibold text-gold-light md:text-4xl">{c.promise.line}</p><p className="leading-relaxed text-primary-foreground/80">{c.promise.body}</p></div></ContentSection>}
   </>
 }
 

@@ -113,13 +113,11 @@ export const boutiqueContent = {
       ['Supplies', 'At cost. No markup. Receipts with your monthly statement.'],
     ],
   },
-  promise: { eyebrow: 'Risk reversal', title: 'The 90-day promise', line: '90 days to outperform. Or walk away.', lines: ['90 days to outperform.', 'Or walk away.'], body: 'We walk you through the details on a call.' },
   where: { eyebrow: 'Where we manage', title: 'San Diego', body: "Allura manages homes in San Diego. Different city, different rules, so tell us where your home is and we'll tell you how it works there." },
   faq: { eyebrow: 'Frequently asked questions', title: 'Boutique management in San Diego, answered', disclaimer: 'This is not legal advice.', legal: 'Rules described apply to the City of San Diego only.' },
   closing: {
     eyebrow: 'Your free income report', title: 'Your home. A higher standard.',
     body: 'Allura Homes is a boutique vacation rental manager in San Diego, founded in 2013. Start with the form so your call begins with your numbers. Then book a time. No pressure.',
-    trialBody: 'On the call, we walk you through the details of our 90-day promise.',
     cardTitle: 'Two steps. No obligation.', hint: 'Report in 24–48 hours, up to 72 for complex homes.',
     labels: ['Step 1', 'Step 2'], switchIntro: 'Leaving a big management company?', switchLink: 'See the full switch checklist',
   },
@@ -137,8 +135,6 @@ export const boutiqueFAQs: FAQ[] = [
   { question: 'What happens to my existing bookings and reviews when I switch?', paragraphs: ['Confirmed guests should keep their stays, and the outgoing manager usually services arrivals inside the notice period. Settle in writing how each reservation is handled and paid. Reviews depend on whose account owns the listing: if you own it and your manager is a co-host, Airbnb says removing them leaves the listing with you.'] },
   // REMOVABLE: public use of fees needs Mike sign-off.
   ...(SHOW_FEES ? [{ question: 'What does Allura cost?', paragraphs: ['Allura charges 20% of the accommodation fare guests pay for short-term stays, and from 15% for furnished stays of 30+ nights. Supplies pass through at cost, with receipts.'] }] : []),
-  // REMOVABLE: public use of the trial needs Mike sign-off.
-  ...(SHOW_TRIAL ? [{ question: "What if I'm not happy?", paragraphs: ['Our promise is simple: 90 days to outperform. Or walk away. We walk you through the details on a call, so you know exactly how it works before you start.'] }] : []),
   { question: 'Do you manage furnished 30+ night stays for insurance, corporate and travel-nurse guests?', paragraphs: ["Yes. Allura manages furnished stays of 30+ nights for insurance-displaced households, corporate guests and travel nurses. These are furnished stays, not 1-year leases. " + (SHOW_FEES ? 'Fees start at 15%. ' : '') + "We evaluate every home individually, so tell us about yours and we'll show you what it can earn. In the City of San Diego, STRO and TOT apply to stays of less than one month. Not legal advice."] },
   { question: 'Does Allura act as my local contact in San Diego?', paragraphs: ["In the City of San Diego, a property manager can serve as a home's local contact, updated through the city's form.", "We are your home's local contact."] },
   { question: 'Where does Allura manage homes?', paragraphs: ["Allura manages homes in San Diego. Rules differ by city, so tell us where your home is and we'll tell you how it works there."] },
