@@ -6,9 +6,7 @@ export type FAQ = { question: string; paragraphs: string[]; link?: { text: strin
 export const boutiqueContent = {
   seo: {
     title: 'Boutique Vacation Rental Management San Diego | Allura',
-    description: SHOW_TRIAL
-      ? `Boutique San Diego management since 2013. ${HOME_COUNT_PHRASE_CAPITALIZED} under management. Airbnb Superhost. Furnished 30+ night stays. 90-day trial.`
-      : `Boutique San Diego management since 2013. ${HOME_COUNT_PHRASE_CAPITALIZED} under management. Airbnb Superhost. Furnished 30+ night stays.`,
+    description: `Boutique San Diego management since 2013. ${HOME_COUNT_PHRASE_CAPITALIZED} under management. Airbnb Superhost. Furnished 30+ night stays.`,
     url: 'https://www.allurahomes.com/san-diego-vacation-rental-management',
   },
   header: { brand: 'ALLURA', brandAccent: 'HOMES', home: 'Home', breadcrumb: 'San Diego Vacation Rental Management' },
@@ -26,38 +24,37 @@ export const boutiqueContent = {
   answer: `Allura Homes is a boutique vacation rental manager in San Diego, founded in 2013. ${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own. No owner is a number in a queue. We run short-term stays and furnished stays of 30+ nights, with statements by the 10th. Airbnb Superhost. Vrbo Premier Host.`,
   answerFirst: {
     eyebrow: 'Quick answer',
-    title: 'San Diego vacation rental management at a glance',
+    title: 'San Diego vacation rental management, at a glance',
+    proseAnswer: `Allura Homes is a San Diego-based vacation rental manager for short-term stays and furnished 30-night stays. Fees are 20% of the accommodation fare for short-term stays and from 15% for stays of 30+ nights, with supplies billed at cost. Allura manages ${HOME_COUNT_PHRASE} and files San Diego STRO quarterly reports. It is a Vrbo Premier Host with a 4.9-star guest rating in 2025.`,
     fees: {
       title: 'Fees',
       items: [
-        { label: 'Short-term stays', value: '20% of the accommodation fare the guest pays' },
+        { label: 'Short-term stays', value: '20% of the accommodation fare' },
         { label: 'Furnished stays of 30+ nights', value: 'From 15%' },
-        { label: 'Supplies', value: 'At cost. No markup. Receipts with your monthly statement.' },
+        { label: 'Supplies', value: 'At cost, with receipts on the monthly statement' },
       ],
     },
     included: {
       title: "What's included",
-      description: 'Listing and pricing, guest communication, cleaning coordination, maintenance, owner statements.',
+      description: "Listing and pricing, guest communication, cleaning coordination, maintenance, and owner statements. Dynamic pricing is updated daily. Permit and license management and TOT collection and remittance are included. Allura can be the home's local contact.",
     },
-    stro: {
-      title: 'STRO help',
-      description: 'Allura files San Diego STRO quarterly reports and keeps the booking records.',
+    portfolio: {
+      title: 'Portfolio',
+      description: `${HOME_COUNT_PHRASE_CAPITALIZED}. Local since 2013.`,
     },
-    contact: {
-      title: 'Local contact',
-      description: 'Available 24/7, with an average response time under 5 minutes.',
+    proof: {
+      title: 'Proof',
+      description: '4.9-star guest rating in 2025. On our booking site, guests have left 98 reviews averaging 4.89.',
     },
     credentials: {
-      title: 'About Allura',
-      items: [
-        HOME_COUNT_PHRASE_CAPITALIZED,
-        'Local since 2013',
-        'Airbnb Superhost',
-        'Vrbo Premier Host',
-        '4.9-star rating in 2025',
-      ],
+      title: 'Hosting credentials',
+      description: 'Vrbo Premier Host. Airbnb Superhost.',
     },
-    updated: 'Updated October 2026',
+    response: {
+      title: 'Response',
+      description: 'Local contact available 24/7, with an average response time under 5 minutes.',
+    },
+    updated: 'Updated November 2026',
   },
   boutique: {
     eyebrow: 'Boutique, in practice', title: 'What "boutique" actually means',
@@ -73,7 +70,6 @@ export const boutiqueContent = {
   proof: {
     quote: 'After trying two other management companies, Allura was a breath of fresh air. They actually care about our property as if it were their own.',
     author: 'David & Jen R., Temecula, CA', rating: '4.9 star rating in 2025',
-    note: 'One Allura home: 71% revenue uplift (single case study, results vary)',
     eyebrow: 'Why boutique beats big-box', title: 'Big national managers can run 200+ properties.', emphasis: `${HOME_COUNT_PHRASE_CAPITALIZED} under management.`,
     body: "The biggest managers have thousands of doors. We don't want you to feel like a number. That's what makes us different: a manager who picks up the phone, and fewer homes for finer results.",
   },
@@ -154,7 +150,7 @@ export const boutiqueStructuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     { '@type': ['Organization', 'LocalBusiness'], '@id': organizationId, name: 'Allura Homes', url: 'https://www.allurahomes.com', description: `Boutique vacation rental management in San Diego. ${HOME_COUNT_PHRASE_CAPITALIZED} managed like they are our own.`, foundingDate: '2013', telephone: PRIMARY_PHONE_E164, areaServed: MARKETS.map(name => ({ '@type': 'City', name })), sameAs: ['https://www.instagram.com/allurahomes', 'https://www.facebook.com/allurahomes.us', 'https://www.linkedin.com/company/82304816', AIRBNB_PROFILE_HREF] },
-    { '@type': 'WebPage', '@id': `${c.seo.url}#webpage`, url: c.seo.url, name: c.seo.title, description: c.seo.description, dateModified: '2026-10-22', about: { '@id': organizationId }, primaryImageOfPage: { '@type': 'ImageObject', url: 'https://www.allurahomes.com/images/boutique/hero.jpg' }, speakable: { '@type': 'SpeakableSpecification', cssSelector: ["[data-speakable='answer-card']", "[data-speakable='answer-first']", 'h1'] } },
+    { '@type': 'WebPage', '@id': `${c.seo.url}#webpage`, url: c.seo.url, name: c.seo.title, description: c.seo.description, dateModified: '2026-11-17', about: { '@id': organizationId }, primaryImageOfPage: { '@type': 'ImageObject', url: 'https://www.allurahomes.com/images/boutique/hero.jpg' }, speakable: { '@type': 'SpeakableSpecification', cssSelector: ["[data-speakable='answer-first']", "[data-speakable='answer-card']", 'h1'] } },
     { '@type': 'FAQPage', '@id': `${c.seo.url}#faq`, mainEntity: boutiqueFAQs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.paragraphs.join(' ') + (faq.link ? ` ${faq.link.text}.` : '') } })) },
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: c.header.home, item: 'https://www.allurahomes.com/' }, { '@type': 'ListItem', position: 2, name: c.header.breadcrumb, item: c.seo.url }] },
     ...['Vacation rental property management', 'Furnished 30+ night stay management'].map(serviceType => ({ '@type': 'Service', serviceType, areaServed: MARKETS.map(name => ({ '@type': 'City', name })), provider: { '@id': organizationId } })),
