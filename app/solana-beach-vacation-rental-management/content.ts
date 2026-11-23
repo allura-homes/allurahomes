@@ -1,4 +1,4 @@
-import { PRIMARY_PHONE_E164, HOME_COUNT_PHRASE_CAPITALIZED } from '@/lib/site-config'
+import { PRIMARY_PHONE_E164, HOME_COUNT_PHRASE_CAPITALIZED, HOME_COUNT_SHORT } from '@/lib/site-config'
 
 export type FAQ = { question: string; paragraphs: string[]; link?: { text: string; href: string } }
 
@@ -71,7 +71,7 @@ export const solanaBeachContent = {
     title: 'How Allura Manages Your Solana Beach Home',
     stats: [
       { label: 'Founded', value: '2013' },
-      { label: 'Homes managed', value: '< 20' },
+      { label: 'Homes managed', value: HOME_COUNT_SHORT },
       { label: '2025 rating', value: '4.9 stars' },
       { label: 'Avg response', value: '< 5 min' },
     ],
