@@ -8,7 +8,7 @@ import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import { CTABand } from '@/components/sections/cta-band'
 import { BRAND } from '@/lib/constants'
 import type { MetroArea } from '@/lib/metro-areas'
-import { PRIMARY_PHONE_DISPLAY, FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, GUEST_BOOKING_HREF } from '@/lib/site-config'
+import { PRIMARY_PHONE_DISPLAY, FREE_INCOME_REPORT_HREF, BOOK_A_CALL_HREF, GUEST_BOOKING_HREF, HOME_COUNT_SHORT } from '@/lib/site-config'
 
 const faqItems = [
   {
@@ -234,7 +234,7 @@ export function CarlsbadContent({ metro }: { metro: MetroArea }) {
                     <p className="mt-1 text-sm text-muted-foreground">Founded</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-gold">&lt; 20</p>
+                    <p className="text-2xl font-bold text-gold">{HOME_COUNT_SHORT}</p>
                     <p className="mt-1 text-sm text-muted-foreground">Homes managed</p>
                   </div>
                   <div>
