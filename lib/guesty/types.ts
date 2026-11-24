@@ -116,7 +116,9 @@ export interface Property {
   minNights: number
   maxNights?: number
   cancellationPolicy?: string
-  videoTourUrl?: string
+  videoTourUrl?: string // Legacy - now prefer walkthroughUrl
+  walkthroughUrl?: string // Property walkthrough video
+  droneUrl?: string // Aerial/drone flyover video
   matterportUrl?: string
   isGuestFavorite?: boolean
   tax?: {
