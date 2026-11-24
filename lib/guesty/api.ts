@@ -150,19 +150,30 @@ function normalizeListing(listing: GuestyListing): Property {
   
   // Look for video/3D tour in custom fields
   let videoTourUrl = listing.videoTourUrl
+  let walkthroughUrl: string | undefined
+  let droneUrl: string | undefined
   let matterportUrl = listing.matterportUrl
 
   if (listing.customFields) {
     for (const field of listing.customFields) {
       const value = String(field.value || '')
+      const fieldName = String(field.fieldId || '').toLowerCase()
+      
       if (value.includes('matterport') || value.includes('my.matterport')) {
         matterportUrl = value
+      } else if (fieldName.includes('walkthrough') || fieldName.includes('walk-through')) {
+        walkthroughUrl = value
+      } else if (fieldName.includes('drone') || fieldName.includes('aerial') || fieldName.includes('flyover')) {
+        droneUrl = value
       } else if (
-        value.includes('youtube') ||
-        value.includes('vimeo') ||
-        value.includes('.mp4') ||
-        value.includes('.mov')
+        !walkthroughUrl &&
+        !droneUrl &&
+        (value.includes('youtube') ||
+          value.includes('vimeo') ||
+          value.includes('.mp4') ||
+          value.includes('.mov'))
       ) {
+        // Legacy video field - use as walkthrough if no specific walkthrough set
         videoTourUrl = value
       }
     }
@@ -208,6 +219,8 @@ function normalizeListing(listing: GuestyListing): Property {
     maxNights: listing.terms?.maxNights,
     cancellationPolicy: listing.terms?.cancellation,
     videoTourUrl,
+    walkthroughUrl,
+    droneUrl,
     matterportUrl,
     // Mark as guest favorite if property has high-quality attributes
     // (4+ bedrooms, premium amenities, or top-rated)

@@ -1,20 +1,33 @@
 'use client'
 
 import { useState } from 'react'
-import { Play, X, Box, Video } from 'lucide-react'
+import { Play, X, Box, Video, Plane } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface VideoTourProps {
   videoUrl?: string
+  walkthroughUrl?: string // Property walkthrough video
+  droneUrl?: string // Aerial/drone flyover video
   matterportUrl?: string
   title: string
 }
 
-export function VideoTour({ videoUrl, matterportUrl, title }: VideoTourProps) {
-  const [activeModal, setActiveModal] = useState<'video' | '3d' | null>(null)
+export function VideoTour({
+  videoUrl,
+  walkthroughUrl,
+  droneUrl,
+  matterportUrl,
+  title,
+}: VideoTourProps) {
+  const [activeModal, setActiveModal] = useState<
+    'walkthrough' | 'drone' | '3d' | null
+  >(null)
 
-  const hasTour = videoUrl || matterportUrl
+  // Priority: walkthroughUrl > videoUrl (legacy)
+  const mainVideoUrl = walkthroughUrl || videoUrl
+
+  const hasTour = mainVideoUrl || droneUrl || matterportUrl
 
   if (!hasTour) return null
 
@@ -23,7 +36,7 @@ export function VideoTour({ videoUrl, matterportUrl, title }: VideoTourProps) {
     document.body.style.overflow = ''
   }
 
-  const openModal = (type: 'video' | '3d') => {
+  const openModal = (type: 'walkthrough' | 'drone' | '3d') => {
     setActiveModal(type)
     document.body.style.overflow = 'hidden'
   }
@@ -32,11 +45,11 @@ export function VideoTour({ videoUrl, matterportUrl, title }: VideoTourProps) {
   const getEmbedUrl = (url: string): string => {
     if (url.includes('youtube.com/watch')) {
       const videoId = new URL(url).searchParams.get('v')
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
     }
     if (url.includes('youtu.be/')) {
       const videoId = url.split('youtu.be/')[1]?.split('?')[0]
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
     }
     if (url.includes('vimeo.com/')) {
       const videoId = url.split('vimeo.com/')[1]?.split('?')[0]
@@ -46,20 +59,34 @@ export function VideoTour({ videoUrl, matterportUrl, title }: VideoTourProps) {
     return url
   }
 
-  const isDirectVideo = videoUrl && (videoUrl.endsWith('.mp4') || videoUrl.endsWith('.mov') || videoUrl.endsWith('.webm'))
+  const isDirectVideo = (url: string) =>
+    url.endsWith('.mp4') ||
+    url.endsWith('.mov') ||
+    url.endsWith('.webm') ||
+    url.endsWith('.m4v')
 
   return (
     <>
       {/* Tour Buttons */}
       <div className="flex flex-wrap gap-3">
-        {videoUrl && (
+        {mainVideoUrl && (
           <Button
-            onClick={() => openModal('video')}
+            onClick={() => openModal('walkthrough')}
             variant="outline"
             className="gap-2 border-accent text-accent hover:bg-accent hover:text-white"
           >
             <Video className="size-4" />
-            Watch Video Tour
+            Property Walkthrough
+          </Button>
+        )}
+        {droneUrl && (
+          <Button
+            onClick={() => openModal('drone')}
+            variant="outline"
+            className="gap-2 border-accent text-accent hover:bg-accent hover:text-white"
+          >
+            <Plane className="size-4" />
+            Aerial View
           </Button>
         )}
         {matterportUrl && (
@@ -69,25 +96,26 @@ export function VideoTour({ videoUrl, matterportUrl, title }: VideoTourProps) {
             className="gap-2 border-accent text-accent hover:bg-accent hover:text-white"
           >
             <Box className="size-4" />
-            Explore 3D Tour
+            3D Tour
           </Button>
         )}
       </div>
 
-      {/* Video Modal */}
-      {activeModal === 'video' && videoUrl && (
+      {/* Walkthrough Video Modal */}
+      {activeModal === 'walkthrough' && mainVideoUrl && (
         <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4">
           <button
             onClick={closeModal}
             className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            aria-label="Close video"
           >
             <X className="size-6 text-white" />
           </button>
 
           <div className="relative w-full max-w-5xl aspect-video">
-            {isDirectVideo ? (
+            {isDirectVideo(mainVideoUrl) ? (
               <video
-                src={videoUrl}
+                src={mainVideoUrl}
                 controls
                 autoPlay
                 className="w-full h-full rounded-lg"
@@ -96,11 +124,47 @@ export function VideoTour({ videoUrl, matterportUrl, title }: VideoTourProps) {
               </video>
             ) : (
               <iframe
-                src={getEmbedUrl(videoUrl)}
-                title={`${title} - Video Tour`}
+                src={getEmbedUrl(mainVideoUrl)}
+                title={`${title} - Property Walkthrough`}
                 className="w-full h-full rounded-lg"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
+                loading="lazy"
+              />
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Drone Video Modal */}
+      {activeModal === 'drone' && droneUrl && (
+        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4">
+          <button
+            onClick={closeModal}
+            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            aria-label="Close video"
+          >
+            <X className="size-6 text-white" />
+          </button>
+
+          <div className="relative w-full max-w-5xl aspect-video">
+            {isDirectVideo(droneUrl) ? (
+              <video
+                src={droneUrl}
+                controls
+                autoPlay
+                className="w-full h-full rounded-lg"
+              >
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <iframe
+                src={getEmbedUrl(droneUrl)}
+                title={`${title} - Aerial View`}
+                className="w-full h-full rounded-lg"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
               />
             )}
           </div>
@@ -113,6 +177,7 @@ export function VideoTour({ videoUrl, matterportUrl, title }: VideoTourProps) {
           <button
             onClick={closeModal}
             className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            aria-label="Close 3D tour"
           >
             <X className="size-6 text-white" />
           </button>
@@ -123,6 +188,7 @@ export function VideoTour({ videoUrl, matterportUrl, title }: VideoTourProps) {
               title={`${title} - 3D Tour`}
               className="w-full h-full rounded-lg"
               allowFullScreen
+              loading="lazy"
             />
           </div>
         </div>

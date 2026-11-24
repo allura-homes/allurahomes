@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/react'
 import { BOUTIQUE_PAGE_PATH } from '@/lib/site-config'
+import { configureCrossDomainTracking } from '@/lib/analytics/gtm'
 
 const GA_ID = 'G-WHT06K3ZFQ'
 
@@ -27,7 +28,22 @@ export function SiteAnalytics() {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', '${GA_ID}', { page_path: window.location.pathname });
+      
+      // Configure cross-domain tracking for allurahomes.com hosts
+      gtag('config', '${GA_ID}', {
+        page_path: window.location.pathname,
+        linker: {
+          domains: ['allurahomes.com', 'www.allurahomes.com', 'reservations.allurahomes.com'],
+          accept_incoming: true
+        }
+      });
+    `}</Script>
+    <Script id="cross-domain-setup" strategy="afterInteractive">{`
+      // Initialize cross-domain tracking helper
+      if (typeof window !== 'undefined') {
+        ${configureCrossDomainTracking.toString()}
+        configureCrossDomainTracking();
+      }
     `}</Script>
     <Analytics beforeSend={event => new URL(event.url).pathname === BOUTIQUE_PAGE_PATH ? null : event} />
   </>

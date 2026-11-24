@@ -9,12 +9,35 @@ import { AlluraGuarantee } from '@/components/stays/allura-guarantee'
 import { BedroomGallery } from '@/components/stays/bedroom-gallery'
 import { AnimateOnScroll } from '@/components/animate-on-scroll'
 import type { Property } from '@/lib/guesty/types'
+import { mergeVideoConfig } from '@/lib/stays/video-config'
+import { trackViewItem } from '@/lib/analytics/gtm'
+import { useEffect } from 'react'
 
 interface PropertyDetailContentProps {
   property: Property
 }
 
 export function PropertyDetailContent({ property }: PropertyDetailContentProps) {
+  // Track GA4 view_item event on mount
+  useEffect(() => {
+    trackViewItem(
+      property.id,
+      property.title,
+      property.location.city,
+      property.bedrooms,
+      property.pricing.basePrice, // Using base price since we don't have dates yet
+      1, // Default to 1 night for view_item event
+      property.pricing.currency
+    )
+  }, [property])
+
+  // Merge video URLs from Guesty and local config
+  const videoConfig = mergeVideoConfig(property.slug, {
+    videoTourUrl: property.videoTourUrl,
+    walkthroughUrl: property.walkthroughUrl,
+    droneUrl: property.droneUrl,
+    matterportUrl: property.matterportUrl,
+  })
   return (
     <div className="min-h-screen bg-background">
       {/* Photo Gallery */}
@@ -64,11 +87,12 @@ export function PropertyDetailContent({ property }: PropertyDetailContentProps) 
                 </div>
 
                 {/* Video Tour Buttons */}
-                {(property.videoTourUrl || property.matterportUrl) && (
+                {(videoConfig.walkthroughUrl || videoConfig.droneUrl || videoConfig.matterportUrl) && (
                   <div className="mt-6">
                     <VideoTour
-                      videoUrl={property.videoTourUrl}
-                      matterportUrl={property.matterportUrl}
+                      walkthroughUrl={videoConfig.walkthroughUrl}
+                      droneUrl={videoConfig.droneUrl}
+                      matterportUrl={videoConfig.matterportUrl}
                       title={property.title}
                     />
                   </div>
