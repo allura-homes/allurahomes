@@ -25,7 +25,7 @@ export function SwitchHeading({ eyebrow, title, subtitle, dark = false, left = f
 }
 
 export function SwitchActions({ dark = false, vertical = false }: { dark?: boolean; vertical?: boolean }) {
-  return <div className={cn('flex flex-col gap-4', !vertical && 'sm:flex-row sm:flex-wrap')}><SiteButton href="#analysis">{c.cta.primary}</SiteButton><SiteButton href={c.cta.callHref} target="_blank" variant="secondary" dark={dark}>{c.cta.secondary}</SiteButton></div>
+  return <div className={cn('flex flex-col gap-4', !vertical && 'sm:flex-row sm:flex-wrap')}><SiteButton href={FREE_INCOME_REPORT_HREF}>{c.cta.primary}</SiteButton><SiteButton href={c.cta.callHref} target="_blank" variant="secondary" dark={dark}>{c.cta.secondary}</SiteButton></div>
 }
 
 export function SwitchCard({ title, body }: { title: string; body: string }) {
